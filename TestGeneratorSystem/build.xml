@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TestGeneratorSystem" default="sendEmail" basedir=".">
+    <description>Builds, tests, and runs the project TestGeneratorSystem.</description>
+
+    <!-- Define properties for directories -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="lib.dir" value="lib"/>
+
+    <!-- Include the default NetBeans build file -->
+    <import file="nbproject/build-impl.xml"/>
+
+    <!-- Define classpath to include JavaMail -->
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="javax.mail.jar"/>
+        </fileset>
+    </path>
+
+    <!-- Initialization -->
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <!-- Compilation -->
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath" includeantruntime="false"/>
+    </target>
+
+    <!-- Custom target to send an email -->
+    <target name="sendEmail" depends="compile">
+        <java classname="EmailUtil" classpathref="classpath">
+            <arg value="recipient@example.com"/>
+            <arg value="Password Reset"/>
+            <arg value="Type this Code to reset the password : "/>
+        </java>
+    </target>
+</project>
