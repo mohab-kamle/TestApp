@@ -1,5 +1,6 @@
 package testgeneratorsystem;
 
+import UserDefinedFunctionalities.Checker;
 import java.io.Console;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -8,9 +9,6 @@ import java.util.*;
 /**
  *
  * @author mohab 
- * and i will be one very soon ;)
- * Author youssef
- * You recieve this
  */
 public class Admin extends User {
 
@@ -124,7 +122,7 @@ public class Admin extends User {
     @Override
     public void updateProfile() {
         Scanner sc = new Scanner(System.in);
-        TestGeneratorSystem TGS = new TestGeneratorSystem();
+        Checker check = new Checker();
         int choice;
         
         do {
@@ -137,8 +135,8 @@ public class Admin extends User {
                 sc.nextLine();
                 switch (choice) {
                     case 1, 2, 3, 4 -> super.updateProfile(); // Handle basic updates
-                    case 5 -> updateContactNumber(TGS, sc); // Handle admin-specific updates
-                    case 6 -> updateDepartment(TGS, sc); // Handle admin-specific updates
+                    case 5 -> updateContactNumber(check, sc); // Handle admin-specific updates
+                    case 6 -> updateDepartment(check, sc); // Handle admin-specific updates
                     case -1 -> System.out.println("Returning to previous menu...");
                     default -> System.out.println("Invalid choice. Please try again.");
                 }
@@ -162,23 +160,23 @@ public class Admin extends User {
     public static ArrayList signUp() {
         ArrayList commonList = User.signUp();
         Scanner scanner = new Scanner(System.in);
-        TestGeneratorSystem TGS = new TestGeneratorSystem();
+        Checker check = new Checker();
         String ContactNumber;
         do {
             System.out.println("\nEnter Contact Number : ");
             ContactNumber = scanner.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.PHONE_NO, ContactNumber)) {
+            if (!check.isValid(Checker.StringType.PHONE_NO, ContactNumber)) {
                 System.out.println("Invalid Phone Number\ntry again with this format +Countrycode 123456789");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.PHONE_NO, ContactNumber));
+        } while (!check.isValid(Checker.StringType.PHONE_NO, ContactNumber));
         String Department;
         do {
             System.out.println("\nEnter department : ");
             Department = scanner.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, Department)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, Department)) {
                 System.out.println("Invalid Department name.Should contain letters only");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, Department));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, Department));
         LocalDate accountCreationDate = LocalDate.now();
         Admin CreatedAdmin = new Admin(
                 accountCreationDate,
@@ -215,28 +213,28 @@ public class Admin extends User {
         return false;
     }
     // Private helper methods
-    private void updateDepartment(TestGeneratorSystem TGS, Scanner sc) {
+    private void updateDepartment(Checker check, Scanner sc) {
         String Department;
         do {
             System.out.println("\nEnter department : ");
             Department = sc.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, Department)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, Department)) {
                 System.out.println("Invalid Department name.Should contain letters only");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, Department));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, Department));
         this.setDepartment(Department);
         System.out.println("Department updated successfully!");
     }
     
-    private void updateContactNumber(TestGeneratorSystem TGS, Scanner sc) {
+    private void updateContactNumber(Checker check, Scanner sc) {
         String ContactNumber;
         do {
             System.out.println("\nEnter Contact Number : ");
             ContactNumber = sc.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.PHONE_NO, ContactNumber)) {
+            if (!check.isValid(Checker.StringType.PHONE_NO, ContactNumber)) {
                 System.out.println("Invalid Phone Number\ntry again with this format +Countrycode 123456789");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.PHONE_NO, ContactNumber));
+        } while (!check.isValid(Checker.StringType.PHONE_NO, ContactNumber));
         this.setContactNumber(ContactNumber);
         System.out.println("Contact Number updated successfully!");
     }

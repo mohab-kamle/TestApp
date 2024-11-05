@@ -1,62 +1,25 @@
 package testgeneratorsystem;
 
 import java.io.IOException;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Scanner;
 import javax.mail.MessagingException;
-
+/**
+ * Git WorkFlow for The contributors
+ * 1_make sure you cloned the repo correct(added remote or cloned directly ...etc).
+ * 2_switch to your Branch which is the first or two characters of your name.
+ * 3_command in terminal of the project Folder/app : "git pull origin main".
+ * 4_make the required edits then commit your work (any number of commits you want).
+ * 5_command : "git push origin [your branch name]".
+ * 6_open github and make a pull request.
+ * 7_wait for review to merge your code.
+ * 8_you successfully contributed to your beloved project :) !
+ */
 /**
  *
  * @author mohab
- *
  */
-public class TestGeneratorSystem {
 
-    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
-    private static final String USERNAME_REGEX = "^[a-zA-Z0-9._]{3,20}$";
-    private static final String PASS_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{12,}$";
-    private static final String LETTERSONLY_REGEX = "^[A-Za-z]+$";
-    private static final String PHONE_REGEX = "^(\\+\\d{1,3}[- ]?)?\\d{10}$";
-
-    public enum StringType {
-        EMAIL, USERNAME, PASSWORD, LETTERS_ONLY, PHONE_NO;
-    }
-
-    public boolean isValid(StringType type, String CheckString) {
-        Pattern p;
-        Matcher m;
-        switch (type) {
-            case EMAIL -> {
-                p = Pattern.compile(EMAIL_REGEX);
-                m = p.matcher(CheckString);
-                return m.matches();
-            }
-
-            case USERNAME -> {
-                p = Pattern.compile(USERNAME_REGEX);
-                m = p.matcher(CheckString);
-                return m.matches();
-            }
-            case PASSWORD -> {
-                p = Pattern.compile(PASS_REGEX);
-                m = p.matcher(CheckString);
-                return m.matches();
-            }
-            case LETTERS_ONLY -> {
-                p = Pattern.compile(LETTERSONLY_REGEX);
-                m = p.matcher(CheckString);
-                return m.matches();
-            }
-            case PHONE_NO -> {
-                p = Pattern.compile(PHONE_REGEX);
-                m = p.matcher(CheckString);
-                return m.matches();
-            }
-            default ->
-                throw new IllegalArgumentException("Unknown type: " + type);
-        }
-    }
+public class TestGeneratorApp {
 
     public static void main(String[] args) throws MessagingException, IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
@@ -135,7 +98,7 @@ public class TestGeneratorSystem {
                             key = -1;
                         }
                     }
-                    case 6->{
+                    case 6 -> {
                         if (loggedAdmin != null) {
                             loggedAdmin.updateProfile();
                             key = 1;
@@ -186,29 +149,3 @@ public class TestGeneratorSystem {
     }
 
 }
-//          //test signUp and login
-//          Admin DummyAdmin = new Admin();
-//          Admin.signUp();
-//          ArrayList<Admin> AllAdmins = Admin.getListOfAdmins();
-//          if(DummyAdmin.login()!=null){
-//              DummyAdmin = DummyAdmin.login();
-//              System.out.println("Welcome onboard");
-//          }
-//          else{
-//              System.out.println("please Sign Up first");
-//          }
-//          System.out.println("Do you want to delete your account ? y/n");
-//          Scanner sc = new Scanner(System.in);
-//          String answer = sc.nextLine();
-//          if(answer.equals("y")){
-//              DummyAdmin.removeAccount();
-//          }else{
-//              System.out.println("ok you can live");
-//          }
-//          DummyAdmin.getProfile(true);
-//        //test email
-//        String email1 = "example123@domain.com";
-//        String email2 = "invalid/email@domain";
-//        System.out.println(email1 + " is valid: " + isValid(StringType.EMAIL,email1)); // true
-//        System.out.println(email2 + " is valid: " + isValid(StringType.EMAIL, email2)); // false
-
