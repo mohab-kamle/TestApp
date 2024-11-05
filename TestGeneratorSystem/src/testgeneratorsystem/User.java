@@ -1,5 +1,6 @@
 package testgeneratorsystem;
 
+import UserDefinedFunctionalities.Checker;
 import java.io.Console;
 import java.util.*;
 import javax.mail.MessagingException;
@@ -106,26 +107,30 @@ public abstract class User {
         ArrayList<String> commonList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
-        TestGeneratorSystem TGS = new TestGeneratorSystem();
+        Checker check = new Checker();
 
         String userNameInput;
         do {
             System.out.println("Enter Username: ");
             userNameInput = scanner.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.USERNAME, userNameInput)) {
-                System.out.println("Invalid username. Please try again.");
+            if (!check.isValid(Checker.StringType.USERNAME, userNameInput)) {
+                System.out.println("Username must be 3 to 20 characters long and can only contain letters, numbers, dots, and underscores.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.USERNAME, userNameInput));
+            if(findUserName(userNameInput)!=null){
+                System.out.println("this username is already taken");
+            }
+        } while (!check.isValid(Checker.StringType.USERNAME, userNameInput)
+                ||findUserName(userNameInput)!=null);
         commonList.add(userNameInput);
 
         String emailInput;
         do {
             System.out.println("\nEnter Email: ");
             emailInput = scanner.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.EMAIL, emailInput)) {
+            if (!check.isValid(Checker.StringType.EMAIL, emailInput)) {
                 System.out.println("Invalid email. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.EMAIL, emailInput));
+        } while (!check.isValid(Checker.StringType.EMAIL, emailInput));
         commonList.add(emailInput);
 
         String passwordInput = null;
@@ -145,62 +150,62 @@ public abstract class User {
 
             char[] passwordArray = console.readPassword("\nEnter Password: ");
             passwordInput = new String(passwordArray);
-            if (!TGS.isValid(TestGeneratorSystem.StringType.PASSWORD, passwordInput)) {
+            if (!check.isValid(Checker.StringType.PASSWORD, passwordInput)) {
                 System.out.println("Invalid password. Please try again.");
             } else {
                 System.out.println("Your password is securely read.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.PASSWORD, passwordInput));
+        } while (!check.isValid(Checker.StringType.PASSWORD, passwordInput));
         commonList.add(passwordInput);
 
         String firstNameInput;
         do {
             System.out.println("\nEnter First Name: ");
             firstNameInput = scanner.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, firstNameInput)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, firstNameInput)) {
                 System.out.println("Invalid first name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, firstNameInput));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, firstNameInput));
         commonList.add(firstNameInput);
 
         String lastNameInput;
         do {
             System.out.println("\nEnter Last Name: ");
             lastNameInput = scanner.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, lastNameInput)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, lastNameInput)) {
                 System.out.println("Invalid last name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, lastNameInput));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, lastNameInput));
         commonList.add(lastNameInput);
 
         String countryInput;
         do {
             System.out.println("\nEnter Country: ");
             countryInput = scanner.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, countryInput)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, countryInput)) {
                 System.out.println("Invalid country name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, countryInput));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, countryInput));
         commonList.add(countryInput);
 
         String cityInput;
         do {
             System.out.println("\nEnter City: ");
             cityInput = scanner.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, cityInput)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, cityInput)) {
                 System.out.println("Invalid city name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, cityInput));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, cityInput));
         commonList.add(cityInput);
 
         String streetNameInput;
         do {
             System.out.println("\nEnter Street name: ");
             streetNameInput = scanner.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, streetNameInput)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, streetNameInput)) {
                 System.out.println("Invalid street name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, streetNameInput));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, streetNameInput));
         String address = streetNameInput + " , " + cityInput + " , " + countryInput;
         commonList.add(address);
 
@@ -213,7 +218,7 @@ public abstract class User {
 
     public boolean changePassword() {
         Scanner sc = new Scanner(System.in);
-        TestGeneratorSystem TGS = new TestGeneratorSystem();
+        Checker check = new Checker();
         System.out.println("Enter the old password : ");
         String oldPass = sc.nextLine();
         while (!oldPass.equals(this.getPassword())) {
@@ -245,10 +250,10 @@ public abstract class User {
                 }
                 char[] passwordArray = console.readPassword("\nEnter the new Password: ");
                 newPass = new String(passwordArray);
-                if (!TGS.isValid(TestGeneratorSystem.StringType.PASSWORD, newPass)) {
+                if (!check.isValid(Checker.StringType.PASSWORD, newPass)) {
                     System.out.println("Invalid password , please try again.");
                 }
-            } while (!TGS.isValid(TestGeneratorSystem.StringType.PASSWORD, newPass));
+            } while (!check.isValid(Checker.StringType.PASSWORD, newPass));
             System.out.println("Confirm the new password : ");
             confirmNewPass = sc.nextLine();
             if (newPass.equals(confirmNewPass)) {
@@ -264,7 +269,7 @@ public abstract class User {
 
     public boolean resetPassword() throws MessagingException {
         Scanner sc = new Scanner(System.in);
-        TestGeneratorSystem TGS = new TestGeneratorSystem();
+        Checker check = new Checker();
         int keyI;
         String key;
         String codeCheck;
@@ -324,10 +329,10 @@ public abstract class User {
                             }
                             char[] passwordArray = console.readPassword("\nEnter the new Password: ");
                             newPass = new String(passwordArray);
-                            if (!TGS.isValid(TestGeneratorSystem.StringType.PASSWORD, newPass)) {
+                            if (!check.isValid(Checker.StringType.PASSWORD, newPass)) {
                                 System.out.println("Invalid password , please try again.");
                             }
-                        } while (!TGS.isValid(TestGeneratorSystem.StringType.PASSWORD, newPass));
+                        } while (!check.isValid(Checker.StringType.PASSWORD, newPass));
                         System.out.println("Confirm the new password : ");
                         confirmNewPass = sc.nextLine();
                         if (newPass.equals(confirmNewPass)) {
@@ -369,7 +374,7 @@ public abstract class User {
 
     public void updateProfile() {
         Scanner sc = new Scanner(System.in);
-        TestGeneratorSystem TGS = new TestGeneratorSystem();
+        Checker check = new Checker();
         int choice;
 
         do {
@@ -383,13 +388,13 @@ public abstract class User {
 
                 switch (choice) {
                     case 1 ->
-                        updateUsername(TGS, sc);
+                        updateUsername(check, sc);
                     case 2 ->
-                        updateEmail(TGS, sc);
+                        updateEmail(check, sc);
                     case 3 ->
-                        updateName(TGS, sc);
+                        updateName(check, sc);
                     case 4 ->
-                        updateAddress(TGS, sc);
+                        updateAddress(check, sc);
                     case -1 ->
                         System.out.println("Returning to previous menu...");
                     default ->
@@ -421,42 +426,42 @@ public abstract class User {
         
     }
 
-    protected void updateUsername(TestGeneratorSystem TGS, Scanner sc) {
+    protected void updateUsername(Checker check, Scanner sc) {
         String newUsername;
         do {
             System.out.println("Enter new username: ");
             newUsername = sc.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.USERNAME, newUsername)) {
+            if (!check.isValid(Checker.StringType.USERNAME, newUsername)) {
                 System.out.println("Invalid username. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.USERNAME, newUsername));
+        } while (!check.isValid(Checker.StringType.USERNAME, newUsername));
         this.setUserName(newUsername);
         System.out.println("Username updated successfully!");
     }
 
-    protected void updateEmail(TestGeneratorSystem TGS, Scanner sc) {
+    protected void updateEmail(Checker check, Scanner sc) {
         String newEmail;
         do {
             System.out.println("Enter new email: ");
             newEmail = sc.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.EMAIL, newEmail)) {
+            if (!check.isValid(Checker.StringType.EMAIL, newEmail)) {
                 System.out.println("Invalid email. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.EMAIL, newEmail));
+        } while (!check.isValid(Checker.StringType.EMAIL, newEmail));
         this.setEmail(newEmail);
         System.out.println("Email updated successfully!");
     }
 
-    protected void updateName(TestGeneratorSystem TGS, Scanner sc) {
+    protected void updateName(Checker check, Scanner sc) {
         // Update First Name
         String newFirstName;
         do {
             System.out.println("Enter new first name: ");
             newFirstName = sc.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newFirstName)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, newFirstName)) {
                 System.out.println("Invalid first name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newFirstName));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, newFirstName));
         this.setFirstName(newFirstName);
 
         // Update Last Name
@@ -464,45 +469,45 @@ public abstract class User {
         do {
             System.out.println("Enter new last name: ");
             newLastName = sc.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newLastName)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, newLastName)) {
                 System.out.println("Invalid last name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newLastName));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, newLastName));
         this.setLastName(newLastName);
 
         System.out.println("Name updated successfully!");
     }
 
-    protected void updateAddress(TestGeneratorSystem TGS, Scanner sc) {
+    protected void updateAddress(Checker check, Scanner sc) {
         // Get Country
         String newCountry;
         do {
             System.out.println("Enter new country: ");
             newCountry = sc.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newCountry)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, newCountry)) {
                 System.out.println("Invalid country name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newCountry));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, newCountry));
 
         // Get City
         String newCity;
         do {
             System.out.println("Enter new city: ");
             newCity = sc.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newCity)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, newCity)) {
                 System.out.println("Invalid city name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newCity));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, newCity));
 
         // Get Street
         String newStreet;
         do {
             System.out.println("Enter new street name: ");
             newStreet = sc.nextLine();
-            if (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newStreet)) {
+            if (!check.isValid(Checker.StringType.LETTERS_ONLY, newStreet)) {
                 System.out.println("Invalid street name. Please try again.");
             }
-        } while (!TGS.isValid(TestGeneratorSystem.StringType.LETTERS_ONLY, newStreet));
+        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, newStreet));
 
         String newAddress = newStreet + " , " + newCity + " , " + newCountry;
         this.setAddress(newAddress);
@@ -517,5 +522,12 @@ public abstract class User {
         }
         return null;
     }
-
+    private static User findUserName(String userName) {
+        for (Admin admin : Admin.getListOfAdmins()) {
+            if (admin.getUserName().equals(userName)) {
+                return admin;
+            }
+        }
+        return null;
+    }
 }
