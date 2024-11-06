@@ -1,10 +1,13 @@
-package testgeneratorsystem;
+package EndUser;
 
+import EndUser.User;
+import UserDefinedFunctionalities.AdminDAO;
 import UserDefinedFunctionalities.Checker;
 import java.io.Console;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import TestSystem.QuestionBank;
 
 /**
  *
@@ -15,9 +18,8 @@ public class Admin extends User {
     private LocalDate dateAppointed;
     private String contactNumber;
     private String department;
-    private ArrayList<Integer> ownedBanks;
-    private static ArrayList<Admin> listOfAdmins = new ArrayList<>();
-
+    private ArrayList<QuestionBank> ownedBanks;
+    
     public Admin() {
         super(null, null, null, null, null, null);
     }
@@ -50,7 +52,7 @@ public class Admin extends User {
         this.department = department;
     }
 
-    public void setOwnedBanks(ArrayList<Integer> ownedBanks) {
+    public void setOwnedBanks(ArrayList<QuestionBank> ownedBanks) {
         this.ownedBanks = ownedBanks;
     }
     //getters
@@ -66,18 +68,21 @@ public class Admin extends User {
         return department;
     }
 
-    public ArrayList<Integer> getOwnedBanks() {
+    public ArrayList<QuestionBank> getOwnedBanks() {
         return ownedBanks;
     }
-
-    public static ArrayList<Admin> getListOfAdmins() {
-        return listOfAdmins;
-    }
-    
     //methods
+    
+    //this ensures better security to keep the password protected in the user class
+    public boolean verifyPassword(String password) {
+        return password!=null&&this.getPassword().equals(password);
+    }
     @Override
+    //return null if not found in the database
+    //reads the password securely
     public Admin login(){
         Scanner scan = new Scanner(System.in);
+        AdminDAO ADB = new AdminDAO();
         System.out.println("\nEnter Username : ");
         String userNameInput = scan.nextLine();
         String passwordInput;
@@ -87,13 +92,7 @@ public class Admin extends User {
             }
             char[] passwordArray = console.readPassword("\nEnter Password: ");
             passwordInput = new String(passwordArray);
-        for(Admin A : listOfAdmins){
-            if(userNameInput.equals(A.getUserName())&&
-               passwordInput.equals(A.getPassword())){
-                return A;
-            }
-        }
-        return null;
+        return ADB.searchAdmin(userNameInput, passwordInput);
     }
 
     @Override
@@ -119,12 +118,10 @@ public class Admin extends User {
         System.out.println(" 6 --> Update Department");
     }
 
-    @Override
     public void updateProfile() {
         Scanner sc = new Scanner(System.in);
         Checker check = new Checker();
         int choice;
-        
         do {
             System.out.println("|--->    Update Profile Page     <---|");
             System.out.println("|---Select what you want to update---|");
@@ -134,7 +131,7 @@ public class Admin extends User {
                 choice = sc.nextInt();
                 sc.nextLine();
                 switch (choice) {
-                    case 1, 2, 3, 4 -> super.updateProfile(); // Handle basic updates
+                    case 1, 2, 3, 4 -> super.updateProfile(choice); // Handle basic updates
                     case 5 -> updateContactNumber(check, sc); // Handle admin-specific updates
                     case 6 -> updateDepartment(check, sc); // Handle admin-specific updates
                     case -1 -> System.out.println("Returning to previous menu...");
@@ -151,7 +148,8 @@ public class Admin extends User {
     @Override
     public void removeAccount(){
         try {
-           listOfAdmins.remove(this); 
+            AdminDAO ADB = new AdminDAO();
+            ADB.deleteAdmin(this.getUserId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -160,7 +158,8 @@ public class Admin extends User {
     public static ArrayList signUp() {
         ArrayList commonList = User.signUp();
         Scanner scanner = new Scanner(System.in);
-        Checker check = new Checker();
+        Checker check = new Checker();//data validation object
+        AdminDAO AdminDB = new AdminDAO();//database accessor object
         String ContactNumber;
         do {
             System.out.println("\nEnter Contact Number : ");
@@ -183,7 +182,7 @@ public class Admin extends User {
                 ContactNumber,
                 Department,
                 commonList);
-        listOfAdmins.add(CreatedAdmin);
+        AdminDB.saveAdmin(CreatedAdmin);
         return commonList;
     }
     
@@ -214,6 +213,7 @@ public class Admin extends User {
     }
     // Private helper methods
     private void updateDepartment(Checker check, Scanner sc) {
+        AdminDAO ADB = new AdminDAO();
         String Department;
         do {
             System.out.println("\nEnter department : ");
@@ -223,10 +223,12 @@ public class Admin extends User {
             }
         } while (!check.isValid(Checker.StringType.LETTERS_ONLY, Department));
         this.setDepartment(Department);
+        ADB.updateAdmin(this);
         System.out.println("Department updated successfully!");
     }
     
     private void updateContactNumber(Checker check, Scanner sc) {
+        AdminDAO ADB = new AdminDAO();
         String ContactNumber;
         do {
             System.out.println("\nEnter Contact Number : ");
@@ -236,6 +238,9 @@ public class Admin extends User {
             }
         } while (!check.isValid(Checker.StringType.PHONE_NO, ContactNumber));
         this.setContactNumber(ContactNumber);
+        ADB.updateAdmin(this);
         System.out.println("Contact Number updated successfully!");
     }
+
+    
 }

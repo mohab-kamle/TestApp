@@ -1,4 +1,4 @@
-package testgeneratorsystem;
+package TestSystem;
 import java.util.UUID;
 /**
  *

@@ -1,5 +1,6 @@
-package testgeneratorsystem;
+package TestSystem;
 
+import EndUser.Admin;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.mail.MessagingException;

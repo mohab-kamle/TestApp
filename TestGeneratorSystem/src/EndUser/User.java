@@ -1,6 +1,8 @@
-package testgeneratorsystem;
+package EndUser;
 
+import UserDefinedFunctionalities.AdminDAO;
 import UserDefinedFunctionalities.Checker;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Console;
 import java.util.*;
 import javax.mail.MessagingException;
@@ -48,7 +50,7 @@ public abstract class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @JsonProperty("password")
     public void setPassword(String password) {
         this.password = password;
     }
@@ -81,7 +83,7 @@ public abstract class User {
     public String getEmail() {
         return email;
     }
-
+    @JsonProperty("password")
     protected String getPassword() {
         return password;
     }
@@ -262,7 +264,13 @@ public abstract class User {
                 System.out.println("Please Try Again , the passwords don't match");
             }
         } while (!newPass.equals(confirmNewPass));
+        //updating the object
         this.setPassword(newPass);
+        //updating the equivalent JSON
+        if(this instanceof Admin admin){
+            AdminDAO ADB = new AdminDAO();
+            ADB.updateAdmin(admin);
+        }
         System.out.println("The password has been changed successfully !");
         return true;
     }
@@ -315,11 +323,11 @@ public abstract class User {
                     String confirmNewPass;
                     System.out.println("""
                                        the password must have the following specifications :
-                                                           |-> length from 12 to 20
-                                                           |-> at least one capital letter
-                                                           |-> at least one small letter
-                                                           |-> at least one special character
-                                                           |-> at least one digit""");
+                                                    |-> length from 12 to 20
+                                                    |-> at least one capital letter
+                                                    |-> at least one small letter
+                                                    |-> at least one special character
+                                                    |-> at least one digit""");
                     do {
                         do {
                             Console console = System.console();
@@ -341,7 +349,13 @@ public abstract class User {
                             System.out.println("Please Try Again , the passwords don't match");
                         }
                     } while (!newPass.equals(confirmNewPass));
-                    User.findEmail(EmailInput).setPassword(newPass);
+                    User userToBeUpdated = User.findEmail(EmailInput);
+                    userToBeUpdated.setPassword(newPass);
+                    //updating the equivalent JSON
+                    if(userToBeUpdated instanceof Admin admin){
+                        AdminDAO ADB = new AdminDAO();
+                        ADB.updateAdmin(admin);
+                        }
                     System.out.println("The password has been changed successfully !");
                     return true;
                 }
@@ -372,20 +386,9 @@ public abstract class User {
         return ProfileStr;
     }
 
-    public void updateProfile() {
+    public void updateProfile(int choice) {
         Scanner sc = new Scanner(System.in);
         Checker check = new Checker();
-        int choice;
-
-        do {
-            System.out.println("|--->    Update Profile Page     <---|");
-            System.out.println("|---Select what you want to update---|");
-            printUpdateMenu();
-
-            try {
-                choice = sc.nextInt();
-                sc.nextLine(); // consume newline
-
                 switch (choice) {
                     case 1 ->
                         updateUsername(check, sc);
@@ -395,17 +398,7 @@ public abstract class User {
                         updateName(check, sc);
                     case 4 ->
                         updateAddress(check, sc);
-                    case -1 ->
-                        System.out.println("Returning to previous menu...");
-                    default ->
-                        System.out.println("Invalid choice. Please try again.");
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Please enter a valid number.");
-                sc.nextLine(); // clear the invalid input
-                choice = 0;
-            }
-        } while (choice != -1);
     }
 
     public boolean createQuestionBank() {
@@ -435,7 +428,13 @@ public abstract class User {
                 System.out.println("Invalid username. Please try again.");
             }
         } while (!check.isValid(Checker.StringType.USERNAME, newUsername));
+        //update the object
         this.setUserName(newUsername);
+        //updating the equivalent JSON
+        if(this instanceof Admin admin){
+            AdminDAO ADB = new AdminDAO();
+            ADB.updateAdmin(admin);
+        }
         System.out.println("Username updated successfully!");
     }
 
@@ -448,7 +447,13 @@ public abstract class User {
                 System.out.println("Invalid email. Please try again.");
             }
         } while (!check.isValid(Checker.StringType.EMAIL, newEmail));
+        //updating the object
         this.setEmail(newEmail);
+        //updating the equivalent JSON
+        if(this instanceof Admin admin){
+            AdminDAO ADB = new AdminDAO();
+            ADB.updateAdmin(admin);
+        }
         System.out.println("Email updated successfully!");
     }
 
@@ -462,8 +467,13 @@ public abstract class User {
                 System.out.println("Invalid first name. Please try again.");
             }
         } while (!check.isValid(Checker.StringType.LETTERS_ONLY, newFirstName));
+        //updating the object
         this.setFirstName(newFirstName);
-
+        //updating the equivalent JSON
+        if(this instanceof Admin admin){
+            AdminDAO ADB = new AdminDAO();
+            ADB.updateAdmin(admin);
+        }
         // Update Last Name
         String newLastName;
         do {
@@ -473,8 +483,13 @@ public abstract class User {
                 System.out.println("Invalid last name. Please try again.");
             }
         } while (!check.isValid(Checker.StringType.LETTERS_ONLY, newLastName));
+        //update the object
         this.setLastName(newLastName);
-
+        //updating the equivalent JSON
+        if(this instanceof Admin admin){
+            AdminDAO ADB = new AdminDAO();
+            ADB.updateAdmin(admin);
+        }
         System.out.println("Name updated successfully!");
     }
 
@@ -510,24 +525,22 @@ public abstract class User {
         } while (!check.isValid(Checker.StringType.LETTERS_ONLY, newStreet));
 
         String newAddress = newStreet + " , " + newCity + " , " + newCountry;
+        //update the object
         this.setAddress(newAddress);
+        //updating the equivalent JSON
+        if(this instanceof Admin admin){
+            AdminDAO ADB = new AdminDAO();
+            ADB.updateAdmin(admin);
+        }
         System.out.println("Address updated successfully!");
     }
 
     private static User findEmail(String email) {
-        for (Admin admin : Admin.getListOfAdmins()) {
-            if (admin.getEmail().equals(email)) {
-                return admin;
-            }
-        }
-        return null;
+        AdminDAO ADB = new AdminDAO();
+        return ADB.searchAdminByEmail(email);
     }
     private static User findUserName(String userName) {
-        for (Admin admin : Admin.getListOfAdmins()) {
-            if (admin.getUserName().equals(userName)) {
-                return admin;
-            }
-        }
-        return null;
+        AdminDAO ADB = new AdminDAO();
+        return ADB.searchAdmin(userName);
     }
 }
