@@ -1,26 +1,45 @@
 package TestSystem;
+import UserDefinedFunctionalities.CustomUUIDGenerator;
 import java.util.UUID;
 /**
  *
  * @author mohab
  */
 public class Question {
+    /**
+     * the enumeration specifying the difficulty of the question upon certain criteria
+     * determined by the creator or the individual responsible for adding question
+     */
     public enum dlevel {
-        EASY,MEDIUM,Hard;
+        EASY,MEDIUM,HARD;
     }
     private UUID questionID;
     private Category topic;
     private String statement;
-    private int numberOfFavorites;//which is as number of likes on social media
+    private int numberOfFavorites;
     private double totalTime;
     private dlevel difficulty;
     private int rightAnswer;
     private String[] choices;
     private int noOfAttemptsAtTests;
     
+    public Question(Category topic, String statement,dlevel difficulty, int rightAnswer, String[] choices) {
+        
+        this.questionID = CustomUUIDGenerator.generateWithPrefix("Q");
+        this.topic = topic;
+        this.statement = statement;
+        this.difficulty = difficulty;
+        this.rightAnswer = rightAnswer;
+        this.choices = choices;
+        this.totalTime = 0;
+        this.numberOfFavorites = 0;
+        this.noOfAttemptsAtTests = 0;
+    }
+    
+    
     //setters
-    public void setQuestionId(UUID questionId) {
-        this.questionID = questionId;
+    public void setQuestionID(UUID questionID) {
+        this.questionID = questionID;
     }
 
     public void setTopic(Category topic) {
@@ -56,7 +75,7 @@ public class Question {
     }
     
     //getters
-    public UUID getQuestionId() {
+    public UUID getQuestionID() {
         return questionID;
     }
 
@@ -92,8 +111,12 @@ public class Question {
         return noOfAttemptsAtTests;
     }
     //methods
+    /**
+     * unique for each question and
+     * useful in determining the difficulty of question
+     * @return double : the average time per question approximated to minutes 
+     */
     public double getAvgTime(){
-        //implement the function
-        return 0;
+        return (getTotalTime()/getNoOfAttemptsAtTests());
     }
 }
