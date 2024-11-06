@@ -15,6 +15,9 @@
     <path id="classpath">
         <fileset dir="${lib.dir}">
             <include name="javax.mail.jar"/>
+            <include name="jackson-core-2.13.3.jar"/>
+            <include name="jackson-databind-2.13.3.jar"/>
+            <include name="jackson-annotations-2.13.3.jar"/>
         </fileset>
     </path>
 
