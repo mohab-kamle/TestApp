@@ -1,5 +1,6 @@
-package testgeneratorsystem;
+package TestSystem;
 
+import EndUser.Student;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;

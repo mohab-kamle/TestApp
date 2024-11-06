@@ -1,5 +1,6 @@
-package testgeneratorsystem;
+package TestSystem;
 
+import EndUser.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;

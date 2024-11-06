@@ -1,4 +1,4 @@
-package testgeneratorsystem;
+package EndUser;
 /**
  *
  * @author Youssef
