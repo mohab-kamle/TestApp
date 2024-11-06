@@ -1,13 +1,12 @@
 package EndUser;
 
-import EndUser.User;
-import UserDefinedFunctionalities.AdminDAO;
+import DataBaseManagment.AdminDAO;
+import TestSystem.QuestionBank;
 import UserDefinedFunctionalities.Checker;
 import java.io.Console;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import TestSystem.QuestionBank;
 
 /**
  *
@@ -73,13 +72,20 @@ public class Admin extends User {
     }
     //methods
     
-    //this ensures better security to keep the password protected in the user class
+   /**
+    * checks if the given password is equal to the password of the admin
+    * ensures better security than accessing the getpassword directly from outside
+    * the class
+    * @param password String of the given password
+    * @return boolean if equal or not
+    */
     public boolean verifyPassword(String password) {
         return password!=null&&this.getPassword().equals(password);
     }
-    @Override
+    
     //return null if not found in the database
     //reads the password securely
+    @Override
     public Admin login(){
         Scanner scan = new Scanner(System.in);
         AdminDAO ADB = new AdminDAO();
@@ -155,6 +161,10 @@ public class Admin extends User {
         }
         System.out.println("the account is removed");
     }
+    /**
+     * sign up method for the admin to add the specific fields
+     * @return ArrayList for all the data stored during the signup process 
+     */
     public static ArrayList signUp() {
         ArrayList commonList = User.signUp();
         Scanner scanner = new Scanner(System.in);

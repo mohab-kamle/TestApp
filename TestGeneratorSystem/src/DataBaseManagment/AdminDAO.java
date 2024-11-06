@@ -1,4 +1,4 @@
-package UserDefinedFunctionalities;
+package DataBaseManagment;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,9 +1,13 @@
 package EndUser;
 
-import UserDefinedFunctionalities.AdminDAO;
+import DataBaseManagment.AdminDAO;
+import DataBaseManagment.QuestionBankDAO;
+import TestSystem.Category;
+import TestSystem.QuestionBank;
 import UserDefinedFunctionalities.Checker;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Console;
+import java.time.LocalDate;
 import java.util.*;
 import javax.mail.MessagingException;
 
@@ -105,6 +109,10 @@ public abstract class User {
     }
 
     //methods
+    /**
+     * makes a new user sign up with the general data members
+     * @return ArrayList of the common data members between the subclasses
+     */
     public static ArrayList<String> signUp() {
         ArrayList<String> commonList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
@@ -402,8 +410,58 @@ public abstract class User {
     }
 
     public boolean createQuestionBank() {
-        return false;
+        
+    Scanner sc = new Scanner(System.in);
+    ArrayList<Category> CategoryList = null; //placeholder for category array
+    CategoryList.add(new Category());
+    
+    System.out.println("Enter the Category of The new Question Bank : ");
+    
+    // Display all categories with proper numbering
+    for (int i = 0; i < CategoryList.size(); i++) {
+        System.out.println((++i) + " _ " + CategoryList.get(i).getName());
+        System.out.println(CategoryList.get(i).getDescription());
+        System.out.println("");
     }
+    
+    // Get and validate user input
+    int key;
+    Category selectedCategory = null;
+    boolean validInput = false;
+    
+    do {
+        try {
+            System.out.print("Enter the number of your chosen category (1-" + CategoryList.size() + "):");
+            key = sc.nextInt();
+            
+            // Check if the input is within valid range
+            if (key >= 1 && key <= CategoryList.size()) {
+                selectedCategory = CategoryList.get(key - 1);
+                validInput = true;
+            } else {
+                System.out.println("Invalid input! Please enter a number between 1 and " + CategoryList.size());
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input! Please enter a valid number.");
+            sc.nextLine(); // Clear the invalid input
+        }
+    } while (!validInput);
+    
+    // Create the question bank with the selected category
+    if (selectedCategory != null) {
+        try {
+            LocalDate creationDate = LocalDate.now();
+            QuestionBank newBank = new QuestionBank(this,selectedCategory,creationDate);
+            QuestionBankDAO QBDB = new QuestionBankDAO();
+            QBDB.saveQuestionBank(newBank);
+        } catch (Exception e) {
+            System.out.println("Error creating question bank: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    return true;
+}
 
     public boolean deleteQuestionBank() {
         return false;
