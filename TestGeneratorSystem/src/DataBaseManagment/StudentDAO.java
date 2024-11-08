@@ -88,7 +88,7 @@ public class StudentDAO {
         List<Student> students = getStudentsList();
         if (students != null) {
             for (Student student : students) {
-                if (student.getUserName().equals(username) && student.getPassword().equals(password)) {
+                if (student.getUserName().equals(username) && student.verifyPassword(password)) {
                     return student;
                 }
             }
