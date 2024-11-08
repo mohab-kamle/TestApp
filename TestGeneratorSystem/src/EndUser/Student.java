@@ -3,7 +3,7 @@ package EndUser;
  *
  * @author Youssef
  */
-import DataBaseManagment.AdminDAO;
+import DataBaseManagment.StudentDAO;
 import UserDefinedFunctionalities.Checker;
 import java.util.*;
 
@@ -101,7 +101,7 @@ public class Student extends User{
     listOfStudents.add(newStudent);
 
     // Persist the student data
-    AdminDAO adminDB = new AdminDAO();
+    StudentDAO adminDB = new StudentDAO();
     adminDB.saveStudent(newStudent);
 
     return commonList;

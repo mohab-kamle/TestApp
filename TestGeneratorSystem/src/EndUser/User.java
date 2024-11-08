@@ -88,7 +88,7 @@ public abstract class User {
         return email;
     }
     @JsonProperty("password")
-    protected String getPassword() {
+    public String getPassword() {
         return password;
     }
 
