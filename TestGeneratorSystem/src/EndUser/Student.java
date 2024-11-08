@@ -3,6 +3,8 @@ package EndUser;
  *
  * @author Youssef
  */
+import DataBaseManagment.StudentDAO;
+import UserDefinedFunctionalities.Checker;
 import java.util.*;
 
 
@@ -18,26 +20,16 @@ public class Student extends User{
 
     public Student(
             String institute,
-            String email,
-            String userName,
-            String password,
-            String address,
-            String firstName,
-            String lastName,
-            ArrayList<String> studentuser) {
-        super(studentuser.get(1),
-                studentuser.get(0),
-                studentuser.get(2),
-                studentuser.get(5),
-                studentuser.get(3),
-                studentuser.get(4));
+            ArrayList<String> commonList) {
+        super(commonList.get(1),
+                commonList.get(0),
+                commonList.get(2),
+                commonList.get(5),
+                commonList.get(3),
+                commonList.get(4));
         this.institute = institute;
     }
-
-    
-   
-
-    
+ 
     public String getGrade() {
         return grade;
     }
@@ -85,44 +77,36 @@ public class Student extends User{
     public void setTakenTests(List<String> takenTests) {
         this.takenTests = takenTests;
     }
+    public static ArrayList<String> signUp() {
+    Scanner scanner = new Scanner(System.in);
+    Checker check = new Checker(); // data validation object
 
-    
-    public void takeTest() {
-        // Implement logic for taking a test
-    }
+    // Gather common user details
+    ArrayList<String> commonList = User.signUp();
 
-    public List<String> getTestHistory() {
-        return takenTests;
-    }
-
-    public double getAvgTime() {
-        if (passedTestsCount == 0) return 0;
-        return totalTimeOfAllTests / passedTestsCount;
-    }
-
-     public void markFavouriteQuestion(String question) {
-            if (!favoriteQuestions.contains(question)) { // Avoid duplicates
-                favoriteQuestions.add(question);
-                System.out.println("Question marked as favorite: " + question);
-            } else {
-                System.out.println("Question is already marked as favorite.");
-            }        
-    }
-
-    public double getAverageScore() {
-        // Implement logic to calculate average score
-        return 0.0; // Placeholder value
-    }
-    @Override
-    public void removeAccount(){
-        try {
-           listOfStudents.remove(this); 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    // Validate and gather student-specific details
+    String institute;
+    do {
+        System.out.println("\nEnter Institute: ");
+        institute = scanner.nextLine();
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, institute)) {
+            System.out.println("Invalid Institute name. It should contain letters only.");
         }
-        System.out.println("the account is removed");
-    }
-    @Override
+    } while (!check.isValid(Checker.StringType.LETTERS_ONLY, institute));
+
+    // Create the new student instance
+    Student newStudent = new Student(institute, commonList);
+
+    // Add new student to the list of students
+    listOfStudents.add(newStudent);
+
+    // Persist the student data
+    StudentDAO adminDB = new StudentDAO();
+    adminDB.saveStudent(newStudent);
+
+    return commonList;
+}
+        @Override
     public Student login(){
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter username:");
@@ -150,6 +134,15 @@ public class Student extends User{
     }
         return null;
 }
+    @Override
+    public void removeAccount(){
+        try {
+           listOfStudents.remove(this); 
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("the account is removed");
+    }
     public StringBuffer getProfile(boolean show) {
 
         StringBuffer ProfileStr = super.getProfile(show);
@@ -176,7 +169,76 @@ public class Student extends User{
         }
         return ProfileStr;
     }
+     public void updateProfile() {
+    Scanner sc = new Scanner(System.in);
+    Checker check = new Checker();
+    int choice;
+    do {
+        System.out.println("|--->    Update Profile Page     <---|");
+        System.out.println("|--- Select what you want to update ---|");
+        printUpdateMenu();
+        
+        try {
+            choice = sc.nextInt();
+            sc.nextLine();
+            switch (choice) {
+                case 1, 2, 3, 4 -> super.updateProfile(choice); // Handle basic updates (e.g., name, password, etc.)
+                case 5 -> updateInstitute(check, sc); // Handle student-specific update for institute
+                case -1 -> System.out.println("Returning to previous menu...");
+                default -> System.out.println("Invalid choice. Please try again.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a valid number.");
+            sc.nextLine();
+            choice = 0;
+        }
+    } while (choice != -1);
 }
+
+private void updateInstitute(Checker check, Scanner sc) {
+    String newInstitute;
+    do {
+        System.out.println("Enter new Institute: ");
+        newInstitute = sc.nextLine();
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, newInstitute)) {
+            System.out.println("Invalid Institute name. It should contain letters only.");
+        }
+    } while (!check.isValid(Checker.StringType.LETTERS_ONLY, newInstitute));
+
+    setInstitute(newInstitute);
+    System.out.println("Institute updated successfully to: " + newInstitute);
+}
+
+ 
+    public void takeTest() {
+        // Implement logic for taking a test
+    }
+
+    public List<String> getTestHistory() {
+        return takenTests;
+    }
+
+    public double getAvgTime() {
+        if (passedTestsCount == 0) return 0;
+        return totalTimeOfAllTests / passedTestsCount;
+    }
+
+     public void markFavouriteQuestion(String question) {
+            if (!favoriteQuestions.contains(question)) { // Avoid duplicates
+                favoriteQuestions.add(question);
+                System.out.println("Question marked as favorite: " + question);
+            } else {
+                System.out.println("Question is already marked as favorite.");
+            }        
+    }
+
+    public double getAverageScore() {
+        // Implement logic to calculate average score
+        return 0.0; // Placeholder value
+    }
+}
+    
+   
 
     
 
