@@ -79,10 +79,6 @@ public class Admin extends User {
     * @param password String of the given password
     * @return boolean if equal or not
     */
-    public boolean verifyPassword(String password) {
-        return password!=null&&this.getPassword().equals(password);
-    }
-    
     //return null if not found in the database
     //reads the password securely
     @Override

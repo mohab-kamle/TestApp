@@ -88,7 +88,7 @@ public abstract class User {
         return email;
     }
     @JsonProperty("password")
-    public String getPassword() {
+    protected String getPassword() {
         return password;
     }
 
@@ -600,5 +600,8 @@ public abstract class User {
     private static User findUserName(String userName) {
         AdminDAO ADB = new AdminDAO();
         return ADB.searchAdmin(userName);
+    }
+    public boolean verifyPassword(String password) {
+        return password!=null&&this.getPassword().equals(password);
     }
 }
