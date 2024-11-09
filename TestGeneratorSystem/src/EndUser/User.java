@@ -1,10 +1,14 @@
 package EndUser;
 
 import DataBaseManagment.AdminDAO;
+import DataBaseManagment.CategoryDAO;
 import DataBaseManagment.QuestionBankDAO;
 import TestSystem.Category;
 import TestSystem.QuestionBank;
+import TestSystem.TestGeneratorApp;
+import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
 import UserDefinedFunctionalities.Checker;
+import UserDefinedFunctionalities.TerminalColors;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Console;
 import java.time.LocalDate;
@@ -178,7 +182,7 @@ public abstract class User {
                 commonList.get(commonList.size() - 3) // Country
         );
         commonList.add(fullAddress);
-
+        
         return commonList;
     }
 
@@ -458,17 +462,15 @@ public abstract class User {
     /**
      * Retrieves and optionally displays the user's profile information.
      *
-     * This method generates a comprehensive string representation of the user's profile, with an option to print the profile          details to the console.
+     * This method generates a comprehensive string representation of the user's profile, with an option to print the profile details to the console.
      *
-     * @param show A Boolean flag indicating whether to display the profile details - true: Prints profile details to the              console - false: Only generates the profile string without printing
+     * @param show A Boolean flag indicating whether to display the profile details - true: Prints profile details to the console - false: Only generates the profile string without printing
      *
-     * @return A string containing the user's profile information, including: - Username - Email - First Name - Last Name -            Address
+     * @return A string containing the user's profile information, including: - Username - Email - First Name - Last Name - Address
      *
      * @implNote - Uses StringBuffer for efficient string concatenation - Provides flexibility in profile information display
      *
-     * @example 
-     * // Retrieve profile as a string without displaying String profileString = user.getProfile(false);
-     * // Retrieve and display profile user.getProfile(true);
+     * @example // Retrieve profile as a string without displaying String profileString = user.getProfile(false); // Retrieve and display profile user.getProfile(true);
      */
     public String getProfile(boolean show) {
         StringBuffer ProfileStr = new StringBuffer();
@@ -504,49 +506,52 @@ public abstract class User {
     }
 
     public boolean createQuestionBank() {
-
         Scanner sc = new Scanner(System.in);
-        ArrayList<Category> CategoryList = null; //placeholder for category array
-        CategoryList.add(new Category());
-
-        System.out.println("Enter the Category of The new Question Bank : ");
-
-        // Display all categories with proper numbering
-        for (int i = 0; i < CategoryList.size(); i++) {
-            System.out.println((++i) + " _ " + CategoryList.get(i).getName());
-            System.out.println(CategoryList.get(i).getDescription());
-            System.out.println("");
-        }
-
-        // Get and validate user input
-        int key;
-        Category selectedCategory = null;
-        boolean validInput = false;
-
-        do {
-            try {
-                System.out.print("Enter the number of your chosen category (1-" + CategoryList.size() + "):");
-                key = sc.nextInt();
-
-                // Check if the input is within valid range
-                if (key >= 1 && key <= CategoryList.size()) {
-                    selectedCategory = CategoryList.get(key - 1);
-                    validInput = true;
-                } else {
-                    System.out.println("Invalid input! Please enter a number between 1 and " + CategoryList.size());
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input! Please enter a valid number.");
-                sc.nextLine(); // Clear the invalid input
+        CategoryDAO CDB = new CategoryDAO();
+        List<Category> CategoryList = CDB.getCategoriesList();
+        if (!CategoryList.isEmpty()) {
+            System.out.println("Enter the Category of The New Question Bank : ");
+            // Display all categories with proper numbering
+            for (int i = 0; i < CategoryList.size(); i++) {
+                System.out.println((++i) + " _ " + CategoryList.get(i).getName());
+                System.out.println(CategoryList.get(i).getDescription());
+                System.out.println("");
             }
-        } while (!validInput);
 
-        // Create the question bank with the selected category
-        if (selectedCategory != null) {
-            LocalDate creationDate = LocalDate.now();
-            return createQuestionBank(this, selectedCategory, creationDate);
+            // Get and validate user input
+            int key;
+            Category selectedCategory = null;
+            boolean validInput = false;
+
+            do {
+                try {
+                    System.out.print("Enter the number of your chosen category (1-" + CategoryList.size() + "):");
+                    key = sc.nextInt();
+
+                    // Check if the input is within valid range
+                    if (key >= 1 && key <= CategoryList.size()) {
+                        selectedCategory = CategoryList.get(key - 1);
+                        validInput = true;
+                    } else {
+                      ifColorfullPrintln("Invalid input! Please enter a number between 1 and " + CategoryList.size(), 
+                                        TerminalColors.BOLD_RED);
+                    }
+                } catch (InputMismatchException e) {
+                    ifColorfullPrintln("Invalid input! Please enter a valid number.", TerminalColors.BOLD_RED);
+                    sc.nextLine(); // Clear the invalid input
+                }
+            } while (!validInput);
+
+            // Create the question bank with the selected category
+            if (selectedCategory != null) {
+                LocalDate creationDate = LocalDate.now();
+                return createQuestionBank(this, selectedCategory, creationDate);
+            }
+            return true;
+        } else {
+            TestGeneratorApp.ifColorfullPrintln("Sorry ! there are no Categories available", TerminalColors.YELLOW);
+            return false;
         }
-        return true;
     }
 
     public boolean createQuestionBank(User creator, Category category, LocalDate creationDate) {

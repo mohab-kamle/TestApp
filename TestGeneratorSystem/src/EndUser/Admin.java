@@ -1,6 +1,8 @@
 package EndUser;
 
 import DataBaseManagment.AdminDAO;
+import DataBaseManagment.CategoryDAO;
+import TestSystem.Category;
 import TestSystem.QuestionBank;
 import UserDefinedFunctionalities.Checker;
 import java.io.Console;
@@ -98,13 +100,13 @@ public class Admin extends User {
     /**
      * Retrieves and optionally displays the admin's extended profile information.
      *
-     * This method extends the base user profile by adding admin-specific details: - Department - Contact Number - Join Date           (formatted)
+     * This method extends the base user profile by adding admin-specific details: - Department - Contact Number - Join Date (formatted)
      *
-     * @param show A Boolean flag to control console output - true: Prints detailed profile to console - false: Generates              profile string without displaying
+     * @param show A Boolean flag to control console output - true: Prints detailed profile to console - false: Generates profile string without displaying
      *
      * @return A comprehensive string representation of the admin's profile
      *
-     * @implNote - Inherits base profile information from parent class - Appends admin-specific attributes - Uses date                 formatting for join date
+     * @implNote - Inherits base profile information from parent class - Appends admin-specific attributes - Uses date formatting for join date
      */
     @Override
     public String getProfile(boolean show) {
@@ -204,7 +206,15 @@ public class Admin extends User {
     }
 
     public boolean createCategory() {
-        return false;
+        Scanner scanner = new Scanner(System.in);
+        Checker check = new Checker();
+        CategoryDAO CDB = new CategoryDAO();
+        String categoryName = validateInput(scanner, check, "Enter Category Name : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Wrong name , try again");
+        String categoryDesc = validateInput(scanner, check, "Enter Description : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Invalid Characters Exist , try again");
+        LocalDate creationDate = LocalDate.now();
+        Category newCategory = new Category(categoryName, categoryDesc, creationDate, this);
+        CDB.saveCategory(newCategory);
+        return CDB.loadCategory(newCategory.getCategoryId()).equals(newCategory);
     }
 
     public boolean modifyCategory() {
@@ -212,7 +222,21 @@ public class Admin extends User {
     }
 
     public boolean deleteCategory() {
-        return false;
+        CategoryDAO CDB = new CategoryDAO();
+        Scanner scanner = new Scanner(System.in);
+        int i = 1;
+        if (!CDB.getCategoriesList().isEmpty()) {
+            for (Category category : CDB.getCategoriesList()) {
+                System.out.println("1 _ name : " + category.getName());
+                System.out.println("|--> " + category.getDescription());
+            }
+            System.out.println("Enter The number of category you want to delete : ");
+            int key = scanner.nextInt();
+            //complete the logic
+        } else {
+            return false;
+        }
+        return true;
     }
 
     public boolean addQuestionToQuestionBank() {

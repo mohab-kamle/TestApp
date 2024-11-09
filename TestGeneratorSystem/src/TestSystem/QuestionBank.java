@@ -2,6 +2,15 @@ package TestSystem;
 
 import DataBaseManagment.QuestionBankDAO;
 import EndUser.User;
+import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
+import UserDefinedFunctionalities.TerminalColors;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -132,8 +141,7 @@ public final class QuestionBank {
         QBDB.addQuestionToBank(getBankID(), question);
     }
 
-    public boolean updateQuestion(Question oldQ, Question newQ) {
-
+    public boolean updateQuestion(Question oldQ) {
         return false;
     }
 
@@ -152,18 +160,62 @@ public final class QuestionBank {
     }
 
     public void exportQuestions() {
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the file path: ");
+        String userInputPath = scanner.nextLine();
+        Path path = Paths.get(userInputPath);
+        if(isValidPath(path)){
+            try (PrintWriter writer = new PrintWriter(new FileWriter(userInputPath))) {
+                if (getQuestionCount()==0) {
+                    ifColorfullPrintln("There are no questions to Export", TerminalColors.BOLD_RED);
+                    return;
+                }
+            writer.println("=== Start of List ===");
+            for (Question q : getQuestions()) {
+                writer.println(q);
+            }
+            writer.println("=== End of List ===");
+            } catch (IOException e) {
+            System.out.println(e.getMessage());
+            }
+            ifColorfullPrintln("Questions got exported to " + userInputPath,TerminalColors.BOLD_GREEN);
+        }else{
+            ifColorfullPrintln("Invalid path or insufficient permissions.",TerminalColors.BOLD_RED);
+        }
+        
     }
 
-    public Question getQuestionByID() {
+    public Question getQuestionByID(UUID qUuid) {
+        for (Question question : getQuestions()) {
+            if (question.getQuestionID().equals(qUuid)) {
+                return question;
+            }
+        }
         return null;
     }
 
-    public ArrayList<Question> getQuestionsByDifficulty() {
-        return null;
+    public ArrayList<Question> getQuestionsByDifficulty(Question.dlevel difficulty) {
+        ArrayList<Question> questionsWithCertainDifficulty = new ArrayList<>();
+        for (Question question : getQuestions()) {
+            if (question.getDifficulty().equals(difficulty)) {
+                questionsWithCertainDifficulty.add(question);
+            }
+        }
+        return questionsWithCertainDifficulty;
     }
 
     public int getQuestionCount() {
-        return 0;
+        return getQuestions().size();
+    }
+
+    //private helper methods
+    private static boolean isValidPath(Path path) {
+        // Check if the path exists and is a directory 
+        if (Files.exists(path) && Files.isDirectory(path)) {
+            // Check if the directory is writable 
+            File file = path.toFile();
+            return file.canWrite();
+        }
+        return false;
     }
 }

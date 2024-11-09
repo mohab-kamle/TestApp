@@ -15,7 +15,15 @@ public class Category {
     private LocalDate creationDate;
     private Admin creator;
     private ArrayList<QuestionBank> questionBanks;
-    
+
+    public Category(String name, String description, LocalDate creationDate, Admin creator) {
+        this.categoryID = UUID.randomUUID();
+        this.name = name;
+        this.description = description;
+        this.creationDate = creationDate;
+        this.creator = creator;
+    }
+
     //setters
 
     public void setCategoryId(UUID categoryId) {

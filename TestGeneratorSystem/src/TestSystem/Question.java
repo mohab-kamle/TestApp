@@ -110,6 +110,23 @@ public class Question {
         return noOfAttemptsAtTests;
     }
     //methods
+
+    @Override
+    public String toString() {
+        String[] c = getChoices();
+        return "Q"+getQuestionID()
+          +"\n Question : "+getStatement()
+          +"\n Choices  : "
+          +"A _ "+c[0]
+          +"B _ "+c[1]
+          +"C _ "+c[2]
+          +"D _ "+c[3]
+          +"Category : "+getTopic().getName()
+          +"Average Time to solve : "+getAvgTime()
+          +"\n Right Answer : "+c[getRightAnswer()];
+          
+    }
+    
     /**
      * unique for each question and
      * useful in determining the difficulty of question

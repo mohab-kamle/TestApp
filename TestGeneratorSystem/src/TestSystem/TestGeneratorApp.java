@@ -162,6 +162,20 @@ public class TestGeneratorApp {
                         return;
                     }
                 }
+                case 5 ->{
+                    if (admin.createCategory()) {
+                        ifColorfullPrintln("Category Created succesfully !!", TerminalColors.BOLD_GREEN);
+                    }else{
+                        ifColorfullPrintln("Category couldn't be created", TerminalColors.BOLD_RED);
+                    }
+                }
+                case 6 -> {
+                    if(admin.createQuestionBank()){
+                        ifColorfullPrintln("Question Bank Created succesfully !!", TerminalColors.BOLD_GREEN);
+                    }else{
+                        ifColorfullPrintln("Question Bank couldn't be created", TerminalColors.BOLD_RED);
+                    }
+                }
                 case 0 -> {
                     return;
                 }
@@ -177,12 +191,13 @@ public class TestGeneratorApp {
      */
     private static void displayAdminDashboardMenu() {
         clearConsole();
-        System.out.println("===== Admin Dashboard =====");
+        ifColorfullPrintln("===== Admin Dashboard =====",TerminalColors.BOLD_PURPLE);
         System.out.println("1. View Profile");
         System.out.println("2. Update Profile");
         System.out.println("3. Change Password");
         System.out.println("4. Remove Account");
-//        System.out.println("5. Create Question Bank");
+        System.out.println("5. Create Category");
+        System.out.println("6. Create Question Bank");
 //        System.out.println("6. View My Question Banks");
 //        System.out.println("7. delete Question Bank");
         System.out.println("0. Logout");
@@ -218,7 +233,7 @@ public class TestGeneratorApp {
      */
     private static void displayStudentMenu() {
         clearConsole();
-        System.out.println("===== Student Portal =====");
+        ifColorfullPrintln("===== Student Portal =====",TerminalColors.BOLD_PURPLE);
         System.out.println("1. Sign Up");
         System.out.println("2. Login");
         System.out.println("3. Reset Password");
