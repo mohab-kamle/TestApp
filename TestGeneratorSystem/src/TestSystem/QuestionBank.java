@@ -2,7 +2,6 @@ package TestSystem;
 
 import DataBaseManagment.QuestionBankDAO;
 import EndUser.User;
-import UserDefinedFunctionalities.CustomUUIDGenerator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,7 +20,7 @@ public final class QuestionBank {
     private LocalDate creationDate;
 
     public QuestionBank(User creator, Category category, LocalDate creationDate) {
-        this.bankID = CustomUUIDGenerator.generateWithPrefix("QB");
+        this.bankID = UUID.randomUUID();
         this.creator = creator;
         this.category = category;
         this.creationDate = creationDate;

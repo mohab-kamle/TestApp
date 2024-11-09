@@ -1,7 +1,6 @@
 package DataBaseManagment;
 
 import EndUser.Admin;
-import EndUser.Student;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -136,9 +135,5 @@ public class AdminDAO {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public void saveStudent(Student newStudent) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

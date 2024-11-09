@@ -1,5 +1,6 @@
 package TestSystem;
 
+import DataBaseManagment.CategoryDAO;
 import EndUser.Admin;
 import java.time.LocalDate;
 import java.util.*;
@@ -69,10 +70,18 @@ public class Category {
     }
 
     //methods
-    public void addQuestionBank() {
-        //the logic
+    public void addQuestionBank(QuestionBank questionBank) {        
+        CategoryDAO CBD = new CategoryDAO();
+        ArrayList<QuestionBank> currentQBs = this.getQuestionBanks();
+        currentQBs.add(questionBank);
+        this.setQuestionBanks(currentQBs);
+        CBD.updateCategory(this);
     }
-    public void removeQuestionBank(){
-        //the logic
+    public void removeQuestionBank(QuestionBank questionBank){
+        CategoryDAO CBD = new CategoryDAO();
+        ArrayList<QuestionBank> currentQBs = this.getQuestionBanks();
+        currentQBs.remove(questionBank);
+        this.setQuestionBanks(currentQBs);
+        CBD.updateCategory(this);
     }
 }

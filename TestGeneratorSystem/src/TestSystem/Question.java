@@ -1,5 +1,4 @@
 package TestSystem;
-import UserDefinedFunctionalities.CustomUUIDGenerator;
 import java.util.UUID;
 /**
  *
@@ -25,7 +24,7 @@ public class Question {
     
     public Question(Category topic, String statement,dlevel difficulty, int rightAnswer, String[] choices) {
         
-        this.questionID = CustomUUIDGenerator.generateWithPrefix("Q");
+        this.questionID = UUID.randomUUID();
         this.topic = topic;
         this.statement = statement;
         this.difficulty = difficulty;
