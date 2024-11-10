@@ -14,6 +14,7 @@ public class Checker {
     private static final String USERNAME_REGEX = "^[a-zA-Z0-9._]{3,20}$";
     private static final String PASS_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{12,}$";
     private static final String LETTERSONLY_REGEX = "^[A-Za-z]+$";
+    private static final String LETTERS_NUMS_UNDERSCORE_REGEX = "^[A-Za-z0-9_ ]+$";
     private static final String PHONE_REGEX = "^(\\+\\d{1,3}[- ]?)?\\d{10}$";
 
     public enum StringType {
@@ -30,7 +31,7 @@ public class Checker {
                 return m.matches();
             }
 
-            case USERNAME , LETTERS_NUMS_UNDERSCORE -> {
+            case USERNAME-> {
                 p = Pattern.compile(USERNAME_REGEX);
                 m = p.matcher(CheckString);
                 return m.matches();
@@ -47,6 +48,11 @@ public class Checker {
             }
             case PHONE_NO -> {
                 p = Pattern.compile(PHONE_REGEX);
+                m = p.matcher(CheckString);
+                return m.matches();
+            }
+            case LETTERS_NUMS_UNDERSCORE -> {
+                p = Pattern.compile(LETTERS_NUMS_UNDERSCORE_REGEX);
                 m = p.matcher(CheckString);
                 return m.matches();
             }
