@@ -1,14 +1,19 @@
 package EndUser;
 
 import DataBaseManagment.AdminDAO;
+import DataBaseManagment.CategoryDAO;
 import DataBaseManagment.QuestionBankDAO;
 import TestSystem.Category;
 import TestSystem.QuestionBank;
+import TestSystem.TestGeneratorApp;
+import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
 import UserDefinedFunctionalities.Checker;
+import UserDefinedFunctionalities.TerminalColors;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Console;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.function.Predicate;
 import javax.mail.MessagingException;
 
 /**
@@ -54,6 +59,7 @@ public abstract class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @JsonProperty("password")
     public void setPassword(String password) {
         this.password = password;
@@ -87,6 +93,7 @@ public abstract class User {
     public String getEmail() {
         return email;
     }
+
     @JsonProperty("password")
     protected String getPassword() {
         return password;
@@ -110,116 +117,186 @@ public abstract class User {
 
     //methods
     /**
-     * makes a new user sign up with the general data members
-     * @return ArrayList of the common data members between the subclasses
+     * Facilitates user registration by collecting and validating user information.
+     *
+     * This method guides users through a comprehensive sign-up process, validating each input against specific criteria to ensure data integrity.
+     *
+     * @return ArrayList containing validated user registration details in the following order: [username, email, password, firstName, lastName, country, city, fullAddress]
      */
     public static ArrayList<String> signUp() {
         ArrayList<String> commonList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-
         Checker check = new Checker();
 
-        String userNameInput;
-        do {
-            System.out.println("Enter Username: ");
-            userNameInput = scanner.nextLine();
-            if (!check.isValid(Checker.StringType.USERNAME, userNameInput)) {
-                System.out.println("Username must be 3 to 20 characters long and can only contain letters, numbers, dots, and underscores.");
-            }
-            if(findUserName(userNameInput)!=null){
-                System.out.println("this username is already taken");
-            }
-        } while (!check.isValid(Checker.StringType.USERNAME, userNameInput)
-                ||findUserName(userNameInput)!=null);
-        commonList.add(userNameInput);
+        // Username validation with unique username check
+        String username = validateUniqueInput(
+                scanner,
+                check,
+                "Enter Username: ",
+                Checker.StringType.USERNAME,
+                "Username must be 3-20 characters (letters, numbers, dots, underscores)",
+                User::isUsernameTaken
+        );
+        commonList.add(username);
 
-        String emailInput;
-        do {
-            System.out.println("\nEnter Email: ");
-            emailInput = scanner.nextLine();
-            if (!check.isValid(Checker.StringType.EMAIL, emailInput)) {
-                System.out.println("Invalid email. Please try again.");
-            }
-        } while (!check.isValid(Checker.StringType.EMAIL, emailInput));
-        commonList.add(emailInput);
+        // Email validation with unique email check
+        String email = validateUniqueInput(
+                scanner,
+                check,
+                "Enter Email: ",
+                Checker.StringType.EMAIL,
+                "Invalid email format",
+                User::isEmailTaken
+        );
+        commonList.add(email);
 
-        String passwordInput = null;
-        System.out.println("""
-                                       the password must have the following specifications :
-                                                           |-> length from 12 to 20
-                                                           |-> at least one capital letter
-                                                           |-> at least one small letter
-                                                           |-> at least one special character
-                                                           |-> at least one digit""");
-        do {
-            Console console = System.console();
-            if (console == null) {
-                System.out.println("No console available");
-                break;
-            }
+        // Password validation with detailed requirements
+        String password = validatePasswordInput(scanner, check);
+        commonList.add(password);
 
-            char[] passwordArray = console.readPassword("\nEnter Password: ");
-            passwordInput = new String(passwordArray);
-            if (!check.isValid(Checker.StringType.PASSWORD, passwordInput)) {
-                System.out.println("Invalid password. Please try again.");
-            } else {
-                System.out.println("Your password is securely read.");
-            }
-        } while (!check.isValid(Checker.StringType.PASSWORD, passwordInput));
-        commonList.add(passwordInput);
+        // Personal information validation
+        String[] personalFields = {
+            "First Name",
+            "Last Name",
+            "Country",
+            "City",
+            "Street Name"
+        };
 
-        String firstNameInput;
-        do {
-            System.out.println("\nEnter First Name: ");
-            firstNameInput = scanner.nextLine();
-            if (!check.isValid(Checker.StringType.LETTERS_ONLY, firstNameInput)) {
-                System.out.println("Invalid first name. Please try again.");
-            }
-        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, firstNameInput));
-        commonList.add(firstNameInput);
+        for (String field : personalFields) {
+            String input = validateInput(
+                    scanner,
+                    check,
+                    "Enter " + field + ": ",
+                    Checker.StringType.LETTERS_ONLY,
+                    field + " must contain only letters"
+            );
+            commonList.add(input);
+        }
 
-        String lastNameInput;
-        do {
-            System.out.println("\nEnter Last Name: ");
-            lastNameInput = scanner.nextLine();
-            if (!check.isValid(Checker.StringType.LETTERS_ONLY, lastNameInput)) {
-                System.out.println("Invalid last name. Please try again.");
-            }
-        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, lastNameInput));
-        commonList.add(lastNameInput);
-
-        String countryInput;
-        do {
-            System.out.println("\nEnter Country: ");
-            countryInput = scanner.nextLine();
-            if (!check.isValid(Checker.StringType.LETTERS_ONLY, countryInput)) {
-                System.out.println("Invalid country name. Please try again.");
-            }
-        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, countryInput));
-        commonList.add(countryInput);
-
-        String cityInput;
-        do {
-            System.out.println("\nEnter City: ");
-            cityInput = scanner.nextLine();
-            if (!check.isValid(Checker.StringType.LETTERS_ONLY, cityInput)) {
-                System.out.println("Invalid city name. Please try again.");
-            }
-        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, cityInput));
-        commonList.add(cityInput);
-
-        String streetNameInput;
-        do {
-            System.out.println("\nEnter Street name: ");
-            streetNameInput = scanner.nextLine();
-            if (!check.isValid(Checker.StringType.LETTERS_ONLY, streetNameInput)) {
-                System.out.println("Invalid street name. Please try again.");
-            }
-        } while (!check.isValid(Checker.StringType.LETTERS_ONLY, streetNameInput));
-        String address = streetNameInput + " , " + cityInput + " , " + countryInput;
-        commonList.add(address);
-
+        // Construct full address
+        String fullAddress = String.format(
+                "%s, %s, %s",
+                commonList.get(commonList.size() - 1), // Street Name
+                commonList.get(commonList.size() - 2), // City
+                commonList.get(commonList.size() - 3) // Country
+        );
+        commonList.add(fullAddress);
+        
         return commonList;
+    }
+
+    /**
+     * Validates input with an additional unique check.
+     *
+     * @param scanner Input scanner
+     * @param check Validation checker
+     * @param prompt Prompt message
+     * @param validationType Validation type
+     * @param errorMessage Error message
+     * @param uniquenessCheck Function to check uniqueness
+     * @return Validated unique input
+     */
+    private static String validateUniqueInput(
+            Scanner scanner,
+            Checker check,
+            String prompt,
+            Checker.StringType validationType,
+            String errorMessage,
+            Predicate<String> uniquenessCheck
+    ) {
+        while (true) {
+            System.out.println(prompt);
+            String input = scanner.nextLine().trim();
+
+            // Validate input format
+            if (!check.isValid(validationType, input)) {
+                System.out.println(errorMessage);
+                continue;
+            }
+
+            // Check uniqueness
+            if (!uniquenessCheck.test(input)) {
+                System.out.println("This "
+                        + (validationType == Checker.StringType.USERNAME ? "username" : "email")
+                        + " is already taken");
+                continue;
+            }
+
+            return input;
+        }
+    }
+
+    /**
+     * Validates password input with comprehensive security checks.
+     *
+     * @param scanner Input scanner
+     * @param check Validation checker
+     * @return Validated password
+     */
+    private static String validatePasswordInput(Scanner scanner, Checker check) {
+        Console console = System.console();
+
+        System.out.println("""
+        Password Requirements:
+        - 12-20 characters long
+        - At least one uppercase letter
+        - At least one lowercase letter
+        - At least one special character
+        - At least one digit
+    """);
+
+        while (true) {
+            String passwordInput = console != null
+                    ? new String(console.readPassword("Enter Password: "))
+                    : getPasswordFallback(scanner);
+
+            if (check.isValid(Checker.StringType.PASSWORD, passwordInput)) {
+                return passwordInput;
+            }
+
+            System.out.println("Password does not meet requirements. Please try again.");
+        }
+    }
+
+    /**
+     * Fallback method for password input when console is not available.
+     *
+     * @param scanner Input scanner
+     * @return Entered password
+     */
+    private static String getPasswordFallback(Scanner scanner) {
+        System.out.println("Enter Password: ");
+        return scanner.nextLine();
+    }
+
+    /**
+     * Validates general input with specified validation rules.
+     *
+     * @param scanner Input scanner
+     * @param check Validation checker
+     * @param prompt Prompt message
+     * @param validationType Validation type
+     * @param errorMessage Error message
+     * @return Validated input
+     */
+    protected static String validateInput(
+            Scanner scanner,
+            Checker check,
+            String prompt,
+            Checker.StringType validationType,
+            String errorMessage
+    ) {
+        while (true) {
+            System.out.println(prompt);
+            String input = scanner.nextLine().trim();
+
+            if (check.isValid(validationType, input)) {
+                return input;
+            }
+
+            System.out.println(errorMessage);
+        }
     }
 
     public abstract User login();
@@ -242,15 +319,13 @@ public abstract class User {
         String newPass = null;
         String confirmNewPass;
         System.out.println("""
-                                       
-                           
-                                       the password must have the following specifications :
-                                       |-> length from 8 to 20
-                                       |-> at least one capital letter
-                                       |-> at least one small letter
-                                       |-> at least one special character
-                                       |-> at least one digit
-                                       """);
+        Password Requirements:
+        - 12-20 characters long
+        - At least one uppercase letter
+        - At least one lowercase letter
+        - At least one special character
+        - At least one digit
+        """);
         do {
             do {
                 Console console = System.console();
@@ -275,7 +350,7 @@ public abstract class User {
         //updating the object
         this.setPassword(newPass);
         //updating the equivalent JSON
-        if(this instanceof Admin admin){
+        if (this instanceof Admin admin) {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
@@ -283,6 +358,12 @@ public abstract class User {
         return true;
     }
 
+    /**
+     * It adds the ability for user to reset his password if it is forgotten through a code sent for his email to authenticate
+     *
+     * @return True if the reseting of the password done successfully
+     * @throws MessagingException
+     */
     public boolean resetPassword() throws MessagingException {
         Scanner sc = new Scanner(System.in);
         Checker check = new Checker();
@@ -330,12 +411,13 @@ public abstract class User {
                     String newPass = null;
                     String confirmNewPass;
                     System.out.println("""
-                                       the password must have the following specifications :
-                                                    |-> length from 12 to 20
-                                                    |-> at least one capital letter
-                                                    |-> at least one small letter
-                                                    |-> at least one special character
-                                                    |-> at least one digit""");
+                      Password Requirements:
+                      - 12-20 characters long
+                      - At least one uppercase letter
+                      - At least one lowercase letter
+                      - At least one special character
+                      - At least one digit
+                    """);
                     do {
                         do {
                             Console console = System.console();
@@ -360,10 +442,10 @@ public abstract class User {
                     User userToBeUpdated = User.findEmail(EmailInput);
                     userToBeUpdated.setPassword(newPass);
                     //updating the equivalent JSON
-                    if(userToBeUpdated instanceof Admin admin){
+                    if (userToBeUpdated instanceof Admin) {
                         AdminDAO ADB = new AdminDAO();
-                        ADB.updateAdmin(admin);
-                        }
+                        ADB.updateAdmin((Admin) userToBeUpdated);
+                    }
                     System.out.println("The password has been changed successfully !");
                     return true;
                 }
@@ -373,11 +455,24 @@ public abstract class User {
                 default ->
                     System.out.println("Wrong input , please try again");
             }
-        } while (!key.equals("y") || !key.equals("n"));
+        } while (!key.equals("y") && !key.equals("n"));
         return false;
     }
 
-    public StringBuffer getProfile(boolean show) {
+    /**
+     * Retrieves and optionally displays the user's profile information.
+     *
+     * This method generates a comprehensive string representation of the user's profile, with an option to print the profile details to the console.
+     *
+     * @param show A Boolean flag indicating whether to display the profile details - true: Prints profile details to the console - false: Only generates the profile string without printing
+     *
+     * @return A string containing the user's profile information, including: - Username - Email - First Name - Last Name - Address
+     *
+     * @implNote - Uses StringBuffer for efficient string concatenation - Provides flexibility in profile information display
+     *
+     * @example // Retrieve profile as a string without displaying String profileString = user.getProfile(false); // Retrieve and display profile user.getProfile(true);
+     */
+    public String getProfile(boolean show) {
         StringBuffer ProfileStr = new StringBuffer();
         ProfileStr.append("Username : ").append(getUserName());
         ProfileStr.append("\nEmail : ").append(getEmail());
@@ -391,80 +486,95 @@ public abstract class User {
             System.out.println("\nLast Name : " + getLastName());
             System.out.println("\nAddress : " + getAddress());
         }
-        return ProfileStr;
+        String Profile = new String(ProfileStr);
+        return Profile;
     }
 
     public void updateProfile(int choice) {
         Scanner sc = new Scanner(System.in);
         Checker check = new Checker();
-                switch (choice) {
-                    case 1 ->
-                        updateUsername(check, sc);
-                    case 2 ->
-                        updateEmail(check, sc);
-                    case 3 ->
-                        updateName(check, sc);
-                    case 4 ->
-                        updateAddress(check, sc);
-                }
+        switch (choice) {
+            case 1 ->
+                updateUsername(check, sc);
+            case 2 ->
+                updateEmail(check, sc);
+            case 3 ->
+                updateName(check, sc);
+            case 4 ->
+                updateAddress(check, sc);
+        }
     }
 
     public boolean createQuestionBank() {
-        
-    Scanner sc = new Scanner(System.in);
-    ArrayList<Category> CategoryList = null; //placeholder for category array
-    CategoryList.add(new Category());
-    
-    System.out.println("Enter the Category of The new Question Bank : ");
-    
-    // Display all categories with proper numbering
-    for (int i = 0; i < CategoryList.size(); i++) {
-        System.out.println((++i) + " _ " + CategoryList.get(i).getName());
-        System.out.println(CategoryList.get(i).getDescription());
-        System.out.println("");
-    }
-    
-    // Get and validate user input
-    int key;
-    Category selectedCategory = null;
-    boolean validInput = false;
-    
-    do {
-        try {
-            System.out.print("Enter the number of your chosen category (1-" + CategoryList.size() + "):");
-            key = sc.nextInt();
-            
-            // Check if the input is within valid range
-            if (key >= 1 && key <= CategoryList.size()) {
-                selectedCategory = CategoryList.get(key - 1);
-                validInput = true;
-            } else {
-                System.out.println("Invalid input! Please enter a number between 1 and " + CategoryList.size());
+        Scanner sc = new Scanner(System.in);
+        CategoryDAO CDB = new CategoryDAO();
+        List<Category> CategoryList = CDB.getCategoriesList();
+        if (!CategoryList.isEmpty()) {
+            System.out.println("Enter the Category of The New Question Bank : ");
+            // Display all categories with proper numbering
+            for (int i = 0; i < CategoryList.size(); i++) {
+                System.out.println((++i) + " _ " + CategoryList.get(i).getName());
+                System.out.println(CategoryList.get(i).getDescription());
+                System.out.println("");
             }
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid input! Please enter a valid number.");
-            sc.nextLine(); // Clear the invalid input
+
+            // Get and validate user input
+            int key;
+            Category selectedCategory = null;
+            boolean validInput = false;
+
+            do {
+                try {
+                    System.out.print("Enter the number of your chosen category (1-" + CategoryList.size() + "):");
+                    key = sc.nextInt();
+
+                    // Check if the input is within valid range
+                    if (key >= 1 && key <= CategoryList.size()) {
+                        selectedCategory = CategoryList.get(key - 1);
+                        validInput = true;
+                    } else {
+                      ifColorfullPrintln("Invalid input! Please enter a number between 1 and " + CategoryList.size(), 
+                                        TerminalColors.BOLD_RED);
+                    }
+                } catch (InputMismatchException e) {
+                    ifColorfullPrintln("Invalid input! Please enter a valid number.", TerminalColors.BOLD_RED);
+                    sc.nextLine(); // Clear the invalid input
+                }
+            } while (!validInput);
+
+            // Create the question bank with the selected category
+            if (selectedCategory != null) {
+                LocalDate creationDate = LocalDate.now();
+                return createQuestionBank(this, selectedCategory, creationDate);
+            }
+            return true;
+        } else {
+            TestGeneratorApp.ifColorfullPrintln("Sorry ! there are no Categories available", TerminalColors.YELLOW);
+            return false;
         }
-    } while (!validInput);
-    
-    // Create the question bank with the selected category
-    if (selectedCategory != null) {
+    }
+
+    public boolean createQuestionBank(User creator, Category category, LocalDate creationDate) {
         try {
-            LocalDate creationDate = LocalDate.now();
-            QuestionBank newBank = new QuestionBank(this,selectedCategory,creationDate);
+            QuestionBank newBank = new QuestionBank(creator, category, creationDate);
             QuestionBankDAO QBDB = new QuestionBankDAO();
             QBDB.saveQuestionBank(newBank);
         } catch (Exception e) {
             System.out.println("Error creating question bank: " + e.getMessage());
             return false;
         }
+        return true;
     }
-    
-    return true;
-}
 
-    public boolean deleteQuestionBank() {
-        return false;
+    public boolean deleteQuestionBank(QuestionBank questionBank) {
+        try {
+            QuestionBankDAO QBDB = new QuestionBankDAO();
+            QBDB.deleteQuestionBank(questionBank.getBankID());
+        } catch (Exception e) {
+            System.out.println("Error deleting question bank: " + e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     // Protected helper methods that can be used by subclasses
@@ -474,7 +584,7 @@ public abstract class User {
         System.out.println(" 2 --> Update Email");
         System.out.println(" 3 --> Update Name");
         System.out.println(" 4 --> Update Address");
-        
+
     }
 
     protected void updateUsername(Checker check, Scanner sc) {
@@ -489,7 +599,7 @@ public abstract class User {
         //update the object
         this.setUserName(newUsername);
         //updating the equivalent JSON
-        if(this instanceof Admin admin){
+        if (this instanceof Admin admin) {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
@@ -508,7 +618,7 @@ public abstract class User {
         //updating the object
         this.setEmail(newEmail);
         //updating the equivalent JSON
-        if(this instanceof Admin admin){
+        if (this instanceof Admin admin) {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
@@ -528,7 +638,7 @@ public abstract class User {
         //updating the object
         this.setFirstName(newFirstName);
         //updating the equivalent JSON
-        if(this instanceof Admin admin){
+        if (this instanceof Admin admin) {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
@@ -544,7 +654,7 @@ public abstract class User {
         //update the object
         this.setLastName(newLastName);
         //updating the equivalent JSON
-        if(this instanceof Admin admin){
+        if (this instanceof Admin admin) {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
@@ -586,7 +696,7 @@ public abstract class User {
         //update the object
         this.setAddress(newAddress);
         //updating the equivalent JSON
-        if(this instanceof Admin admin){
+        if (this instanceof Admin admin) {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
@@ -597,11 +707,27 @@ public abstract class User {
         AdminDAO ADB = new AdminDAO();
         return ADB.searchAdminByEmail(email);
     }
+
     private static User findUserName(String userName) {
         AdminDAO ADB = new AdminDAO();
         return ADB.searchAdmin(userName);
     }
+
+    // Helper methods to check uniqueness
+    private static boolean isUsernameTaken(String username) {
+        return findUserName(username) == null;
+    }
+
+    private static boolean isEmailTaken(String email) {
+        return findEmail(email) == null;
+    }
+
+    /**
+     * checks if the given password is equal to the password of the admin ensures better security than accessing the * getpassword() directly from outside the class
+     *
+     * @return Boolean if equal or not
+     */
     public boolean verifyPassword(String password) {
-        return password!=null&&this.getPassword().equals(password);
+        return password != null && this.getPassword().equals(password);
     }
 }

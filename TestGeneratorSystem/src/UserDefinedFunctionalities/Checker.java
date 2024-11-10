@@ -17,7 +17,7 @@ public class Checker {
     private static final String PHONE_REGEX = "^(\\+\\d{1,3}[- ]?)?\\d{10}$";
 
     public enum StringType {
-        EMAIL, USERNAME, PASSWORD, LETTERS_ONLY, PHONE_NO;
+        EMAIL, USERNAME, PASSWORD, LETTERS_ONLY, PHONE_NO , LETTERS_NUMS_UNDERSCORE;
     }
 
     public boolean isValid(StringType type, String CheckString) {
@@ -30,7 +30,7 @@ public class Checker {
                 return m.matches();
             }
 
-            case USERNAME -> {
+            case USERNAME , LETTERS_NUMS_UNDERSCORE -> {
                 p = Pattern.compile(USERNAME_REGEX);
                 m = p.matcher(CheckString);
                 return m.matches();
@@ -56,29 +56,3 @@ public class Checker {
     }
 
 }
-//          //test signUp and login
-//          Admin DummyAdmin = new Admin();
-//          Admin.signUp();
-//          ArrayList<Admin> AllAdmins = Admin.getListOfAdmins();
-//          if(DummyAdmin.login()!=null){
-//              DummyAdmin = DummyAdmin.login();
-//              System.out.println("Welcome onboard");
-//          }
-//          else{
-//              System.out.println("please Sign Up first");
-//          }
-//          System.out.println("Do you want to delete your account ? y/n");
-//          Scanner sc = new Scanner(System.in);
-//          String answer = sc.nextLine();
-//          if(answer.equals("y")){
-//              DummyAdmin.removeAccount();
-//          }else{
-//              System.out.println("ok you can live");
-//          }
-//          DummyAdmin.getProfile(true);
-//        //test email
-//        String email1 = "example123@domain.com";
-//        String email2 = "invalid/email@domain";
-//        System.out.println(email1 + " is valid: " + isValid(StringType.EMAIL,email1)); // true
-//        System.out.println(email2 + " is valid: " + isValid(StringType.EMAIL, email2)); // false
-

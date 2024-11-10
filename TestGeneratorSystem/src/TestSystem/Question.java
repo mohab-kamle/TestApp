@@ -1,5 +1,4 @@
 package TestSystem;
-import UserDefinedFunctionalities.CustomUUIDGenerator;
 import java.util.UUID;
 /**
  *
@@ -25,7 +24,7 @@ public class Question {
     
     public Question(Category topic, String statement,dlevel difficulty, int rightAnswer, String[] choices) {
         
-        this.questionID = CustomUUIDGenerator.generateWithPrefix("Q");
+        this.questionID = UUID.randomUUID();
         this.topic = topic;
         this.statement = statement;
         this.difficulty = difficulty;
@@ -111,6 +110,23 @@ public class Question {
         return noOfAttemptsAtTests;
     }
     //methods
+
+    @Override
+    public String toString() {
+        String[] c = getChoices();
+        return "Q"+getQuestionID()
+          +"\n Question : "+getStatement()
+          +"\n Choices  : "
+          +"A _ "+c[0]
+          +"B _ "+c[1]
+          +"C _ "+c[2]
+          +"D _ "+c[3]
+          +"Category : "+getTopic().getName()
+          +"Average Time to solve : "+getAvgTime()
+          +"\n Right Answer : "+c[getRightAnswer()];
+          
+    }
+    
     /**
      * unique for each question and
      * useful in determining the difficulty of question
