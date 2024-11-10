@@ -271,6 +271,7 @@ public class Student extends User {
 
         // Assuming the Question object has a method to retrieve the correct answer
         correctAnswers.add(question.getRightAnswer());
+        
     }
 
     // Set the end time
