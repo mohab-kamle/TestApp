@@ -5,7 +5,10 @@ package EndUser;
  * @author Youssef
  */
 import DataBaseManagment.StudentDAO;
+import TestSystem.Question;
+import TestSystem.Test;
 import UserDefinedFunctionalities.Checker;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Student extends User {
@@ -240,9 +243,73 @@ public class Student extends User {
         System.out.println("Institute updated successfully to: " + newInstitute);
     }
 
-    public void takeTest() {
-        // Implement logic for taking a test
+    
+    public void takeTest(Test test) {
+    // Reset the test if it was taken previously
+    test.reset();
+
+    // Set the start time
+    test.setStartTime(LocalDateTime.now());
+
+    Scanner scanner = new Scanner(System.in);
+    int x = scanner.nextInt();
+    System.out.println("Starting the test on " + test.getCategory().getName());
+    System.out.println("Difficulty level: " + test.getDifficulty());
+        System.out.println("Number of Questions you need " + x );
+    System.out.println("Duration: " + test.getDuration() + " minutes");
+
+    // Let the student answer each question
+    List<Integer> correctAnswers = new ArrayList<>(); // Assuming questions have integer-based answers
+
+    for (Question question : test.getRandomQuestions(x)) {
+        System.out.println("Question: " + question);
+        System.out.print("Enter your answer: ");
+        
+        // Get the student's answer and add to takerAnswers
+        int answer = scanner.nextInt();
+        test.addAnswer(answer);
+
+        // Assuming the Question object has a method to retrieve the correct answer
+        correctAnswers.add(question.getRightAnswer());
     }
+
+    // Set the end time
+    test.setEndTime(LocalDateTime.now());
+
+    // Calculate time taken for the test
+    double timeTaken = test.timeTaken();
+    System.out.println("Time taken: " + timeTaken + " minutes");
+
+    // Check answers and calculate the score
+    boolean passed = test.checkAnswers(correctAnswers);
+    int score = calculateScore(test.getTakerAnswers(), correctAnswers);
+
+    // Update student's test result based on the score and passing score
+    test.setTestResult(score);
+
+    if (passed) {
+        passedTestsCount++;
+        System.out.println("Congratulations! You passed with a score of " + score);
+    } else {
+        System.out.println("You didn't pass. Your score: " + score);
+    }
+
+    // Update total time and test history
+    totalTimeOfAllTests += timeTaken;
+    takenTests.add(test.getTestID().toString());
+}
+
+private int calculateScore(List<Integer> studentAnswers, List<Integer> correctAnswers) {
+    int score = 0;
+    for (int i = 0; i < studentAnswers.size(); i++) {
+        if (studentAnswers.get(i).equals(correctAnswers.get(i))) {
+            score++;
+        }
+    }
+    return score;
+}
+
+    
 
     public List<String> getTestHistory() {
         return takenTests;
