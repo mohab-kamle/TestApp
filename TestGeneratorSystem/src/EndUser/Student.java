@@ -274,7 +274,7 @@ public class Student extends User {
         long endTime = System.currentTimeMillis();
         // Calculating 
         long timeTaken = endTime - startTime;
-        test.timePerQuestion(timeTaken) ;
+        test.timePerQuestion(timeTaken, question) ;
         // Assuming the Question object has a method to retrieve the correct answer
         correctAnswers.add(question.getRightAnswer());
         
