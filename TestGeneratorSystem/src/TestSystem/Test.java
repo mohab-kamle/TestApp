@@ -1,7 +1,6 @@
 package TestSystem;
 
 import EndUser.Student;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -24,17 +23,6 @@ public class Test {
     private LocalDateTime endTime;// need to be aware of the technique of calculating it
     private int noOfAttempts;
     private ArrayList<Integer> takerAnswers;
-
-
-    public Test(Category category, LocalDate creationDate, Student taker, Question.dlevel difficulty, ArrayList<Question> questions) {
-        this.testID = UUID.randomUUID();
-        this.category = category;
-        this.creationDate = creationDate;
-        this.taker = taker;
-        this.difficulty = difficulty;
-        this.questions = questions;
-        this.noOfAttempts = 0;
-        this.takerAnswers = new ArrayList<>(); }
     
     //setters
 
@@ -146,57 +134,36 @@ public class Test {
     
     //methods
     
-    public void timePerQuestion(double time, Question question){
-        // Here where to update the time for the Question "totalTime" 
-        question.setTotalTime(question.getTotalTime()+time);
+    public double timePerQuestion(){
+        //implementation
+        return 0;
+    }
+    
+    public void getRandomQuestions(){
         
     }
     
-    public List<Question> getRandomQuestions(int numQuestions) {
-    if (questions == null || questions.size() < numQuestions) {
-        return Collections.emptyList();
-    }
-    List<Question> shuffledQuestions = new ArrayList<>(questions);
-    Collections.shuffle(shuffledQuestions);
-    return shuffledQuestions.subList(0, numQuestions);
-    }
-    
     public void reset(){
-        this.testResult = 0;
-        this.noOfAttempts = 0;
-        this.takerAnswers.clear();
-        this.startTime = null;
-        this.endTime = null;
+        
     }
     
-    public boolean checkAnswers(List<Integer> correctAnswers) {
-    if (takerAnswers.size() != correctAnswers.size()) {
+    public boolean checkAnswers(){
+        //implementation
         return false;
     }
-    for (int i = 0; i < takerAnswers.size(); i++) {
-        if (!takerAnswers.get(i).equals(correctAnswers.get(i))) {
-            return false;
-        }
-    }
-    return true;
+    
+    public void addAnswer(){
+        
     }
     
-    public void addAnswer(int answer){
-        takerAnswers.add(answer);
-    }
-    
-    public void removeAnswer(int index){
-        if (index >= 0 && index < takerAnswers.size()) {
-            takerAnswers.remove(index);
-        }
+    public void removeAnswer(){
+        
     }
     
     public double timeTaken(){
-      if (startTime == null || endTime == null) {
-          return 0;
-      }
-      Duration duration = Duration.between(startTime, endTime);
-      return duration.toMinutes() + duration.toSecondsPart() / 60.0;
+        //why return double ?
+        //implementation
+        return 0;
     }
     
 }
