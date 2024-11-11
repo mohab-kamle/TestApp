@@ -3,6 +3,7 @@ package EndUser;
 import DataBaseManagment.AdminDAO;
 import DataBaseManagment.CategoryDAO;
 import DataBaseManagment.QuestionBankDAO;
+import DataBaseManagment.StudentDAO;
 import TestSystem.Category;
 import TestSystem.QuestionBank;
 import TestSystem.TestGeneratorApp;
@@ -725,12 +726,27 @@ public abstract class User {
 
     private static User findEmail(String email) {
         AdminDAO ADB = new AdminDAO();
-        return ADB.searchAdminByEmail(email);
+        StudentDAO SDB = new StudentDAO();
+        if (ADB.searchAdminByEmail(email)!=null){
+            return ADB.searchAdminByEmail(email);
+        }else if (SDB.searchStudentByEmail(email)!=null){
+            return SDB.searchStudentByEmail(email);
+        }else{
+          return null;  
+        }
+        
     }
 
     private static User findUserName(String userName) {
         AdminDAO ADB = new AdminDAO();
-        return ADB.searchAdmin(userName);
+        StudentDAO SDB = new StudentDAO();
+        if (ADB.searchAdmin(userName)!=null){
+            return ADB.searchAdmin(userName);
+        }else if (SDB.searchStudent(userName)!=null){
+            return SDB.searchStudent(userName);
+        }else{
+          return null;  
+        }
     }
 
     // Helper methods to check uniqueness

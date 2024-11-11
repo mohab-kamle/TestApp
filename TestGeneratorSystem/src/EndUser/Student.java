@@ -5,7 +5,9 @@ package EndUser;
  * @author Youssef
  */
 import DataBaseManagment.StudentDAO;
+import TestSystem.Question;
 import UserDefinedFunctionalities.Checker;
+import java.io.Console;
 import java.util.*;
 
 public class Student extends User {
@@ -14,15 +16,13 @@ public class Student extends User {
     private int passedTestsCount;
     private double totalTimeOfAllTests;
     private String institute;
-    private List<String> favoriteQuestions;
+    private List<Question> favoriteQuestions;
     private List<String> takenTests;
-    private static ArrayList<Student> listOfStudents = new ArrayList<>();
-
+    
     public Student() {
         super(null, null, null, null, null, null);
     }
-    
-    
+
     public Student(
             String institute,
             ArrayList<String> commonList) {
@@ -33,9 +33,8 @@ public class Student extends User {
                 commonList.get(3),
                 commonList.get(4));
         this.institute = institute;
+        this.favoriteQuestions = new ArrayList<>();
     }
-
-    
 
     public String getGrade() {
         return grade;
@@ -69,11 +68,11 @@ public class Student extends User {
         this.institute = institute;
     }
 
-    public List<String> getFavoriteQuestions() {
+    public List<Question> getFavoriteQuestions() {
         return favoriteQuestions;
     }
 
-    public void setFavoriteQuestions(List<String> favoriteQuestions) {
+    public void setFavoriteQuestions(List<Question> favoriteQuestions) {
         this.favoriteQuestions = favoriteQuestions;
     }
 
@@ -104,48 +103,33 @@ public class Student extends User {
 
         // Create the new student instance
         Student newStudent = new Student(institute, commonList);
-
-        // Add new student to the list of students
-        listOfStudents.add(newStudent);
-
         // Persist the student data
-        StudentDAO adminDB = new StudentDAO();
-        adminDB.saveStudent(newStudent);
-
+        StudentDAO SDB = new StudentDAO();
+        SDB.saveStudent(newStudent);
         return commonList;
     }
 
     @Override
     public Student login() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter username:");
-        String username = scanner.nextLine();
-        System.out.println("Enter password:");
-        String password = scanner.nextLine(); // Authenticate the user
-        Student authenticatedStudent = Student.authenticate(username, password);
-        if (authenticatedStudent != null) {
-            System.out.println("Login successful!");
-            return authenticatedStudent;
-        } else {
-            System.out.println("Login failed. Please check your username and password.");
-            return null;
+        Scanner scan = new Scanner(System.in);
+        StudentDAO SDB = new StudentDAO();
+        System.out.print("\nEnter Username : ");
+        String userNameInput = scan.nextLine();
+        String passwordInput;
+        Console console = System.console();
+        if (console == null) {
+            System.out.println("No console available");
         }
-    }
-
-    public static Student authenticate(String username, String password) {
-        for (Student student : listOfStudents) {
-            if (student.getUserName().equals(username) && student.getPassword().equals(password)) {
-                return student;
-            }
-
-        }
-        return null;
+        char[] passwordArray = console.readPassword("\nEnter Password: ");
+        passwordInput = new String(passwordArray);
+        return SDB.searchStudent(userNameInput, passwordInput);
     }
 
     @Override
     public void removeAccount() {
         try {
-            listOfStudents.remove(this);
+            StudentDAO SDB = new StudentDAO();
+            SDB.deleteStudent(this.getUserId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -155,13 +139,13 @@ public class Student extends User {
     /**
      * Retrieves and optionally displays the student's extended profile information.
      *
-     * This method extends the base user profile by adding student-specific details: - Academic grade - Institute - Test               performance metrics - Favorite questions - Taken tests
+     * This method extends the base user profile by adding student-specific details: - Academic grade - Institute - Test performance metrics - Favorite questions - Taken tests
      *
-     * @param show A Boolean flag to control console output - true: Prints detailed profile to console - false: Generates              profile string without displaying
+     * @param show A Boolean flag to control console output - true: Prints detailed profile to console - false: Generates profile string without displaying
      *
      * @return A comprehensive string representation of the student's profile
      *
-     * @implNote - Inherits base profile information from parent class - Appends student-specific attributes - Supports                conditional display of profile details
+     * @implNote - Inherits base profile information from parent class - Appends student-specific attributes - Supports conditional display of profile details
      */
     @Override
     public String getProfile(boolean show) {
@@ -172,25 +156,35 @@ public class Student extends User {
         ProfileStr.append("\npassedTestsCount : ").append(getPassedTestsCount());
         ProfileStr.append("\ntotalTimeOfAllTests : ").append(getTotalTimeOfAllTests());
         ProfileStr.append("\nfavoriteQuestions : ");
-        for (String question : getFavoriteQuestions()) {
-            ProfileStr.append("\n - ").append(question);
+        if (!getFavoriteQuestions().isEmpty()) {
+            for (Question question : getFavoriteQuestions()) {
+                ProfileStr.append("\n - ").append(question);
+            }
         }
-        for (String test : getTakenTests()) {
-            ProfileStr.append("\n - ").append(test);
+        if (!getTakenTests().isEmpty()) {
+            for (String test : getTakenTests()) {
+                ProfileStr.append("\n - ").append(test);
+            }
         }
+
         if (show) {
             System.out.println("\nGrade : " + getGrade());
             System.out.println("\ninstitute : " + getInstitute());
             System.out.println("\npassedTestsCount : " + getPassedTestsCount());
             System.out.println("\ntotalTimeOfAllTests : " + getTotalTimeOfAllTests());
             System.out.println("\nFavorite Questions: ");
-            for (String question : getFavoriteQuestions()) {
-                System.out.println(" - " + question);
+            if (!getFavoriteQuestions().isEmpty()) {
+                for (Question question : getFavoriteQuestions()) {
+                    System.out.println(" - " + question);
+                }
             }
-            System.out.println("\ntakenTests: ");
-            for (String test : getTakenTests()) {
-                System.out.println(" - " + test);
+            if (!getTakenTests().isEmpty()) {
+                System.out.println("\ntakenTests: ");
+                for (String test : getTakenTests()) {
+                    System.out.println(" - " + test);
+                }
             }
+
         }
         String Profile = new String(ProfileStr);
         return Profile;
@@ -255,7 +249,7 @@ public class Student extends User {
         return totalTimeOfAllTests / passedTestsCount;
     }
 
-    public void markFavouriteQuestion(String question) {
+    public void markFavouriteQuestion(Question question) {
         if (!favoriteQuestions.contains(question)) { // Avoid duplicates
             favoriteQuestions.add(question);
             System.out.println("Question marked as favorite: " + question);
@@ -263,7 +257,7 @@ public class Student extends User {
             System.out.println("Question is already marked as favorite.");
         }
     }
-
+    
     public double getAverageScore() {
         // Implement logic to calculate average score
         return 0.0; // Placeholder value
