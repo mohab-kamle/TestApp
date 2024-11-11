@@ -146,7 +146,9 @@ public class Test {
     
     //methods
     
-    public double timePerQuestion(double time){
+    public void timePerQuestion(double time, Question question){
+        // Here where to update the time for the Question "totalTime" 
+        question.setTotalTime(question.getTotalTime()+time);
         
     }
     
