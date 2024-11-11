@@ -224,8 +224,9 @@ public class Admin extends User {
         CategoryDAO CDB = new CategoryDAO();
         Checker check = new Checker() ;
         int i = 1 ;
+        // Display all categories
+        ifColorfullPrintln("All Categories:", TerminalColors.BOLD_BLUE);
         for (Category category : CDB.getCategoriesList()){
-            ifColorfullPrintln("All Categories:", TerminalColors.BOLD_BLUE);
             System.out.println(i++ +"- "+ category.getName());
         }
         ifColorfullPrintln("Enter The number of category you want to modify or 0 for Exit: ", TerminalColors.CYAN);
@@ -233,61 +234,89 @@ public class Admin extends User {
         if (label > 0 && label <= CDB.getCategoriesList().size()){
             Category selectedCategory = CDB.getCategoriesList().get(label - 1);
             ifColorfullPrintln("You have selected \""+selectedCategory.getName()+"\"", TerminalColors.GREEN);
+            // Options for modification
             ifColorfullPrintln("2 option:", TerminalColors.BOLD_BLUE);
             System.out.println("\t1- Name");
             System.out.println("\t2- Description");
             ifColorfullPrintln("Enter the item number or 0 to Exit: ", TerminalColors.CYAN);
             int selected = scanner.nextInt(); 
+            // Make sure the inputs are correct
             while (selected != 1 && selected != 2 && selected != 0) {
                 ifColorfullPrintln("Wrong input", TerminalColors.BOLD_RED);
                 ifColorfullPrintln("Please enter right input", TerminalColors.CYAN);
                 selected = scanner.nextInt();
             }
+            // exit without modify
             if (selected == 0) {
                 ifColorfullPrintln("EXIT...",TerminalColors.GREEN );
                 return false ;
             }
+            // modify name with all odds success or wrong input or additional modification
             else if (selected == 1){
                 ifColorfullPrintln("Please Enter New Name: ", TerminalColors.CYAN);
                 String Name = validateInput(scanner, check, "Enter Category New Name : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Wrong name , try again");
                 selectedCategory.setName(Name);
+                // success 
                 ifColorfullPrintln("Done. The new name is \""+Name+"\"", TerminalColors.GREEN);
+                // additional modification
                 ifColorfullPrintln("Enter 2 if you want to modify the description also or 0 to Exit", TerminalColors.CYAN);
                 int selected2 = scanner.nextInt();
+                // Make sure the inputs are correct
                 while (selected2 != 0 && selected2 != 2) {
                     ifColorfullPrintln("Wrong input", TerminalColors.BOLD_RED);
                     ifColorfullPrintln("Please enter right input", TerminalColors.CYAN);
                     selected2 = scanner.nextInt();
                 }
+                // modify description also and update
                 if (selected2 == 2) {
                     ifColorfullPrintln("Please Enter New Description: ", TerminalColors.CYAN);
                     String description = validateInput(scanner, check, "Enter Description : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Invalid Characters Exist , try again");
                     selectedCategory.setDescription(description);
                     ifColorfullPrintln("Done. You have a new description: ", TerminalColors.GREEN);
                     System.out.println("\t \t" + description);
+                    CDB.updateCategory(selectedCategory);
+                    return true ;
                 }
-                else if (selected2 == 0) {
+                // exit and update
+                else {
                     ifColorfullPrintln("EXIT...",TerminalColors.GREEN );
                     CDB.updateCategory(selectedCategory);
                     return true ;
                 }
             }
+            // modify description with all odds success or wrong input or additional modification
             else {
                 ifColorfullPrintln("Please Enter New Description: ", TerminalColors.CYAN);
-                String description = scanner.nextLine();
+                String description = validateInput(scanner, check, "Enter Description : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Invalid Characters Exist , try again");
                 selectedCategory.setDescription(description);
+                // success
                 ifColorfullPrintln("Done. You have a new description: ", TerminalColors.GREEN);
                 System.out.println("\t \t" + description);
-                ifColorfullPrintln("Enter 1 if you want to modify the name also or any number to finish", TerminalColors.CYAN);
+                // additional modification
+                ifColorfullPrintln("Enter 1 if you want to modify the name also or 0 to Exit", TerminalColors.CYAN);
                 int selected2 = scanner.nextInt();
+                // Make sure the inputs are correct
+                while (selected2 != 0 && selected2 != 2) {
+                    ifColorfullPrintln("Wrong input", TerminalColors.BOLD_RED);
+                    ifColorfullPrintln("Please enter right input", TerminalColors.CYAN);
+                    selected2 = scanner.nextInt();
+                }
+                // modify name also and update
                 if (selected2 == 1) {
                     ifColorfullPrintln("Please Enter New Name: ", TerminalColors.CYAN);
-                    String Name = scanner.nextLine();
+                    String Name = validateInput(scanner, check, "Enter Category New Name : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Wrong name , try again");
                     selectedCategory.setName(Name);
                     ifColorfullPrintln("Done. The new name is \""+Name+"\"", TerminalColors.GREEN);
+                    CDB.updateCategory(selectedCategory);
+                    return true ;
+                }
+                // exit and update
+                else {
+                    ifColorfullPrintln("EXIT...",TerminalColors.GREEN );
+                    CDB.updateCategory(selectedCategory);
+                    return true ;
                 }
             }
-            CDB.updateCategory(selectedCategory);
         }
         else if (label == 0){
             ifColorfullPrintln("EXIT...",TerminalColors.GREEN ); 
@@ -298,6 +327,7 @@ public class Admin extends User {
         int num = scanner.nextInt();
         if (num == 0){
             ifColorfullPrintln("EXIT...",TerminalColors.GREEN ); 
+            return false ;
         }
         else modifyCategory() ;
         }
