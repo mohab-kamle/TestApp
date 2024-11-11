@@ -146,8 +146,10 @@ public class Test {
     
     //methods
     
-    public double timePerQuestion(){
-        return 0;
+    public void timePerQuestion(double time, Question question){
+        // Here where to update the time for the Question "totalTime" 
+        question.setTotalTime(question.getTotalTime()+time);
+        
     }
     
     public List<Question> getRandomQuestions(int numQuestions) {
