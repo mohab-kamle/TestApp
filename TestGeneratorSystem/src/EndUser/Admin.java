@@ -220,8 +220,58 @@ public class Admin extends User {
     }
 
     public boolean modifyCategory() {
-        return false;
-    }
+        Scanner scanner = new Scanner(System.in);
+        CategoryDAO CDB = new CategoryDAO();
+        int i = 1 ;
+        for (Category category : CDB.getCategoriesList()){
+            System.out.println("All Category:");
+            System.out.println(i++ +"- "+ category.getName());
+        }
+        System.out.println("Enter The number of category you want to modify : ");
+        int label = scanner.nextInt() ;
+        if (label > 0 && label <= CDB.getCategoriesList().size()){
+            Category selectedCategory = CDB.getCategoriesList().get(label - 1);
+            ifColorfullPrintln("You have selected \""+selectedCategory.getName()+"\"", TerminalColors.RED);
+            System.out.println("2 option:");
+            System.out.println("\t1- Name");
+            System.out.println("\t2- Description");
+            System.out.println("Enter the item number: ");
+            int selected = scanner.nextInt(); 
+            if (selected == 1){
+                System.out.println("Please Enter New Name: ");
+                String Name = scanner.nextLine();
+                selectedCategory.setName(Name);
+                ifColorfullPrintln("Done. The new name is \""+Name+"\"", TerminalColors.GREEN);
+                System.out.println("Enter 2 if you want to modify the description also");
+                int selected2 = scanner.nextInt();
+                if (selected2 == 2) {
+                    System.out.println("Please Enter New Description: ");
+                    String description = scanner.nextLine();
+                    selectedCategory.setDescription(description);
+                    ifColorfullPrintln("Done. You have a new description: ", TerminalColors.GREEN);
+                    System.out.println("\t \t" + description);
+                }
+            }
+            else {
+                System.out.println("Please Enter New Description: ");
+                String description = scanner.nextLine();
+                selectedCategory.setDescription(description);
+                ifColorfullPrintln("Done. You have a new description: ", TerminalColors.GREEN);
+                System.out.println("\t \t" + description);
+                System.out.println("Enter 1 if you want to modify the name also");
+                int selected2 = scanner.nextInt();
+                if (selected2 == 1) {
+                    System.out.println("Please Enter New Name: ");
+                    String Name = scanner.nextLine();
+                    selectedCategory.setName(Name);
+                    ifColorfullPrintln("Done. The new name is \""+Name+"\"", TerminalColors.GREEN);
+                }
+            }
+            CDB.updateCategory(selectedCategory);
+        }
+         return false ;   
+        }
+    
 
     public boolean deleteCategory() {
         CategoryDAO CDB = new CategoryDAO();
