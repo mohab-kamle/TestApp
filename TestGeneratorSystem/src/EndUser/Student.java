@@ -297,6 +297,9 @@ public class Student extends User {
     // Update total time and test history
     totalTimeOfAllTests += timeTaken;
     takenTests.add(test.getTestID().toString());
+    
+    
+    
 }
 
 private int calculateScore(List<Integer> studentAnswers, List<Integer> correctAnswers) {
