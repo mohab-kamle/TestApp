@@ -262,13 +262,19 @@ public class Student extends User {
     List<Integer> correctAnswers = new ArrayList<>(); // Assuming questions have integer-based answers
 
     for (Question question : test.getRandomQuestions(x)) {
+        // Here where it start to calculate the time of sloving the question
+        long startTime = System.currentTimeMillis();
         System.out.println("Question: " + question);
         System.out.print("Enter your answer: ");
         
         // Get the student's answer and add to takerAnswers
         int answer = scanner.nextInt();
         test.addAnswer(answer);
-
+        // Here the user submit his answer then we have to caluclate it to be accurate
+        long endTime = System.currentTimeMillis();
+        // Calculating 
+        long timeTaken = endTime - startTime;
+        test.timePerQuestion(timeTaken) ;
         // Assuming the Question object has a method to retrieve the correct answer
         correctAnswers.add(question.getRightAnswer());
         

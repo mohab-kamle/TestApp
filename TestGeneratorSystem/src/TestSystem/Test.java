@@ -146,8 +146,8 @@ public class Test {
     
     //methods
     
-    public double timePerQuestion(){
-        return 0;
+    public double timePerQuestion(double time){
+        
     }
     
     public List<Question> getRandomQuestions(int numQuestions) {
