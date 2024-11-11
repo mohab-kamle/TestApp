@@ -33,8 +33,12 @@ public final class QuestionBank {
         this.creator = creator;
         this.category = category;
         this.creationDate = creationDate;
+        this.questions = new ArrayList<>();
     }
 
+    public QuestionBank() {
+    }
+    
     public QuestionBank(User creator, Category category, LocalDate creationDate, ArrayList<Question> questions) {
         this(creator, category, creationDate);
         this.setQuestions(questions);

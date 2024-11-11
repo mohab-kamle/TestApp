@@ -169,7 +169,14 @@ public class TestGeneratorApp {
                         ifColorfullPrintln("Category couldn't be created", TerminalColors.BOLD_RED);
                     }
                 }
-                case 6 -> {
+                case 6 ->{
+                    if (admin.deleteCategory()) {
+                        ifColorfullPrintln("Category has been deleted !!", TerminalColors.BOLD_GREEN);
+                    }else{
+                        ifColorfullPrintln("NoThing is Deleted..", TerminalColors.BOLD_RED);
+                    }
+                }
+                case 7 -> {
                     if(admin.createQuestionBank()){
                         ifColorfullPrintln("Question Bank Created succesfully !!", TerminalColors.BOLD_GREEN);
                     }else{
@@ -191,13 +198,14 @@ public class TestGeneratorApp {
      */
     private static void displayAdminDashboardMenu() {
         clearConsole();
-        ifColorfullPrintln("===== Admin Dashboard =====",TerminalColors.BOLD_PURPLE);
+        ifColorfullPrintln("===== Admin Dashboard =====",TerminalColors.PURPLE);
         System.out.println("1. View Profile");
         System.out.println("2. Update Profile");
         System.out.println("3. Change Password");
         System.out.println("4. Remove Account");
         System.out.println("5. Create Category");
-        System.out.println("6. Create Question Bank");
+        System.out.println("6. delete Category");
+        System.out.println("7. Create Question Bank");
 //        System.out.println("6. View My Question Banks");
 //        System.out.println("7. delete Question Bank");
         System.out.println("0. Logout");

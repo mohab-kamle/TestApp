@@ -31,6 +31,9 @@ public abstract class User {
     protected String lastName;
     protected Date lastLoginDate;
 
+    public User() {
+    }
+    
     public User(String email,
             String userName,
             String password,
@@ -182,7 +185,7 @@ public abstract class User {
                 commonList.get(commonList.size() - 3) // Country
         );
         commonList.add(fullAddress);
-        
+
         return commonList;
     }
 
@@ -508,12 +511,15 @@ public abstract class User {
     public boolean createQuestionBank() {
         Scanner sc = new Scanner(System.in);
         CategoryDAO CDB = new CategoryDAO();
+        QuestionBankDAO QBDB = new QuestionBankDAO();
         List<Category> CategoryList = CDB.getCategoriesList();
+
         if (!CategoryList.isEmpty()) {
-            System.out.println("Enter the Category of The New Question Bank : ");
+            System.out.println("The available Categories to Choose From: ");
+
             // Display all categories with proper numbering
             for (int i = 0; i < CategoryList.size(); i++) {
-                System.out.println((++i) + " _ " + CategoryList.get(i).getName());
+                System.out.println((i + 1) + " _ " + CategoryList.get(i).getName());
                 System.out.println(CategoryList.get(i).getDescription());
                 System.out.println("");
             }
@@ -525,16 +531,30 @@ public abstract class User {
 
             do {
                 try {
-                    System.out.print("Enter the number of your chosen category (1-" + CategoryList.size() + "):");
+                    System.out.print("Enter the number of your chosen category (1-" + CategoryList.size() + "): ");
                     key = sc.nextInt();
 
                     // Check if the input is within valid range
                     if (key >= 1 && key <= CategoryList.size()) {
-                        selectedCategory = CategoryList.get(key - 1);
-                        validInput = true;
+                        UUID userUuid = getUserId();
+                        List<QuestionBank> currentQuestionBanks = QBDB.searchByCreator(userUuid);
+                        boolean isQuestionBankInCategory = false;
+
+                        for (QuestionBank qb : currentQuestionBanks) {
+                            if (qb.getCategory().getCategoryId().equals(CategoryList.get(key - 1).getCategoryId())) {
+                                isQuestionBankInCategory = true;
+                                break;
+                            }
+                        }
+
+                        if (!isQuestionBankInCategory) {
+                            selectedCategory = CategoryList.get(key - 1);
+                            validInput = true;
+                        } else {
+                            ifColorfullPrintln("There Exists QuestionBank for this Category", TerminalColors.YELLOW);
+                        }
                     } else {
-                      ifColorfullPrintln("Invalid input! Please enter a number between 1 and " + CategoryList.size(), 
-                                        TerminalColors.BOLD_RED);
+                        ifColorfullPrintln("Invalid input! Please enter a number between 1 and " + CategoryList.size(), TerminalColors.BOLD_RED);
                     }
                 } catch (InputMismatchException e) {
                     ifColorfullPrintln("Invalid input! Please enter a valid number.", TerminalColors.BOLD_RED);
@@ -549,7 +569,7 @@ public abstract class User {
             }
             return true;
         } else {
-            TestGeneratorApp.ifColorfullPrintln("Sorry ! there are no Categories available", TerminalColors.YELLOW);
+            TestGeneratorApp.ifColorfullPrintln("Sorry! There are no Categories available", TerminalColors.YELLOW);
             return false;
         }
     }

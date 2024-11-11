@@ -4,7 +4,9 @@ import DataBaseManagment.AdminDAO;
 import DataBaseManagment.CategoryDAO;
 import TestSystem.Category;
 import TestSystem.QuestionBank;
+import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
 import UserDefinedFunctionalities.Checker;
+import UserDefinedFunctionalities.TerminalColors;
 import java.io.Console;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -85,7 +87,7 @@ public class Admin extends User {
     public Admin login() {
         Scanner scan = new Scanner(System.in);
         AdminDAO ADB = new AdminDAO();
-        System.out.println("\nEnter Username : ");
+        System.out.print("\nEnter Username : ");
         String userNameInput = scan.nextLine();
         String passwordInput;
         Console console = System.console();
@@ -224,19 +226,58 @@ public class Admin extends User {
     public boolean deleteCategory() {
         CategoryDAO CDB = new CategoryDAO();
         Scanner scanner = new Scanner(System.in);
-        int i = 1;
-        if (!CDB.getCategoriesList().isEmpty()) {
-            for (Category category : CDB.getCategoriesList()) {
-                System.out.println("1 _ name : " + category.getName());
-                System.out.println("|--> " + category.getDescription());
+        int oldSize = CDB.getCategoriesList().size();
+        while (true) {
+            int i = 1;
+            if (!CDB.getCategoriesList().isEmpty()) {
+                for (Category category : CDB.getCategoriesList()) {
+                    System.out.println((i++) + " _ name : " + category.getName());
+                    System.out.println("|--> " + category.getDescription());
+                }
+
+                System.out.println("Enter The number of category you want to delete : ");
+                int key = scanner.nextInt();
+                OUTER:
+                while (true) {
+                    if (key >= 1 && key <= CDB.getCategoriesList().size()) {
+                        CDB.deleteCategory(CDB.getCategoriesList().get(key - 1).getCategoryId());
+                        if (!CDB.getCategoriesList().isEmpty()) {
+                            while (true) {
+                                System.out.println("Do you want to delete another one ? y/n");
+                                scanner.nextLine();
+                                String keyS = scanner.nextLine();
+                                switch (keyS.toLowerCase()) {
+                                    case "y" -> {
+                                        break OUTER;
+                                    }
+                                    case "n" -> {
+                                        return true;
+                                    }
+                                    default -> {
+                                        ifColorfullPrintln("Wrong Input , try again", TerminalColors.BOLD_RED);
+                                    }
+                                }
+                            }
+
+                        } else {
+                            ifColorfullPrintln("No Other Categories to Delete", TerminalColors.RED);
+                            return true;
+                        }
+                    } else {
+                        System.out.println("Wrong Input , try again or Enter 0 to return : ");
+                        key = scanner.nextInt();
+                        if (key == 0) {
+                            return oldSize > CDB.getCategoriesList().size();
+                        }
+                    }
+                }
+            } else {
+                ifColorfullPrintln("No Categories to Delete", TerminalColors.RED);
+                break;
             }
-            System.out.println("Enter The number of category you want to delete : ");
-            int key = scanner.nextInt();
-            //complete the logic
-        } else {
-            return false;
+
         }
-        return true;
+        return false;
     }
 
     public boolean addQuestionToQuestionBank() {
