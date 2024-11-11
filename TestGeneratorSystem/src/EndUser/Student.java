@@ -238,6 +238,47 @@ public class Student extends User {
         // Implement logic for taking a test
     }
 
+    // Set the end time
+    test.setEndTime(LocalDateTime.now());
+
+    // Calculate time taken for the test
+    double timeTaken = test.timeTaken();
+    System.out.println("Time taken: " + timeTaken + " minutes");
+
+    // Check answers and calculate the score
+    boolean passed = test.checkAnswers(correctAnswers);
+    int score = calculateScore(test.getTakerAnswers(), correctAnswers);
+
+    // Update student's test result based on the score and passing score
+    test.setTestResult(score);
+
+    if (passed) {
+        passedTestsCount++;
+        System.out.println("Congratulations! You passed with a score of " + score);
+    } else {
+        System.out.println("You didn't pass. Your score: " + score);
+    }
+
+    // Update total time and test history
+    totalTimeOfAllTests += timeTaken;
+    takenTests.add(test.getTestID().toString());
+    
+    
+    
+}
+
+private int calculateScore(List<Integer> studentAnswers, List<Integer> correctAnswers) {
+    int score = 0;
+    for (int i = 0; i < studentAnswers.size(); i++) {
+        if (studentAnswers.get(i).equals(correctAnswers.get(i))) {
+            score++;
+        }
+    }
+    return score;
+}
+
+    
+
     public List<String> getTestHistory() {
         return takenTests;
     }
