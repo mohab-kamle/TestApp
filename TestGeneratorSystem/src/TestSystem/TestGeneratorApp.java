@@ -4,6 +4,7 @@ import EndUser.Admin;
 import EndUser.Student;
 import EndUser.User;
 import UserDefinedFunctionalities.TerminalColors;
+import java.io.IOException;
 import java.util.Scanner;
 import javax.mail.MessagingException;
 
@@ -26,14 +27,14 @@ public class TestGeneratorApp {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static User currentUser = null;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         runMainApplication();
     }
 
     /**
      * Main application entry point and control flow
      */
-    private static void runMainApplication() {
+    private static void runMainApplication() throws IOException {
         while (true) {
             try {
                 displayMainMenu();
@@ -69,7 +70,7 @@ public class TestGeneratorApp {
     /**
      * Handles Admin-specific operations
      */
-    private static void handleAdminOperations() throws MessagingException {
+    private static void handleAdminOperations() throws MessagingException, IOException {
         while (true) {
             displayAdminMenu();
             int adminChoice = getUserChoice();
@@ -116,7 +117,7 @@ public class TestGeneratorApp {
     /**
      * Performs Admin login process
      */
-    private static void performAdminLogin() {
+    private static void performAdminLogin() throws IOException {
         clearConsole();
         ifColorfullPrintln("===== Admin Login =====", TerminalColors.BOLD_BLUE);
         
@@ -141,7 +142,7 @@ public class TestGeneratorApp {
     /**
      * Handles Admin dashboard and operations after login
      */
-    private static void handleAdminDashboard(Admin admin) {
+    private static void handleAdminDashboard(Admin admin) throws IOException {
         while (true) {
             displayAdminDashboardMenu();
             int dashboardChoice = getUserChoice();
@@ -170,13 +171,20 @@ public class TestGeneratorApp {
                     }
                 }
                 case 6 ->{
+                    if (admin.modifyCategory()) {
+                        ifColorfullPrintln("Category has been updated succesfully !!", TerminalColors.BOLD_GREEN);
+                    }else{
+                        ifColorfullPrintln("Categories still the same..", TerminalColors.BOLD_RED);
+                    }
+                }
+                case 7 ->{
                     if (admin.deleteCategory()) {
                         ifColorfullPrintln("Category has been deleted !!", TerminalColors.BOLD_GREEN);
                     }else{
                         ifColorfullPrintln("NoThing is Deleted..", TerminalColors.BOLD_RED);
                     }
                 }
-                case 7 -> {
+                case 8 -> {
                     if(admin.createQuestionBank()){
                         ifColorfullPrintln("Question Bank Created succesfully !!", TerminalColors.BOLD_GREEN);
                     }else{
@@ -204,8 +212,9 @@ public class TestGeneratorApp {
         System.out.println("3. Change Password");
         System.out.println("4. Remove Account");
         System.out.println("5. Create Category");
-        System.out.println("6. delete Category");
-        System.out.println("7. Create Question Bank");
+        System.out.println("6. modify Category");
+        System.out.println("7. delete Category");
+        System.out.println("8. Create Question Bank");
 //        System.out.println("6. View My Question Banks");
 //        System.out.println("7. delete Question Bank");
         System.out.println("0. Logout");
@@ -215,7 +224,7 @@ public class TestGeneratorApp {
     /**
      * Handles Student-specific operations
      */
-    private static void handleStudentOperations() throws MessagingException {
+    private static void handleStudentOperations() throws MessagingException, IOException {
         while (true) {
             displayStudentMenu();
             int studentChoice = getUserChoice();
@@ -262,7 +271,7 @@ public class TestGeneratorApp {
     /**
      * Performs Student login process
      */
-    private static void performStudentLogin() {
+    private static void performStudentLogin() throws IOException {
         clearConsole();
         System.out.println("===== Student Login =====");
         Student loggedStudent = new Student().login();
@@ -278,7 +287,7 @@ public class TestGeneratorApp {
     /**
      * Handles Student dashboard and operations after login
      */
-    private static void handleStudentDashboard(Student student) {
+    private static void handleStudentDashboard(Student student) throws IOException {
         while (true) {
             displayStudentDashboardMenu();
             int dashboardChoice = getUserChoice();
@@ -298,6 +307,9 @@ public class TestGeneratorApp {
                         student.removeAccount();
                         return;
                     }
+                }
+                case 5 -> {
+                    student.takeTest();
                 }
                 case 0 -> {
                     return;
@@ -319,6 +331,7 @@ public class TestGeneratorApp {
         System.out.println("2. Update Profile");
         System.out.println("3. Change Password");
         System.out.println("4. Remove Account");
+        System.out.println("5. Take Test");
         System.out.println("0. Logout");
         System.out.print("Enter your choice: ");
     }

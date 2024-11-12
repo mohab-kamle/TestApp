@@ -1,6 +1,8 @@
 package TestSystem;
 
 import EndUser.Student;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -9,6 +11,11 @@ import java.util.*;
  *
  * @author mohab
  */
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME, 
+    include = JsonTypeInfo.As.PROPERTY, 
+    property = "@type"
+)
 public class Test {
     private UUID testID;
     private Category category;
@@ -16,13 +23,24 @@ public class Test {
     private Student taker;
     private int duration; //in minutes
     private int testResult;//why int ?
-    private double passingScore;//why double ?
+    private final static double passingScore = 60;
     private Question.dlevel difficulty;
     private ArrayList<Question> questions;
     private LocalDateTime startTime;
     private LocalDateTime endTime;// need to be aware of the technique of calculating it
     private int noOfAttempts;
     private ArrayList<Integer> takerAnswers;
+
+
+    public Test(Category category, LocalDate creationDate, Student taker, Question.dlevel difficulty, ArrayList<Question> questions) {
+        this.testID = UUID.randomUUID();
+        this.category = category;
+        this.creationDate = creationDate;
+        this.taker = taker;
+        this.difficulty = difficulty;
+        this.questions = questions;
+        this.noOfAttempts = 0;
+        this.takerAnswers = new ArrayList<>(); }
     
     //setters
 
@@ -48,10 +66,6 @@ public class Test {
 
     public void setTestResult(int testResult) {
         this.testResult = testResult;
-    }
-
-    public void setPassingScore(double passingScore) {
-        this.passingScore = passingScore;
     }
 
     public void setDifficulty(Question.dlevel difficulty) {
@@ -104,7 +118,7 @@ public class Test {
         return testResult;
     }
 
-    public double getPassingScore() {
+    public static double getPassingScore() {
         return passingScore;
     }
 
@@ -135,35 +149,54 @@ public class Test {
     //methods
     
     public double timePerQuestion(){
-        //implementation
         return 0;
     }
     
-    public void getRandomQuestions(){
-        
+    public List<Question> getRandomQuestions(int numQuestions) {
+    if (questions == null || questions.size() < numQuestions) {
+        return Collections.emptyList();
+    }
+    List<Question> shuffledQuestions = new ArrayList<>(questions);
+    Collections.shuffle(shuffledQuestions);
+    return shuffledQuestions.subList(0, numQuestions);
     }
     
     public void reset(){
-        
+        this.testResult = 0;
+        this.noOfAttempts = 0;
+        this.takerAnswers.clear();
+        this.startTime = null;
+        this.endTime = null;
     }
     
-    public boolean checkAnswers(){
-        //implementation
+    public boolean checkAnswers(List<Integer> correctAnswers) {
+    if (takerAnswers.size() != correctAnswers.size()) {
         return false;
     }
-    
-    public void addAnswer(){
-        
+    for (int i = 0; i < takerAnswers.size(); i++) {
+        if (!takerAnswers.get(i).equals(correctAnswers.get(i))) {
+            return false;
+        }
+    }
+    return true;
     }
     
-    public void removeAnswer(){
-        
+    public void addAnswer(int answer){
+        takerAnswers.add(answer);
+    }
+    
+    public void removeAnswer(int index){
+        if (index >= 0 && index < takerAnswers.size()) {
+            takerAnswers.remove(index);
+        }
     }
     
     public double timeTaken(){
-        //why return double ?
-        //implementation
-        return 0;
+      if (startTime == null || endTime == null) {
+          return 0;
+      }
+      Duration tDuration = Duration.between(startTime, endTime);
+      return tDuration.toMinutes() + tDuration.toSecondsPart() / 60.0;
     }
     
 }
