@@ -185,10 +185,31 @@ public class TestGeneratorApp {
                     }
                 }
                 case 8 -> {
-                    if(admin.createQuestionBank()){
+                    if(admin.createQuestionBank()!=null){
                         ifColorfullPrintln("Question Bank Created succesfully !!", TerminalColors.BOLD_GREEN);
                     }else{
                         ifColorfullPrintln("Question Bank couldn't be created", TerminalColors.BOLD_RED);
+                    }
+                }
+                case 10 -> {
+                    if(admin.addQuestionToQuestionBank()){
+                        ifColorfullPrintln("Question has been added", TerminalColors.BOLD_GREEN);
+                    }else{
+                        ifColorfullPrintln("No Question is add", TerminalColors.BOLD_RED);
+                    }
+                }
+                case 11 -> {
+                    if(admin.updateQuestionInQuestionBank()){
+                        ifColorfullPrintln("Question has been updated succesfully !!", TerminalColors.BOLD_GREEN);
+                    }else{
+                        ifColorfullPrintln("No changes to Question happened", TerminalColors.BOLD_RED);
+                    }
+                }
+                case 12 -> {
+                    if(admin.deleteQuestionFromQuestionBank()){
+                        ifColorfullPrintln("Question has been deleted !!!", TerminalColors.BOLD_GREEN);
+                    }else{
+                        ifColorfullPrintln("No Question is deleted...", TerminalColors.BOLD_RED);
                     }
                 }
                 case 0 -> {
@@ -215,6 +236,9 @@ public class TestGeneratorApp {
         System.out.println("6. modify Category");
         System.out.println("7. delete Category");
         System.out.println("8. Create Question Bank");
+        System.out.println("10. Add Question");
+        System.out.println("11. Update Question");
+        System.out.println("12. delete Question");
 //        System.out.println("6. View My Question Banks");
 //        System.out.println("7. delete Question Bank");
         System.out.println("0. Logout");
@@ -311,6 +335,9 @@ public class TestGeneratorApp {
                 case 5 -> {
                     student.takeTest();
                 }
+                case 6 -> {
+                    student.getTestHistory();
+                }
                 case 0 -> {
                     return;
                 }
@@ -326,12 +353,13 @@ public class TestGeneratorApp {
      */
     private static void displayStudentDashboardMenu() {
         clearConsole();
-        System.out.println("===== Student Dashboard =====");
+        ifColorfullPrintln("===== Student Dashboard =====",TerminalColors.BOLD_BLUE);
         System.out.println("1. View Profile");
         System.out.println("2. Update Profile");
         System.out.println("3. Change Password");
         System.out.println("4. Remove Account");
         System.out.println("5. Take Test");
+        System.out.println("6. View Test History");
         System.out.println("0. Logout");
         System.out.print("Enter your choice: ");
     }

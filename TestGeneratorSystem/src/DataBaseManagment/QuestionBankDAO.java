@@ -56,7 +56,7 @@ public class QuestionBankDAO {
         saveQuestionBanksList(banks);
     }
 
-    public void updateQuestionBank(QuestionBank updatedBank) {
+    public boolean updateQuestionBank(QuestionBank updatedBank) {
         List<QuestionBank> banks = getQuestionBanksList();
         if (banks != null) {
             for (int i = 0; i < banks.size(); i++) {
@@ -67,6 +67,7 @@ public class QuestionBankDAO {
             }
             saveQuestionBanksList(banks);
         }
+        return true;
     }
 
     public QuestionBank loadQuestionBank(UUID bankId) {
@@ -93,7 +94,18 @@ public class QuestionBankDAO {
         }
         return matchingBanks;
     }
-
+    public List<QuestionBank> searchByCategoryAndCreator(Category category,UUID creator) {
+        List<QuestionBank> banks = getQuestionBanksList();
+        List<QuestionBank> matchingBanks = new ArrayList<>();
+        if (banks != null) {
+            for (QuestionBank bank : banks) {
+                if (bank.getCategory().equals(category)&&bank.getCreator().getUserId().equals(creator)) {
+                    matchingBanks.add(bank);
+                }
+            }
+        }
+        return matchingBanks;
+    }
     public List<QuestionBank> searchByCreator(UUID creatorId) {
         List<QuestionBank> banks = getQuestionBanksList();
         List<QuestionBank> matchingBanks = new ArrayList<>();
@@ -142,7 +154,7 @@ public class QuestionBankDAO {
     }
 
     // Additional utility methods
-    public void addQuestionToBank(UUID bankId, Question question) {
+    public boolean addQuestionToBank(UUID bankId, Question question) {
         QuestionBank bank = loadQuestionBank(bankId);
         if (bank != null) {
             ArrayList<Question> questions = bank.getQuestions();
@@ -153,6 +165,7 @@ public class QuestionBankDAO {
             bank.setQuestions(questions);
             updateQuestionBank(bank);
         }
+        return true;
     }
 
     public void removeQuestionFromBank(UUID bankId, UUID questionId) {

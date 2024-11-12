@@ -2,7 +2,9 @@ package EndUser;
 
 import DataBaseManagment.AdminDAO;
 import DataBaseManagment.CategoryDAO;
+import DataBaseManagment.QuestionBankDAO;
 import TestSystem.Category;
+import TestSystem.Question;
 import TestSystem.QuestionBank;
 import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
 import UserDefinedFunctionalities.Checker;
@@ -18,6 +20,7 @@ import java.util.*;
  * @author mohab
  */
 public class Admin extends User {
+
     private LocalDate dateAppointed;
     private String contactNumber;
     private String department;
@@ -242,7 +245,7 @@ public class Admin extends User {
         System.out.println("All Categories:");
         for (int i = 0; i < categories.size(); i++) {
             System.out.println((i + 1) + "- " + categories.get(i).getName());
-            System.out.println("Description : "+ categories.get(i).getDescription());
+            System.out.println("Description : " + categories.get(i).getDescription());
         }
 
         // Select category to modify
@@ -421,15 +424,397 @@ public class Admin extends User {
     }
 
     public boolean addQuestionToQuestionBank() {
-        return false;
+        try {
+            // 1. Select Category
+            Category selectedCategory = selectCategory();
+            if (selectedCategory == null) {
+                System.out.println("Operation cancelled.");
+                return false;
+            }
+
+            // 2. Get or Create QuestionBank
+            QuestionBank questionBank = getOrCreateQuestionBank(selectedCategory, getUserId());
+            if (questionBank == null) {
+                System.out.println("Failed to get or create question bank.");
+                return false;
+            }
+
+            // 3. Create Question
+            Question newQuestion = createQuestion(selectedCategory);
+            if (newQuestion == null) {
+                System.out.println("Question creation cancelled.");
+                return false;
+            }
+
+            // 4. Add question to bank and update
+            questionBank.getQuestions().add(newQuestion);
+            QuestionBankDAO QBDB = new QuestionBankDAO();
+            boolean updated = QBDB.addQuestionToBank(questionBank.getBankID(), newQuestion);
+
+            if (updated) {
+                System.out.println("Question successfully added to the question bank!");
+                return true;
+            } else {
+                System.out.println("Failed to update question bank in database.");
+                return false;
+            }
+
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+            return false;
+        }
     }
 
-    public boolean updateQuestioninQuestionBank() {
-        return false;
+    private Category selectCategory() {
+        Scanner scanner = new Scanner(System.in);
+        CategoryDAO CBD = new CategoryDAO();
+        List<Category> categories = CBD.getCategoriesList();
+        if (categories.isEmpty()) {
+            System.out.println("No categories available.");
+            return null;
+        }
+
+        while (true) {
+            System.out.println("\nAvailable Categories:");
+            for (int i = 0; i < categories.size(); i++) {
+                Category category = categories.get(i);
+                System.out.println((i + 1) + " _ name : " + category.getName());
+                System.out.println("|--> " + category.getDescription());
+            }
+            System.out.println("0 - Cancel operation");
+
+            System.out.print("\nSelect category number: ");
+            String input = scanner.nextLine().trim();
+
+            try {
+                int choice = Integer.parseInt(input);
+                if (choice == 0) {
+                    return null;
+                }
+                if (choice > 0 && choice <= categories.size()) {
+                    return categories.get(choice - 1);
+                }
+                System.out.println("Invalid choice. Please try again.");
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
     }
+
+    private QuestionBank getOrCreateQuestionBank(Category category, UUID userId) {
+        QuestionBankDAO QDBD = new QuestionBankDAO();
+        List<QuestionBank> questionBanks = QDBD.searchByCategoryAndCreator(category, userId);
+        if (!questionBanks.isEmpty()) {
+            System.out.println("\nExists Question Bank for " + category.getName() + ":");
+            System.out.println("Date Created : " + questionBanks.get(0).getCreationDate());
+            return questionBanks.get(0);
+        }
+        return createQuestionBank();
+    }
+
+    private Question createQuestion(Category category) {
+        // Get and validate question statement
+        String statement = getValidStatement();
+        if (statement == null) {
+            return null;
+        }
+
+        // Select difficulty level
+        Question.dlevel difficulty = selectDifficultyLevel();
+        if (difficulty == null) {
+            return null;
+        }
+
+        // Get and validate choices
+        String[] choices = getValidChoices();
+        if (choices == null) {
+            return null;
+        }
+
+        // Get and validate correct answer
+        Integer rightAnswer = getValidRightAnswer();
+        if (rightAnswer == null) {
+            return null;
+        }
+
+        return new Question(category, statement, difficulty, rightAnswer, choices);
+    }
+
+    private String getValidStatement() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("Enter question statement (or 'cancel' to abort): ");
+            String statement = scanner.nextLine().trim();
+
+            if (statement.equalsIgnoreCase("cancel")) {
+                return null;
+            }
+
+            if (statement.length() < 10) {
+                System.out.println("Statement must be at least 10 characters long.");
+                continue;
+            }
+
+            return statement;
+        }
+    }
+
+    private String[] getValidChoices() {
+        Scanner scanner = new Scanner(System.in);
+        String[] choices = new String[4];
+        System.out.println("Enter choices for A, B, C, and D (or 'cancel' to abort):");
+
+        char[] choiceLetters = {'A', 'B', 'C', 'D'};
+
+        for (int i = 0; i < choiceLetters.length; i++) {
+            while (true) {
+                System.out.print("Enter choice " + choiceLetters[i] + ": ");
+                String choice = scanner.nextLine().trim();
+
+                if (choice.equalsIgnoreCase("cancel")) {
+                    return null;
+                }
+
+                if (choice.isEmpty()) {
+                    System.out.println("Choice cannot be empty.");
+                    continue;
+                }
+
+                // Check for duplicate choices
+                boolean isDuplicate = false;
+                for (int j = 0; j < i; j++) {
+                    if (choice.equalsIgnoreCase(choices[j])) {
+                        System.out.println("This choice already exists. Please enter a unique choice.");
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+
+                if (!isDuplicate) {
+                    choices[i] = choice;
+                    break;
+                }
+            }
+        }
+
+        // Display all choices for verification
+        System.out.println("\nEntered choices:");
+        for (int i = 0; i < choices.length; i++) {
+            System.out.println(choiceLetters[i] + ": " + choices[i]);
+        }
+
+        return choices;
+    }
+
+    private Question.dlevel selectDifficultyLevel() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Select difficulty level:");
+            System.out.println("1 - Easy");
+            System.out.println("2 - Medium");
+            System.out.println("3 - Hard");
+            System.out.println("0 - Cancel");
+
+            String input = scanner.nextLine().trim();
+
+            try {
+                int choice = Integer.parseInt(input);
+                switch (choice) {
+                    case 0:
+                        return null;
+                    case 1:
+                        return Question.dlevel.EASY;
+                    case 2:
+                        return Question.dlevel.MEDIUM;
+                    case 3:
+                        return Question.dlevel.HARD;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
+    }
+
+    private Integer getValidRightAnswer() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("\nEnter the correct answer (A, B, C, or D)");
+            System.out.println("(or enter 'cancel' to abort)");
+
+            String input = scanner.nextLine().trim().toUpperCase();
+
+            if (input.equalsIgnoreCase("cancel")) {
+                return null;
+            }
+
+            if (input.length() != 1) {
+                System.out.println("Please enter a single letter (A, B, C, or D)");
+                continue;
+            }
+
+            char answer = input.charAt(0);
+            if (answer >= 'A' && answer <= 'D') {
+                return answer - 'A'; // Convert letter to index (A=0, B=1, C=2, D=3)
+            }
+
+            System.out.println("Please enter a valid choice (A, B, C, or D)");
+        }
+    }
+
+    public boolean updateQuestionInQuestionBank() {
+        try {
+// 1. Select Category        
+            Category selectedCategory = selectCategory();
+            if (selectedCategory == null) {
+                System.out.println("Operation cancelled.");
+                return false;
+            }        // 2. Get QuestionBank        
+            QuestionBank questionBank = getQuestionBank(selectedCategory, getUserId());       
+            if (questionBank == null) {
+                System.out.println("No Question Bank found for the selected category.");
+                return false;
+            }
+// 3. Display Questions        
+            displayQuestions(questionBank);
+// 4. Select Question to Update        
+            int questionIndex = selectQuestionToUpdate(questionBank);
+            if (questionIndex < 0) {
+                System.out.println("Operation cancelled.");
+                return false;
+            }
+// 5. Get New Question Details        
+            Question updatedQuestion = createQuestion(selectedCategory);
+            if (updatedQuestion == null) {
+                System.out.println("Question update cancelled.");
+                return false;
+            }
+// 6. Update the question in the QuestionBank        
+            questionBank.getQuestions().set(questionIndex, updatedQuestion);
+// 7. Update QuestionBank in the database        
+            QuestionBankDAO QBDB = new QuestionBankDAO();
+            boolean updated = QBDB.updateQuestionBank(questionBank);
+            if (updated) {
+                System.out.println("Question successfully updated in the question bank!");
+                return true;
+            } else {
+                System.out.println("Failed to update question bank in database.");
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+            return false;
+        }
+    }
+
+    private int selectQuestionToUpdate(QuestionBank questionBank) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of the question to update (or 0 to cancel): ");
+        int questionIndex = scanner.nextInt() - 1;
+// Convert to zero-based index    
+        if (questionIndex == -1) {
+            return -1;
+        }
+// Cancel operation  
+    if (questionIndex < 0 || questionIndex >= questionBank.getQuestionCount()) {        
+    System.out.println("Invalid question number.");
+        return -1;
+// Invalid selection    
+}    
+        return questionIndex;
+    }
+
 
     public boolean deleteQuestionFromQuestionBank() {
-        return false;
+        try {
+            // 1. Select Category
+            Category selectedCategory = selectCategory();
+            if (selectedCategory == null) {
+                System.out.println("Operation cancelled.");
+                return false;
+            }
+
+            // 2. Get QuestionBank
+            QuestionBank questionBank = getQuestionBank(selectedCategory, getUserId());
+            if (questionBank == null) {
+                System.out.println("No Question Bank found for the selected category.");
+                return false;
+            }
+
+            // 3. Display Questions
+            displayQuestions(questionBank);
+
+            // 4. Select Question to Delete
+            int questionIndex = selectQuestionToDelete(questionBank);
+            if (questionIndex < 0) {
+                System.out.println("Operation cancelled.");
+                return false;
+            }
+
+            // 5. Confirm Deletion
+            System.out.print("Are you sure you want to delete this question? (yes/no): ");
+            Scanner scanner = new Scanner(System.in);
+            String confirmation = scanner.nextLine().trim().toLowerCase();
+            if (!confirmation.equals("yes")) {
+                System.out.println("Deletion cancelled.");
+                return false;
+            }
+
+            // 6. Remove the question
+            Question questionToDelete = questionBank.getQuestions().get(questionIndex);
+            questionBank.removeQuestion(questionToDelete);
+
+            // 7. Update QuestionBank in the database
+            QuestionBankDAO QBDB = new QuestionBankDAO();
+            boolean updated = QBDB.updateQuestionBank(questionBank);
+            if (updated) {
+                System.out.println("Question successfully deleted from the question bank!");
+                return true;
+            } else {
+                System.out.println("Failed to update question bank in database.");
+                return false;
+            }
+
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+            return false;
+        }
+    }
+
+    private void displayQuestions(QuestionBank questionBank) {
+        System.out.println("Current Questions in the selected Question Bank:");
+        List<Question> questions = questionBank.getQuestions();
+        for (int i = 0; i < questions.size(); i++) {
+            System.out.println((i + 1) + ". " + questions.get(i));
+        }
+    }
+
+    private int selectQuestionToDelete(QuestionBank questionBank) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of the question to delete (or 0 to cancel): ");
+        int questionIndex = scanner.nextInt() - 1; // Convert to zero-based index
+
+        if (questionIndex == -1) {
+            return -1; // Cancel operation
+        }
+
+        if (questionIndex < 0 || questionIndex >= questionBank.getQuestions().size()) {
+            System.out.println("Invalid question number.");
+            return -1; // Invalid selection
+        }
+
+        return questionIndex;
+    }
+
+    private QuestionBank getQuestionBank(Category category, UUID userId) {
+        QuestionBankDAO QDBD = new QuestionBankDAO();
+        List<QuestionBank> questionBanks = QDBD.searchByCategoryAndCreator(category, userId);
+        if (!questionBanks.isEmpty()) {
+            return questionBanks.get(0);
+        }
+        System.out.println("No existing question bank found for this category.");
+        return null;
     }
 
     // Private helper methods
@@ -442,6 +827,7 @@ public class Admin extends User {
                 "Invalid Department name.Should contain letters only");
         this.setDepartment(Department);
         ADB.updateAdmin(this);
+                updateEquivalentCategoryAndQuestionBank();
         System.out.println("Department updated successfully!");
     }
 
@@ -454,6 +840,7 @@ public class Admin extends User {
                 "Invalid Phone Number\ntry again with this format +Countrycode 123456789");
         this.setContactNumber(ContactNumber);
         ADB.updateAdmin(this);
+                updateEquivalentCategoryAndQuestionBank();
         System.out.println("Contact Number updated successfully!");
     }
 
