@@ -8,6 +8,7 @@ import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
 import UserDefinedFunctionalities.Checker;
 import UserDefinedFunctionalities.TerminalColors;
 import java.io.Console;
+import java.io.IOException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -134,7 +135,7 @@ public class Admin extends User {
         System.out.println(" 6 --> Update Department");
     }
 
-    public void updateProfile() {
+    public void updateProfile() throws IOException {
         Scanner sc = new Scanner(System.in);
         Checker check = new Checker();
         int choice;
@@ -211,7 +212,14 @@ public class Admin extends User {
         Scanner scanner = new Scanner(System.in);
         Checker check = new Checker();
         CategoryDAO CDB = new CategoryDAO();
-        String categoryName = validateInput(scanner, check, "Enter Category Name : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Wrong name , try again");
+        String categoryName;
+        do {
+            categoryName = validateInput(scanner, check, "Enter Category Name : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Wrong name , try again");
+            if (CDB.searchCategoryByName(categoryName) != null) {
+                ifColorfullPrintln("This category already exists", TerminalColors.BOLD_RED);
+            }
+        } while (CDB.searchCategoryByName(categoryName) != null);
+
         String categoryDesc = validateInput(scanner, check, "Enter Description : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Invalid Characters Exist , try again");
         LocalDate creationDate = LocalDate.now();
         Category newCategory = new Category(categoryName, categoryDesc, creationDate, this);
@@ -221,119 +229,140 @@ public class Admin extends User {
 
     public boolean modifyCategory() {
         Scanner scanner = new Scanner(System.in);
+        Checker check = new Checker();
         CategoryDAO CDB = new CategoryDAO();
-        Checker check = new Checker() ;
-        int i = 1 ;
-        // Display all categories
-        ifColorfullPrintln("All Categories:", TerminalColors.BOLD_BLUE);
-        for (Category category : CDB.getCategoriesList()){
-            System.out.println(i++ +"- "+ category.getName());
+
+        // Check if categories exist
+        List<Category> categories = CDB.getCategoriesList();
+        if (categories.isEmpty()) {
+            ifColorfullPrintln("No Categories to Modify", TerminalColors.RED);
+            return false;
         }
-        ifColorfullPrintln("Enter The number of category you want to modify or 0 for Exit: ", TerminalColors.CYAN);
-        int label = scanner.nextInt() ;
-        if (label > 0 && label <= CDB.getCategoriesList().size()){
-            Category selectedCategory = CDB.getCategoriesList().get(label - 1);
-            ifColorfullPrintln("You have selected \""+selectedCategory.getName()+"\"", TerminalColors.GREEN);
-            // Options for modification
-            ifColorfullPrintln("2 option:", TerminalColors.BOLD_BLUE);
-            System.out.println("\t1- Name");
-            System.out.println("\t2- Description");
-            ifColorfullPrintln("Enter the item number or 0 to Exit: ", TerminalColors.CYAN);
-            int selected = scanner.nextInt(); 
-            // Make sure the inputs are correct
-            while (selected != 1 && selected != 2 && selected != 0) {
-                ifColorfullPrintln("Wrong input", TerminalColors.BOLD_RED);
-                ifColorfullPrintln("Please enter right input", TerminalColors.CYAN);
-                selected = scanner.nextInt();
+
+        // Display categories
+        System.out.println("All Categories:");
+        for (int i = 0; i < categories.size(); i++) {
+            System.out.println((i + 1) + "- " + categories.get(i).getName());
+            System.out.println("Description : "+ categories.get(i).getDescription());
+        }
+
+        // Select category to modify
+        Category selectedCategory;
+        while (true) {
+            System.out.print("Enter the number of category you want to modify (or 0 to cancel): ");
+            int label = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            // Allow cancellation
+            if (label == 0) {
+                return false;
             }
-            // exit without modify
-            if (selected == 0) {
-                ifColorfullPrintln("EXIT...",TerminalColors.GREEN );
-                return false ;
-            }
-            // modify name with all odds success or wrong input or additional modification
-            else if (selected == 1){
-                ifColorfullPrintln("Please Enter New Name: ", TerminalColors.CYAN);
-                String Name = validateInput(scanner, check, "Enter Category New Name : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Wrong name , try again");
-                selectedCategory.setName(Name);
-                // success 
-                ifColorfullPrintln("Done. The new name is \""+Name+"\"", TerminalColors.GREEN);
-                // additional modification
-                ifColorfullPrintln("Enter 2 if you want to modify the description also or 0 to Exit", TerminalColors.CYAN);
-                int selected2 = scanner.nextInt();
-                // Make sure the inputs are correct
-                while (selected2 != 0 && selected2 != 2) {
-                    ifColorfullPrintln("Wrong input", TerminalColors.BOLD_RED);
-                    ifColorfullPrintln("Please enter right input", TerminalColors.CYAN);
-                    selected2 = scanner.nextInt();
-                }
-                // modify description also and update
-                if (selected2 == 2) {
-                    ifColorfullPrintln("Please Enter New Description: ", TerminalColors.CYAN);
-                    String description = validateInput(scanner, check, "Enter Description : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Invalid Characters Exist , try again");
-                    selectedCategory.setDescription(description);
-                    ifColorfullPrintln("Done. You have a new description: ", TerminalColors.GREEN);
-                    System.out.println("\t \t" + description);
-                    CDB.updateCategory(selectedCategory);
-                    return true ;
-                }
-                // exit and update
-                else {
-                    ifColorfullPrintln("EXIT...",TerminalColors.GREEN );
-                    CDB.updateCategory(selectedCategory);
-                    return true ;
-                }
-            }
-            // modify description with all odds success or wrong input or additional modification
-            else {
-                ifColorfullPrintln("Please Enter New Description: ", TerminalColors.CYAN);
-                String description = validateInput(scanner, check, "Enter Description : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Invalid Characters Exist , try again");
-                selectedCategory.setDescription(description);
-                // success
-                ifColorfullPrintln("Done. You have a new description: ", TerminalColors.GREEN);
-                System.out.println("\t \t" + description);
-                // additional modification
-                ifColorfullPrintln("Enter 1 if you want to modify the name also or 0 to Exit", TerminalColors.CYAN);
-                int selected2 = scanner.nextInt();
-                // Make sure the inputs are correct
-                while (selected2 != 0 && selected2 != 2) {
-                    ifColorfullPrintln("Wrong input", TerminalColors.BOLD_RED);
-                    ifColorfullPrintln("Please enter right input", TerminalColors.CYAN);
-                    selected2 = scanner.nextInt();
-                }
-                // modify name also and update
-                if (selected2 == 1) {
-                    ifColorfullPrintln("Please Enter New Name: ", TerminalColors.CYAN);
-                    String Name = validateInput(scanner, check, "Enter Category New Name : ", Checker.StringType.LETTERS_NUMS_UNDERSCORE, "Wrong name , try again");
-                    selectedCategory.setName(Name);
-                    ifColorfullPrintln("Done. The new name is \""+Name+"\"", TerminalColors.GREEN);
-                    CDB.updateCategory(selectedCategory);
-                    return true ;
-                }
-                // exit and update
-                else {
-                    ifColorfullPrintln("EXIT...",TerminalColors.GREEN );
-                    CDB.updateCategory(selectedCategory);
-                    return true ;
-                }
+
+            // Validate category selection
+            if (label > 0 && label <= categories.size()) {
+                selectedCategory = categories.get(label - 1);
+                ifColorfullPrintln("You have selected \"" + selectedCategory.getName() + "\"", TerminalColors.BOLD_GREEN);
+                break;
+            } else {
+                ifColorfullPrintln("Invalid category number. Please try again.", TerminalColors.BOLD_RED);
             }
         }
-        else if (label == 0){
-            ifColorfullPrintln("EXIT...",TerminalColors.GREEN ); 
+
+        // Modification options
+        while (true) {
+            System.out.println("\nModification Options:");
+            System.out.println("1- Modify Name");
+            System.out.println("2- Modify Description");
+            System.out.println("3- Modify Both");
+            System.out.println("0- Cancel");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 0 -> {
+                    return false;
+                }
+
+                case 1 -> {
+                    // Modify Name
+                    String newName;
+                    do {
+                        newName = validateInput(
+                                scanner,
+                                check,
+                                "Enter New Category Name: ",
+                                Checker.StringType.LETTERS_NUMS_UNDERSCORE,
+                                "Invalid name, try again"
+                        );
+
+                        // Check if new name already exists
+                        if (CDB.searchCategoryByName(newName) != null) {
+                            ifColorfullPrintln("This category name already exists", TerminalColors.BOLD_RED);
+                        }
+                    } while (CDB.searchCategoryByName(newName) != null);
+
+                    selectedCategory.setName(newName);
+                    ifColorfullPrintln("Name updated successfully to \"" + newName + "\"", TerminalColors.GREEN);
+                }
+
+                case 2 -> {
+                    // Modify Description
+                    String newDesc = validateInput(
+                            scanner,
+                            check,
+                            "Enter New Description: ",
+                            Checker.StringType.LETTERS_NUMS_UNDERSCORE,
+                            "Invalid description, try again"
+                    );
+
+                    selectedCategory.setDescription(newDesc);
+                    ifColorfullPrintln("Description updated successfully", TerminalColors.GREEN);
+                }
+
+                case 3 -> {
+                    String newName;
+                    // Modify Both
+                    // Modify Name
+                    do {
+                        newName = validateInput(
+                                scanner,
+                                check,
+                                "Enter New Category Name: ",
+                                Checker.StringType.LETTERS_NUMS_UNDERSCORE,
+                                "Invalid name, try again"
+                        );
+
+                        // Check if new name already exists
+                        if (CDB.searchCategoryByName(newName) != null) {
+                            ifColorfullPrintln("This category name already exists", TerminalColors.BOLD_RED);
+                        }
+                    } while (CDB.searchCategoryByName(newName) != null);
+                    // Modify Description
+                    String newDesc = validateInput(
+                            scanner,
+                            check,
+                            "Enter New Description: ",
+                            Checker.StringType.LETTERS_NUMS_UNDERSCORE,
+                            "Invalid description, try again"
+                    );
+                    selectedCategory.setName(newName);
+                    selectedCategory.setDescription(newDesc);
+                    ifColorfullPrintln("Name and Description updated successfully", TerminalColors.GREEN);
+                }
+
+                default -> {
+                    ifColorfullPrintln("Invalid choice. Please try again.", TerminalColors.BOLD_RED);
+                    continue;
+                }
+            }
+
+            // Update the category in the database
+            CDB.updateCategory(selectedCategory);
+            return true;
         }
-        else {
-        ifColorfullPrintln("You have Entered wrong number", TerminalColors.BOLD_RED);
-        ifColorfullPrintln("Please enter 0 to Exit or any number to retry", TerminalColors.CYAN);
-        int num = scanner.nextInt();
-        if (num == 0){
-            ifColorfullPrintln("EXIT...",TerminalColors.GREEN ); 
-            return false ;
-        }
-        else modifyCategory() ;
-        }
-         return false ;   
-        }
-    
+    }
 
     public boolean deleteCategory() {
         CategoryDAO CDB = new CategoryDAO();

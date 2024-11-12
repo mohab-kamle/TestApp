@@ -3,6 +3,7 @@ package EndUser;
 import DataBaseManagment.AdminDAO;
 import DataBaseManagment.CategoryDAO;
 import DataBaseManagment.QuestionBankDAO;
+import DataBaseManagment.StudentDAO;
 import TestSystem.Category;
 import TestSystem.QuestionBank;
 import TestSystem.TestGeneratorApp;
@@ -11,6 +12,7 @@ import UserDefinedFunctionalities.Checker;
 import UserDefinedFunctionalities.TerminalColors;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Console;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Predicate;
@@ -21,7 +23,6 @@ import javax.mail.MessagingException;
  * @author mohab
  */
 public abstract class User {
-
     protected UUID userId;
     protected String email;
     protected String userName;
@@ -33,7 +34,7 @@ public abstract class User {
 
     public User() {
     }
-    
+
     public User(String email,
             String userName,
             String password,
@@ -357,6 +358,10 @@ public abstract class User {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
+        if (this instanceof Student student) {
+            StudentDAO SDB = new StudentDAO();
+            SDB.updateStudent(student);
+        }
         System.out.println("The password has been changed successfully !");
         return true;
     }
@@ -449,6 +454,10 @@ public abstract class User {
                         AdminDAO ADB = new AdminDAO();
                         ADB.updateAdmin((Admin) userToBeUpdated);
                     }
+                    if (userToBeUpdated instanceof Student) {
+                        StudentDAO SDB = new StudentDAO();
+                        SDB.updateStudent((Student)userToBeUpdated);
+                    }
                     System.out.println("The password has been changed successfully !");
                     return true;
                 }
@@ -493,7 +502,7 @@ public abstract class User {
         return Profile;
     }
 
-    public void updateProfile(int choice) {
+    public void updateProfile(int choice) throws IOException {
         Scanner sc = new Scanner(System.in);
         Checker check = new Checker();
         switch (choice) {
@@ -623,6 +632,10 @@ public abstract class User {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
+        if (this instanceof Student student) {
+            StudentDAO SDB = new StudentDAO();
+            SDB.updateStudent(student);
+        }
         System.out.println("Username updated successfully!");
     }
 
@@ -642,10 +655,14 @@ public abstract class User {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
+        if (this instanceof Student student) {
+            StudentDAO SDB = new StudentDAO();
+            SDB.updateStudent(student);
+        }
         System.out.println("Email updated successfully!");
     }
 
-    protected void updateName(Checker check, Scanner sc) {
+    protected void updateName(Checker check, Scanner sc) throws IOException {
         // Update First Name
         String newFirstName;
         do {
@@ -661,6 +678,10 @@ public abstract class User {
         if (this instanceof Admin admin) {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
+        }
+        if (this instanceof Student student) {
+            StudentDAO SDB = new StudentDAO();
+            SDB.updateStudent(student);
         }
         // Update Last Name
         String newLastName;
@@ -678,10 +699,14 @@ public abstract class User {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
+        if (this instanceof Student student) {
+            StudentDAO SDB = new StudentDAO();
+            SDB.updateStudent(student);
+        }
         System.out.println("Name updated successfully!");
     }
 
-    protected void updateAddress(Checker check, Scanner sc) {
+    protected void updateAddress(Checker check, Scanner sc) throws IOException {
         // Get Country
         String newCountry;
         do {
@@ -720,17 +745,36 @@ public abstract class User {
             AdminDAO ADB = new AdminDAO();
             ADB.updateAdmin(admin);
         }
+        if (this instanceof Student student) {
+            StudentDAO SDB = new StudentDAO();
+            SDB.updateStudent(student);
+        }
         System.out.println("Address updated successfully!");
     }
 
     private static User findEmail(String email) {
         AdminDAO ADB = new AdminDAO();
-        return ADB.searchAdminByEmail(email);
+        StudentDAO SDB = new StudentDAO();
+        if (ADB.searchAdminByEmail(email) != null) {
+            return ADB.searchAdminByEmail(email);
+        } else if (SDB.searchStudentByEmail(email) != null) {
+            return SDB.searchStudentByEmail(email);
+        } else {
+            return null;
+        }
+
     }
 
     private static User findUserName(String userName) {
         AdminDAO ADB = new AdminDAO();
-        return ADB.searchAdmin(userName);
+        StudentDAO SDB = new StudentDAO();
+        if (ADB.searchAdmin(userName) != null) {
+            return ADB.searchAdmin(userName);
+        } else if (SDB.searchStudent(userName) != null) {
+            return SDB.searchStudent(userName);
+        } else {
+            return null;
+        }
     }
 
     // Helper methods to check uniqueness

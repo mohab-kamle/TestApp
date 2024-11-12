@@ -1,6 +1,7 @@
 package TestSystem;
 
 import EndUser.Student;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,6 +11,11 @@ import java.util.*;
  *
  * @author mohab
  */
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME, 
+    include = JsonTypeInfo.As.PROPERTY, 
+    property = "@type"
+)
 public class Test {
     private UUID testID;
     private Category category;
@@ -17,7 +23,7 @@ public class Test {
     private Student taker;
     private int duration; //in minutes
     private int testResult;//why int ?
-    private double passingScore;//why double ?
+    private final static double passingScore = 60;
     private Question.dlevel difficulty;
     private ArrayList<Question> questions;
     private LocalDateTime startTime;
@@ -60,10 +66,6 @@ public class Test {
 
     public void setTestResult(int testResult) {
         this.testResult = testResult;
-    }
-
-    public void setPassingScore(double passingScore) {
-        this.passingScore = passingScore;
     }
 
     public void setDifficulty(Question.dlevel difficulty) {
@@ -116,7 +118,7 @@ public class Test {
         return testResult;
     }
 
-    public double getPassingScore() {
+    public static double getPassingScore() {
         return passingScore;
     }
 
@@ -146,10 +148,8 @@ public class Test {
     
     //methods
     
-    public void timePerQuestion(double time, Question question){
-        // Here where to update the time for the Question "totalTime" 
-        question.setTotalTime(question.getTotalTime()+time);
-        
+    public double timePerQuestion(){
+        return 0;
     }
     
     public List<Question> getRandomQuestions(int numQuestions) {
@@ -195,8 +195,8 @@ public class Test {
       if (startTime == null || endTime == null) {
           return 0;
       }
-      Duration duration = Duration.between(startTime, endTime);
-      return duration.toMinutes() + duration.toSecondsPart() / 60.0;
+      Duration tDuration = Duration.between(startTime, endTime);
+      return tDuration.toMinutes() + tDuration.toSecondsPart() / 60.0;
     }
     
 }

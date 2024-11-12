@@ -1,9 +1,15 @@
 package TestSystem;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.util.UUID;
 /**
  *
  * @author mohab
  */
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME, 
+    include = JsonTypeInfo.As.PROPERTY, 
+    property = "@type"
+)
 public class Question {
     /**
      * the enumeration specifying the difficulty of the question upon certain criteria
