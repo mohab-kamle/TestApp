@@ -1,1 +1,44 @@
-[{"bankID":"4f665412-9561-4760-8417-b84bb297e70c","questions":[],"creator":{"userId":"9516ab54-ffcc-4488-b003-15cfb40dd087","email":"mohabkamle9@gmail.com","userName":"ahmed123","address":"Egypt","firstName":"ahmed","lastName":"mohammed","lastLoginDate":1730919478394,"dateAppointed":[2024,11,6],"contactNumber":"+201005619482","department":"Geology","ownedBanks":[],"password":"123456789@KKk"},"category":{"name":"Math","description":"An extensive Course about algebra and geometry","creationDate":[2024,11,10],"creator":{"userId":"9516ab54-ffcc-4488-b003-15cfb40dd087","email":"mohabkamle9@gmail.com","userName":"ahmed123","address":"Egypt","firstName":"ahmed","lastName":"mohammed","lastLoginDate":1730919478394,"dateAppointed":[2024,11,6],"contactNumber":"+201005619482","department":"Geology","ownedBanks":[],"password":"123456789@KKk"},"questionBanks":[],"categoryId":"a10f5726-22ac-4c75-9109-13fc98160957"},"creationDate":[2024,11,11],"questionCount":0}]
+[
+  {
+    "bankID": "ee2164d2-1c7b-4560-a422-3bdf832a8b91",
+    "questions": [],
+    "creator": {
+      "type": "admin",
+      "userId": "70c445cb-5920-45ee-8b81-5793c9b6f13b",
+      "email": "mohabkamel9@gmail.com",
+      "userName": "mohab",
+      "address": "Egypt",
+      "firstName": "mohab",
+      "lastName": "kamle",
+      "lastLoginDate": 1731410291390,
+      "dateAppointed": [2024, 11, 12],
+      "contactNumber": "+201005619482",
+      "department": "math",
+      "ownedBanks": [],
+      "password": "123456789@MMm"
+    },
+    "category": {
+      "name": "Math",
+      "description": "iegigneignieng",
+      "creationDate": [2024, 11, 12],
+      "creator": {
+        "type": "admin",
+        "userId": "70c445cb-5920-45ee-8b81-5793c9b6f13b",
+        "email": "mohabkamel9@gmail.com",
+        "userName": "mohab",
+        "address": "Egypt",
+        "firstName": "mohab",
+        "lastName": "kamle",
+        "lastLoginDate": 1731410291390,
+        "dateAppointed": [2024, 11, 12],
+        "contactNumber": "+201005619482",
+        "department": "math",
+        "ownedBanks": [],
+        "password": "123456789@MMm"
+      },
+      "questionBanks": [],
+      "categoryId": "8b87185e-d2a4-4273-b346-585bd6786ebf"
+    },
+    "creationDate": [2024, 11, 12]
+  }
+]

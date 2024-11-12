@@ -18,7 +18,6 @@ import java.util.*;
  * @author mohab
  */
 public class Admin extends User {
-
     private LocalDate dateAppointed;
     private String contactNumber;
     private String department;

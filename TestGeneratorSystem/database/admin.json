@@ -1,1 +1,15 @@
-[]
+[ {
+  "type" : "admin",
+  "userId" : "70c445cb-5920-45ee-8b81-5793c9b6f13b",
+  "email" : "mohabkamel9@gmail.com",
+  "userName" : "mohab",
+  "address" : "Egypt",
+  "firstName" : "mohab",
+  "lastName" : "kamle",
+  "lastLoginDate" : "2024-11-12T11:18:11.390+00:00",
+  "dateAppointed" : "2024-11-12",
+  "contactNumber" : "+201005619482",
+  "department" : "math",
+  "ownedBanks" : [ ],
+  "password" : "123456789@MMm"
+} ]

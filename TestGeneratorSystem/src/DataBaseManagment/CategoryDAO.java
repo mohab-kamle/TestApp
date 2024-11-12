@@ -2,7 +2,6 @@ package DataBaseManagment;
 
 import TestSystem.Category;
 import TestSystem.QuestionBank;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,10 +22,6 @@ public class CategoryDAO {
         mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule()); // For handling LocalDate
         ensureFileStructure();
-        // Configure polymorphic deserialization
-        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, 
-            JsonTypeInfo.As.PROPERTY);
-        
         // Optional: configure to include type information
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
@@ -106,7 +101,7 @@ public class CategoryDAO {
     }
 
     public List<Category> getCategoriesList() {
-        List<Category> categories = null;
+        List<Category> categories = new ArrayList<>();
         try {
             String content = new String(Files.readAllBytes(Paths.get(FILE_PATH)));
             categories = mapper.readValue(content, new TypeReference<List<Category>>() {});

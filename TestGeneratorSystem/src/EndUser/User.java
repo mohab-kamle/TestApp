@@ -11,6 +11,8 @@ import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
 import UserDefinedFunctionalities.Checker;
 import UserDefinedFunctionalities.TerminalColors;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.io.Console;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -22,6 +24,11 @@ import javax.mail.MessagingException;
  *
  * @author mohab
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Admin.class, name = "admin"),
+    @JsonSubTypes.Type(value = Student.class, name = "student")
+})
 public abstract class User {
     protected UUID userId;
     protected String email;
@@ -31,10 +38,7 @@ public abstract class User {
     protected String firstName;
     protected String lastName;
     protected Date lastLoginDate;
-
-    public User() {
-    }
-
+    
     public User(String email,
             String userName,
             String password,
@@ -163,8 +167,8 @@ public abstract class User {
             "First Name",
             "Last Name",
             "Country",
-            "City",
-            "Street Name"
+//            "City",
+//            "Street Name"
         };
 
         for (String field : personalFields) {
@@ -177,16 +181,15 @@ public abstract class User {
             );
             commonList.add(input);
         }
-
-        // Construct full address
-        String fullAddress = String.format(
-                "%s, %s, %s",
-                commonList.get(commonList.size() - 1), // Street Name
-                commonList.get(commonList.size() - 2), // City
-                commonList.get(commonList.size() - 3) // Country
-        );
-        commonList.add(fullAddress);
-
+        
+//        // Construct full address
+//        String fullAddress = String.format(
+//                "%s, %s, %s",
+//                commonList.get(commonList.size() - 1), // Street Name
+//                commonList.get(commonList.size() - 2), // City
+//                commonList.get(commonList.size() - 3) // Country
+//        );
+//        commonList.add(fullAddress);
         return commonList;
     }
 
@@ -456,7 +459,7 @@ public abstract class User {
                     }
                     if (userToBeUpdated instanceof Student) {
                         StudentDAO SDB = new StudentDAO();
-                        SDB.updateStudent((Student)userToBeUpdated);
+                        SDB.updateStudent((Student) userToBeUpdated);
                     }
                     System.out.println("The password has been changed successfully !");
                     return true;

@@ -3,7 +3,6 @@ package DataBaseManagment;
 import TestSystem.Category;
 import TestSystem.Question;
 import TestSystem.QuestionBank;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,10 +28,6 @@ public class QuestionBankDAO {
         mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule()); // For handling LocalDate
         ensureFileStructure();
-        // Configure polymorphic deserialization
-        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, 
-            JsonTypeInfo.As.PROPERTY);
-        
         // Optional: configure to include type information
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
@@ -118,7 +113,7 @@ public class QuestionBankDAO {
     }
 
     public List<QuestionBank> getQuestionBanksList() {
-        List<QuestionBank> banks = null;
+        List<QuestionBank> banks = new ArrayList<>();
         try {
             String content = new String(Files.readAllBytes(Paths.get(FILE_PATH)));
             banks = mapper.readValue(content, new TypeReference<List<QuestionBank>>() {});

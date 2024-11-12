@@ -250,12 +250,12 @@ public class TestGeneratorApp {
      */
     private static void displayStudentMenu() {
         clearConsole();
-        ifColorfullPrintln("===== Student Portal =====",TerminalColors.BOLD_PURPLE);
+        ifColorfullPrintln("===== Student Portal =====",TerminalColors.PURPLE);
         System.out.println("1. Sign Up");
         System.out.println("2. Login");
         System.out.println("3. Reset Password");
         System.out.println("0. Back to Main Menu");
-        System.out.print("Enter your choice: ");
+        ifColorfullPrint("Enter your choice: ",TerminalColors.CYAN);
     }
 
     /**

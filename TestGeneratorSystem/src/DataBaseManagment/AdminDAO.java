@@ -2,8 +2,8 @@ package DataBaseManagment;
 
 import EndUser.Admin;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.IOException;
@@ -25,10 +25,14 @@ public class AdminDAO {
     public AdminDAO() {
         mapper = new ObjectMapper();
 
-        // Configure Jackson for robust parsing
+        // Register Java time module for LocalDate, LocalDateTime, etc.
         mapper.registerModule(new JavaTimeModule());
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+        // Configure to serialize dates as ISO-8601 formatted strings
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+
+        // Enable pretty-printing (optional, but useful for readability)
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
         // Ensure file structure
         ensureFileStructure();
     }
@@ -59,17 +63,6 @@ public class AdminDAO {
             if (admin == null) {
                 return;
             }
-
-            // Ensure UUID exists
-            if (admin.getUserId() == null) {
-                admin.setUserId(UUID.randomUUID());
-            }
-
-            // Ensure date appointed is set
-            if (admin.getDateAppointed() == null) {
-                admin.setDateAppointed(LocalDate.now());
-            }
-
             // Check for existing admin
             boolean exists = admins.stream()
                     .anyMatch(a
@@ -78,6 +71,7 @@ public class AdminDAO {
                     );
 
             if (!exists) {
+
                 admins.add(admin);
                 saveAdminsList(admins);
                 System.out.println("Admin saved successfully.");
@@ -155,10 +149,9 @@ public class AdminDAO {
             if (admins == null) {
                 admins = new ArrayList<>();
             }
-
-            // Write with pretty printing
-            String jsonString = mapper.writerWithDefaultPrettyPrinter()
-                    .writeValueAsString(admins);
+            ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter()
+                                    .withType(new TypeReference<List<Admin>>() {});
+            String jsonString = writer.writeValueAsString(admins);
 
             Files.write(Paths.get(FILE_PATH),
                     jsonString.getBytes(),

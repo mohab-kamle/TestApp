@@ -4,6 +4,7 @@ import DataBaseManagment.QuestionBankDAO;
 import EndUser.User;
 import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
 import UserDefinedFunctionalities.TerminalColors;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,7 +28,9 @@ public final class QuestionBank {
     private User creator;
     private Category category;
     private LocalDate creationDate;
-
+    
+    public QuestionBank() {
+    }
     public QuestionBank(User creator, Category category, LocalDate creationDate) {
         this.bankID = UUID.randomUUID();
         this.creator = creator;
@@ -36,8 +39,7 @@ public final class QuestionBank {
         this.questions = new ArrayList<>();
     }
 
-    public QuestionBank() {
-    }
+    
     
     public QuestionBank(User creator, Category category, LocalDate creationDate, ArrayList<Question> questions) {
         this(creator, category, creationDate);
@@ -207,7 +209,7 @@ public final class QuestionBank {
         }
         return questionsWithCertainDifficulty;
     }
-
+    @JsonIgnore
     public int getQuestionCount() {
         return getQuestions().size();
     }

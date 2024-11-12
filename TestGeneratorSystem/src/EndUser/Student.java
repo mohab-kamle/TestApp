@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Student extends User {
-
     private String grade;
     private int passedTestsCount;
     private double totalTimeOfAllTests;
@@ -335,7 +334,7 @@ public class Student extends User {
         test.reset();
 
         // Start Test
-        System.out.println("\n--- Test Started ---");
+        System.out.println("--- Test Started ---");
         System.out.println("Category: " + selectedCategory.getName());
         System.out.println("Difficulty: " + difficulty);
         System.out.println("Number of Questions: " + numQuestions);

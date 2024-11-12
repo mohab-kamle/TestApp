@@ -1,9 +1,11 @@
 package DataBaseManagment;
 
 import EndUser.Student;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.IOException;
@@ -116,9 +118,9 @@ public class StudentDAO {
             }
 
             // Write with pretty printing and type information
-            String jsonString = mapper.writerWithDefaultPrettyPrinter()
-                    .writeValueAsString(students);
-
+            ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter()
+                                    .withType(new TypeReference<List<Student>>() {});
+            String jsonString = writer.writeValueAsString(students);
             Files.write(Paths.get(FILE_PATH),
                     jsonString.getBytes(),
                     StandardOpenOption.CREATE,

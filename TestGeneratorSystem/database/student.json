@@ -1,16 +1,17 @@
 [ {
-  "userId" : "bb623b83-f4ea-46cf-af1e-59074d0011ab",
+  "type" : "student",
+  "userId" : "de873427-1769-4f86-a9b8-0d4692f8b7af",
   "email" : "mohabkamle9@gmail.com",
-  "userName" : "mohab",
-  "address" : "ebfye",
+  "userName" : "mohabbb",
+  "address" : "Egypt",
   "firstName" : "mohab",
   "lastName" : "kamle",
-  "lastLoginDate" : "2024-11-12T00:28:53.010+00:00",
+  "lastLoginDate" : "2024-11-12T11:33:43.921+00:00",
   "grade" : null,
   "passedTestsCount" : 0,
   "totalTimeOfAllTests" : 0.0,
-  "institute" : "fbebf",
+  "institute" : "Ain",
   "favoriteQuestions" : [ ],
   "takenTests" : [ ],
-  "password" : "123456789@GmmmG"
+  "password" : "123456789@MMm"
 } ]
