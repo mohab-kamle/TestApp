@@ -1,18 +1,20 @@
 package TestSystem;
+
 import DataBaseManagment.CategoryDAO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.UUID;
+
 /**
  *
  * @author mohab
  */
 public class Question {
+
     /**
-     * the enumeration specifying the difficulty of the question upon certain criteria
-     * determined by the creator or the individual responsible for adding question
+     * the enumeration specifying the difficulty of the question upon certain criteria determined by the creator or the individual responsible for adding question
      */
     public enum dlevel {
-        EASY,MEDIUM,HARD;
+        EASY, MEDIUM, HARD;
     }
     private UUID questionID;
     private UUID topic;
@@ -26,10 +28,9 @@ public class Question {
 
     public Question() {
     }
-    
-    
-    public Question(UUID topic, String statement,dlevel difficulty, int rightAnswer, String[] choices) {
-        
+
+    public Question(UUID topic, String statement, dlevel difficulty, int rightAnswer, String[] choices) {
+
         this.questionID = UUID.randomUUID();
         this.topic = topic;
         this.statement = statement;
@@ -40,8 +41,7 @@ public class Question {
         this.numberOfFavorites = 0;
         this.noOfAttemptsAtTests = 0;
     }
-    
-    
+
     //setters
     public void setQuestionID(UUID questionID) {
         this.questionID = questionID;
@@ -78,7 +78,7 @@ public class Question {
     public void setNoOfAttemptsAtTests(int noOfAttemptsAtTests) {
         this.noOfAttemptsAtTests = noOfAttemptsAtTests;
     }
-    
+
     //getters
     public UUID getQuestionID() {
         return questionID;
@@ -117,30 +117,37 @@ public class Question {
     }
     //methods
 
+    /**
+     * Returns a string representation of the question object.
+     *
+     * This method constructs and returns a formatted string that includes the question ID, the question statement, the available choices, the associated category name, the average time to solve the question, and the correct answer. The format of the string is designed to provide a clear and readable overview of the question and its attributes.
+     *
+     * @return a formatted string representation of the question, including its ID, statement, choices, category name, average time to solve, and right answer.
+     */
     @Override
     public String toString() {
         CategoryDAO CDB = new CategoryDAO();
         String[] c = getChoices();
-        return "Q"+getQuestionID()
-          +"\n Question : "+getStatement()
-          +"\n Choices  : "
-          +"A _ "+c[0]
-          +"B _ "+c[1]
-          +"C _ "+c[2]
-          +"D _ "+c[3]
-          +"Category : "+CDB.loadCategory(topic).getName()
-          +"Average Time to solve : "+getAvgTime()
-          +"\n Right Answer : "+c[getRightAnswer()];
-          
+        return "Q" + getQuestionID()
+                + "\n Question : " + getStatement()
+                + "\n Choices  : "
+                + "A _ " + c[0]
+                + "B _ " + c[1]
+                + "C _ " + c[2]
+                + "D _ " + c[3]
+                + "Category : " + CDB.loadCategory(topic).getName()
+                + "Average Time to solve : " + getAvgTime()
+                + "\n Right Answer : " + c[getRightAnswer()];
+
     }
-    
+
     /**
-     * unique for each question and
-     * useful in determining the difficulty of question
-     * @return double : the average time per question approximated to minutes 
+     * unique for each question and useful in determining the difficulty of question
+     *
+     * @return double : the average time per question approximated to minutes
      */
     @JsonIgnore
-    public double getAvgTime(){
-        return (getTotalTime()/getNoOfAttemptsAtTests());
+    public double getAvgTime() {
+        return (getTotalTime() / getNoOfAttemptsAtTests());
     }
 }

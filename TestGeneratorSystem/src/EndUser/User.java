@@ -226,7 +226,7 @@ public abstract class User {
             if (!uniquenessCheck.test(input)) {
                 ifColorfullPrintln("This "
                         + (validationType == Checker.StringType.USERNAME ? "username" : "email")
-                        + " is already taken",TerminalColors.BOLD_RED);
+                        + " is already taken", TerminalColors.BOLD_RED);
                 continue;
             }
 
@@ -261,7 +261,7 @@ public abstract class User {
             if (check.isValid(Checker.StringType.PASSWORD, passwordInput)) {
                 return passwordInput;
             }
-            ifColorfullPrintln("Password does not meet requirements. Please try again.",TerminalColors.BOLD_RED);
+            ifColorfullPrintln("Password does not meet requirements. Please try again.", TerminalColors.BOLD_RED);
 
         }
     }
@@ -302,7 +302,7 @@ public abstract class User {
                 return input;
             }
 
-            ifColorfullPrintln(errorMessage,TerminalColors.BOLD_RED);
+            ifColorfullPrintln(errorMessage, TerminalColors.BOLD_RED);
         }
     }
 
@@ -462,7 +462,7 @@ public abstract class User {
                         StudentDAO SDB = new StudentDAO();
                         SDB.updateStudent((Student) userToBeUpdated);
                     }
-                            updateEquivalentCategoryAndQuestionBank(userToBeUpdated);
+                    updateEquivalentCategoryAndQuestionBank(userToBeUpdated);
                     System.out.println("The password has been changed successfully !");
                     return true;
                 }
@@ -582,7 +582,7 @@ public abstract class User {
                 QuestionBank NewQB = createQuestionBank(this, selectedCategory, creationDate);
                 selectedCategory.addQuestionBank(NewQB);
                 CDB.updateCategory(selectedCategory);
-                if (this instanceof Admin admin){
+                if (this instanceof Admin admin) {
                     ArrayList<QuestionBank> currentOwnedBanks = admin.getOwnedBanks();
                     currentOwnedBanks.add(NewQB);
                     admin.setOwnedBanks(currentOwnedBanks);
@@ -590,7 +590,7 @@ public abstract class User {
                     ADB.updateAdmin(admin);
                     updateEquivalentCategoryAndQuestionBank(admin);
                 }
-                
+
                 return NewQB;
             }
         } else {
@@ -703,7 +703,7 @@ public abstract class User {
             StudentDAO SDB = new StudentDAO();
             SDB.updateStudent(student);
         }
-                updateEquivalentCategoryAndQuestionBank();
+        updateEquivalentCategoryAndQuestionBank();
         // Update Last Name
         String newLastName;
         do {
@@ -724,7 +724,7 @@ public abstract class User {
             StudentDAO SDB = new StudentDAO();
             SDB.updateStudent(student);
         }
-                updateEquivalentCategoryAndQuestionBank();
+        updateEquivalentCategoryAndQuestionBank();
         System.out.println("Name updated successfully!");
     }
 
@@ -771,7 +771,7 @@ public abstract class User {
             StudentDAO SDB = new StudentDAO();
             SDB.updateStudent(student);
         }
-                updateEquivalentCategoryAndQuestionBank();
+        updateEquivalentCategoryAndQuestionBank();
         System.out.println("Address updated successfully!");
     }
 
@@ -808,41 +808,45 @@ public abstract class User {
     private static boolean isEmailTaken(String email) {
         return findEmail(email) == null;
     }
+
     //database management
-    public void updateEquivalentCategoryAndQuestionBank(){
+    public void updateEquivalentCategoryAndQuestionBank() {
         CategoryDAO C = new CategoryDAO();
         QuestionBankDAO Q = new QuestionBankDAO();
-        if (this instanceof Admin){
-            for (Category category:C.getCategoriesList()) {
-                if (category.getCreator().getUserId().equals(getUserId())){
-                    category.setCreator((Admin)this);
+        if (this instanceof Admin) {
+            for (Category category : C.getCategoriesList()) {
+                if (category.getCreator().getUserId().equals(getUserId())) {
+                    category.setCreator((Admin) this);
                     C.updateCategory(category);
                 }
             }
-        }for (QuestionBank questionBank : Q.getQuestionBanksList()) {
-                if (questionBank.getCreatorID().equals(getUserId())){
-                    questionBank.setCreatorID(getUserId());
-                    Q.updateQuestionBank(questionBank);
-                }
+        }
+        for (QuestionBank questionBank : Q.getQuestionBanksList()) {
+            if (questionBank.getCreatorID().equals(getUserId())) {
+                questionBank.setCreatorID(getUserId());
+                Q.updateQuestionBank(questionBank);
             }
+        }
     }
-    public void updateEquivalentCategoryAndQuestionBank(User user){
+
+    public void updateEquivalentCategoryAndQuestionBank(User user) {
         CategoryDAO C = new CategoryDAO();
         QuestionBankDAO Q = new QuestionBankDAO();
-        if (user instanceof Admin){
-            for (Category category:C.getCategoriesList()) {
-                if (category.getCreator().getUserId().equals(getUserId())){
-                    category.setCreator((Admin)user);
+        if (user instanceof Admin) {
+            for (Category category : C.getCategoriesList()) {
+                if (category.getCreator().getUserId().equals(getUserId())) {
+                    category.setCreator((Admin) user);
                     C.updateCategory(category);
                 }
             }
-        }for (QuestionBank questionBank : Q.getQuestionBanksList()) {
-                if (questionBank.getCreatorID().equals(getUserId())){
-                    questionBank.setCreatorID(user.getUserId());
-                    Q.updateQuestionBank(questionBank);
-                }
+        }
+        for (QuestionBank questionBank : Q.getQuestionBanksList()) {
+            if (questionBank.getCreatorID().equals(getUserId())) {
+                questionBank.setCreatorID(user.getUserId());
+                Q.updateQuestionBank(questionBank);
             }
-    } 
+        }
+    }
 
     /**
      * checks if the given password is equal to the password of the admin ensures better security than accessing the * getpassword() directly from outside the class
