@@ -9,8 +9,8 @@ import java.util.*;
  *
  * @author mohab
  */
-
 public class Category {
+
     private UUID categoryID;
     private String name;
     private String description;
@@ -57,7 +57,7 @@ public class Category {
     }
 
     // Getters
-    public UUID getCategoryId(){    
+    public UUID getCategoryId() {
         return categoryID;
     }
 
@@ -77,12 +77,19 @@ public class Category {
         return creator;
     }
 
-    public ArrayList<QuestionBank> getQuestionBanks() {    
+    public ArrayList<QuestionBank> getQuestionBanks() {
         return questionBanks;
     }
 
     // Methods
-    public void addQuestionBank(QuestionBank questionBank) {        
+    /**
+     * Adds a new question bank to the current object's list of question banks.
+     *
+     * This method takes a `QuestionBank` object and adds it to the existing list of question banks associated with the current object. After adding the new question bank, it updates the category in the database using the `CategoryDAO` class.
+     *
+     * @param questionBank the `QuestionBank` object to be added to the list of question banks.
+     */
+    public void addQuestionBank(QuestionBank questionBank) {
         CategoryDAO CBD = new CategoryDAO();
         ArrayList<QuestionBank> currentQBs = this.getQuestionBanks();
         currentQBs.add(questionBank);
@@ -90,6 +97,13 @@ public class Category {
         CBD.updateCategory(this);
     }
 
+    /**
+     * Removes a specified question bank from the current object's list of question banks.
+     *
+     * This method takes a `QuestionBank` object and removes it from the existing list of question banks associated with the current object. After removing the question bank, it updates the category in the database using the `CategoryDAO` class.
+     *
+     * @param questionBank the `QuestionBank` object to be removed from the list of question banks.
+     */
     public void removeQuestionBank(QuestionBank questionBank) {
         CategoryDAO CBD = new CategoryDAO();
         ArrayList<QuestionBank> currentQBs = this.getQuestionBanks();
@@ -98,6 +112,15 @@ public class Category {
         CBD.updateCategory(this);
     }
 
+    /**
+     * Compares this category object with the specified category object for equality.
+     *
+     * This method checks if the provided `Category` object is equal to the current category instance by comparing their category IDs. If the category IDs are the same, the method returns true; otherwise, it returns false.
+     *
+     * @param obj the `Category` object to be compared with this category.
+     * @return true if the category IDs are equal, false otherwise.
+     * @throws NullPointerException if the provided category object is null.
+     */
     public boolean equals(Category obj) {
         return getCategoryId().equals(obj.getCategoryId());
     }

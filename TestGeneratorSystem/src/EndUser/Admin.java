@@ -210,6 +210,13 @@ public class Admin extends User {
         return commonList;
     }
 
+    /**
+     * Creates a new category in the system.
+     *
+     * This method prompts the admin to enter a category name and description. It validates the input to ensure the category name is unique and follows the specified format. If the category name already exists, it informs the user and prompts for a new name. Once a valid category name and description are provided, the method creates a new Category object and saves it to the database.
+     *
+     * @return true if the category was successfully created and saved; false otherwise.
+     */
     public boolean createCategory() {
         Scanner scanner = new Scanner(System.in);
         Checker check = new Checker();
@@ -229,6 +236,13 @@ public class Admin extends User {
         return CDB.loadCategory(newCategory.getCategoryId()).equals(newCategory);
     }
 
+    /**
+     * Modifies an existing category in the system.
+     *
+     * This method allows the admin to modify the name and/or description of a category. It first checks if there are any categories available to modify. If not, it informs the user and returns false. If categories are available, it displays the list of categories and prompts the admin to select one to modify. The admin can choose to change the name, description, or both. The method validates the new name to ensure it does not already exist in the system before updating the category.
+     *
+     * @return true if the category was successfully modified; false if no categories exist or if the operation was canceled.
+     */
     public boolean modifyCategory() {
         Scanner scanner = new Scanner(System.in);
         Checker check = new Checker();
@@ -366,6 +380,13 @@ public class Admin extends User {
         }
     }
 
+    /**
+     * Deletes an existing category from the system.
+     *
+     * This method allows the admin to delete a category from the list of categories. It first checks if there are any categories available for deletion. If categories exist, it displays the list and prompts the admin to select one to delete. After deletion, the method asks if the admin wants to delete another category. The process continues until the admin chooses to stop or there are no more categories left.
+     *
+     * @return true if at least one category was deleted; false if there were no categories to delete.
+     */
     public boolean deleteCategory() {
         CategoryDAO CDB = new CategoryDAO();
         Scanner scanner = new Scanner(System.in);
@@ -423,6 +444,15 @@ public class Admin extends User {
         return false;
     }
 
+    /**
+     * Adds a new question to a specified question bank.
+     *
+     * This method allows an admin to add a question to an existing question bank associated with a selected category. It involves several steps: 1. Selecting a category from which the question bank will be chosen. 2. Retrieving or creating a question bank for that category. 3. Creating a new question based on user input. 4. Adding the newly created question to the question bank and updating the database.
+     *
+     * If any step fails or is canceled by the user, the method will return false.
+     *
+     * @return true if the question was successfully added to the question bank; false otherwise.
+     */
     public boolean addQuestionToQuestionBank() {
         try {
             // 1. Select Category
@@ -482,6 +512,13 @@ public class Admin extends User {
         }
     }
 
+    /**
+     * Prompts the user to select a category from a list of available categories.
+     *
+     * This method retrieves the list of categories from the database and presents them to the user. The user can select a category by entering the corresponding number. If the user chooses to cancel the operation, they can enter 0. The method will continue prompting until a valid selection is made or the operation is canceled.
+     *
+     * @return the selected Category object if a valid category is chosen; null if the operation is canceled or no categories are available.
+     */
     private Category selectCategory() {
         Scanner scanner = new Scanner(System.in);
         CategoryDAO CBD = new CategoryDAO();
@@ -518,6 +555,15 @@ public class Admin extends User {
         }
     }
 
+    /**
+     * Retrieves an existing question bank for a specified category and user, or creates a new one if none exists.
+     *
+     * This method checks if there is already a question bank associated with the given category and creator (user). If a question bank exists, it returns the first one found and displays its creation date. If no question bank exists, it calls the `createQuestionBank` method to create a new question bank.
+     *
+     * @param category the Category for which to retrieve or create a question bank.
+     * @param userId the UUID of the user (creator) associated with the question bank.
+     * @return the existing QuestionBank if found; otherwise, a new QuestionBank created by the `createQuestionBank` method.
+     */
     private QuestionBank getOrCreateQuestionBank(Category category, UUID userId) {
         QuestionBankDAO QDBD = new QuestionBankDAO();
         List<QuestionBank> questionBanks = QDBD.searchByCategoryAndCreator(category, userId);
@@ -529,6 +575,16 @@ public class Admin extends User {
         return createQuestionBank();
     }
 
+    /**
+     * Creates a new question based on user input and specified category.
+     *
+     * This method prompts the user to provide various details for a new question, including: 1. The question statement. 2. The difficulty level. 3. A set of answer choices. 4. The index of the correct answer.
+     *
+     * Each input is validated, and if any input is invalid or canceled, the method returns null. If all inputs are valid, a new Question object is created and returned.
+     *
+     * @param category the Category to which the new question will be associated.
+     * @return a new Question object if all inputs are valid; null if any input is invalid or canceled.
+     */
     private Question createQuestion(Category category) {
         // Get and validate question statement
         String statement = getValidStatement();
@@ -557,6 +613,13 @@ public class Admin extends User {
         return new Question(category.getCategoryId(), statement, difficulty, rightAnswer, choices);
     }
 
+    /**
+     * Prompts the user to enter a valid question statement.
+     *
+     * This method repeatedly asks the user for a question statement until a valid input is provided or the user chooses to cancel the operation. A valid statement must be at least 10 characters long. If the user enters "cancel", the method will return null to indicate that the operation was aborted.
+     *
+     * @return a valid question statement as a String if input is acceptable; null if the operation is canceled.
+     */
     private String getValidStatement() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -576,6 +639,15 @@ public class Admin extends User {
         }
     }
 
+    /**
+     * Prompts the user to enter valid choices for a multiple-choice question.
+     *
+     * This method collects four choices labeled A, B, C, and D from the user. It validates the input to ensure that: 1. The choice is not empty. 2. The choice is unique among the previously entered choices.
+     *
+     * The user can cancel the operation at any time by entering "cancel", in which case the method will return null. Once all choices are entered and validated, the method displays the choices for verification and returns the array of choices.
+     *
+     * @return an array of valid choices as Strings if all inputs are acceptable; null if the operation is canceled.
+     */
     private String[] getValidChoices() {
         Scanner scanner = new Scanner(System.in);
         String[] choices = new String[4];
@@ -623,6 +695,13 @@ public class Admin extends User {
         return choices;
     }
 
+    /**
+     * Prompts the user to select a difficulty level for a question.
+     *
+     * This method presents the user with a menu to choose from three difficulty levels: Easy, Medium, and Hard, as well as an option to cancel the operation. The user must enter a corresponding number to make a selection. If the user enters "0", the method will return null, indicating that the operation was canceled. If the user enters an invalid choice or a non-numeric value, an error message will be displayed, and the user will be prompted to try again.
+     *
+     * @return the selected difficulty level as a Question.dlevel enum value; null if the operation is canceled.
+     */
     private Question.dlevel selectDifficultyLevel() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -654,6 +733,13 @@ public class Admin extends User {
         }
     }
 
+    /**
+     * Prompts the user to enter the correct answer for a multiple-choice question.
+     *
+     * This method allows the user to input the correct answer as a single letter (A, B, C, or D). The user can also cancel the operation by entering "cancel", in which case the method will return null. The input is validated to ensure that it is a single character and falls within the valid options. If the input is valid, the method converts the letter to an index (A=0, B=1, C=2, D=3) and returns it.
+     *
+     * @return the index of the correct answer as an Integer (0 for A, 1 for B, 2 for C, 3 for D); null if the operation is canceled.
+     */
     private Integer getValidRightAnswer() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -680,6 +766,15 @@ public class Admin extends User {
         }
     }
 
+    /**
+     * Updates a question in the question bank based on user input.
+     *
+     * This method guides the user through a series of steps to update a specific question in a selected category's question bank. The process includes selecting a category, displaying existing questions, selecting a question to update, and entering new question details. The updated question is then saved back to the question bank and the changes are persisted in the database.
+     *
+     * If at any point the user cancels the operation, or if an error occurs, the method will return false.
+     *
+     * @return true if the question was successfully updated in the question bank; false if the operation was canceled or failed.
+     */
     public boolean updateQuestionInQuestionBank() {
         try {
 // 1. Select Category        
@@ -740,6 +835,14 @@ public class Admin extends User {
         }
     }
 
+    /**
+     * Prompts the user to select a question to update from the provided question bank.
+     *
+     * This method displays a prompt for the user to enter the number corresponding to the question they wish to update. The user can also enter '0' to cancel the operation. The method converts the user's input to a zero-based index for internal processing.
+     *
+     * @param questionBank the QuestionBank containing the questions from which the user can select.
+     * @return the zero-based index of the selected question; -1 if the operation is canceled or if the input is invalid.
+     */
     private int selectQuestionToUpdate(QuestionBank questionBank) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number of the question to update (or 0 to cancel): ");
@@ -757,6 +860,15 @@ public class Admin extends User {
         return questionIndex;
     }
 
+    /**
+     * Deletes a question from the question bank based on user input.
+     *
+     * This method guides the user through a series of steps to delete a specific question from a selected category's question bank. The process includes selecting a category, displaying existing questions, selecting a question to delete, and confirming the deletion. The question is then removed from the question bank, and the changes are persisted in the database.
+     *
+     * If at any point the user cancels the operation, or if an error occurs, the method will return false.
+     *
+     * @return true if the question was successfully deleted from the question bank; false if the operation was canceled or failed.
+     */
     public boolean deleteQuestionFromQuestionBank() {
         try {
             // 1. Select Category
@@ -774,9 +886,9 @@ public class Admin extends User {
             }
 
             // 3. Display Questions
-            if (!displayQuestions(questionBank)){
-               System.out.println("Operation cancelled.");
-               return false;
+            if (!displayQuestions(questionBank)) {
+                System.out.println("Operation cancelled.");
+                return false;
             }
 
             // 4. Select Question to Delete
@@ -831,6 +943,14 @@ public class Admin extends User {
         }
     }
 
+    /**
+     * Displays the list of questions in the specified QuestionBank.
+     *
+     * This method checks if there are any questions in the provided QuestionBank. If questions are present, it prints them to the console with their corresponding index numbers. If the QuestionBank is empty, it informs the user that no questions are available to delete.
+     *
+     * @param questionBank the QuestionBank containing the questions to be displayed.
+     * @return true if questions are displayed; false if the QuestionBank is empty.
+     */
     private boolean displayQuestions(QuestionBank questionBank) {
         if (!questionBank.getQuestions().isEmpty()) {
             System.out.println("Current Questions in the selected Question Bank:");
@@ -840,12 +960,20 @@ public class Admin extends User {
             }
             return true;
         } else {
-            ifColorfullPrintln("No Questions Are available to delete",TerminalColors.BOLD_RED);
+            ifColorfullPrintln("No Questions Are available to delete", TerminalColors.BOLD_RED);
             return false;
         }
 
     }
 
+    /**
+     * Prompts the user to select a question to delete from the specified QuestionBank.
+     *
+     * This method displays a prompt asking the user to enter the number corresponding to the question they wish to delete. The user can also enter '0' to cancel the operation. The method converts the user's input into a zero-based index for internal processing. It checks for valid input and returns the appropriate index or a cancellation signal.
+     *
+     * @param questionBank the QuestionBank containing the questions from which a question will be selected for deletion.
+     * @return the zero-based index of the selected question to delete, or -1 if the operation is canceled or if the input is invalid.
+     */
     private int selectQuestionToDelete(QuestionBank questionBank) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number of the question to delete (or 0 to cancel): ");
@@ -863,6 +991,15 @@ public class Admin extends User {
         return questionIndex;
     }
 
+    /**
+     * Retrieves a QuestionBank based on the specified category and user ID.
+     *
+     * This method interacts with the QuestionBankDAO to search for existing QuestionBanks that match the given category and were created by the specified user. If one or more QuestionBanks are found, the first one in the list is returned. If no QuestionBanks are found, a message is printed to inform the user, and the method returns null.
+     *
+     * @param category the Category for which to search for a QuestionBank.
+     * @param userId the UUID of the user who created the QuestionBank.
+     * @return the first QuestionBank found that matches the criteria, or null if no matching QuestionBank exists.
+     */
     private QuestionBank getQuestionBank(Category category, UUID userId) {
         QuestionBankDAO QDBD = new QuestionBankDAO();
         List<QuestionBank> questionBanks = QDBD.searchByCategoryAndCreator(category, userId);
@@ -874,6 +1011,14 @@ public class Admin extends User {
     }
 
     // Private helper methods
+    /**
+     * Updates the department of the current admin and saves the changes to the database.
+     *
+     * This method prompts the user for a new department name, validates the input to ensure it contains only letters, and then updates the department of the current admin instance. After updating the department, it calls the AdminDAO to persist the changes and updates any equivalent categories and question banks associated with the admin. Finally, it confirms the successful update to the user.
+     *
+     * @param check the Checker instance used to validate the input.
+     * @param sc the Scanner instance used for user input.
+     */
     private void updateDepartment(Checker check, Scanner sc) {
         AdminDAO ADB = new AdminDAO();
         String Department = validateInput(sc,
@@ -887,6 +1032,14 @@ public class Admin extends User {
         System.out.println("Department updated successfully!");
     }
 
+    /**
+     * Updates the contact number of the current admin and saves the changes to the database.
+     *
+     * This method prompts the user for a new contact number, validates the input to ensure it adheres to a specific phone number format, and then updates the contact number of the current admin instance. After updating the contact number, it calls the AdminDAO to persist the changes and updates any equivalent categories and question banks associated with the admin. Finally, it confirms the successful update to the user.
+     *
+     * @param check the Checker instance used to validate the input.
+     * @param sc the Scanner instance used for user input.
+     */
     private void updateContactNumber(Checker check, Scanner sc) {
         AdminDAO ADB = new AdminDAO();
         String ContactNumber = validateInput(sc,
