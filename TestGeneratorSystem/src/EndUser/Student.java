@@ -19,15 +19,18 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Student extends User {
+
     private String grade;
     private int passedTestsCount;
     private double totalTimeOfAllTests;
     private String institute;
     private List<Question> favoriteQuestions;
     private List<Test> takenTests;
-    
+
     public Student() {
         super(null, null, null, null, null, null);
     }
@@ -498,7 +501,7 @@ public class Student extends User {
 
     private void updateTestStatistics(Test test, int score, double totalTestTime) {
         test.setTestResult(score);
-        test.setDuration((int)totalTestTime);
+        test.setDuration((int) totalTestTime);
         takenTests.add(test);
         totalTimeOfAllTests += totalTestTime;
 
@@ -532,7 +535,130 @@ public class Student extends User {
      */
     @JsonIgnore
     public void getTestHistory() {
+        if (takenTests == null || takenTests.isEmpty()) {
+            System.out.println("No test history available.");
+            return;
+        }
 
+        // Sort tests from latest to oldest
+        List<Test> sortedTests = new ArrayList<>(takenTests);
+        sortedTests.sort((t1, t2) -> t2.getCreationDate().compareTo(t1.getCreationDate()));
+
+        Scanner scanner = new Scanner(System.in);
+        int currentIndex = 0;
+
+        while (true) {
+            // Display current test
+            Test currentTest = sortedTests.get(currentIndex);
+            displayTestDetails(currentTest, currentIndex, sortedTests.size());
+
+            // Show navigation options
+            System.out.println("\nNavigation:");
+            System.out.println("P - Previous Test");
+            System.out.println("N - Next Test");
+            System.out.println("D - Detailed Question Breakdown");
+            System.out.println("Q - Quit Test History");
+
+            // Get user input
+            System.out.print("Enter your choice: ");
+            String choice = scanner.nextLine().toUpperCase();
+
+            switch (choice) {
+                case "P":
+                    // Move to previous test (wrap around if at first test)
+                    currentIndex = (currentIndex - 1 + sortedTests.size()) % sortedTests.size();
+                    break;
+                case "N":
+                    // Move to next test (wrap around if at last test)
+                    currentIndex = (currentIndex + 1) % sortedTests.size();
+                    break;
+                case "D":
+                    showDetailedQuestionBreakdown(currentTest);
+                    break;
+                case "Q":
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    private void displayTestDetails(Test test, int currentIndex, int totalTests) {
+        System.out.println("\n--- Test Details ---");
+        System.out.println("Test ID: " + test.getTestID());
+        System.out.println("Date: " + test.getCreationDate());
+        System.out.println("Category: " + test.getCategory().getName());
+        System.out.println("Difficulty: " + test.getDifficulty());
+
+        // Calculate score percentage
+        int totalQuestions = test.getQuestions().size();
+        double scorePercentage = (double) test.getTestResult() / totalQuestions * 100;
+
+        System.out.println("Score: " + test.getTestResult() + "/" + totalQuestions);
+        System.out.println("Percentage: " + String.format("%.2f", scorePercentage) + "%");
+        System.out.println("Duration: " + test.getDuration() + " minutes");
+        System.out.println("Time Taken: " + String.format("%.2f", test.timeTaken()) + " minutes");
+        System.out.println("Status: "
+                + (test.getTestResult() >= Test.getPassingScore() ? "PASSED" : "FAILED"));
+
+        // Show current position in test history
+        System.out.println("\nTest " + (currentIndex + 1) + " of " + totalTests);
+    }
+
+    private void showDetailedQuestionBreakdown(Test test) {
+        System.out.println("\n--- Detailed Question Breakdown ---");
+
+        List<Question> questions = test.getQuestions();
+        List<Integer> takerAnswers = test.getTakerAnswers();
+
+        for (int i = 0; i < questions.size(); i++) {
+            Question question = questions.get(i);
+            int studentAnswer = takerAnswers.get(i);
+            int correctAnswer = question.getRightAnswer();
+
+            System.out.println("\nQuestion " + (i + 1) + ":");
+            System.out.println("Statement: " + question.getStatement());
+            System.out.println("Correct Answer: " + (char) ('A' + correctAnswer));
+            System.out.println("Your Answer: " + (char) ('A' + studentAnswer));
+            System.out.println("Result: "
+                    + (studentAnswer == correctAnswer ? "CORRECT" : "INCORRECT"));
+
+            // Show choices for context
+            String[] choices = question.getChoices();
+            System.out.println("Choices:");
+            for (int j = 0; j < choices.length; j++) {
+                System.out.println((char) ('A' + j) + ". " + choices[j]);
+            }
+        }
+
+        // Wait for user to continue
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nPress Enter to continue...");
+        scanner.nextLine();
+    }
+
+// Optional: Method to filter test history
+    @JsonIgnore
+    public List<Test> filterTestHistory(Predicate<Test> filterCriteria) {
+        return takenTests.stream()
+                .filter(filterCriteria)
+                .collect(Collectors.toList());
+    }
+
+//filter methods (Extra features in the future)
+    @JsonIgnore
+    public List<Test> getTestsByCategory(Category category) {
+        return filterTestHistory(test -> test.getCategory().equals(category));
+    }
+
+    @JsonIgnore
+    public List<Test> getTestsByDifficulty(Question.dlevel difficulty) {
+        return filterTestHistory(test -> test.getDifficulty() == difficulty);
+    }
+
+    @JsonIgnore
+    public List<Test> getPassedTests() {
+        return filterTestHistory(test -> test.getTestResult() >= Test.getPassingScore());
     }
 
     @JsonIgnore

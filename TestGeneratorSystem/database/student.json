@@ -1,17 +1,1 @@
-[ {
-  "type" : "student",
-  "userId" : "de873427-1769-4f86-a9b8-0d4692f8b7af",
-  "email" : "mohabkamle9@gmail.com",
-  "userName" : "mohabbb",
-  "address" : "Egypt",
-  "firstName" : "mohab",
-  "lastName" : "kamle",
-  "lastLoginDate" : "2024-11-12T11:33:43.921+00:00",
-  "grade" : null,
-  "passedTestsCount" : 0,
-  "totalTimeOfAllTests" : 0.0,
-  "institute" : "Ain",
-  "favoriteQuestions" : [ ],
-  "takenTests" : [ ],
-  "password" : "123456789@MMm"
-} ]
+[]

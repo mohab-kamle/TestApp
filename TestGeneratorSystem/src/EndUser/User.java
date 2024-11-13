@@ -30,6 +30,7 @@ import javax.mail.MessagingException;
     @JsonSubTypes.Type(value = Student.class, name = "student")
 })
 public abstract class User {
+
     protected UUID userId;
     protected String email;
     protected String userName;
@@ -38,7 +39,7 @@ public abstract class User {
     protected String firstName;
     protected String lastName;
     protected Date lastLoginDate;
-    
+
     public User(String email,
             String userName,
             String password,
@@ -166,9 +167,8 @@ public abstract class User {
         String[] personalFields = {
             "First Name",
             "Last Name",
-            "Country",
-//            "City",
-//            "Street Name"
+            "Country", //            "City",
+        //            "Street Name"
         };
 
         for (String field : personalFields) {
@@ -181,7 +181,7 @@ public abstract class User {
             );
             commonList.add(input);
         }
-        
+
 //        // Construct full address
 //        String fullAddress = String.format(
 //                "%s, %s, %s",
@@ -213,7 +213,7 @@ public abstract class User {
             Predicate<String> uniquenessCheck
     ) {
         while (true) {
-            System.out.println(prompt);
+            System.out.print(prompt);
             String input = scanner.nextLine().trim();
 
             // Validate input format
@@ -224,9 +224,9 @@ public abstract class User {
 
             // Check uniqueness
             if (!uniquenessCheck.test(input)) {
-                System.out.println("This "
+                ifColorfullPrintln("This "
                         + (validationType == Checker.StringType.USERNAME ? "username" : "email")
-                        + " is already taken");
+                        + " is already taken",TerminalColors.BOLD_RED);
                 continue;
             }
 
@@ -261,8 +261,8 @@ public abstract class User {
             if (check.isValid(Checker.StringType.PASSWORD, passwordInput)) {
                 return passwordInput;
             }
+            ifColorfullPrintln("Password does not meet requirements. Please try again.",TerminalColors.BOLD_RED);
 
-            System.out.println("Password does not meet requirements. Please try again.");
         }
     }
 
@@ -295,14 +295,14 @@ public abstract class User {
             String errorMessage
     ) {
         while (true) {
-            System.out.println(prompt);
+            System.out.print(prompt);
             String input = scanner.nextLine().trim();
 
             if (check.isValid(validationType, input)) {
                 return input;
             }
 
-            System.out.println(errorMessage);
+            ifColorfullPrintln(errorMessage,TerminalColors.BOLD_RED);
         }
     }
 
@@ -365,6 +365,7 @@ public abstract class User {
             StudentDAO SDB = new StudentDAO();
             SDB.updateStudent(student);
         }
+        updateEquivalentCategoryAndQuestionBank();
         System.out.println("The password has been changed successfully !");
         return true;
     }
@@ -461,6 +462,7 @@ public abstract class User {
                         StudentDAO SDB = new StudentDAO();
                         SDB.updateStudent((Student) userToBeUpdated);
                     }
+                            updateEquivalentCategoryAndQuestionBank(userToBeUpdated);
                     System.out.println("The password has been changed successfully !");
                     return true;
                 }
@@ -520,7 +522,7 @@ public abstract class User {
         }
     }
 
-    public boolean createQuestionBank() {
+    public QuestionBank createQuestionBank() {
         Scanner sc = new Scanner(System.in);
         CategoryDAO CDB = new CategoryDAO();
         QuestionBankDAO QBDB = new QuestionBankDAO();
@@ -553,7 +555,7 @@ public abstract class User {
                         boolean isQuestionBankInCategory = false;
 
                         for (QuestionBank qb : currentQuestionBanks) {
-                            if (qb.getCategory().getCategoryId().equals(CategoryList.get(key - 1).getCategoryId())) {
+                            if (qb.getCategoryID().equals(CategoryList.get(key - 1).getCategoryId())) {
                                 isQuestionBankInCategory = true;
                                 break;
                             }
@@ -577,25 +579,38 @@ public abstract class User {
             // Create the question bank with the selected category
             if (selectedCategory != null) {
                 LocalDate creationDate = LocalDate.now();
-                return createQuestionBank(this, selectedCategory, creationDate);
+                QuestionBank NewQB = createQuestionBank(this, selectedCategory, creationDate);
+                selectedCategory.addQuestionBank(NewQB);
+                CDB.updateCategory(selectedCategory);
+                if (this instanceof Admin admin){
+                    ArrayList<QuestionBank> currentOwnedBanks = admin.getOwnedBanks();
+                    currentOwnedBanks.add(NewQB);
+                    admin.setOwnedBanks(currentOwnedBanks);
+                    AdminDAO ADB = new AdminDAO();
+                    ADB.updateAdmin(admin);
+                    updateEquivalentCategoryAndQuestionBank(admin);
+                }
+                
+                return NewQB;
             }
-            return true;
         } else {
             TestGeneratorApp.ifColorfullPrintln("Sorry! There are no Categories available", TerminalColors.YELLOW);
-            return false;
+            return null;
         }
+        return null;
     }
 
-    public boolean createQuestionBank(User creator, Category category, LocalDate creationDate) {
+    public QuestionBank createQuestionBank(User creator, Category category, LocalDate creationDate) {
+        QuestionBank newBank;
         try {
-            QuestionBank newBank = new QuestionBank(creator, category, creationDate);
+            newBank = new QuestionBank(creator.getUserId(), category.getCategoryId(), creationDate);
             QuestionBankDAO QBDB = new QuestionBankDAO();
             QBDB.saveQuestionBank(newBank);
         } catch (Exception e) {
             System.out.println("Error creating question bank: " + e.getMessage());
-            return false;
+            return null;
         }
-        return true;
+        return newBank;
     }
 
     public boolean deleteQuestionBank(QuestionBank questionBank) {
@@ -639,6 +654,7 @@ public abstract class User {
             StudentDAO SDB = new StudentDAO();
             SDB.updateStudent(student);
         }
+        updateEquivalentCategoryAndQuestionBank();
         System.out.println("Username updated successfully!");
     }
 
@@ -662,6 +678,7 @@ public abstract class User {
             StudentDAO SDB = new StudentDAO();
             SDB.updateStudent(student);
         }
+        updateEquivalentCategoryAndQuestionBank();
         System.out.println("Email updated successfully!");
     }
 
@@ -686,6 +703,7 @@ public abstract class User {
             StudentDAO SDB = new StudentDAO();
             SDB.updateStudent(student);
         }
+                updateEquivalentCategoryAndQuestionBank();
         // Update Last Name
         String newLastName;
         do {
@@ -706,6 +724,7 @@ public abstract class User {
             StudentDAO SDB = new StudentDAO();
             SDB.updateStudent(student);
         }
+                updateEquivalentCategoryAndQuestionBank();
         System.out.println("Name updated successfully!");
     }
 
@@ -752,6 +771,7 @@ public abstract class User {
             StudentDAO SDB = new StudentDAO();
             SDB.updateStudent(student);
         }
+                updateEquivalentCategoryAndQuestionBank();
         System.out.println("Address updated successfully!");
     }
 
@@ -788,6 +808,41 @@ public abstract class User {
     private static boolean isEmailTaken(String email) {
         return findEmail(email) == null;
     }
+    //database management
+    public void updateEquivalentCategoryAndQuestionBank(){
+        CategoryDAO C = new CategoryDAO();
+        QuestionBankDAO Q = new QuestionBankDAO();
+        if (this instanceof Admin){
+            for (Category category:C.getCategoriesList()) {
+                if (category.getCreator().getUserId().equals(getUserId())){
+                    category.setCreator((Admin)this);
+                    C.updateCategory(category);
+                }
+            }
+        }for (QuestionBank questionBank : Q.getQuestionBanksList()) {
+                if (questionBank.getCreatorID().equals(getUserId())){
+                    questionBank.setCreatorID(getUserId());
+                    Q.updateQuestionBank(questionBank);
+                }
+            }
+    }
+    public void updateEquivalentCategoryAndQuestionBank(User user){
+        CategoryDAO C = new CategoryDAO();
+        QuestionBankDAO Q = new QuestionBankDAO();
+        if (user instanceof Admin){
+            for (Category category:C.getCategoriesList()) {
+                if (category.getCreator().getUserId().equals(getUserId())){
+                    category.setCreator((Admin)user);
+                    C.updateCategory(category);
+                }
+            }
+        }for (QuestionBank questionBank : Q.getQuestionBanksList()) {
+                if (questionBank.getCreatorID().equals(getUserId())){
+                    questionBank.setCreatorID(user.getUserId());
+                    Q.updateQuestionBank(questionBank);
+                }
+            }
+    } 
 
     /**
      * checks if the given password is equal to the password of the admin ensures better security than accessing the * getpassword() directly from outside the class

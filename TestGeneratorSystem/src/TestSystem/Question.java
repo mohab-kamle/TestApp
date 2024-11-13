@@ -1,15 +1,11 @@
 package TestSystem;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import DataBaseManagment.CategoryDAO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.UUID;
 /**
  *
  * @author mohab
  */
-@JsonTypeInfo(
-    use = JsonTypeInfo.Id.NAME, 
-    include = JsonTypeInfo.As.PROPERTY, 
-    property = "@type"
-)
 public class Question {
     /**
      * the enumeration specifying the difficulty of the question upon certain criteria
@@ -19,7 +15,7 @@ public class Question {
         EASY,MEDIUM,HARD;
     }
     private UUID questionID;
-    private Category topic;
+    private UUID topic;
     private String statement;
     private int numberOfFavorites;
     private double totalTime;
@@ -27,8 +23,12 @@ public class Question {
     private int rightAnswer;
     private String[] choices;
     private int noOfAttemptsAtTests;
+
+    public Question() {
+    }
     
-    public Question(Category topic, String statement,dlevel difficulty, int rightAnswer, String[] choices) {
+    
+    public Question(UUID topic, String statement,dlevel difficulty, int rightAnswer, String[] choices) {
         
         this.questionID = UUID.randomUUID();
         this.topic = topic;
@@ -47,7 +47,7 @@ public class Question {
         this.questionID = questionID;
     }
 
-    public void setTopic(Category topic) {
+    public void setTopic(UUID topic) {
         this.topic = topic;
     }
 
@@ -84,7 +84,7 @@ public class Question {
         return questionID;
     }
 
-    public Category getTopic() {
+    public UUID getTopic() {
         return topic;
     }
 
@@ -119,6 +119,7 @@ public class Question {
 
     @Override
     public String toString() {
+        CategoryDAO CDB = new CategoryDAO();
         String[] c = getChoices();
         return "Q"+getQuestionID()
           +"\n Question : "+getStatement()
@@ -127,7 +128,7 @@ public class Question {
           +"B _ "+c[1]
           +"C _ "+c[2]
           +"D _ "+c[3]
-          +"Category : "+getTopic().getName()
+          +"Category : "+CDB.loadCategory(topic).getName()
           +"Average Time to solve : "+getAvgTime()
           +"\n Right Answer : "+c[getRightAnswer()];
           
@@ -138,6 +139,7 @@ public class Question {
      * useful in determining the difficulty of question
      * @return double : the average time per question approximated to minutes 
      */
+    @JsonIgnore
     public double getAvgTime(){
         return (getTotalTime()/getNoOfAttemptsAtTests());
     }

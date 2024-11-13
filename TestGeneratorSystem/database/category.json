@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "name": "Science",
+    "description": "eonfienfienfineinfineinfine",
+    "creationDate": [2024, 11, 13],
+    "creator": {
+      "type": "admin",
+      "userId": "7f1ac0c1-7ee8-41a7-8866-449a757771f0",
+      "email": "yousef@gmail.com",
+      "userName": "Kamle",
+      "address": "Egypt",
+      "firstName": "ahmed",
+      "lastName": "mohammed",
+      "lastLoginDate": 1731463511701,
+      "dateAppointed": [2024, 11, 13],
+      "contactNumber": "+2012345678910",
+      "department": "Geology",
+      "ownedBanks": [
+        {
+          "bankID": "151ef5ad-6743-4248-b7ab-99250700ddf4",
+          "questions": [],
+          "creatorID": "7f1ac0c1-7ee8-41a7-8866-449a757771f0",
+          "categoryID": "a6408a2b-9014-41b5-903a-d23c7aaaab4b",
+          "creationDate": [2024, 11, 13]
+        }
+      ],
+      "password": "123456789@MMm"
+    },
+    "questionBanks": [
+      {
+        "bankID": "151ef5ad-6743-4248-b7ab-99250700ddf4",
+        "questions": [],
+        "creatorID": "7f1ac0c1-7ee8-41a7-8866-449a757771f0",
+        "categoryID": "a6408a2b-9014-41b5-903a-d23c7aaaab4b",
+        "creationDate": [2024, 11, 13]
+      }
+    ],
+    "categoryId": "a6408a2b-9014-41b5-903a-d23c7aaaab4b"
+  }
+]
