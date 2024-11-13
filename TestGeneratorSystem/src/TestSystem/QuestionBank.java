@@ -1,7 +1,6 @@
 package TestSystem;
 
 import DataBaseManagment.QuestionBankDAO;
-import EndUser.User;
 import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
 import UserDefinedFunctionalities.TerminalColors;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,23 +24,23 @@ public final class QuestionBank {
 
     private UUID bankID;
     private ArrayList<Question> questions;
-    private User creator;
-    private Category category;
+    private UUID creatorID;
+    private UUID categoryID;
     private LocalDate creationDate;
     
     public QuestionBank() {
     }
-    public QuestionBank(User creator, Category category, LocalDate creationDate) {
+    public QuestionBank(UUID creator, UUID category, LocalDate creationDate) {
         this.bankID = UUID.randomUUID();
-        this.creator = creator;
-        this.category = category;
+        this.creatorID = creator;
+        this.categoryID = category;
         this.creationDate = creationDate;
         this.questions = new ArrayList<>();
     }
 
     
     
-    public QuestionBank(User creator, Category category, LocalDate creationDate, ArrayList<Question> questions) {
+    public QuestionBank(UUID creator, UUID category, LocalDate creationDate, ArrayList<Question> questions) {
         this(creator, category, creationDate);
         this.setQuestions(questions);
     }
@@ -55,12 +54,12 @@ public final class QuestionBank {
         this.questions = questions;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    public void setCreatorID(UUID creatorID) {
+        this.creatorID = creatorID;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(UUID category) {
+        this.categoryID = category;
     }
 
     public void setCreationDate(LocalDate creationDate) {
@@ -76,12 +75,12 @@ public final class QuestionBank {
         return questions;
     }
 
-    public User getCreator() {
-        return creator;
+    public UUID getCreatorID() {
+        return creatorID;
     }
 
-    public Category getCategory() {
-        return category;
+    public UUID getCategoryID() {
+        return categoryID;
     }
 
     public LocalDate getCreationDate() {
@@ -142,17 +141,16 @@ public final class QuestionBank {
             break;
         }
 
-        Question question = new Question(this.category, statement, levelInput, correctAnswer, choices);
+        Question question = new Question(this.categoryID, statement, levelInput, correctAnswer, choices);
         QuestionBankDAO QBDB = new QuestionBankDAO();
         QBDB.addQuestionToBank(getBankID(), question);
     }
 
-    public boolean updateQuestion(Question oldQ) {
-        return false;
-    }
-
     public void removeQuestion(Question question) {
         try {
+            ArrayList<Question> currentQs = this.getQuestions();
+            currentQs.remove(question);
+            this.setQuestions(currentQs);
             QuestionBankDAO QBDB = new QuestionBankDAO();
             QBDB.removeQuestionFromBank(getBankID(), question.getQuestionID());
         } catch (Exception e) {

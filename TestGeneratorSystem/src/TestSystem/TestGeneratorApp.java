@@ -109,7 +109,7 @@ public class TestGeneratorApp {
      */
     private static void performAdminSignUp() {
         clearConsole();
-        System.out.println("===== Admin Sign Up =====");
+        ifColorfullPrintln("===== Admin Sign Up =====",TerminalColors.BOLD_BLUE);
         Admin.signUp();
         pressAnyKeyToContinue();
     }
@@ -195,7 +195,7 @@ public class TestGeneratorApp {
                     if(admin.addQuestionToQuestionBank()){
                         ifColorfullPrintln("Question has been added", TerminalColors.BOLD_GREEN);
                     }else{
-                        ifColorfullPrintln("No Question is add", TerminalColors.BOLD_RED);
+                        ifColorfullPrintln("No Question is added", TerminalColors.BOLD_RED);
                     }
                 }
                 case 11 -> {
@@ -227,7 +227,7 @@ public class TestGeneratorApp {
      */
     private static void displayAdminDashboardMenu() {
         clearConsole();
-        ifColorfullPrintln("===== Admin Dashboard =====",TerminalColors.PURPLE);
+        ifColorfullPrintln("===== Admin Dashboard =====",TerminalColors.BOLD_BLUE);
         System.out.println("1. View Profile");
         System.out.println("2. Update Profile");
         System.out.println("3. Change Password");
@@ -242,7 +242,7 @@ public class TestGeneratorApp {
 //        System.out.println("6. View My Question Banks");
 //        System.out.println("7. delete Question Bank");
         System.out.println("0. Logout");
-        System.out.print("Enter your choice: ");
+        ifColorfullPrint("Enter your choice: ",TerminalColors.CYAN);
     }
 
     /**
@@ -287,7 +287,7 @@ public class TestGeneratorApp {
      */
     private static void performStudentSignUp() {
         clearConsole();
-        System.out.println("===== Student Sign Up =====");
+        ifColorfullPrintln("===== Student Sign Up =====",TerminalColors.BOLD_BLUE);
         Student.signUp();
         pressAnyKeyToContinue();
     }
@@ -297,13 +297,13 @@ public class TestGeneratorApp {
      */
     private static void performStudentLogin() throws IOException {
         clearConsole();
-        System.out.println("===== Student Login =====");
+        ifColorfullPrintln("===== Student Login =====",TerminalColors.BOLD_BLUE);
         Student loggedStudent = new Student().login();
 
         if (loggedStudent != null) {
             handleStudentDashboard(loggedStudent);
         } else {
-            System.out.println("Login Failed. Invalid Credentials.");
+            ifColorfullPrintln("Login Failed. Invalid Credentials.",TerminalColors.BOLD_RED);
             pressAnyKeyToContinue();
         }
     }
@@ -361,7 +361,7 @@ public class TestGeneratorApp {
         System.out.println("5. Take Test");
         System.out.println("6. View Test History");
         System.out.println("0. Logout");
-        System.out.print("Enter your choice: ");
+        ifColorfullPrint("Enter your choice: ",TerminalColors.CYAN);
     }
 
     /**
@@ -369,7 +369,7 @@ public class TestGeneratorApp {
      */
     private static void performAdminPasswordReset() throws MessagingException {
         clearConsole();
-        System.out.println("===== Admin Password Reset =====");
+        ifColorfullPrintln("===== Admin Password Reset =====",TerminalColors.BOLD_BLUE);
         new Admin().resetPassword();
         pressAnyKeyToContinue();
     }
@@ -379,7 +379,7 @@ public class TestGeneratorApp {
      */
     private static void performStudentPasswordReset() throws MessagingException {
         clearConsole();
-        System.out.println("===== Student Password Reset =====");
+        ifColorfullPrintln("===== Student Password Reset =====",TerminalColors.BOLD_BLUE);
         new Student().resetPassword();
         pressAnyKeyToContinue();
     }
@@ -390,7 +390,7 @@ public class TestGeneratorApp {
      * @return true if the user confirms, false otherwise
      */
     private static boolean confirmAccountRemoval() {
-        System.out.print("Are you sure you want to remove your account? (y/n): ");
+        ifColorfullPrint("Are you sure you want to remove your account? (y/n): ",TerminalColors.BOLD_CYAN);
         String response = scanner.next();
         return response.equalsIgnoreCase("y");
     }
@@ -408,7 +408,7 @@ public class TestGeneratorApp {
      * Handles invalid user choices
      */
     private static void handleInvalidChoice() {
-        System.out.println("Invalid choice. Please try again.");
+        ifColorfullPrintln("Invalid choice. Please try again.",TerminalColors.BOLD_RED);
         pressAnyKeyToContinue();
     }
 
@@ -416,7 +416,7 @@ public class TestGeneratorApp {
      * Exits the application
      */
     private static void exitApplication() {
-        System.out.println("Thank you for using the Online Test Management System. Goodbye!");
+        ifColorfullPrintln("Thank you for using the Online Test Management System. Goodbye!",TerminalColors.YELLOW);
         System.exit(0);
     }
 
@@ -426,7 +426,7 @@ public class TestGeneratorApp {
      * @param e the exception to handle
      */
     private static void handleException(Exception e) {
-        System.out.println("An error occurred: " + e.getMessage());
+        ifColorfullPrintln("An error occurred: " + e.getMessage(),TerminalColors.BOLD_RED);
         pressAnyKeyToContinue();
     }
 
@@ -443,7 +443,7 @@ public class TestGeneratorApp {
      * Prompts the user to press any key to continue
      */
     private static void pressAnyKeyToContinue() {
-        System.out.println("Press Enter to continue...");
+        ifColorfullPrintln("Press Enter to continue...",TerminalColors.CYAN);
         scanner.nextLine(); // Consume the newline
         scanner.nextLine(); // Wait for user input
     }

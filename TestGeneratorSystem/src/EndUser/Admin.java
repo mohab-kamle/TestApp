@@ -447,8 +447,25 @@ public class Admin extends User {
             }
 
             // 4. Add question to bank and update
-            questionBank.getQuestions().add(newQuestion);
+            ArrayList<Question> currQuestions = questionBank.getQuestions();
+            currQuestions.add(newQuestion);
+            questionBank.setQuestions(currQuestions);
             QuestionBankDAO QBDB = new QuestionBankDAO();
+            AdminDAO ADB = new AdminDAO();
+            CategoryDAO CDB = new CategoryDAO();
+            for (QuestionBank ownedBank : ownedBanks) {
+                if (ownedBank.getBankID().equals(questionBank.getBankID())) {
+                    ownedBank.setQuestions(questionBank.getQuestions());
+                }
+            }
+            for (QuestionBank qb : selectedCategory.getQuestionBanks()) {
+                if (qb.getBankID().equals(questionBank.getBankID())) {
+                    qb.setQuestions(questionBank.getQuestions());
+                }
+            }
+            selectedCategory.setCreator(this);
+            CDB.updateCategory(selectedCategory);
+            ADB.updateAdmin(this);
             boolean updated = QBDB.addQuestionToBank(questionBank.getBankID(), newQuestion);
 
             if (updated) {
@@ -481,7 +498,7 @@ public class Admin extends User {
                 System.out.println((i + 1) + " _ name : " + category.getName());
                 System.out.println("|--> " + category.getDescription());
             }
-            System.out.println("0 - Cancel operation");
+            System.out.println("\n0 - Cancel operation");
 
             System.out.print("\nSelect category number: ");
             String input = scanner.nextLine().trim();
@@ -537,7 +554,7 @@ public class Admin extends User {
             return null;
         }
 
-        return new Question(category, statement, difficulty, rightAnswer, choices);
+        return new Question(category.getCategoryId(), statement, difficulty, rightAnswer, choices);
     }
 
     private String getValidStatement() {
@@ -671,7 +688,7 @@ public class Admin extends User {
                 System.out.println("Operation cancelled.");
                 return false;
             }        // 2. Get QuestionBank        
-            QuestionBank questionBank = getQuestionBank(selectedCategory, getUserId());       
+            QuestionBank questionBank = getQuestionBank(selectedCategory, getUserId());
             if (questionBank == null) {
                 System.out.println("No Question Bank found for the selected category.");
                 return false;
@@ -692,7 +709,22 @@ public class Admin extends User {
             }
 // 6. Update the question in the QuestionBank        
             questionBank.getQuestions().set(questionIndex, updatedQuestion);
-// 7. Update QuestionBank in the database        
+// 7. Update QuestionBank in the database
+            AdminDAO ADB = new AdminDAO();
+            CategoryDAO CDB = new CategoryDAO();
+            for (QuestionBank ownedBank : ownedBanks) {
+                if (ownedBank.getBankID().equals(questionBank.getBankID())) {
+                    ownedBank.setQuestions(questionBank.getQuestions());
+                }
+            }
+            for (QuestionBank qb : selectedCategory.getQuestionBanks()) {
+                if (qb.getBankID().equals(questionBank.getBankID())) {
+                    qb.setQuestions(questionBank.getQuestions());
+                }
+            }
+            selectedCategory.setCreator(this);
+            CDB.updateCategory(selectedCategory);
+            ADB.updateAdmin(this);
             QuestionBankDAO QBDB = new QuestionBankDAO();
             boolean updated = QBDB.updateQuestionBank(questionBank);
             if (updated) {
@@ -717,14 +749,13 @@ public class Admin extends User {
             return -1;
         }
 // Cancel operation  
-    if (questionIndex < 0 || questionIndex >= questionBank.getQuestionCount()) {        
-    System.out.println("Invalid question number.");
-        return -1;
+        if (questionIndex < 0 || questionIndex >= questionBank.getQuestionCount()) {
+            System.out.println("Invalid question number.");
+            return -1;
 // Invalid selection    
-}    
+        }
         return questionIndex;
     }
-
 
     public boolean deleteQuestionFromQuestionBank() {
         try {
@@ -743,7 +774,10 @@ public class Admin extends User {
             }
 
             // 3. Display Questions
-            displayQuestions(questionBank);
+            if (!displayQuestions(questionBank)){
+               System.out.println("Operation cancelled.");
+               return false;
+            }
 
             // 4. Select Question to Delete
             int questionIndex = selectQuestionToDelete(questionBank);
@@ -765,7 +799,22 @@ public class Admin extends User {
             Question questionToDelete = questionBank.getQuestions().get(questionIndex);
             questionBank.removeQuestion(questionToDelete);
 
-            // 7. Update QuestionBank in the database
+            // 7. Update QuestionBank and admin in the database
+            AdminDAO ADB = new AdminDAO();
+            CategoryDAO CDB = new CategoryDAO();
+            for (QuestionBank ownedBank : ownedBanks) {
+                if (ownedBank.getBankID().equals(questionBank.getBankID())) {
+                    ownedBank.setQuestions(questionBank.getQuestions());
+                }
+            }
+            for (QuestionBank qb : selectedCategory.getQuestionBanks()) {
+                if (qb.getBankID().equals(questionBank.getBankID())) {
+                    qb.setQuestions(questionBank.getQuestions());
+                }
+            }
+            selectedCategory.setCreator(this);
+            CDB.updateCategory(selectedCategory);
+            ADB.updateAdmin(this);
             QuestionBankDAO QBDB = new QuestionBankDAO();
             boolean updated = QBDB.updateQuestionBank(questionBank);
             if (updated) {
@@ -782,12 +831,19 @@ public class Admin extends User {
         }
     }
 
-    private void displayQuestions(QuestionBank questionBank) {
-        System.out.println("Current Questions in the selected Question Bank:");
-        List<Question> questions = questionBank.getQuestions();
-        for (int i = 0; i < questions.size(); i++) {
-            System.out.println((i + 1) + ". " + questions.get(i));
+    private boolean displayQuestions(QuestionBank questionBank) {
+        if (!questionBank.getQuestions().isEmpty()) {
+            System.out.println("Current Questions in the selected Question Bank:");
+            List<Question> questions = questionBank.getQuestions();
+            for (int i = 0; i < questions.size(); i++) {
+                System.out.println((i + 1) + ". " + questions.get(i));
+            }
+            return true;
+        } else {
+            ifColorfullPrintln("No Questions Are available to delete",TerminalColors.BOLD_RED);
+            return false;
         }
+
     }
 
     private int selectQuestionToDelete(QuestionBank questionBank) {
@@ -827,7 +883,7 @@ public class Admin extends User {
                 "Invalid Department name.Should contain letters only");
         this.setDepartment(Department);
         ADB.updateAdmin(this);
-                updateEquivalentCategoryAndQuestionBank();
+        updateEquivalentCategoryAndQuestionBank();
         System.out.println("Department updated successfully!");
     }
 
@@ -840,7 +896,7 @@ public class Admin extends User {
                 "Invalid Phone Number\ntry again with this format +Countrycode 123456789");
         this.setContactNumber(ContactNumber);
         ADB.updateAdmin(this);
-                updateEquivalentCategoryAndQuestionBank();
+        updateEquivalentCategoryAndQuestionBank();
         System.out.println("Contact Number updated successfully!");
     }
 

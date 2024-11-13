@@ -87,7 +87,7 @@ public class QuestionBankDAO {
         List<QuestionBank> matchingBanks = new ArrayList<>();
         if (banks != null) {
             for (QuestionBank bank : banks) {
-                if (bank.getCategory().equals(category)) {
+                if (bank.getCategoryID().equals(category.getCategoryId())) {
                     matchingBanks.add(bank);
                 }
             }
@@ -99,7 +99,7 @@ public class QuestionBankDAO {
         List<QuestionBank> matchingBanks = new ArrayList<>();
         if (banks != null) {
             for (QuestionBank bank : banks) {
-                if (bank.getCategory().equals(category)&&bank.getCreator().getUserId().equals(creator)) {
+                if (bank.getCategoryID().equals(category.getCategoryId())&&bank.getCreatorID().equals(creator)) {
                     matchingBanks.add(bank);
                 }
             }
@@ -111,7 +111,7 @@ public class QuestionBankDAO {
         List<QuestionBank> matchingBanks = new ArrayList<>();
         if (banks != null) {
             for (QuestionBank bank : banks) {
-                if (bank.getCreator().getUserId().equals(creatorId)) {
+                if (bank.getCreatorID().equals(creatorId)) {
                     matchingBanks.add(bank);
                 }
             }

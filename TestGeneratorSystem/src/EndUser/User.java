@@ -213,7 +213,7 @@ public abstract class User {
             Predicate<String> uniquenessCheck
     ) {
         while (true) {
-            System.out.println(prompt);
+            System.out.print(prompt);
             String input = scanner.nextLine().trim();
 
             // Validate input format
@@ -224,9 +224,9 @@ public abstract class User {
 
             // Check uniqueness
             if (!uniquenessCheck.test(input)) {
-                System.out.println("This "
+                ifColorfullPrintln("This "
                         + (validationType == Checker.StringType.USERNAME ? "username" : "email")
-                        + " is already taken");
+                        + " is already taken",TerminalColors.BOLD_RED);
                 continue;
             }
 
@@ -261,8 +261,8 @@ public abstract class User {
             if (check.isValid(Checker.StringType.PASSWORD, passwordInput)) {
                 return passwordInput;
             }
+            ifColorfullPrintln("Password does not meet requirements. Please try again.",TerminalColors.BOLD_RED);
 
-            System.out.println("Password does not meet requirements. Please try again.");
         }
     }
 
@@ -295,14 +295,14 @@ public abstract class User {
             String errorMessage
     ) {
         while (true) {
-            System.out.println(prompt);
+            System.out.print(prompt);
             String input = scanner.nextLine().trim();
 
             if (check.isValid(validationType, input)) {
                 return input;
             }
 
-            System.out.println(errorMessage);
+            ifColorfullPrintln(errorMessage,TerminalColors.BOLD_RED);
         }
     }
 
@@ -555,7 +555,7 @@ public abstract class User {
                         boolean isQuestionBankInCategory = false;
 
                         for (QuestionBank qb : currentQuestionBanks) {
-                            if (qb.getCategory().getCategoryId().equals(CategoryList.get(key - 1).getCategoryId())) {
+                            if (qb.getCategoryID().equals(CategoryList.get(key - 1).getCategoryId())) {
                                 isQuestionBankInCategory = true;
                                 break;
                             }
@@ -582,7 +582,15 @@ public abstract class User {
                 QuestionBank NewQB = createQuestionBank(this, selectedCategory, creationDate);
                 selectedCategory.addQuestionBank(NewQB);
                 CDB.updateCategory(selectedCategory);
-
+                if (this instanceof Admin admin){
+                    ArrayList<QuestionBank> currentOwnedBanks = admin.getOwnedBanks();
+                    currentOwnedBanks.add(NewQB);
+                    admin.setOwnedBanks(currentOwnedBanks);
+                    AdminDAO ADB = new AdminDAO();
+                    ADB.updateAdmin(admin);
+                    updateEquivalentCategoryAndQuestionBank(admin);
+                }
+                
                 return NewQB;
             }
         } else {
@@ -595,7 +603,7 @@ public abstract class User {
     public QuestionBank createQuestionBank(User creator, Category category, LocalDate creationDate) {
         QuestionBank newBank;
         try {
-            newBank = new QuestionBank(creator, category, creationDate);
+            newBank = new QuestionBank(creator.getUserId(), category.getCategoryId(), creationDate);
             QuestionBankDAO QBDB = new QuestionBankDAO();
             QBDB.saveQuestionBank(newBank);
         } catch (Exception e) {
@@ -812,8 +820,8 @@ public abstract class User {
                 }
             }
         }for (QuestionBank questionBank : Q.getQuestionBanksList()) {
-                if (questionBank.getCreator().getUserId().equals(getUserId())){
-                    questionBank.setCreator(this);
+                if (questionBank.getCreatorID().equals(getUserId())){
+                    questionBank.setCreatorID(getUserId());
                     Q.updateQuestionBank(questionBank);
                 }
             }
@@ -829,8 +837,8 @@ public abstract class User {
                 }
             }
         }for (QuestionBank questionBank : Q.getQuestionBanksList()) {
-                if (questionBank.getCreator().getUserId().equals(getUserId())){
-                    questionBank.setCreator(user);
+                if (questionBank.getCreatorID().equals(getUserId())){
+                    questionBank.setCreatorID(user.getUserId());
                     Q.updateQuestionBank(questionBank);
                 }
             }

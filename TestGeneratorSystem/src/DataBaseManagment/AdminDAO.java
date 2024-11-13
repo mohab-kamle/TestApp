@@ -74,7 +74,7 @@ public class AdminDAO {
 
                 admins.add(admin);
                 saveAdminsList(admins);
-                System.out.println("Admin saved successfully.");
+//                System.out.println("Admin saved successfully.");  // for debugging
             } else {
                 System.out.println("Admin already exists.");
             }
@@ -94,7 +94,7 @@ public class AdminDAO {
                     .collect(Collectors.toList());
 
             saveAdminsList(admins);
-            System.out.println("Admin updated successfully.");
+//            System.out.println("Admin updated successfully.");  // for debugging
         } catch (Exception e) {
             System.err.println("Error updating admin: " + e.getMessage());
         }
@@ -110,7 +110,7 @@ public class AdminDAO {
 
             if (admins.size() < initialSize) {
                 saveAdminsList(admins);
-                System.out.println("Admin deleted successfully.");
+//                System.out.println("Admin deleted successfully."); // for debugging
             } else {
                 System.out.println("No admin found with the given ID.");
             }
