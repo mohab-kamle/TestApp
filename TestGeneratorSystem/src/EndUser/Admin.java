@@ -197,7 +197,7 @@ public class Admin extends User {
                 "Invalid Phone Number\ntry again with this format +Countrycode 123456789");
         String Department = validateInput(scanner,
                 check,
-                "\nEnter department : ",
+                "Enter department : ",
                 Checker.StringType.LETTERS_ONLY,
                 "Invalid Department name.Should contain letters only");
         LocalDate accountCreationDate = LocalDate.now();

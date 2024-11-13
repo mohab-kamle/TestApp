@@ -135,7 +135,7 @@ public class Student extends User {
         // Validate and gather student-specific details
         String institute;
         do {
-            System.out.println("\nEnter Institute: ");
+            System.out.print("Enter Institute: ");
             institute = scanner.nextLine();
             if (!check.isValid(Checker.StringType.LETTERS_ONLY, institute)) {
                 System.out.println("Invalid Institute name. It should contain letters only.");

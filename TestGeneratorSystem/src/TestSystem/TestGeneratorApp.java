@@ -1,10 +1,14 @@
 package TestSystem;
 
+import DataBaseManagment.AdminDAO;
+import DataBaseManagment.StudentDAO;
 import EndUser.Admin;
 import EndUser.Student;
 import EndUser.User;
 import UserDefinedFunctionalities.TerminalColors;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import javax.mail.MessagingException;
 
@@ -83,6 +87,7 @@ public class TestGeneratorApp {
                 case 3 ->
                     performAdminPasswordReset();
                 case 0 -> {
+                    currentUser.setLastLoginDate(LocalDateTime.now());
                     return;
                 }
                 default ->
@@ -184,28 +189,28 @@ public class TestGeneratorApp {
                         ifColorfullPrintln("NoThing is Deleted..", TerminalColors.BOLD_RED);
                     }
                 }
+//                case 8 -> {
+//                    if(admin.createQuestionBank()!=null){
+//                        ifColorfullPrintln("Question Bank Created succesfully !!", TerminalColors.BOLD_GREEN);
+//                    }else{
+//                        ifColorfullPrintln("Question Bank couldn't be created", TerminalColors.BOLD_RED);
+//                    }
+//                }
                 case 8 -> {
-                    if(admin.createQuestionBank()!=null){
-                        ifColorfullPrintln("Question Bank Created succesfully !!", TerminalColors.BOLD_GREEN);
-                    }else{
-                        ifColorfullPrintln("Question Bank couldn't be created", TerminalColors.BOLD_RED);
-                    }
-                }
-                case 10 -> {
                     if(admin.addQuestionToQuestionBank()){
                         ifColorfullPrintln("Question has been added", TerminalColors.BOLD_GREEN);
                     }else{
                         ifColorfullPrintln("No Question is added", TerminalColors.BOLD_RED);
                     }
                 }
-                case 11 -> {
+                case 9 -> {
                     if(admin.updateQuestionInQuestionBank()){
                         ifColorfullPrintln("Question has been updated succesfully !!", TerminalColors.BOLD_GREEN);
                     }else{
                         ifColorfullPrintln("No changes to Question happened", TerminalColors.BOLD_RED);
                     }
                 }
-                case 12 -> {
+                case 10 -> {
                     if(admin.deleteQuestionFromQuestionBank()){
                         ifColorfullPrintln("Question has been deleted !!!", TerminalColors.BOLD_GREEN);
                     }else{
@@ -213,6 +218,9 @@ public class TestGeneratorApp {
                     }
                 }
                 case 0 -> {
+                    AdminDAO ADB = new AdminDAO();
+                    admin.setLastLoginDate(LocalDateTime.now());
+                    ADB.updateAdmin(admin);
                     return;
                 }
                 default ->
@@ -227,7 +235,9 @@ public class TestGeneratorApp {
      */
     private static void displayAdminDashboardMenu() {
         clearConsole();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
         ifColorfullPrintln("===== Admin Dashboard =====",TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("Last Login Date : "+currentUser.getLastLoginDate().format(formatter), TerminalColors.YELLOW);
         System.out.println("1. View Profile");
         System.out.println("2. Update Profile");
         System.out.println("3. Change Password");
@@ -235,10 +245,10 @@ public class TestGeneratorApp {
         System.out.println("5. Create Category");
         System.out.println("6. modify Category");
         System.out.println("7. delete Category");
-        System.out.println("8. Create Question Bank");
-        System.out.println("10. Add Question");
-        System.out.println("11. Update Question");
-        System.out.println("12. delete Question");
+//        System.out.println("8. Create Question Bank");
+        System.out.println("8. Add Question");
+        System.out.println("9. Update Question");
+        System.out.println("10. delete Question");
 //        System.out.println("6. View My Question Banks");
 //        System.out.println("7. delete Question Bank");
         System.out.println("0. Logout");
@@ -299,7 +309,7 @@ public class TestGeneratorApp {
         clearConsole();
         ifColorfullPrintln("===== Student Login =====",TerminalColors.BOLD_BLUE);
         Student loggedStudent = new Student().login();
-
+        currentUser = loggedStudent;
         if (loggedStudent != null) {
             handleStudentDashboard(loggedStudent);
         } else {
@@ -339,6 +349,9 @@ public class TestGeneratorApp {
                     student.getTestHistory();
                 }
                 case 0 -> {
+                    StudentDAO SDB = new StudentDAO();
+                    student.setLastLoginDate(LocalDateTime.now());
+                    SDB.updateStudent(student);
                     return;
                 }
                 default ->
@@ -353,7 +366,9 @@ public class TestGeneratorApp {
      */
     private static void displayStudentDashboardMenu() {
         clearConsole();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
         ifColorfullPrintln("===== Student Dashboard =====",TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("Last Login Date : "+currentUser.getLastLoginDate().format(formatter), TerminalColors.YELLOW);
         System.out.println("1. View Profile");
         System.out.println("2. Update Profile");
         System.out.println("3. Change Password");

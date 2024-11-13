@@ -1,21 +1,15 @@
 [ {
   "type" : "admin",
-  "userId" : "7f1ac0c1-7ee8-41a7-8866-449a757771f0",
-  "email" : "yousef@gmail.com",
-  "userName" : "Kamle",
-  "address" : "Egypt",
-  "firstName" : "ahmed",
-  "lastName" : "mohammed",
-  "lastLoginDate" : "2024-11-13T02:05:11.701+00:00",
+  "userId" : "9ff233bf-8423-47bd-b1bf-1cc8fd83722e",
+  "email" : "mohabkamle@gmail.com",
+  "userName" : "mohab",
+  "address" : "cairo, cairo, Egytp",
+  "firstName" : "mohab",
+  "lastName" : "kamle",
+  "lastLoginDate" : "2024-11-13T13:41:03.882222",
   "dateAppointed" : "2024-11-13",
-  "contactNumber" : "+2012345678910",
-  "department" : "Geology",
-  "ownedBanks" : [ {
-    "bankID" : "151ef5ad-6743-4248-b7ab-99250700ddf4",
-    "questions" : [ ],
-    "creatorID" : "7f1ac0c1-7ee8-41a7-8866-449a757771f0",
-    "categoryID" : "a6408a2b-9014-41b5-903a-d23c7aaaab4b",
-    "creationDate" : "2024-11-13"
-  } ],
+  "contactNumber" : "+201005619482",
+  "department" : "math",
+  "ownedBanks" : [ ],
   "password" : "123456789@MMm"
 } ]
