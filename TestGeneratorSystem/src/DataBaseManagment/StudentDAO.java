@@ -1,9 +1,10 @@
 package DataBaseManagment;
 
 import EndUser.Student;
+import TestSystem.QuestionBank;
+import TestSystem.Test;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -99,8 +100,9 @@ public class StudentDAO {
             String content = new String(Files.readAllBytes(path));
 
             // Parse JSON with custom type reference
-            JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, Student.class);
-            List<Student> students = mapper.readValue(content, type);
+             List<Student> students = mapper.readValue(content,
+                    new TypeReference<List<Student>>() {
+            });
 
             return students != null ? students : new ArrayList<>();
         } catch (IOException e) {
@@ -143,7 +145,17 @@ public class StudentDAO {
     public void updateStudent(Student updatedStudent) {
         try {
             List<Student> students = getStudentsList();
-
+            QuestionBankDAO QBDB = new QuestionBankDAO();
+            for (QuestionBank questionBank : QBDB.getQuestionBanksList()) {
+                if(questionBank.getCreatorID().equals(updatedStudent.getUserId())){      for (QuestionBank  qbank : updatedStudent.getFavoriteQuestions()) {
+                       if(questionBank.getCategoryID().equals(qbank.getCategoryID())){
+                         QBDB.updateQuestionBank(qbank);  
+                       }
+                        
+                    }
+                    
+                }
+            }
             // Find and replace student
             students = students.stream()
                     .map(student
@@ -151,7 +163,7 @@ public class StudentDAO {
                     .collect(Collectors.toList());
 
             saveStudentsList(students);
-            System.out.println("Student updated successfully.");
+//            System.out.println("Student updated successfully."); //for debugging
         } catch (Exception e) {
             System.err.println("Error updating student: " + e.getMessage());
             e.printStackTrace();
@@ -161,7 +173,12 @@ public class StudentDAO {
     public void deleteStudent(UUID studentId) {
         try {
             List<Student> students = getStudentsList();
-
+            TestDAO TDB = new TestDAO();
+            for (Test test : TDB.getTestsList()) {
+                if(test.getTakerID().equals(studentId)){
+                    TDB.deleteTest(test.getTakerID());
+                }
+            }
             // Remove student with matching ID
             int initialSize = students.size();
             students.removeIf(student -> student.getUserId().equals(studentId));
@@ -225,5 +242,12 @@ public class StudentDAO {
                 .mapToDouble(Student::getAvgTime)
                 .average()
                 .orElse(0);
+    }
+
+    public Student loadStudent(UUID creatorID) {
+        return getStudentsList().stream()
+                .filter(student -> student.getUserId().equals(creatorID))
+                .findFirst()
+                .orElse(null);
     }
 }
