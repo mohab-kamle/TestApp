@@ -185,10 +185,17 @@ public final class QuestionBank {
         }
         System.out.println("the question is removed");
     }
-
-    public ArrayList<Question> searchQuestionsByKeyword() {
-        return null;
+    // search by keyword at specific QeustionBank then back all question contain this word
+    public ArrayList<Question> searchQuestionsByKeyword(String string) {
+        ArrayList<Question> SearchedQ = this.getQuestions();
+        for (Question question : questions) {
+        if (question.getStatement().toLowerCase().contains(string.toLowerCase())) {
+            SearchedQ.add(question);
+        }
     }
+        return SearchedQ;
+    }
+
 
     /**
      * Exports the list of questions to a specified file.
