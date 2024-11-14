@@ -1,5 +1,7 @@
 package DataBaseManagment;
 
+import EndUser.Admin;
+import EndUser.Student;
 import TestSystem.Category;
 import TestSystem.Question;
 import TestSystem.QuestionBank;
@@ -48,6 +50,29 @@ public class QuestionBankDAO {
     }
 
     public void saveQuestionBank(QuestionBank questionBank) {
+        
+        CategoryDAO CDB = new CategoryDAO();
+        Category updateCategory = CDB.loadCategory(questionBank.getCategoryID());
+        ArrayList<QuestionBank> currentQBs = updateCategory.getQuestionBanks();
+        currentQBs.removeIf(q -> q.getBankID().equals(questionBank.getBankID()));
+        currentQBs.add(questionBank);
+        updateCategory.setQuestionBanks(currentQBs);
+        CDB.updateCategory(updateCategory);
+        AdminDAO ADB = new AdminDAO();
+        StudentDAO SDB = new StudentDAO();
+        if(ADB.IsThisIdForAdmin(questionBank.getCreatorID())){
+            Admin updateadmin = ADB.loadAdmin(questionBank.getCreatorID());
+            currentQBs = updateadmin.getOwnedBanks();
+            currentQBs.removeIf(q -> q.getBankID().equals(questionBank.getBankID()));
+            currentQBs.add(questionBank);
+            updateadmin.setOwnedBanks(currentQBs);
+        }else{
+            Student updatestudent = SDB.loadStudent(questionBank.getCreatorID());
+            currentQBs = updatestudent.getFavoriteQuestions();
+            currentQBs.removeIf(q -> q.getBankID().equals(questionBank.getBankID()));
+            currentQBs.add(questionBank);
+            updatestudent.setFavoriteQuestions(currentQBs);
+        }
         List<QuestionBank> banks = getQuestionBanksList();
         if (banks == null) {
             banks = new ArrayList<>();
@@ -57,6 +82,29 @@ public class QuestionBankDAO {
     }
 
     public boolean updateQuestionBank(QuestionBank updatedBank) {
+        CategoryDAO CDB = new CategoryDAO();
+        Category updateCategory = CDB.loadCategory(updatedBank.getCategoryID());
+        ArrayList<QuestionBank> currentQBs = updateCategory.getQuestionBanks();
+        currentQBs.removeIf(q -> q.getBankID().equals(updatedBank.getBankID()));
+        currentQBs.add(updatedBank);
+        updateCategory.setQuestionBanks(currentQBs);
+        CDB.updateCategory(updateCategory);
+        AdminDAO ADB = new AdminDAO();
+        StudentDAO SDB = new StudentDAO();
+        if(ADB.IsThisIdForAdmin(updatedBank.getCreatorID())){
+            Admin updateadmin = ADB.loadAdmin(updatedBank.getCreatorID());
+            currentQBs = updateadmin.getOwnedBanks();
+            currentQBs.removeIf(q -> q.getBankID().equals(updatedBank.getBankID()));
+            currentQBs.add(updatedBank);
+            updateadmin.setOwnedBanks(currentQBs);
+        }else{
+            Student updatestudent = SDB.loadStudent(updatedBank.getCreatorID());
+            currentQBs = updatestudent.getFavoriteQuestions();
+            currentQBs.removeIf(q -> q.getBankID().equals(updatedBank.getBankID()));
+            currentQBs.add(updatedBank);
+            updatestudent.setFavoriteQuestions(currentQBs);
+        }
+        
         List<QuestionBank> banks = getQuestionBanksList();
         if (banks != null) {
             for (int i = 0; i < banks.size(); i++) {
@@ -137,6 +185,15 @@ public class QuestionBankDAO {
 
     public void deleteQuestionBank(UUID bankId) {
         List<QuestionBank> banks = getQuestionBanksList();
+        AdminDAO ADB = new AdminDAO();
+        Admin updateadmin= ADB.loadAdmin(loadQuestionBank(bankId).getCreatorID());
+        ArrayList<QuestionBank> currentQBanks = updateadmin.getOwnedBanks();
+        if (currentQBanks != null) {
+            currentQBanks.removeIf(bank -> bank.getBankID().equals(bankId));
+            updateadmin.setOwnedBanks(currentQBanks);
+            ADB.updateAdmin(updateadmin);
+            saveQuestionBanksList(banks);
+        }
         if (banks != null) {
             banks.removeIf(bank -> bank.getBankID().equals(bankId));
             saveQuestionBanksList(banks);

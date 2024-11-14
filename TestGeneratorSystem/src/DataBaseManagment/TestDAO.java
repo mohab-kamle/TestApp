@@ -54,6 +54,13 @@ public class TestDAO {
     }
 
     public void updateTest(Test updatedTest) {
+        StudentDAO SDB = new StudentDAO();
+        Student updatestudent = SDB.loadStudent(updatedTest.getTakerID());
+        List<Test> currentTests = updatestudent.getTakenTests();
+        currentTests.removeIf(test -> test.getTestID().equals(updatedTest.getTestID()));
+        currentTests.add(updatedTest);
+        updatestudent.setTakenTests(currentTests);
+        SDB.updateStudent(updatestudent);
         List<Test> tests = getTestsList();
         if (tests != null) {
             for (int i = 0; i < tests.size(); i++) {
@@ -113,7 +120,7 @@ public class TestDAO {
         List<Test> tests = getTestsList();
         if (tests != null) {
             return tests.stream()
-                .filter(test -> test.getTaker().equals(student))
+                .filter(test -> test.getTakerID().equals(student.getUserId()))
                 .collect(Collectors.toList());
         }
         return new ArrayList<>();
@@ -177,7 +184,7 @@ public class TestDAO {
         if (tests != null) {
             return tests.stream()
                 .filter(test -> 
-                    test.getTaker().equals(student) && 
+                    test.getTakerID().equals(student.getUserId()) && 
                     test.getCategory().equals(category))
                 .collect(Collectors.toList());
         }

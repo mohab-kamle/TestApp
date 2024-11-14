@@ -1,15 +1,71 @@
 [ {
   "type" : "admin",
-  "userId" : "9ff233bf-8423-47bd-b1bf-1cc8fd83722e",
-  "email" : "mohabkamle@gmail.com",
-  "userName" : "mohab",
-  "address" : "cairo, cairo, Egytp",
-  "firstName" : "mohab",
-  "lastName" : "kamle",
-  "lastLoginDate" : "2024-11-13T13:41:03.882222",
-  "dateAppointed" : "2024-11-13",
+  "userId" : "f6721636-2652-44a6-ac0c-7d34e738ebed",
+  "email" : "youssefwael063@gmail.com",
+  "userName" : "youssef",
+  "address" : "Paris, London, Egypt",
+  "firstName" : "youssef",
+  "lastName" : "wael",
+  "lastLoginDate" : "2024-11-14T16:00:31.8021664",
+  "dateAppointed" : "2024-11-14",
   "contactNumber" : "+201005619482",
   "department" : "math",
-  "ownedBanks" : [ ],
+  "ownedBanks" : [ {
+    "bankID" : "d930a63c-fe89-4bb6-a344-dc90389d9b9c",
+    "questions" : [ {
+      "questionID" : "49b7757b-b495-4d80-93cb-18201ac1dc29",
+      "topic" : "3ad1a76c-a2d7-4a73-9949-f016c2504e10",
+      "statement" : "moromorogmomr",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.0,
+      "difficulty" : "EASY",
+      "rightAnswer" : 0,
+      "choices" : [ "a", "d", "f", "g" ],
+      "noOfAttemptsAtTests" : 0
+    }, {
+      "questionID" : "2af3b22f-9bfa-447e-a86d-358cb36f8e28",
+      "topic" : "3ad1a76c-a2d7-4a73-9949-f016c2504e10",
+      "statement" : "omormogmorgm",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.0,
+      "difficulty" : "EASY",
+      "rightAnswer" : 0,
+      "choices" : [ "a", "d", "f", "g" ],
+      "noOfAttemptsAtTests" : 0
+    }, {
+      "questionID" : "c4ac8c89-d6c0-4694-a162-b2c7d52f248c",
+      "topic" : "3ad1a76c-a2d7-4a73-9949-f016c2504e10",
+      "statement" : "mormogmrog",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.0,
+      "difficulty" : "EASY",
+      "rightAnswer" : 3,
+      "choices" : [ "a", "d", "f", "g" ],
+      "noOfAttemptsAtTests" : 0
+    }, {
+      "questionID" : "f3ce67f7-27f8-46c3-a89b-2d30de9f9f21",
+      "topic" : "3ad1a76c-a2d7-4a73-9949-f016c2504e10",
+      "statement" : "ngrngirngirn",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.0,
+      "difficulty" : "EASY",
+      "rightAnswer" : 0,
+      "choices" : [ "A", "D", "F", "G" ],
+      "noOfAttemptsAtTests" : 0
+    }, {
+      "questionID" : "0226cae2-674d-427c-a6d6-bf6b0ceb5468",
+      "topic" : "3ad1a76c-a2d7-4a73-9949-f016c2504e10",
+      "statement" : "mgormogromrgrmg",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.0,
+      "difficulty" : "EASY",
+      "rightAnswer" : 0,
+      "choices" : [ "5", "6", "7", "8" ],
+      "noOfAttemptsAtTests" : 0
+    } ],
+    "creatorID" : "f6721636-2652-44a6-ac0c-7d34e738ebed",
+    "categoryID" : "3ad1a76c-a2d7-4a73-9949-f016c2504e10",
+    "creationDate" : "2024-11-14"
+  } ],
   "password" : "123456789@MMm"
 } ]

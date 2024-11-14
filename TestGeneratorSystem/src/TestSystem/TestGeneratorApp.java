@@ -87,7 +87,6 @@ public class TestGeneratorApp {
                 case 3 ->
                     performAdminPasswordReset();
                 case 0 -> {
-                    currentUser.setLastLoginDate(LocalDateTime.now());
                     return;
                 }
                 default ->
@@ -284,7 +283,7 @@ public class TestGeneratorApp {
      */
     private static void displayStudentMenu() {
         clearConsole();
-        ifColorfullPrintln("===== Student Portal =====",TerminalColors.PURPLE);
+        ifColorfullPrintln("===== Student Portal =====",TerminalColors.BOLD_BLUE);
         System.out.println("1. Sign Up");
         System.out.println("2. Login");
         System.out.println("3. Reset Password");
@@ -348,6 +347,9 @@ public class TestGeneratorApp {
                 case 6 -> {
                     student.getTestHistory();
                 }
+                case 7 -> {
+                    student.displayFavoriteQuestions();
+                }
                 case 0 -> {
                     StudentDAO SDB = new StudentDAO();
                     student.setLastLoginDate(LocalDateTime.now());
@@ -375,6 +377,7 @@ public class TestGeneratorApp {
         System.out.println("4. Remove Account");
         System.out.println("5. Take Test");
         System.out.println("6. View Test History");
+        System.out.println("7. View favorite questions");
         System.out.println("0. Logout");
         ifColorfullPrint("Enter your choice: ",TerminalColors.CYAN);
     }

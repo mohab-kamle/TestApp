@@ -586,17 +586,6 @@ public abstract class User {
             if (selectedCategory != null) {
                 LocalDate creationDate = LocalDate.now();
                 QuestionBank NewQB = createQuestionBank(this, selectedCategory, creationDate);
-                selectedCategory.addQuestionBank(NewQB);
-                CDB.updateCategory(selectedCategory);
-                if (this instanceof Admin admin) {
-                    ArrayList<QuestionBank> currentOwnedBanks = admin.getOwnedBanks();
-                    currentOwnedBanks.add(NewQB);
-                    admin.setOwnedBanks(currentOwnedBanks);
-                    AdminDAO ADB = new AdminDAO();
-                    ADB.updateAdmin(admin);
-                    updateEquivalentCategoryAndQuestionBank(admin);
-                }
-
                 return NewQB;
             }
         } else {

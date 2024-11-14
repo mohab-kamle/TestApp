@@ -1,6 +1,7 @@
 package DataBaseManagment;
 
 import EndUser.Admin;
+import TestSystem.Category;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -86,20 +87,38 @@ public class AdminDAO {
     public void updateAdmin(Admin updatedAdmin) {
         try {
             List<Admin> admins = getAdminsList();
-
+            CategoryDAO CDB = new CategoryDAO();
+            List<Category> updatecategories = CDB.searchCategoriesByCreator(updatedAdmin.getUserId());
+            if(!updatecategories.isEmpty()){
+                for (Category updatecategory : updatecategories) {
+                   updatecategory.setCreator(updatedAdmin);
+                   CDB.updateCategory(updatecategory); 
+                }
+              
+            }
+            
             // Find and replace admin
             admins = admins.stream()
                     .map(admin
                             -> admin.getUserId().equals(updatedAdmin.getUserId()) ? updatedAdmin : admin)
                     .collect(Collectors.toList());
-
+            
             saveAdminsList(admins);
 //            System.out.println("Admin updated successfully.");  // for debugging
         } catch (Exception e) {
             System.err.println("Error updating admin: " + e.getMessage());
         }
     }
-
+    public boolean IsThisIdForAdmin(UUID adminId) {
+        List<Admin> admins = getAdminsList();
+        for (Admin admin : admins) {
+            if(admin.getUserId().equals(adminId)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void deleteAdmin(UUID adminId) {
         try {
             List<Admin> admins = getAdminsList();
@@ -235,5 +254,12 @@ public class AdminDAO {
         } catch (IOException e) {
             System.err.println("Error validating JSON file: " + e.getMessage());
         }
+    }
+
+    Admin loadAdmin(UUID creatorID) {
+        return getAdminsList().stream()
+                .filter(admin -> admin.getUserId().equals(creatorID))
+                .findFirst()
+                .orElse(null);
     }
 }
