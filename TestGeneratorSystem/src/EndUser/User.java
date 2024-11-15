@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.io.Console;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.function.Predicate;
 import javax.mail.MessagingException;
@@ -38,7 +39,7 @@ public abstract class User {
     protected String address;
     protected String firstName;
     protected String lastName;
-    protected Date lastLoginDate;
+    protected LocalDateTime lastLoginDate;
 
     public User(String email,
             String userName,
@@ -53,7 +54,7 @@ public abstract class User {
         this.address = address;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.lastLoginDate = new Date();
+        this.lastLoginDate = LocalDateTime.now();
     }
 
     //setters
@@ -86,7 +87,7 @@ public abstract class User {
         this.lastName = lastName;
     }
 
-    public void setLastLoginDate(Date lastLoginDate) {
+    public void setLastLoginDate(LocalDateTime lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
     }
 
@@ -120,7 +121,7 @@ public abstract class User {
         return lastName;
     }
 
-    public Date getLastLoginDate() {
+    public LocalDateTime getLastLoginDate() {
         return lastLoginDate;
     }
 
@@ -167,8 +168,9 @@ public abstract class User {
         String[] personalFields = {
             "First Name",
             "Last Name",
-            "Country", //            "City",
-        //            "Street Name"
+            "Country",
+            "City",
+            "Street Name"
         };
 
         for (String field : personalFields) {
@@ -182,14 +184,18 @@ public abstract class User {
             commonList.add(input);
         }
 
-//        // Construct full address
-//        String fullAddress = String.format(
-//                "%s, %s, %s",
-//                commonList.get(commonList.size() - 1), // Street Name
-//                commonList.get(commonList.size() - 2), // City
-//                commonList.get(commonList.size() - 3) // Country
-//        );
-//        commonList.add(fullAddress);
+        // Construct full address
+        String fullAddress = String.format(
+                "%s, %s, %s",
+                commonList.get(commonList.size() - 1), // Street Name
+                commonList.get(commonList.size() - 2), // City
+                commonList.get(commonList.size() - 3) // Country
+        );
+        commonList.remove(commonList.size() - 1); // remove Street Name from common list
+        commonList.remove(commonList.size() - 1); // remove City
+        commonList.remove(commonList.size() - 1); // remove Country
+        commonList.add(fullAddress);
+        
         return commonList;
     }
 
@@ -580,17 +586,6 @@ public abstract class User {
             if (selectedCategory != null) {
                 LocalDate creationDate = LocalDate.now();
                 QuestionBank NewQB = createQuestionBank(this, selectedCategory, creationDate);
-                selectedCategory.addQuestionBank(NewQB);
-                CDB.updateCategory(selectedCategory);
-                if (this instanceof Admin admin) {
-                    ArrayList<QuestionBank> currentOwnedBanks = admin.getOwnedBanks();
-                    currentOwnedBanks.add(NewQB);
-                    admin.setOwnedBanks(currentOwnedBanks);
-                    AdminDAO ADB = new AdminDAO();
-                    ADB.updateAdmin(admin);
-                    updateEquivalentCategoryAndQuestionBank(admin);
-                }
-
                 return NewQB;
             }
         } else {

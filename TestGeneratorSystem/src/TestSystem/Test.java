@@ -1,7 +1,5 @@
 package TestSystem;
 
-import EndUser.Student;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,39 +9,38 @@ import java.util.*;
  *
  * @author mohab
  */
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "@type"
-)
 public class Test {
 
     private UUID testID;
     private Category category;
     private LocalDate creationDate;
-    private Student taker;
-    private int duration; //in minutes
-    private int testResult;//why int ?
+    private UUID takerID;
+    private int duration;
+    private double testResult;
     private final static double passingScore = 60;
     private Question.dlevel difficulty;
     private ArrayList<Question> questions;
     private LocalDateTime startTime;
-    private LocalDateTime endTime;// need to be aware of the technique of calculating it
-    private int noOfAttempts;
+    private LocalDateTime endTime;
+//    private int noOfAttempts; //set for future updates
     private ArrayList<Integer> takerAnswers;
 
-    public Test(Category category, LocalDate creationDate, Student taker, Question.dlevel difficulty, ArrayList<Question> questions) {
+    public Test() {
+    }
+    
+    
+    public Test(Category category, LocalDate creationDate, UUID taker, Question.dlevel difficulty, ArrayList<Question> questions) {
         this.testID = UUID.randomUUID();
         this.category = category;
         this.creationDate = creationDate;
-        this.taker = taker;
+        this.takerID = taker;
         this.difficulty = difficulty;
         this.questions = questions;
-        this.noOfAttempts = 0;
         this.takerAnswers = new ArrayList<>();
     }
 
     //setters
+    
     public void setTestID(UUID testID) {
         this.testID = testID;
     }
@@ -56,15 +53,15 @@ public class Test {
         this.creationDate = creationDate;
     }
 
-    public void setTaker(Student taker) {
-        this.taker = taker;
+    public void setTakerID(UUID taker) {
+        this.takerID = taker;
     }
 
     public void setDuration(int duration) {
         this.duration = duration;
     }
 
-    public void setTestResult(int testResult) {
+    public void setTestResult(double testResult) {
         this.testResult = testResult;
     }
 
@@ -84,15 +81,12 @@ public class Test {
         this.endTime = endTime;
     }
 
-    public void setNoOfAttempts(int noOfAttempts) {
-        this.noOfAttempts = noOfAttempts;
-    }
-
     public void setTakerAnswers(ArrayList<Integer> takerAnswers) {
         this.takerAnswers = takerAnswers;
     }
 
     //getters
+
     public UUID getTestID() {
         return testID;
     }
@@ -105,15 +99,15 @@ public class Test {
         return creationDate;
     }
 
-    public Student getTaker() {
-        return taker;
+    public UUID getTakerID() {
+        return takerID;
     }
 
     public int getDuration() {
         return duration;
     }
 
-    public int getTestResult() {
+    public double getTestResult() {
         return testResult;
     }
 
@@ -137,9 +131,6 @@ public class Test {
         return endTime;
     }
 
-    public int getNoOfAttempts() {
-        return noOfAttempts;
-    }
 
     public ArrayList<Integer> getTakerAnswers() {
         return takerAnswers;
@@ -178,7 +169,6 @@ public class Test {
      */
     public void reset() {
         this.testResult = 0;
-        this.noOfAttempts = 0;
         this.takerAnswers.clear();
         this.startTime = null;
         this.endTime = null;
@@ -246,5 +236,7 @@ public class Test {
         Duration tDuration = Duration.between(startTime, endTime);
         return tDuration.toMinutes() + tDuration.toSecondsPart() / 60.0;
     }
+
+    
 
 }

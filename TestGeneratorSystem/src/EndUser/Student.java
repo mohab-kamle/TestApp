@@ -4,9 +4,11 @@ package EndUser;
  *
  * @author Youssef
  */
+import DataBaseManagment.AdminDAO;
 import DataBaseManagment.CategoryDAO;
 import DataBaseManagment.QuestionBankDAO;
 import DataBaseManagment.StudentDAO;
+import DataBaseManagment.TestDAO;
 import TestSystem.Category;
 import TestSystem.Question;
 import TestSystem.QuestionBank;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -28,7 +31,7 @@ public class Student extends User {
     private int passedTestsCount;
     private double totalTimeOfAllTests;
     private String institute;
-    private List<Question> favoriteQuestions;
+    private ArrayList<QuestionBank> favoriteQuestions;
     private List<Test> takenTests;
 
     public Student() {
@@ -53,7 +56,11 @@ public class Student extends User {
         return grade;
     }
 
-    public void setGrade(double avg) {
+    public void setGrade(String avg) {
+        grade = avg;
+    }
+
+    public void calculateGrade(double avg) {
         if (avg >= 97 && avg <= 100) {
             this.grade = "A+";
         } else if (avg >= 93 && avg < 97) {
@@ -109,11 +116,11 @@ public class Student extends User {
         this.institute = institute;
     }
 
-    public List<Question> getFavoriteQuestions() {
+    public ArrayList<QuestionBank> getFavoriteQuestions() {
         return favoriteQuestions;
     }
 
-    public void setFavoriteQuestions(List<Question> favoriteQuestions) {
+    public void setFavoriteQuestions(ArrayList<QuestionBank> favoriteQuestions) {
         this.favoriteQuestions = favoriteQuestions;
     }
 
@@ -143,7 +150,7 @@ public class Student extends User {
         // Validate and gather student-specific details
         String institute;
         do {
-            System.out.println("\nEnter Institute: ");
+            System.out.print("Enter Institute: ");
             institute = scanner.nextLine();
             if (!check.isValid(Checker.StringType.LETTERS_ONLY, institute)) {
                 System.out.println("Invalid Institute name. It should contain letters only.");
@@ -218,12 +225,6 @@ public class Student extends User {
         ProfileStr.append("\ninstitute : ").append(getInstitute());
         ProfileStr.append("\npassedTestsCount : ").append(getPassedTestsCount());
         ProfileStr.append("\ntotalTimeOfAllTests : ").append(getTotalTimeOfAllTests());
-        ProfileStr.append("\nfavoriteQuestions : ");
-        if (!getFavoriteQuestions().isEmpty()) {
-            for (Question question : getFavoriteQuestions()) {
-                ProfileStr.append("\n - ").append(question);
-            }
-        }
         if (!getTakenTests().isEmpty()) {
             for (Test test : getTakenTests()) {
                 ProfileStr.append("\n - ").append(test);
@@ -231,18 +232,12 @@ public class Student extends User {
         }
 
         if (show) {
-            System.out.println("\nGrade : " + getGrade());
-            System.out.println("\ninstitute : " + getInstitute());
-            System.out.println("\npassedTestsCount : " + getPassedTestsCount());
-            System.out.println("\ntotalTimeOfAllTests : " + getTotalTimeOfAllTests());
-            System.out.println("\nFavorite Questions: ");
-            if (!getFavoriteQuestions().isEmpty()) {
-                for (Question question : getFavoriteQuestions()) {
-                    System.out.println(" - " + question);
-                }
-            }
+            System.out.println("Grade : " + getGrade());
+            System.out.println("institute : " + getInstitute());
+            System.out.println("passedTestsCount : " + getPassedTestsCount());
+            System.out.println("totalTimeOfAllTests : " + getTotalTimeOfAllTests());
             if (!getTakenTests().isEmpty()) {
-                System.out.println("\ntakenTests: ");
+                System.out.println("takenTests: ");
                 for (Test test : getTakenTests()) {
                     System.out.println(" - " + test);
                 }
@@ -383,7 +378,7 @@ public class Student extends User {
         Test test = new Test(
                 selectedCategory,
                 LocalDate.now(),
-                this,
+                this.getUserId(),
                 difficulty,
                 new ArrayList<>(testQuestions)
         );
@@ -396,11 +391,11 @@ public class Student extends User {
         System.out.println("Category: " + selectedCategory.getName());
         System.out.println("Difficulty: " + difficulty);
         System.out.println("Number of Questions: " + numQuestions);
-
+        test.setStartTime(LocalDateTime.now());
         // Take the test with time tracking
         List<Integer> correctAnswers = new ArrayList<>();
         List<Double> questionTimes = new ArrayList<>();
-
+        System.out.println("Remark : Enter love to favorite the Question");
         for (int i = 0; i < testQuestions.size(); i++) {
             Question currentQuestion = testQuestions.get(i);
 
@@ -432,9 +427,10 @@ public class Student extends User {
             test.addAnswer(studentAnswer);
             correctAnswers.add(currentQuestion.getRightAnswer());
         }
-
+        test.setEndTime(LocalDateTime.now());
         // Calculate total test metrics
         double totalTestTime = questionTimes.stream().mapToDouble(Double::doubleValue).sum();
+        test.setDuration((int) totalTestTime);
         double averageTimePerQuestion = totalTestTime / numQuestions;
 
         // Calculate score
@@ -442,11 +438,13 @@ public class Student extends User {
         double percentageScore = (double) score / numQuestions * 100;
 
         // Set grade based on score
-        setGrade(percentageScore);
+        calculateGrade(percentageScore);
 
         // Update test and student statistics
         updateTestStatistics(test, score, totalTestTime);
-
+        test.setTestResult(percentageScore);
+        TestDAO TDB = new TestDAO();
+        TDB.saveTest(test);
         // Display results
         displayTestResults(score, numQuestions, percentageScore, totalTestTime, averageTimePerQuestion);
     }
@@ -548,9 +546,11 @@ public class Student extends User {
         // Collect questions from all question banks for the given category and difficulty
         List<QuestionBank> categoryBanks = questionBankDAO.searchByCategory(category);
         List<Question> difficultQuestions = new ArrayList<>();
-
+        AdminDAO ADB = new AdminDAO();
         for (QuestionBank bank : categoryBanks) {
-            difficultQuestions.addAll(bank.getQuestionsByDifficulty(difficulty));
+            if (ADB.IsThisIdForAdmin(bank.getCreatorID())) {
+                difficultQuestions.addAll(bank.getQuestionsByDifficulty(difficulty));
+            }
         }
 
         return difficultQuestions;
@@ -559,29 +559,54 @@ public class Student extends User {
     /**
      * Prompts the user to input their answer for the current question.
      *
-     * This method requests the user to enter their answer as one of the options: A, B, C, or D. It validates the input to ensure that it consists of a single character within the specified range. If the input is invalid, the user is prompted to try again until a valid answer is provided.
+     * This method requests the user to enter their answer as one of the options: A, B, C, or D. It validates the input to ensure that it consists of a single character within the specified range. If the input is invalid, the user is prompted to try again until a valid answer is provided with the ability to favorite a question.
      *
      * @param scanner an instance of `Scanner` for reading user input.
      * @param currentQuestion the `Question` object representing the current question being answered.
      * @return an integer representing the selected answer, where A is 0, B is 1, C is 2, and D is 3.
      */
     private int getStudentAnswer(Scanner scanner, Question currentQuestion) {
-        while (true) {
-            try {
-                System.out.print("Your answer (A/B/C/D): ");
-                String answerInput = scanner.next().toUpperCase();
+    while (true) {
+        try {
+            // Clear any previous input
+            if (scanner.hasNextLine()) {
+                scanner.nextLine();
+            }
 
-                if (answerInput.length() == 1 && answerInput.charAt(0) >= 'A' && answerInput.charAt(0) <= 'D') {
-                    return answerInput.charAt(0) - 'A';
-                } else {
-                    System.out.println("Invalid input. Please enter A, B, C, or D.");
-                }
-            } catch (Exception e) {
-                System.out.println("Invalid input. Please try again.");
-                scanner.nextLine(); // Clear invalid input
+            // Prompt for input
+            System.out.print("Your answer (A/B/C/D) or type 'love' to favorite: ");
+            
+            // Read the entire line and trim
+            String answerInput = scanner.nextLine().trim().toUpperCase();
+            
+            // Debug print
+            System.out.println("Received input: '" + answerInput + "'");
+
+            // Check for 'love' input
+            if (answerInput.equals("LOVE")) {
+                markFavouriteQuestion(currentQuestion);
+                System.out.println("Question favorited.");
+                continue;
+            }
+
+            // Validate answer input
+            if (answerInput.length() == 1 && 
+                (answerInput.charAt(0) >= 'A' && answerInput.charAt(0) <= 'D')) {
+                return answerInput.charAt(0) - 'A';
+            }
+
+            // If we reach here, input is invalid
+            System.out.println("Invalid input. Please enter A, B, C, or D.");
+        } catch (Exception e) {
+            System.out.println("An unexpected error occurred: " + e.getMessage());
+            
+            // Additional error handling
+            if (scanner.hasNextLine()) {
+                scanner.nextLine(); // Clear any remaining input
             }
         }
     }
+}
 
     /**
      * Calculates the time taken to answer a question based on the start and end timestamps.
@@ -592,7 +617,6 @@ public class Student extends User {
      * @param endTime the `LocalDateTime` representing the time when the question was completed.
      * @return the time taken to answer the question in minutes, represented as a double.
      */
-
     private double calculateQuestionTime(LocalDateTime startTime, LocalDateTime endTime) {
         Duration duration = Duration.between(startTime, endTime);
         return duration.toSeconds() / 60.0; // Convert to minutes
@@ -613,7 +637,41 @@ public class Student extends User {
 
         // Update total time
         double currentTotalTime = question.getTotalTime();
-        question.setTotalTime(currentTotalTime + timeTaken); // Update average time per question
+        question.setTotalTime(currentTotalTime + timeTaken);
+
+        // Update the database accordingly
+        QuestionBankDAO QBDB = new QuestionBankDAO();
+        TestDAO TDB = new TestDAO();
+
+        // Update tests
+        for (Test test : TDB.getTestsList()) {
+            List<Question> questionsToRemove = new ArrayList<>();
+            List<Question> questionsToAdd = new ArrayList<>();
+            for (Question q : test.getQuestions()) {
+                if (q.getQuestionID().equals(question.getQuestionID())) {
+                    questionsToRemove.add(q);
+                    questionsToAdd.add(question);
+                }
+            }
+            test.getQuestions().removeAll(questionsToRemove);
+            test.getQuestions().addAll(questionsToAdd);
+            TDB.updateTest(test);
+        }
+
+        // Update question banks
+        for (QuestionBank bank : QBDB.getQuestionBanksList()) {
+            List<Question> questionsToRemove = new ArrayList<>();
+            List<Question> questionsToAdd = new ArrayList<>();
+            for (Question q : bank.getQuestions()) {
+                if (q.getQuestionID().equals(question.getQuestionID())) {
+                    questionsToRemove.add(q);
+                    questionsToAdd.add(question);
+                }
+            }
+            bank.getQuestions().removeAll(questionsToRemove);
+            bank.getQuestions().addAll(questionsToAdd);
+            QBDB.updateQuestionBank(bank);
+        }
     }
 
     /**
@@ -634,6 +692,9 @@ public class Student extends User {
         if (score >= Test.getPassingScore()) {
             passedTestsCount++;
         }
+        //update in the database
+        StudentDAO SDB = new StudentDAO();
+        SDB.updateStudent(this);
     }
 
     /**
@@ -667,7 +728,6 @@ public class Student extends User {
      * @return the total score, which is the count of correct answers provided by the student.
      * @throws IndexOutOfBoundsException if the lists of student answers and correct answers have different sizes.
      */
-
     private int calculateScore(List<Integer> studentAnswers, List<Integer> correctAnswers) {
         int score = 0;
         for (int i = 0; i < studentAnswers.size(); i++) {
@@ -744,16 +804,17 @@ public class Student extends User {
         System.out.println("\n--- Test Details ---");
         System.out.println("Test ID: " + test.getTestID());
         System.out.println("Date: " + test.getCreationDate());
+        System.out.println("start time : " + test.getStartTime().format(DateTimeFormatter.ISO_TIME));
+        System.out.println("end time : " + test.getEndTime().format(DateTimeFormatter.ISO_TIME));
         System.out.println("Category: " + test.getCategory().getName());
         System.out.println("Difficulty: " + test.getDifficulty());
 
         // Calculate score percentage
         int totalQuestions = test.getQuestions().size();
-        double scorePercentage = (double) test.getTestResult() / totalQuestions * 100;
 
-        System.out.println("Score: " + test.getTestResult() + "/" + totalQuestions);
-        System.out.println("Percentage: " + String.format("%.2f", scorePercentage) + "%");
-        System.out.println("Duration: " + test.getDuration() + " minutes");
+        System.out.println("Score: " + (int) ((test.getTestResult() / 100) * totalQuestions) + "/" + totalQuestions);
+        System.out.println("Percentage: " + String.format("%.2f", test.getTestResult()) + "%");
+//        System.out.println("Duration: " + test.getDuration() + " minutes");
         System.out.println("Time Taken: " + String.format("%.2f", test.timeTaken()) + " minutes");
         System.out.println("Status: "
                 + (test.getTestResult() >= Test.getPassingScore() ? "PASSED" : "FAILED"));
@@ -864,12 +925,322 @@ public class Student extends User {
      * @param question the `Question` object to be marked as a favorite.
      */
     public void markFavouriteQuestion(Question question) {
-        if (!favoriteQuestions.contains(question)) { // Avoid duplicates
-            favoriteQuestions.add(question);
-            System.out.println("Question marked as favorite: " + question);
-        } else {
-            System.out.println("Question is already marked as favorite.");
+    // Check if the question is already a favorite
+    boolean isItFavorite = false;
+    for (QuestionBank favQuestionBank : favoriteQuestions) {
+        if (favQuestionBank.getQuestions().contains(question)) {
+            isItFavorite = true;
+            break;
         }
+    }
+    
+    if (!isItFavorite) {
+        // Find or create a QuestionBank for favorites in the question's category
+        CategoryDAO categoryDAO = new CategoryDAO();
+        QuestionBankDAO questionBankDAO = new QuestionBankDAO();
+
+        // Get the category of the question
+        Category category = categoryDAO.loadCategory(question.getTopic());
+
+        // Check if a favorite QuestionBank already exists for this category
+        List<QuestionBank> existingBanks = questionBankDAO.searchByCategoryAndCreator(category, getUserId());
+        QuestionBank favoriteBank = null;
+
+        // Look for a bank with the right creator
+        for (QuestionBank bank : existingBanks) {
+            if (bank.getCreatorID().equals(getUserId())) {
+                favoriteBank = bank;
+                break;
+            }
+        }
+
+        // If no favorite bank exists, create a new one
+        if (favoriteBank == null) {
+            favoriteBank = new QuestionBank(
+                    getUserId(),
+                    category.getCategoryId(),
+                    LocalDate.now()
+            );
+            favoriteBank.setQuestions(new ArrayList<>());
+            favoriteQuestions.add(favoriteBank);
+        }
+
+        // Add the question to the favorite bank
+        ArrayList<Question> questions = favoriteBank.getQuestions();
+        questions.add(question);
+        favoriteBank.setQuestions(questions);
+        
+        // Update the question's favorite count
+        question.setNumberOfFavorites(question.getNumberOfFavorites() + 1);
+        
+        // Update the database accordingly
+        CategoryDAO CDB = new CategoryDAO();
+        QuestionBankDAO QBDB = new QuestionBankDAO();
+        
+        for (QuestionBank Bank : QBDB.getQuestionBanksList()) {
+            for (Question q : Bank.getQuestions()) {
+                if (question.getQuestionID().equals(q.getQuestionID())) {
+                    Category updatedCategory = CDB.loadCategory(question.getTopic());
+                    ArrayList<QuestionBank> currentQBSinCategory = updatedCategory.getQuestionBanks();
+                    currentQBSinCategory.remove(Bank);
+                    QBDB.removeQuestionFromBank(Bank.getBankID(), q.getQuestionID());
+                    QBDB.addQuestionToBank(Bank.getBankID(), question);
+                    currentQBSinCategory.add(QBDB.loadQuestionBank(Bank.getBankID()));
+                    CDB.updateCategory(updatedCategory);
+                    break;
+                }
+            }
+        }
+
+        // Add to student's favorite questions
+        int index = favoriteQuestions.indexOf(favoriteBank);
+        if (index != -1) {
+            ArrayList<Question> currentQuestions = favoriteQuestions.get(index).getQuestions();
+            currentQuestions.add(question);
+            favoriteQuestions.get(index).setQuestions(currentQuestions);
+        } else {
+            System.out.println("Error: Favorite bank not found in favoriteQuestions.");
+        }
+
+        // Update student in database
+        StudentDAO studentDAO = new StudentDAO();
+        studentDAO.updateStudent(this);
+        System.out.println("Question marked as favorite"); // for debugging
+    } else {
+        System.out.println("Question is already marked as favorite.");
+    }
+}
+
+    /**
+     * Displays favorite questions with advanced navigation and filtering options.
+     */
+    @JsonIgnore
+    public void displayFavoriteQuestions() {
+        if (favoriteQuestions.isEmpty()) {
+            System.out.println("No favorite questions found.");
+            return;
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        CategoryDAO categoryDAO = new CategoryDAO();
+
+        while (true) {
+            // Display filtering options
+            System.out.println("\n--- Favorite Questions Menu ---");
+            System.out.println("1. View All Favorite Questions");
+            System.out.println("2. Filter by Category");
+            System.out.println("3. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    displayAllFavoriteQuestions(scanner);
+                    break;
+                case 2:
+                    filterFavoriteQuestionsByCategory(scanner);
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    /**
+     * Displays all favorite questions with navigation and interaction options.
+     */
+    private void displayAllFavoriteQuestions(Scanner scanner) {
+        List<Question> allFavorites = new ArrayList<>();
+        for (QuestionBank favoriteBank : favoriteQuestions) {
+            allFavorites.addAll(favoriteBank.getQuestions());
+        }
+
+        int currentIndex = 0;
+
+        while (true) {
+            // Display current question
+            Question currentQuestion = allFavorites.get(currentIndex);
+            displayQuestionDetails(currentQuestion, currentIndex, allFavorites.size());
+
+            // Navigation and interaction options
+            System.out.println("\nOptions:");
+            System.out.println("N - Next Question");
+            System.out.println("P - Previous Question");
+            System.out.println("R - Remove from Favorites");
+            System.out.println("Q - Quit");
+
+            System.out.print("Enter your choice: ");
+            String choice = scanner.nextLine().toUpperCase();
+
+            switch (choice) {
+                case "N":
+                    currentIndex = (currentIndex + 1) % allFavorites.size();
+                    break;
+                case "P":
+                    currentIndex = (currentIndex - 1 + allFavorites.size()) % allFavorites.size();
+                    break;
+                case "R":
+                    removeFromFavorites(currentQuestion, allFavorites);
+                    if (allFavorites.isEmpty()) {
+                        System.out.println("No more favorite questions.");
+                        return;
+                    }
+                    // Adjust index if needed
+                    currentIndex = Math.min(currentIndex, allFavorites.size() - 1);
+                    break;
+                case "Q":
+                    return;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+    }
+
+    /**
+     * Filters and displays favorite questions by category.
+     */
+    private void filterFavoriteQuestionsByCategory(Scanner scanner) {
+        // Get unique categories of favorite questions
+        Set<Category> favoriteCategories = favoriteQuestions.stream()
+                .map(q -> {
+                    CategoryDAO categoryDAO = new CategoryDAO();
+                    return categoryDAO.loadCategory(q.getCategoryID());
+                })
+                .collect(Collectors.toSet());
+
+        // Display categories
+        System.out.println("Select a Category:");
+        List<Category> categoriesList = new ArrayList<>(favoriteCategories);
+        for (int i = 0; i < categoriesList.size(); i++) {
+            System.out.println((i + 1) + ". " + categoriesList.get(i).getName());
+        }
+
+        // Get category selection
+        System.out.print("Enter category number: ");
+        int categoryChoice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        if (categoryChoice < 1 || categoryChoice > categoriesList.size()) {
+            System.out.println("Invalid category selection.");
+            return;
+        }
+
+        Category selectedCategory = categoriesList.get(categoryChoice - 1);
+
+        // Filter questions by selected category            
+        List<Question> categoryFavorites = null;
+        for (QuestionBank favoriteQuestionBank : favoriteQuestions) {
+            categoryFavorites = favoriteQuestionBank.getQuestions().stream()
+                    .filter(q -> {
+                        CategoryDAO categoryDAO = new CategoryDAO();
+                        Category qCategory = categoryDAO.loadCategory(q.getTopic());
+                        return qCategory.equals(selectedCategory);
+                    })
+                    .collect(Collectors.toList());
+        }
+        // Display filtered questions
+        displayFilteredFavorites(categoryFavorites, scanner);
+    }
+
+    /**
+     * Displays filtered favorite questions with navigation.
+     */
+    private void displayFilteredFavorites(List<Question> filteredQuestions, Scanner scanner) {
+        if (filteredQuestions.isEmpty()) {
+            System.out.println("No favorite questions in this category.");
+            return;
+        }
+
+        int currentIndex = 0;
+
+        while (true) {
+            // Display current question
+            Question currentQuestion = filteredQuestions.get(currentIndex);
+            displayQuestionDetails(currentQuestion, currentIndex, filteredQuestions.size());
+
+            // Navigation and interaction options
+            System.out.println("\nOptions:");
+            System.out.println("N - Next Question");
+            System.out.println("P - Previous Question");
+            System.out.println("R - Remove from Favorites");
+            System.out.println("Q - Quit");
+
+            System.out.print("Enter your choice: ");
+            String choice = scanner.nextLine().toUpperCase();
+
+            switch (choice) {
+                case "N":
+                    currentIndex = (currentIndex + 1) % filteredQuestions.size();
+                    break;
+                case "P":
+                    currentIndex = (currentIndex - 1 + filteredQuestions.size()) % filteredQuestions.size();
+                    break;
+                case "R":
+                    removeFromFavorites(currentQuestion, filteredQuestions);
+                    if (filteredQuestions.isEmpty()) {
+                        System.out.println("No more favorite questions.");
+                        return;
+                    }
+                    // Adjust index if needed
+                    currentIndex = Math.min(currentIndex, filteredQuestions.size() - 1);
+                    break;
+                case "Q":
+                    return;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+    }
+
+    /**
+     * Removes a question from the favorites list.
+     */
+    private void removeFromFavorites(Question question, List<Question> questionsList) {
+        boolean isItFavorite = false;
+        for (QuestionBank favQuestionBank : favoriteQuestions) {
+        if (favQuestionBank.getQuestions().contains(question)) {
+            isItFavorite = true;
+            break;
+        }
+        }
+        if (isItFavorite) {
+            
+            System.out.println("Question removed from favorites: " + question);
+            // Update the question's favorite count
+            question.setNumberOfFavorites(question.getNumberOfFavorites() - 1);
+
+            // Update the database
+            QuestionBankDAO questionBankDAO = new QuestionBankDAO();
+            List<QuestionBank> qb = questionBankDAO.searchByCreator(getUserId());
+            ArrayList<Question> currentQs = qb.get(0).getQuestions();
+            currentQs.removeIf(q -> q.getQuestionID().equals(question.getQuestionID()));
+            qb.get(0).setQuestions(currentQs);
+            questionBankDAO.updateQuestionBank(qb.get(0));
+            // Update student in database
+            StudentDAO studentDAO = new StudentDAO();
+            studentDAO.updateStudent(this);
+        } else {
+            System.out.println("Question not found in favorites.");
+        }
+    }
+
+    /**
+     * Displays the details of a question.
+     */
+    private void displayQuestionDetails(Question question, int index, int total) {
+        System.out.println("\n--- Question " + (index + 1) + " of " + total + " ---");
+        System.out.println("Question ID: " + question.getQuestionID());
+        System.out.println("Statement: " + question.getStatement());
+        System.out.println("Choices: ");
+        String[] choices = question.getChoices();
+        for (int j = 0; j < choices.length; j++) {
+            System.out.println((char) ('A' + j) + ". " + choices[j]);
+        }
+        System.out.println("Number of Favorites: " + question.getNumberOfFavorites());
     }
 
     /**

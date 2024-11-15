@@ -51,6 +51,7 @@ public class CategoryDAO {
     }
 
     public void updateCategory(Category updatedCategory) {
+        
         List<Category> categories = getCategoriesList();
         if (categories != null) {
             for (int i = 0; i < categories.size(); i++) {
@@ -112,6 +113,12 @@ public class CategoryDAO {
     }
 
     public void deleteCategory(UUID categoryId) {
+        QuestionBankDAO QBDB = new QuestionBankDAO();
+        for (QuestionBank questionBank : QBDB.getQuestionBanksList()) {
+            if(questionBank.getCategoryID().equals(categoryId)){
+                QBDB.deleteQuestionBank(questionBank.getBankID());
+            }
+        }
         List<Category> categories = getCategoriesList();
         if (categories != null) {
             categories.removeIf(category -> category.getCategoryId().equals(categoryId));

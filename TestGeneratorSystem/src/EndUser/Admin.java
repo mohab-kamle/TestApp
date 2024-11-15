@@ -197,7 +197,7 @@ public class Admin extends User {
                 "Invalid Phone Number\ntry again with this format +Countrycode 123456789");
         String Department = validateInput(scanner,
                 check,
-                "\nEnter department : ",
+                "Enter department : ",
                 Checker.StringType.LETTERS_ONLY,
                 "Invalid Department name.Should contain letters only");
         LocalDate accountCreationDate = LocalDate.now();
@@ -454,7 +454,10 @@ public class Admin extends User {
      * @return true if the question was successfully added to the question bank; false otherwise.
      */
     public boolean addQuestionToQuestionBank() {
-        try {
+    Scanner scanner = new Scanner(System.in); // Assuming Scanner is used for user input
+
+    try {
+        while (true) {
             // 1. Select Category
             Category selectedCategory = selectCategory();
             if (selectedCategory == null) {
@@ -482,35 +485,34 @@ public class Admin extends User {
             questionBank.setQuestions(currQuestions);
             QuestionBankDAO QBDB = new QuestionBankDAO();
             AdminDAO ADB = new AdminDAO();
-            CategoryDAO CDB = new CategoryDAO();
-            for (QuestionBank ownedBank : ownedBanks) {
-                if (ownedBank.getBankID().equals(questionBank.getBankID())) {
-                    ownedBank.setQuestions(questionBank.getQuestions());
-                }
-            }
-            for (QuestionBank qb : selectedCategory.getQuestionBanks()) {
-                if (qb.getBankID().equals(questionBank.getBankID())) {
-                    qb.setQuestions(questionBank.getQuestions());
-                }
-            }
-            selectedCategory.setCreator(this);
-            CDB.updateCategory(selectedCategory);
+            ArrayList<QuestionBank> currentQBs = getOwnedBanks();
+            currentQBs.removeIf(qb -> qb.getBankID().equals(questionBank.getBankID()));
+            currentQBs.add(questionBank);
+            this.setOwnedBanks(currentQBs);
             ADB.updateAdmin(this);
             boolean updated = QBDB.addQuestionToBank(questionBank.getBankID(), newQuestion);
 
             if (updated) {
                 System.out.println("Question successfully added to the question bank!");
-                return true;
             } else {
                 System.out.println("Failed to update question bank in database.");
                 return false;
             }
 
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-            return false;
+            // Ask user if they want to add another question or exit
+            System.out.print("Do you want to add another question? (yes/no): ");
+            String response = scanner.next().toLowerCase();
+            if (!response.equals("yes")) {
+                break;
+            }
         }
+        return true;
+    } catch (Exception e) {
+        System.out.println("An error occurred: " + e.getMessage());
+        return false;
     }
+}
+
 
     /**
      * Prompts the user to select a category from a list of available categories.
@@ -529,11 +531,11 @@ public class Admin extends User {
         }
 
         while (true) {
-            System.out.println("\nAvailable Categories:");
+            ifColorfullPrintln("\nAvailable Categories:",TerminalColors.YELLOW);
             for (int i = 0; i < categories.size(); i++) {
                 Category category = categories.get(i);
-                System.out.println((i + 1) + " _ name : " + category.getName());
-                System.out.println("|--> " + category.getDescription());
+                ifColorfullPrintln((i + 1) + " _ name : " + category.getName(),TerminalColors.YELLOW);
+                System.out.println("Descrtiption : " + category.getDescription());
             }
             System.out.println("\n0 - Cancel operation");
 
@@ -568,11 +570,12 @@ public class Admin extends User {
         QuestionBankDAO QDBD = new QuestionBankDAO();
         List<QuestionBank> questionBanks = QDBD.searchByCategoryAndCreator(category, userId);
         if (!questionBanks.isEmpty()) {
-            System.out.println("\nExists Question Bank for " + category.getName() + ":");
+            System.out.println("Exists Question Bank for " + category.getName() + ":");
             System.out.println("Date Created : " + questionBanks.get(0).getCreationDate());
+            System.out.println("Number of Questions : " + questionBanks.get(0).getQuestionCount() + "\n");
             return questionBanks.get(0);
         }
-        return createQuestionBank();
+        return createQuestionBank(this, category, LocalDate.now());
     }
 
     /**
@@ -806,19 +809,11 @@ public class Admin extends User {
             questionBank.getQuestions().set(questionIndex, updatedQuestion);
 // 7. Update QuestionBank in the database
             AdminDAO ADB = new AdminDAO();
-            CategoryDAO CDB = new CategoryDAO();
             for (QuestionBank ownedBank : ownedBanks) {
                 if (ownedBank.getBankID().equals(questionBank.getBankID())) {
                     ownedBank.setQuestions(questionBank.getQuestions());
                 }
             }
-            for (QuestionBank qb : selectedCategory.getQuestionBanks()) {
-                if (qb.getBankID().equals(questionBank.getBankID())) {
-                    qb.setQuestions(questionBank.getQuestions());
-                }
-            }
-            selectedCategory.setCreator(this);
-            CDB.updateCategory(selectedCategory);
             ADB.updateAdmin(this);
             QuestionBankDAO QBDB = new QuestionBankDAO();
             boolean updated = QBDB.updateQuestionBank(questionBank);
@@ -913,24 +908,16 @@ public class Admin extends User {
 
             // 7. Update QuestionBank and admin in the database
             AdminDAO ADB = new AdminDAO();
-            CategoryDAO CDB = new CategoryDAO();
             for (QuestionBank ownedBank : ownedBanks) {
                 if (ownedBank.getBankID().equals(questionBank.getBankID())) {
                     ownedBank.setQuestions(questionBank.getQuestions());
                 }
             }
-            for (QuestionBank qb : selectedCategory.getQuestionBanks()) {
-                if (qb.getBankID().equals(questionBank.getBankID())) {
-                    qb.setQuestions(questionBank.getQuestions());
-                }
-            }
-            selectedCategory.setCreator(this);
-            CDB.updateCategory(selectedCategory);
             ADB.updateAdmin(this);
             QuestionBankDAO QBDB = new QuestionBankDAO();
             boolean updated = QBDB.updateQuestionBank(questionBank);
             if (updated) {
-                System.out.println("Question successfully deleted from the question bank!");
+//                System.out.println("Question successfully deleted from the question bank!");// for debugging
                 return true;
             } else {
                 System.out.println("Failed to update question bank in database.");

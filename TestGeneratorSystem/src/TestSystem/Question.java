@@ -19,7 +19,7 @@ public class Question {
     private UUID questionID;
     private UUID topic;
     private String statement;
-    private int numberOfFavorites;
+    private int numberOfFavorites;// lesa
     private double totalTime;
     private dlevel difficulty;
     private int rightAnswer;
@@ -128,16 +128,16 @@ public class Question {
     public String toString() {
         CategoryDAO CDB = new CategoryDAO();
         String[] c = getChoices();
-        return "Q" + getQuestionID()
-                + "\n Question : " + getStatement()
-                + "\n Choices  : "
-                + "A _ " + c[0]
-                + "B _ " + c[1]
-                + "C _ " + c[2]
-                + "D _ " + c[3]
-                + "Category : " + CDB.loadCategory(topic).getName()
-                + "Average Time to solve : " + getAvgTime()
-                + "\n Right Answer : " + c[getRightAnswer()];
+        return "ID : Q" + getQuestionID().toString().substring(0, 8)
+                + "\nQuestion : " + getStatement() + " ? "
+                + "\nChoices  : "
+                + "\nA _ " + c[0]
+                + "\nB _ " + c[1]
+                + "\nC _ " + c[2]
+                + "\nD _ " + c[3]
+                + "\nCategory : " + CDB.loadCategory(topic).getName()
+                + "\nAverage Time to solve : " + getAvgTime()
+                + "\nRight Answer : " + c[getRightAnswer()];
 
     }
 
