@@ -27,8 +27,7 @@ public class Test {
 
     public Test() {
     }
-    
-    
+
     public Test(Category category, LocalDate creationDate, UUID taker, Question.dlevel difficulty, ArrayList<Question> questions) {
         this.testID = UUID.randomUUID();
         this.category = category;
@@ -40,7 +39,6 @@ public class Test {
     }
 
     //setters
-    
     public void setTestID(UUID testID) {
         this.testID = testID;
     }
@@ -86,7 +84,6 @@ public class Test {
     }
 
     //getters
-
     public UUID getTestID() {
         return testID;
     }
@@ -130,7 +127,6 @@ public class Test {
     public LocalDateTime getEndTime() {
         return endTime;
     }
-
 
     public ArrayList<Integer> getTakerAnswers() {
         return takerAnswers;
@@ -237,6 +233,13 @@ public class Test {
         return tDuration.toMinutes() + tDuration.toSecondsPart() / 60.0;
     }
 
-    
+    @Override
+    public String toString() {
+        return String.format("Test[Date=%s, Result=%.1f%%, Duration=%d min, Status=%s]",
+                creationDate,
+                testResult,
+                duration,
+                testResult >= passingScore ? "PASSED" : "FAILED");
+    }
 
 }

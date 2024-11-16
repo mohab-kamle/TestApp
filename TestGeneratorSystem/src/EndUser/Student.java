@@ -439,14 +439,20 @@ public class Student extends User {
         // Calculate score
         int score = calculateScore(test.getTakerAnswers(), correctAnswers);
         double percentageScore = (double) score / numQuestions * 100;
-
+        
         // Set grade based on score
-        calculateGrade(percentageScore);
-
+        TestDAO TDB = new TestDAO();
         // Update test and student statistics
         updateTestStatistics(test, percentageScore, totalTestTime);
-        TestDAO TDB = new TestDAO();
         TDB.saveTest(test);
+        double AccumalativePercent = 0;
+        for (Test t : TDB.searchTestsByStudent(this)) {
+            AccumalativePercent+=t.getTestResult();
+        }
+        AccumalativePercent/=TDB.searchTestsByStudent(this).size();
+        calculateGrade(AccumalativePercent);
+        StudentDAO SDB = new StudentDAO();
+        SDB.updateStudent(this);
         // Display results
         displayTestResults(score, numQuestions, percentageScore, totalTestTime, averageTimePerQuestion);
     }
@@ -1036,11 +1042,19 @@ public class Student extends User {
             TestGeneratorApp.ifColorfullPrintln("\n== Favorite Questions Menu ==",TerminalColors.BOLD_BLUE);
             System.out.println("1. View All Favorite Questions");
             System.out.println("2. Filter by Category");
-            System.out.println("3. Exit");
-            System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
+            System.out.println("3. Exit");                
+            String choice;
+            while (true) {                
+                System.out.print("Enter your choice: ");
+                choice = scanner.nextLine();
+                if(choice.length()!=1||Integer.parseInt(choice)<1||Integer.parseInt(choice)>3){
+                    ifColorfullPrintln("Invalid input , try again", TerminalColors.BOLD_RED);
+                }else{
+                    break;
+                }
+            }
             scanner.nextLine(); // Consume newline
-            switch (choice) {
+            switch (Integer.parseInt(choice)) {
                 case 1:
                     displayAllFavoriteQuestions(scanner);
                     break;

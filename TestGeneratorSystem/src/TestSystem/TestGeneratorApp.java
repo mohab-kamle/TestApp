@@ -437,12 +437,24 @@ public class TestGeneratorApp {
     }
 
     /**
-     * Gets user choice from input
+     * Gets user choice from input with error handling
      *
      * @return the integer choice made by the user
      */
     private static int getUserChoice() {
-        return scanner.nextInt();
+        while (true) {
+            try {
+                String input = scanner.nextLine().trim();
+                if (input.isEmpty()) {
+                    ifColorfullPrint("Please enter a number: ", TerminalColors.CYAN);
+                    continue;
+                }
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                // Clear the invalid input from scanner
+                ifColorfullPrint("Invalid input! Please enter a number: ", TerminalColors.BOLD_RED);
+            }
+        }
     }
 
     /**
@@ -486,7 +498,6 @@ public class TestGeneratorApp {
     private static void pressAnyKeyToContinue() {
         ifColorfullPrintln("Press Enter to continue...", TerminalColors.CYAN);
         scanner.nextLine(); // Consume the newline
-        scanner.nextLine(); // Wait for user input
     }
 
     //methods to check if it supports colors and prints

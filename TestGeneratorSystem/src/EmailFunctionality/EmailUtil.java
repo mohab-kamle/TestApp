@@ -1,5 +1,7 @@
 package EmailFunctionality;
 
+import TestSystem.TestGeneratorApp;
+import UserDefinedFunctionalities.TerminalColors;
 import java.io.*;
 import java.security.SecureRandom;
 import java.util.Properties;
@@ -127,7 +129,7 @@ public class EmailUtil {
             message.setContent(createHtmlContent(verificationCode), "text/html; charset=UTF-8");
             
             Transport.send(message);
-            System.out.println("Code sent successfully!");
+            TestGeneratorApp.ifColorfullPrintln("Code sent successfully!",TerminalColors.BOLD_GREEN);
             
         } catch (MessagingException e) {
             System.err.println("Failed to send email: " + e.getMessage());
