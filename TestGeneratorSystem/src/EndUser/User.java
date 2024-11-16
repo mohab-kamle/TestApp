@@ -413,7 +413,7 @@ public abstract class User {
                     String verificationCode = EmailFunctionality.EmailUtil.generateVerificationCode();
                     String body = "Your verification code is: " + verificationCode;
                     EmailFunctionality.EmailUtil.sendEmail(to, subject, body);
-                    System.out.println("Enter the sent Code or Type R to resend : ");
+                    System.out.print("Enter the sent Code or Type R to resend : ");
                     codeCheck = sc.nextLine();
                     if (codeCheck.equals("R")) {
                         continue;
@@ -443,10 +443,10 @@ public abstract class User {
                                 System.out.println("No console available");
                                 break;
                             }
-                            char[] passwordArray = console.readPassword("\nEnter the new Password: ");
+                            char[] passwordArray = console.readPassword("Enter the new Password: ");
                             newPass = new String(passwordArray);
                             if (!check.isValid(Checker.StringType.PASSWORD, newPass)) {
-                                System.out.println("Invalid password , please try again.");
+                                ifColorfullPrintln("Invalid password , please try again.",TerminalColors.BOLD_RED);
                             }
                         } while (!check.isValid(Checker.StringType.PASSWORD, newPass));
                         System.out.println("Confirm the new password : ");
@@ -454,7 +454,7 @@ public abstract class User {
                         if (newPass.equals(confirmNewPass)) {
                             break;
                         } else {
-                            System.out.println("Please Try Again , the passwords don't match");
+                            ifColorfullPrintln("Please Try Again , the passwords don't match",TerminalColors.BOLD_RED);
                         }
                     } while (!newPass.equals(confirmNewPass));
                     User userToBeUpdated = User.findEmail(EmailInput);
@@ -469,14 +469,14 @@ public abstract class User {
                         SDB.updateStudent((Student) userToBeUpdated);
                     }
                     updateEquivalentCategoryAndQuestionBank(userToBeUpdated);
-                    System.out.println("The password has been changed successfully !");
+                    ifColorfullPrintln("The password has been changed successfully !",TerminalColors.BOLD_GREEN);
                     return true;
                 }
                 case "n" -> {
                     return false;
                 }
                 default ->
-                    System.out.println("Wrong input , please try again");
+                    ifColorfullPrintln("Wrong input , please try again",TerminalColors.BOLD_RED);
             }
         } while (!key.equals("y") && !key.equals("n"));
         return false;
@@ -504,10 +504,10 @@ public abstract class User {
         ProfileStr.append("\nAddress : ").append(getAddress());
         if (show) {
             System.out.println("Username : " + getUserName());
-            System.out.println("\nEmail : " + getEmail());
-            System.out.println("\nFirst Name : " + getFirstName());
-            System.out.println("\nLast Name : " + getLastName());
-            System.out.println("\nAddress : " + getAddress());
+            System.out.println("Email : " + getEmail());
+            System.out.println("First Name : " + getFirstName());
+            System.out.println("Last Name : " + getLastName());
+            System.out.println("Address : " + getAddress());
         }
         String Profile = new String(ProfileStr);
         return Profile;
