@@ -208,7 +208,6 @@ public final class QuestionBank {
      *
      * If the provided path is invalid or the user lacks sufficient permissions, an error message is displayed in red.
      *
-     * @throws IOException If an I/O error occurs during file writing.
      */
     public void exportQuestions() {
         Scanner scanner = new Scanner(System.in);

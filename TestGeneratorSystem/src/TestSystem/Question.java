@@ -2,6 +2,7 @@ package TestSystem;
 
 import DataBaseManagment.CategoryDAO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -150,4 +151,22 @@ public class Question {
     public double getAvgTime() {
         return (getTotalTime() / getNoOfAttemptsAtTests());
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Question question = (Question) obj;
+        return questionID.equals(question.questionID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(questionID);
+    }
+
 }

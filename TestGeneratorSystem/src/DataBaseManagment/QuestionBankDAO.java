@@ -50,17 +50,16 @@ public class QuestionBankDAO {
     }
 
     public void saveQuestionBank(QuestionBank questionBank) {
-        
+        AdminDAO ADB = new AdminDAO();
+        StudentDAO SDB = new StudentDAO();
         CategoryDAO CDB = new CategoryDAO();
         Category updateCategory = CDB.loadCategory(questionBank.getCategoryID());
         ArrayList<QuestionBank> currentQBs = updateCategory.getQuestionBanks();
         currentQBs.removeIf(q -> q.getBankID().equals(questionBank.getBankID()));
         currentQBs.add(questionBank);
         updateCategory.setQuestionBanks(currentQBs);
-        CDB.updateCategory(updateCategory);
-        AdminDAO ADB = new AdminDAO();
-        StudentDAO SDB = new StudentDAO();
         if(ADB.IsThisIdForAdmin(questionBank.getCreatorID())){
+            CDB.updateCategory(updateCategory);
             Admin updateadmin = ADB.loadAdmin(questionBank.getCreatorID());
             currentQBs = updateadmin.getOwnedBanks();
             currentQBs.removeIf(q -> q.getBankID().equals(questionBank.getBankID()));
@@ -77,6 +76,12 @@ public class QuestionBankDAO {
         if (banks == null) {
             banks = new ArrayList<>();
         }
+        for (QuestionBank bank : banks) {
+            if(bank.getBankID().equals(questionBank.getBankID())){
+                updateQuestionBank(questionBank);
+                return;
+            }
+        }
         banks.add(questionBank);
         saveQuestionBanksList(banks);
     }
@@ -88,10 +93,10 @@ public class QuestionBankDAO {
         currentQBs.removeIf(q -> q.getBankID().equals(updatedBank.getBankID()));
         currentQBs.add(updatedBank);
         updateCategory.setQuestionBanks(currentQBs);
-        CDB.updateCategory(updateCategory);
         AdminDAO ADB = new AdminDAO();
         StudentDAO SDB = new StudentDAO();
-        if(ADB.IsThisIdForAdmin(updatedBank.getCreatorID())){
+        if(ADB.IsThisIdForAdmin(updatedBank.getCreatorID())){        
+            CDB.updateCategory(updateCategory);
             Admin updateadmin = ADB.loadAdmin(updatedBank.getCreatorID());
             currentQBs = updateadmin.getOwnedBanks();
             currentQBs.removeIf(q -> q.getBankID().equals(updatedBank.getBankID()));

@@ -1,0 +1,2920 @@
+[ {
+  "testID" : "5827dbc4-c8c0-4513-8b9a-4ba515fd3902",
+  "category" : {
+    "name" : "Science",
+    "description" : "A group of general scientific topics as natural physics and thermodynamics",
+    "creationDate" : [ 2024, 11, 16 ],
+    "creator" : {
+      "type" : "admin",
+      "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "email" : "mohabkamle9@gmail.com",
+      "userName" : "Mohab",
+      "address" : "Cairo, Cairo, Egypt",
+      "firstName" : "mohab",
+      "lastName" : "kamle",
+      "lastLoginDate" : [ 2024, 11, 16, 3, 41, 58, 352375700 ],
+      "dateAppointed" : [ 2024, 11, 16 ],
+      "contactNumber" : "+201005619482",
+      "department" : "math",
+      "ownedBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : [ 2024, 11, 16 ]
+      }, {
+        "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+        "questions" : [ {
+          "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the SI unit of force?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which law states that energy cannot be created or destroyed?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which type of energy does a moving car possess?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the process of changing from liquid to gas called?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the unit of electrical resistance ?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 2,
+          "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "In which direction does heat naturally flow?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the formula for calculating work?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which of these is NOT a type of heat transfer?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 3,
+          "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : [ 2024, 11, 16 ]
+      } ],
+      "password" : "123456789@MMm"
+    },
+    "questionBanks" : [ {
+      "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+      "questions" : [ {
+        "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the SI unit of force?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which law states that energy cannot be created or destroyed?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 0,
+        "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which type of energy does a moving car possess?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the process of changing from liquid to gas called?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the unit of electrical resistance ?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "HARD",
+        "rightAnswer" : 2,
+        "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "In which direction does heat naturally flow?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which of these is NOT a type of heat transfer?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "HARD",
+        "rightAnswer" : 3,
+        "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+        "noOfAttemptsAtTests" : 0
+      } ],
+      "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    } ],
+    "categoryId" : "fe8add61-e778-4c48-b2b2-484dde82c01f"
+  },
+  "creationDate" : [ 2024, 11, 16 ],
+  "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+  "duration" : 1,
+  "testResult" : 80.0,
+  "difficulty" : "HARD",
+  "questions" : [ {
+    "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the formula for calculating work?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 1.8666666666666667,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the process of changing from liquid to gas called?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 2.1500000000000004,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "In which direction does heat naturally flow?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.2833333333333333,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the unit of electrical resistance ?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.15,
+    "difficulty" : "HARD",
+    "rightAnswer" : 2,
+    "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "Which of these is NOT a type of heat transfer?",
+    "numberOfFavorites" : 1,
+    "totalTime" : 0.35000000000000003,
+    "difficulty" : "HARD",
+    "rightAnswer" : 3,
+    "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+    "noOfAttemptsAtTests" : 7
+  } ],
+  "startTime" : [ 2024, 11, 16, 3, 42, 51, 373823300 ],
+  "endTime" : [ 2024, 11, 16, 3, 44, 0, 393061400 ],
+  "takerAnswers" : [ 0, 1, 2, 3, 1 ]
+}, {
+  "testID" : "901fda7d-7cac-4b95-abca-bdf0726b1b1c",
+  "category" : {
+    "name" : "Science",
+    "description" : "A group of general scientific topics as natural physics and thermodynamics",
+    "creationDate" : [ 2024, 11, 16 ],
+    "creator" : {
+      "type" : "admin",
+      "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "email" : "mohabkamle9@gmail.com",
+      "userName" : "Mohab",
+      "address" : "Cairo, Cairo, Egypt",
+      "firstName" : "mohab",
+      "lastName" : "kamle",
+      "lastLoginDate" : [ 2024, 11, 16, 3, 41, 58, 352375700 ],
+      "dateAppointed" : [ 2024, 11, 16 ],
+      "contactNumber" : "+201005619482",
+      "department" : "math",
+      "ownedBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : [ 2024, 11, 16 ]
+      }, {
+        "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+        "questions" : [ {
+          "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the SI unit of force?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which law states that energy cannot be created or destroyed?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which type of energy does a moving car possess?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the process of changing from liquid to gas called?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the unit of electrical resistance ?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 2,
+          "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "In which direction does heat naturally flow?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the formula for calculating work?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which of these is NOT a type of heat transfer?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 3,
+          "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : [ 2024, 11, 16 ]
+      } ],
+      "password" : "123456789@MMm"
+    },
+    "questionBanks" : [ {
+      "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+      "questions" : [ {
+        "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the SI unit of force?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which law states that energy cannot be created or destroyed?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 0,
+        "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which type of energy does a moving car possess?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 1,
+        "totalTime" : 0.38333333333333336,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 1
+      }, {
+        "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the process of changing from liquid to gas called?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.5666666666666667,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+        "noOfAttemptsAtTests" : 1
+      }, {
+        "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the unit of electrical resistance ?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.05,
+        "difficulty" : "HARD",
+        "rightAnswer" : 2,
+        "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+        "noOfAttemptsAtTests" : 1
+      }, {
+        "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which of these is NOT a type of heat transfer?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.05,
+        "difficulty" : "HARD",
+        "rightAnswer" : 3,
+        "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+        "noOfAttemptsAtTests" : 1
+      }, {
+        "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "In which direction does heat naturally flow?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.05,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+        "noOfAttemptsAtTests" : 1
+      } ],
+      "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    } ],
+    "categoryId" : "fe8add61-e778-4c48-b2b2-484dde82c01f"
+  },
+  "creationDate" : [ 2024, 11, 16 ],
+  "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+  "duration" : 1,
+  "testResult" : 100.0,
+  "difficulty" : "HARD",
+  "questions" : [ {
+    "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the formula for calculating work?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 1.8666666666666667,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the process of changing from liquid to gas called?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 2.1500000000000004,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "In which direction does heat naturally flow?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.2833333333333333,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the unit of electrical resistance ?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.15,
+    "difficulty" : "HARD",
+    "rightAnswer" : 2,
+    "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "Which of these is NOT a type of heat transfer?",
+    "numberOfFavorites" : 1,
+    "totalTime" : 0.35000000000000003,
+    "difficulty" : "HARD",
+    "rightAnswer" : 3,
+    "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+    "noOfAttemptsAtTests" : 7
+  } ],
+  "startTime" : [ 2024, 11, 16, 3, 44, 22, 187601800 ],
+  "endTime" : [ 2024, 11, 16, 3, 45, 32, 556242500 ],
+  "takerAnswers" : [ 1, 1, 3, 2, 1 ]
+}, {
+  "testID" : "f7d79df7-3dd8-4091-bfab-1ed5a55094c3",
+  "category" : {
+    "name" : "Science",
+    "description" : "A group of general scientific topics as natural physics and thermodynamics",
+    "creationDate" : [ 2024, 11, 16 ],
+    "creator" : {
+      "type" : "admin",
+      "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "email" : "mohabkamle9@gmail.com",
+      "userName" : "Mohab",
+      "address" : "Cairo, Cairo, Egypt",
+      "firstName" : "mohab",
+      "lastName" : "kamle",
+      "lastLoginDate" : [ 2024, 11, 16, 3, 41, 58, 352375700 ],
+      "dateAppointed" : [ 2024, 11, 16 ],
+      "contactNumber" : "+201005619482",
+      "department" : "math",
+      "ownedBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : [ 2024, 11, 16 ]
+      }, {
+        "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+        "questions" : [ {
+          "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the SI unit of force?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which law states that energy cannot be created or destroyed?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which type of energy does a moving car possess?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the process of changing from liquid to gas called?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the unit of electrical resistance ?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 2,
+          "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "In which direction does heat naturally flow?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the formula for calculating work?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which of these is NOT a type of heat transfer?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 3,
+          "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : [ 2024, 11, 16 ]
+      } ],
+      "password" : "123456789@MMm"
+    },
+    "questionBanks" : [ {
+      "bankID" : "d4dc675d-dc36-492c-bd4d-fbbc7a5b03f4",
+      "questions" : [ {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 0.38333333333333336,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 1
+      } ],
+      "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    }, {
+      "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+      "questions" : [ {
+        "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the SI unit of force?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which law states that energy cannot be created or destroyed?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 0,
+        "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which type of energy does a moving car possess?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the process of changing from liquid to gas called?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.8999999999999999,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+        "noOfAttemptsAtTests" : 2
+      }, {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 1.0666666666666667,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 2
+      }, {
+        "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which of these is NOT a type of heat transfer?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.1,
+        "difficulty" : "HARD",
+        "rightAnswer" : 3,
+        "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+        "noOfAttemptsAtTests" : 2
+      }, {
+        "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the unit of electrical resistance ?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.06666666666666667,
+        "difficulty" : "HARD",
+        "rightAnswer" : 2,
+        "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+        "noOfAttemptsAtTests" : 2
+      }, {
+        "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "In which direction does heat naturally flow?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.08333333333333334,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+        "noOfAttemptsAtTests" : 2
+      } ],
+      "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    } ],
+    "categoryId" : "fe8add61-e778-4c48-b2b2-484dde82c01f"
+  },
+  "creationDate" : [ 2024, 11, 16 ],
+  "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+  "duration" : 0,
+  "testResult" : 100.0,
+  "difficulty" : "HARD",
+  "questions" : [ {
+    "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the formula for calculating work?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 1.8666666666666667,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the process of changing from liquid to gas called?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 2.1500000000000004,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "In which direction does heat naturally flow?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.2833333333333333,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the unit of electrical resistance ?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.15,
+    "difficulty" : "HARD",
+    "rightAnswer" : 2,
+    "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "Which of these is NOT a type of heat transfer?",
+    "numberOfFavorites" : 1,
+    "totalTime" : 0.35000000000000003,
+    "difficulty" : "HARD",
+    "rightAnswer" : 3,
+    "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+    "noOfAttemptsAtTests" : 7
+  } ],
+  "startTime" : [ 2024, 11, 16, 4, 6, 6, 682553100 ],
+  "endTime" : [ 2024, 11, 16, 4, 6, 56, 987716600 ],
+  "takerAnswers" : [ 1, 3, 1, 1, 2 ]
+}, {
+  "testID" : "9f6b7d99-ff1a-451b-8734-34bd1c58bf13",
+  "category" : {
+    "name" : "Science",
+    "description" : "A group of general scientific topics as natural physics and thermodynamics",
+    "creationDate" : [ 2024, 11, 16 ],
+    "creator" : {
+      "type" : "admin",
+      "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "email" : "mohabkamle9@gmail.com",
+      "userName" : "Mohab",
+      "address" : "Cairo, Cairo, Egypt",
+      "firstName" : "mohab",
+      "lastName" : "kamle",
+      "lastLoginDate" : [ 2024, 11, 16, 3, 41, 58, 352375700 ],
+      "dateAppointed" : [ 2024, 11, 16 ],
+      "contactNumber" : "+201005619482",
+      "department" : "math",
+      "ownedBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : [ 2024, 11, 16 ]
+      }, {
+        "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+        "questions" : [ {
+          "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the SI unit of force?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which law states that energy cannot be created or destroyed?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which type of energy does a moving car possess?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the process of changing from liquid to gas called?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the unit of electrical resistance ?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 2,
+          "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "In which direction does heat naturally flow?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the formula for calculating work?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which of these is NOT a type of heat transfer?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 3,
+          "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : [ 2024, 11, 16 ]
+      } ],
+      "password" : "123456789@MMm"
+    },
+    "questionBanks" : [ {
+      "bankID" : "d4dc675d-dc36-492c-bd4d-fbbc7a5b03f4",
+      "questions" : [ {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 0.38333333333333336,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 1
+      } ],
+      "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    }, {
+      "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+      "questions" : [ {
+        "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the SI unit of force?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which law states that energy cannot be created or destroyed?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 0,
+        "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which type of energy does a moving car possess?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the process of changing from liquid to gas called?",
+        "numberOfFavorites" : 1,
+        "totalTime" : 1.3666666666666667,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+        "noOfAttemptsAtTests" : 3
+      }, {
+        "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which of these is NOT a type of heat transfer?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.15000000000000002,
+        "difficulty" : "HARD",
+        "rightAnswer" : 3,
+        "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+        "noOfAttemptsAtTests" : 3
+      }, {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 1.2666666666666666,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 3
+      }, {
+        "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "In which direction does heat naturally flow?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.11666666666666667,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+        "noOfAttemptsAtTests" : 3
+      }, {
+        "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the unit of electrical resistance ?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.1,
+        "difficulty" : "HARD",
+        "rightAnswer" : 2,
+        "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+        "noOfAttemptsAtTests" : 3
+      } ],
+      "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    } ],
+    "categoryId" : "fe8add61-e778-4c48-b2b2-484dde82c01f"
+  },
+  "creationDate" : [ 2024, 11, 16 ],
+  "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+  "duration" : 0,
+  "testResult" : 100.0,
+  "difficulty" : "HARD",
+  "questions" : [ {
+    "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the formula for calculating work?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 1.8666666666666667,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the process of changing from liquid to gas called?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 2.1500000000000004,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "In which direction does heat naturally flow?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.2833333333333333,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the unit of electrical resistance ?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.15,
+    "difficulty" : "HARD",
+    "rightAnswer" : 2,
+    "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "Which of these is NOT a type of heat transfer?",
+    "numberOfFavorites" : 1,
+    "totalTime" : 0.35000000000000003,
+    "difficulty" : "HARD",
+    "rightAnswer" : 3,
+    "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+    "noOfAttemptsAtTests" : 7
+  } ],
+  "startTime" : [ 2024, 11, 16, 4, 8, 53, 155169300 ],
+  "endTime" : [ 2024, 11, 16, 4, 9, 16, 920951400 ],
+  "takerAnswers" : [ 1, 3, 1, 1, 2 ]
+}, {
+  "testID" : "a9924290-7a35-4aa5-b070-27dc69f11dab",
+  "category" : {
+    "name" : "Science",
+    "description" : "A group of general scientific topics as natural physics and thermodynamics",
+    "creationDate" : [ 2024, 11, 16 ],
+    "creator" : {
+      "type" : "admin",
+      "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "email" : "mohabkamle9@gmail.com",
+      "userName" : "Mohab",
+      "address" : "Cairo, Cairo, Egypt",
+      "firstName" : "mohab",
+      "lastName" : "kamle",
+      "lastLoginDate" : [ 2024, 11, 16, 3, 41, 58, 352375700 ],
+      "dateAppointed" : [ 2024, 11, 16 ],
+      "contactNumber" : "+201005619482",
+      "department" : "math",
+      "ownedBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : [ 2024, 11, 16 ]
+      }, {
+        "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+        "questions" : [ {
+          "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the SI unit of force?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which law states that energy cannot be created or destroyed?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which type of energy does a moving car possess?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the process of changing from liquid to gas called?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the unit of electrical resistance ?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 2,
+          "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "In which direction does heat naturally flow?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the formula for calculating work?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which of these is NOT a type of heat transfer?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 3,
+          "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : [ 2024, 11, 16 ]
+      } ],
+      "password" : "123456789@MMm"
+    },
+    "questionBanks" : [ {
+      "bankID" : "d4dc675d-dc36-492c-bd4d-fbbc7a5b03f4",
+      "questions" : [ {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 0.38333333333333336,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 1
+      } ],
+      "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    }, {
+      "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+      "questions" : [ {
+        "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the SI unit of force?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which law states that energy cannot be created or destroyed?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 0,
+        "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which type of energy does a moving car possess?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the process of changing from liquid to gas called?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 1.5833333333333335,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+        "noOfAttemptsAtTests" : 4
+      }, {
+        "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which of these is NOT a type of heat transfer?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.18333333333333335,
+        "difficulty" : "HARD",
+        "rightAnswer" : 3,
+        "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+        "noOfAttemptsAtTests" : 4
+      }, {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 1.3,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 4
+      }, {
+        "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "In which direction does heat naturally flow?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.15,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+        "noOfAttemptsAtTests" : 4
+      }, {
+        "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the unit of electrical resistance ?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.11666666666666667,
+        "difficulty" : "HARD",
+        "rightAnswer" : 2,
+        "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+        "noOfAttemptsAtTests" : 4
+      } ],
+      "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    } ],
+    "categoryId" : "fe8add61-e778-4c48-b2b2-484dde82c01f"
+  },
+  "creationDate" : [ 2024, 11, 16 ],
+  "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+  "duration" : 0,
+  "testResult" : 0.0,
+  "difficulty" : "HARD",
+  "questions" : [ {
+    "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the formula for calculating work?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 1.8666666666666667,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the process of changing from liquid to gas called?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 2.1500000000000004,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "In which direction does heat naturally flow?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.2833333333333333,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the unit of electrical resistance ?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.15,
+    "difficulty" : "HARD",
+    "rightAnswer" : 2,
+    "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "Which of these is NOT a type of heat transfer?",
+    "numberOfFavorites" : 1,
+    "totalTime" : 0.35000000000000003,
+    "difficulty" : "HARD",
+    "rightAnswer" : 3,
+    "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+    "noOfAttemptsAtTests" : 7
+  } ],
+  "startTime" : [ 2024, 11, 16, 4, 9, 38, 403026300 ],
+  "endTime" : [ 2024, 11, 16, 4, 10, 12, 662953600 ],
+  "takerAnswers" : [ 0, 0, 0, 0, 0 ]
+}, {
+  "testID" : "e4b13536-27f9-4083-88b2-59a0ca232a23",
+  "category" : {
+    "name" : "Science",
+    "description" : "A group of general scientific topics as natural physics and thermodynamics",
+    "creationDate" : [ 2024, 11, 16 ],
+    "creator" : {
+      "type" : "admin",
+      "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "email" : "mohabkamle9@gmail.com",
+      "userName" : "Mohab",
+      "address" : "Cairo, Cairo, Egypt",
+      "firstName" : "mohab",
+      "lastName" : "kamle",
+      "lastLoginDate" : [ 2024, 11, 16, 3, 41, 58, 352375700 ],
+      "dateAppointed" : [ 2024, 11, 16 ],
+      "contactNumber" : "+201005619482",
+      "department" : "math",
+      "ownedBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : [ 2024, 11, 16 ]
+      }, {
+        "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+        "questions" : [ {
+          "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the SI unit of force?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which law states that energy cannot be created or destroyed?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which type of energy does a moving car possess?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the process of changing from liquid to gas called?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the unit of electrical resistance ?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 2,
+          "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "In which direction does heat naturally flow?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the formula for calculating work?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which of these is NOT a type of heat transfer?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 3,
+          "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : [ 2024, 11, 16 ]
+      } ],
+      "password" : "123456789@MMm"
+    },
+    "questionBanks" : [ {
+      "bankID" : "d4dc675d-dc36-492c-bd4d-fbbc7a5b03f4",
+      "questions" : [ {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 0.38333333333333336,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 1
+      } ],
+      "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    }, {
+      "bankID" : "61e7fc39-a9ea-48df-a039-9e032baaa11b",
+      "questions" : [ {
+        "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the process of changing from liquid to gas called?",
+        "numberOfFavorites" : 3,
+        "totalTime" : 1.5833333333333335,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+        "noOfAttemptsAtTests" : 4
+      } ],
+      "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    }, {
+      "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+      "questions" : [ {
+        "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the SI unit of force?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which law states that energy cannot be created or destroyed?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 0,
+        "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which type of energy does a moving car possess?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the process of changing from liquid to gas called?",
+        "numberOfFavorites" : 3,
+        "totalTime" : 2.0500000000000003,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+        "noOfAttemptsAtTests" : 5
+      }, {
+        "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "In which direction does heat naturally flow?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.16666666666666666,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+        "noOfAttemptsAtTests" : 5
+      }, {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 1.3166666666666667,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 5
+      }, {
+        "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which of these is NOT a type of heat transfer?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.18333333333333335,
+        "difficulty" : "HARD",
+        "rightAnswer" : 3,
+        "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+        "noOfAttemptsAtTests" : 5
+      }, {
+        "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the unit of electrical resistance ?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.11666666666666667,
+        "difficulty" : "HARD",
+        "rightAnswer" : 2,
+        "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+        "noOfAttemptsAtTests" : 5
+      } ],
+      "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    } ],
+    "categoryId" : "fe8add61-e778-4c48-b2b2-484dde82c01f"
+  },
+  "creationDate" : [ 2024, 11, 16 ],
+  "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+  "duration" : 0,
+  "testResult" : 60.0,
+  "difficulty" : "HARD",
+  "questions" : [ {
+    "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the formula for calculating work?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 1.8666666666666667,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the process of changing from liquid to gas called?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 2.1500000000000004,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "In which direction does heat naturally flow?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.2833333333333333,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the unit of electrical resistance ?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.15,
+    "difficulty" : "HARD",
+    "rightAnswer" : 2,
+    "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "Which of these is NOT a type of heat transfer?",
+    "numberOfFavorites" : 1,
+    "totalTime" : 0.35000000000000003,
+    "difficulty" : "HARD",
+    "rightAnswer" : 3,
+    "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+    "noOfAttemptsAtTests" : 7
+  } ],
+  "startTime" : [ 2024, 11, 16, 4, 15, 57, 338287900 ],
+  "endTime" : [ 2024, 11, 16, 4, 16, 28, 155545600 ],
+  "takerAnswers" : [ 1, 1, 1, 1, 0 ]
+}, {
+  "testID" : "fe7779e1-8c68-4991-9bd5-00bf92280a94",
+  "category" : {
+    "name" : "Science",
+    "description" : "A group of general scientific topics as natural physics and thermodynamics",
+    "creationDate" : [ 2024, 11, 16 ],
+    "creator" : {
+      "type" : "admin",
+      "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "email" : "mohabkamle9@gmail.com",
+      "userName" : "Mohab",
+      "address" : "Cairo, Cairo, Egypt",
+      "firstName" : "mohab",
+      "lastName" : "kamle",
+      "lastLoginDate" : [ 2024, 11, 16, 3, 41, 58, 352375700 ],
+      "dateAppointed" : [ 2024, 11, 16 ],
+      "contactNumber" : "+201005619482",
+      "department" : "math",
+      "ownedBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : [ 2024, 11, 16 ]
+      }, {
+        "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+        "questions" : [ {
+          "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the SI unit of force?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which law states that energy cannot be created or destroyed?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which type of energy does a moving car possess?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the process of changing from liquid to gas called?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the unit of electrical resistance ?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 2,
+          "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "In which direction does heat naturally flow?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the formula for calculating work?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which of these is NOT a type of heat transfer?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "HARD",
+          "rightAnswer" : 3,
+          "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+          "noOfAttemptsAtTests" : 0
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : [ 2024, 11, 16 ]
+      } ],
+      "password" : "123456789@MMm"
+    },
+    "questionBanks" : [ {
+      "bankID" : "d4dc675d-dc36-492c-bd4d-fbbc7a5b03f4",
+      "questions" : [ {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 2,
+        "totalTime" : 0.38333333333333336,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 1
+      } ],
+      "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    }, {
+      "bankID" : "61e7fc39-a9ea-48df-a039-9e032baaa11b",
+      "questions" : [ {
+        "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the process of changing from liquid to gas called?",
+        "numberOfFavorites" : 3,
+        "totalTime" : 1.5833333333333335,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+        "noOfAttemptsAtTests" : 4
+      } ],
+      "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    }, {
+      "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+      "questions" : [ {
+        "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the SI unit of force?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which law states that energy cannot be created or destroyed?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 0,
+        "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 2,
+        "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which type of energy does a moving car possess?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.0,
+        "difficulty" : "EASY",
+        "rightAnswer" : 1,
+        "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+        "noOfAttemptsAtTests" : 0
+      }, {
+        "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "In which direction does heat naturally flow?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.25,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+        "noOfAttemptsAtTests" : 6
+      }, {
+        "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the formula for calculating work?",
+        "numberOfFavorites" : 3,
+        "totalTime" : 1.4833333333333334,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+        "noOfAttemptsAtTests" : 6
+      }, {
+        "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the unit of electrical resistance ?",
+        "numberOfFavorites" : 0,
+        "totalTime" : 0.13333333333333333,
+        "difficulty" : "HARD",
+        "rightAnswer" : 2,
+        "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+        "noOfAttemptsAtTests" : 6
+      }, {
+        "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "What is the process of changing from liquid to gas called?",
+        "numberOfFavorites" : 3,
+        "totalTime" : 2.0833333333333335,
+        "difficulty" : "HARD",
+        "rightAnswer" : 1,
+        "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+        "noOfAttemptsAtTests" : 6
+      }, {
+        "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+        "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "statement" : "Which of these is NOT a type of heat transfer?",
+        "numberOfFavorites" : 1,
+        "totalTime" : 0.30000000000000004,
+        "difficulty" : "HARD",
+        "rightAnswer" : 3,
+        "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+        "noOfAttemptsAtTests" : 6
+      } ],
+      "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+      "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "creationDate" : [ 2024, 11, 16 ]
+    } ],
+    "categoryId" : "fe8add61-e778-4c48-b2b2-484dde82c01f"
+  },
+  "creationDate" : [ 2024, 11, 16 ],
+  "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+  "duration" : 0,
+  "testResult" : 100.0,
+  "difficulty" : "HARD",
+  "questions" : [ {
+    "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the formula for calculating work?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 1.8666666666666667,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the process of changing from liquid to gas called?",
+    "numberOfFavorites" : 3,
+    "totalTime" : 2.1500000000000004,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "In which direction does heat naturally flow?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.2833333333333333,
+    "difficulty" : "HARD",
+    "rightAnswer" : 1,
+    "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "What is the unit of electrical resistance ?",
+    "numberOfFavorites" : 0,
+    "totalTime" : 0.15,
+    "difficulty" : "HARD",
+    "rightAnswer" : 2,
+    "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+    "noOfAttemptsAtTests" : 7
+  }, {
+    "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+    "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "statement" : "Which of these is NOT a type of heat transfer?",
+    "numberOfFavorites" : 1,
+    "totalTime" : 0.35000000000000003,
+    "difficulty" : "HARD",
+    "rightAnswer" : 3,
+    "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+    "noOfAttemptsAtTests" : 7
+  } ],
+  "startTime" : [ 2024, 11, 16, 4, 16, 41, 698876900 ],
+  "endTime" : [ 2024, 11, 16, 4, 17, 19, 256659800 ],
+  "takerAnswers" : [ 1, 1, 1, 2, 3 ]
+} ]
