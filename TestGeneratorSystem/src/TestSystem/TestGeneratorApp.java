@@ -13,15 +13,7 @@ import java.util.Scanner;
 import javax.mail.MessagingException;
 
 /**
- * Git WorkFlow for The contributors 
- * //1_make sure you cloned the repo correct(added remote or cloned directly ...etc). 
- * //2_switch to your Branch which is the first or two characters of your name. 
- * //3_command in terminal of the project Folder/app : "git pull origin main". 
- * //4_make the required edits then commit your work (any number of commits you want). 
- * //5_command : "git push origin [your branch name]". 
- * //6_open github and make a pull request. 
- * //7_wait for review to merge your code. 
- * //8_you successfully contributed to your beloved project :) !
+ * Git WorkFlow for The contributors //1_make sure you cloned the repo correct(added remote or cloned directly ...etc). //2_switch to your Branch which is the first or two characters of your name. //3_command in terminal of the project Folder/app : "git pull origin main". //4_make the required edits then commit your work (any number of commits you want). //5_command : "git push origin [your branch name]". //6_open github and make a pull request. //7_wait for review to merge your code. //8_you successfully contributed to your beloved project :) !
  */
 /**
  * @version 1.0
@@ -31,6 +23,7 @@ public class TestGeneratorApp {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static User currentUser = null;
+
     public static void main(String[] args) throws IOException {
         runMainApplication();
     }
@@ -68,8 +61,9 @@ public class TestGeneratorApp {
         ifColorfullPrintln("===== Online Test Management System =====", TerminalColors.BOLD_BLUE);
         System.out.println("1. Admin Portal");
         System.out.println("2. Student Portal");
-        System.out.println("0. Exit Application");  
-        ifColorfullPrint("Enter your choice: ", TerminalColors.CYAN);}
+        System.out.println("0. Exit Application");
+        ifColorfullPrint("Enter your choice: ", TerminalColors.CYAN);
+    }
 
     /**
      * Handles Admin-specific operations
@@ -100,7 +94,7 @@ public class TestGeneratorApp {
      */
     private static void displayAdminMenu() {
         clearConsole();
-        ifColorfullPrintln("===== Admin Portal =====",TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("===== Admin Portal =====", TerminalColors.BOLD_BLUE);
         System.out.println("1. Sign Up");
         System.out.println("2. Login");
         System.out.println("3. Reset Password");
@@ -112,10 +106,39 @@ public class TestGeneratorApp {
      * Performs Admin sign-up process
      */
     private static void performAdminSignUp() {
-        clearConsole();
-        ifColorfullPrintln("===== Admin Sign Up =====",TerminalColors.BOLD_BLUE);
-        Admin.signUp();
-        pressAnyKeyToContinue();
+        final String ADMIN_SECRET_CODE = "12345";  // Your secret admin code
+        final String CANCEL_COMMAND = "EXIT";
+
+        try {
+            clearConsole();
+            ifColorfullPrintln("===== Admin Sign Up =====", TerminalColors.BOLD_BLUE);
+            ifColorfullPrintln("Please enter the admin secret code or type '" + CANCEL_COMMAND + "' to cancel", TerminalColors.BOLD_YELLOW);
+
+            Scanner scanner = new Scanner(System.in);
+
+            while (true) {
+                System.out.print("Enter admin code: ");
+                String inputCode = scanner.nextLine().trim();
+
+                if (inputCode.equalsIgnoreCase(CANCEL_COMMAND)) {
+                    ifColorfullPrintln("Admin sign up cancelled.", TerminalColors.BOLD_YELLOW);
+                    return;
+                }
+
+                if (inputCode.equals(ADMIN_SECRET_CODE)) {
+                    ifColorfullPrintln("Secret code verified! Proceeding with admin sign up...", TerminalColors.BOLD_GREEN);
+                    Admin.signUp();
+                    ifColorfullPrintln("Admin sign up completed successfully!", TerminalColors.BOLD_GREEN);
+                    break;
+                } else {
+                    ifColorfullPrintln("Invalid admin code! Please try again or type '" + CANCEL_COMMAND + "' to cancel", TerminalColors.BOLD_RED);
+                }
+            }
+        } catch (Exception e) {
+            ifColorfullPrintln("Error during admin sign up: " + e.getMessage(), TerminalColors.BOLD_RED);
+        } finally {
+            pressAnyKeyToContinue();
+        }
     }
 
     /**
@@ -124,20 +147,20 @@ public class TestGeneratorApp {
     private static void performAdminLogin() throws IOException {
         clearConsole();
         ifColorfullPrintln("===== Admin Login =====", TerminalColors.BOLD_BLUE);
-        
+
         Admin loggedAdmin = new Admin().login();
-        
+
         if (loggedAdmin != null) {
             ifColorfullPrintln(
-                "Login Successful!", 
-                TerminalColors.BOLD_GREEN
+                    "Login Successful!",
+                    TerminalColors.BOLD_GREEN
             );
             currentUser = loggedAdmin;
             handleAdminDashboard(loggedAdmin);
         } else {
             ifColorfullPrintln(
-                "Login Failed. Invalid Credentials.", 
-                TerminalColors.BOLD_RED
+                    "Login Failed. Invalid Credentials.",
+                    TerminalColors.BOLD_RED
             );
             pressAnyKeyToContinue();
         }
@@ -167,24 +190,24 @@ public class TestGeneratorApp {
                         return;
                     }
                 }
-                case 5 ->{
+                case 5 -> {
                     if (admin.createCategory()) {
                         ifColorfullPrintln("Category Created succesfully !!", TerminalColors.BOLD_GREEN);
-                    }else{
+                    } else {
                         ifColorfullPrintln("Category couldn't be created", TerminalColors.BOLD_RED);
                     }
                 }
-                case 6 ->{
+                case 6 -> {
                     if (admin.modifyCategory()) {
                         ifColorfullPrintln("Category has been updated succesfully !!", TerminalColors.BOLD_GREEN);
-                    }else{
+                    } else {
                         ifColorfullPrintln("Categories still the same..", TerminalColors.BOLD_RED);
                     }
                 }
-                case 7 ->{
+                case 7 -> {
                     if (admin.deleteCategory()) {
                         ifColorfullPrintln("Category has been deleted !!", TerminalColors.BOLD_GREEN);
-                    }else{
+                    } else {
                         ifColorfullPrintln("NoThing is Deleted..", TerminalColors.BOLD_RED);
                     }
                 }
@@ -196,23 +219,23 @@ public class TestGeneratorApp {
 //                    }
 //                }
                 case 8 -> {
-                    if(admin.addQuestionToQuestionBank()){
+                    if (admin.addQuestionToQuestionBank()) {
                         ifColorfullPrintln("Question has been added", TerminalColors.BOLD_GREEN);
-                    }else{
+                    } else {
                         ifColorfullPrintln("No Question is added", TerminalColors.BOLD_RED);
                     }
                 }
                 case 9 -> {
-                    if(admin.updateQuestionInQuestionBank()){
+                    if (admin.updateQuestionInQuestionBank()) {
                         ifColorfullPrintln("Question has been updated succesfully !!", TerminalColors.BOLD_GREEN);
-                    }else{
+                    } else {
                         ifColorfullPrintln("No changes to Question happened", TerminalColors.BOLD_RED);
                     }
                 }
                 case 10 -> {
-                    if(admin.deleteQuestionFromQuestionBank()){
+                    if (admin.deleteQuestionFromQuestionBank()) {
                         ifColorfullPrintln("Question has been deleted !!!", TerminalColors.BOLD_GREEN);
-                    }else{
+                    } else {
                         ifColorfullPrintln("No Question is deleted...", TerminalColors.BOLD_RED);
                     }
                 }
@@ -235,8 +258,8 @@ public class TestGeneratorApp {
     private static void displayAdminDashboardMenu() {
         clearConsole();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
-        ifColorfullPrintln("===== Admin Dashboard =====",TerminalColors.BOLD_BLUE);
-        ifColorfullPrintln("Last Login Date : "+currentUser.getLastLoginDate().format(formatter), TerminalColors.YELLOW);
+        ifColorfullPrintln("===== Admin Dashboard =====", TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("Last Login Date : " + currentUser.getLastLoginDate().format(formatter), TerminalColors.YELLOW);
         System.out.println("1. View Profile");
         System.out.println("2. Update Profile");
         System.out.println("3. Change Password");
@@ -244,14 +267,14 @@ public class TestGeneratorApp {
         System.out.println("5. Create Category");
         System.out.println("6. modify Category");
         System.out.println("7. delete Category");
-//        System.out.println("8. Create Question Bank");
+//        System.out.println("8. Create Question Bank"); // for debugging
         System.out.println("8. Add Question");
         System.out.println("9. Update Question");
         System.out.println("10. delete Question");
-//        System.out.println("6. View My Question Banks");
-//        System.out.println("7. delete Question Bank");
+//        System.out.println("6. View My Question Banks"); // for debugging
+//        System.out.println("7. delete Question Bank"); // for debugging
         System.out.println("0. Logout");
-        ifColorfullPrint("Enter your choice: ",TerminalColors.CYAN);
+        ifColorfullPrint("Enter your choice: ", TerminalColors.CYAN);
     }
 
     /**
@@ -283,12 +306,12 @@ public class TestGeneratorApp {
      */
     private static void displayStudentMenu() {
         clearConsole();
-        ifColorfullPrintln("===== Student Portal =====",TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("===== Student Portal =====", TerminalColors.BOLD_BLUE);
         System.out.println("1. Sign Up");
         System.out.println("2. Login");
         System.out.println("3. Reset Password");
         System.out.println("0. Back to Main Menu");
-        ifColorfullPrint("Enter your choice: ",TerminalColors.CYAN);
+        ifColorfullPrint("Enter your choice: ", TerminalColors.CYAN);
     }
 
     /**
@@ -296,7 +319,7 @@ public class TestGeneratorApp {
      */
     private static void performStudentSignUp() {
         clearConsole();
-        ifColorfullPrintln("===== Student Sign Up =====",TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("===== Student Sign Up =====", TerminalColors.BOLD_BLUE);
         Student.signUp();
         pressAnyKeyToContinue();
     }
@@ -306,13 +329,13 @@ public class TestGeneratorApp {
      */
     private static void performStudentLogin() throws IOException {
         clearConsole();
-        ifColorfullPrintln("===== Student Login =====",TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("===== Student Login =====", TerminalColors.BOLD_BLUE);
         Student loggedStudent = new Student().login();
         currentUser = loggedStudent;
         if (loggedStudent != null) {
             handleStudentDashboard(loggedStudent);
         } else {
-            ifColorfullPrintln("Login Failed. Invalid Credentials.",TerminalColors.BOLD_RED);
+            ifColorfullPrintln("Login Failed. Invalid Credentials.", TerminalColors.BOLD_RED);
             pressAnyKeyToContinue();
         }
     }
@@ -369,8 +392,8 @@ public class TestGeneratorApp {
     private static void displayStudentDashboardMenu() {
         clearConsole();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
-        ifColorfullPrintln("===== Student Dashboard =====",TerminalColors.BOLD_BLUE);
-        ifColorfullPrintln("Last Login Date : "+currentUser.getLastLoginDate().format(formatter), TerminalColors.YELLOW);
+        ifColorfullPrintln("===== Student Dashboard =====", TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("Last Login Date : " + currentUser.getLastLoginDate().format(formatter), TerminalColors.YELLOW);
         System.out.println("1. View Profile");
         System.out.println("2. Update Profile");
         System.out.println("3. Change Password");
@@ -379,7 +402,7 @@ public class TestGeneratorApp {
         System.out.println("6. View Test History");
         System.out.println("7. View favorite questions");
         System.out.println("0. Logout");
-        ifColorfullPrint("Enter your choice: ",TerminalColors.CYAN);
+        ifColorfullPrint("Enter your choice: ", TerminalColors.CYAN);
     }
 
     /**
@@ -387,7 +410,7 @@ public class TestGeneratorApp {
      */
     private static void performAdminPasswordReset() throws MessagingException {
         clearConsole();
-        ifColorfullPrintln("===== Admin Password Reset =====",TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("===== Admin Password Reset =====", TerminalColors.BOLD_BLUE);
         new Admin().resetPassword();
         pressAnyKeyToContinue();
     }
@@ -397,7 +420,7 @@ public class TestGeneratorApp {
      */
     private static void performStudentPasswordReset() throws MessagingException {
         clearConsole();
-        ifColorfullPrintln("===== Student Password Reset =====",TerminalColors.BOLD_BLUE);
+        ifColorfullPrintln("===== Student Password Reset =====", TerminalColors.BOLD_BLUE);
         new Student().resetPassword();
         pressAnyKeyToContinue();
     }
@@ -408,7 +431,7 @@ public class TestGeneratorApp {
      * @return true if the user confirms, false otherwise
      */
     private static boolean confirmAccountRemoval() {
-        ifColorfullPrint("Are you sure you want to remove your account? (y/n): ",TerminalColors.BOLD_CYAN);
+        ifColorfullPrint("Are you sure you want to remove your account? (y/n): ", TerminalColors.BOLD_CYAN);
         String response = scanner.next();
         return response.equalsIgnoreCase("y");
     }
@@ -426,7 +449,7 @@ public class TestGeneratorApp {
      * Handles invalid user choices
      */
     private static void handleInvalidChoice() {
-        ifColorfullPrintln("Invalid choice. Please try again.",TerminalColors.BOLD_RED);
+        ifColorfullPrintln("Invalid choice. Please try again.", TerminalColors.BOLD_RED);
         pressAnyKeyToContinue();
     }
 
@@ -434,7 +457,7 @@ public class TestGeneratorApp {
      * Exits the application
      */
     private static void exitApplication() {
-        ifColorfullPrintln("Thank you for using the Online Test Management System. Goodbye!",TerminalColors.YELLOW);
+        ifColorfullPrintln("Thank you for using the Online Test Management System. Goodbye!", TerminalColors.YELLOW);
         System.exit(0);
     }
 
@@ -444,7 +467,7 @@ public class TestGeneratorApp {
      * @param e the exception to handle
      */
     private static void handleException(Exception e) {
-        ifColorfullPrintln("An error occurred: " + e.getMessage(),TerminalColors.BOLD_RED);
+        ifColorfullPrintln("An error occurred: " + e.getMessage(), TerminalColors.BOLD_RED);
         pressAnyKeyToContinue();
     }
 
@@ -461,23 +484,24 @@ public class TestGeneratorApp {
      * Prompts the user to press any key to continue
      */
     private static void pressAnyKeyToContinue() {
-        ifColorfullPrintln("Press Enter to continue...",TerminalColors.CYAN);
+        ifColorfullPrintln("Press Enter to continue...", TerminalColors.CYAN);
         scanner.nextLine(); // Consume the newline
         scanner.nextLine(); // Wait for user input
     }
-    
+
     //methods to check if it supports colors and prints
-    public static void ifColorfullPrintln(String text,String color){
+    public static void ifColorfullPrintln(String text, String color) {
         if (TerminalColors.supportsAnsiColors()) {
-            TerminalColors.printColored(text,color);
+            TerminalColors.printColored(text, color);
         } else {
             // Fallback to normal printing if ANSI colors not supported
             System.out.println(text);
         }
     }
-    public static void ifColorfullPrint(String text,String color){
+
+    public static void ifColorfullPrint(String text, String color) {
         if (TerminalColors.supportsAnsiColors()) {
-            TerminalColors.printColoredNoNewLine(text,color);
+            TerminalColors.printColoredNoNewLine(text, color);
         } else {
             // Fallback to normal printing if ANSI colors not supported
             System.out.print(text);

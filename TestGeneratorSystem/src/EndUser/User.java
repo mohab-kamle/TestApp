@@ -224,7 +224,7 @@ public abstract class User {
 
             // Validate input format
             if (!check.isValid(validationType, input)) {
-                System.out.println(errorMessage);
+                ifColorfullPrintln(errorMessage,TerminalColors.BOLD_RED);
                 continue;
             }
 
@@ -630,14 +630,7 @@ public abstract class User {
     }
 
     protected void updateUsername(Checker check, Scanner sc) {
-        String newUsername;
-        do {
-            System.out.println("Enter new username: ");
-            newUsername = sc.nextLine();
-            if (!check.isValid(Checker.StringType.USERNAME, newUsername)) {
-                System.out.println("Invalid username. Please try again.");
-            }
-        } while (!check.isValid(Checker.StringType.USERNAME, newUsername));
+        String newUsername = validateUniqueInput(sc, check, "Enter New UserName : ", Checker.StringType.USERNAME, "Invalid username. Please try again.", User::isUsernameTaken);
         //update the object
         this.setUserName(newUsername);
         //updating the equivalent JSON
@@ -650,18 +643,11 @@ public abstract class User {
             SDB.updateStudent(student);
         }
         updateEquivalentCategoryAndQuestionBank();
-        System.out.println("Username updated successfully!");
+        ifColorfullPrintln("Username updated successfully!",TerminalColors.BOLD_GREEN);
     }
 
     protected void updateEmail(Checker check, Scanner sc) {
-        String newEmail;
-        do {
-            System.out.println("Enter new email: ");
-            newEmail = sc.nextLine();
-            if (!check.isValid(Checker.StringType.EMAIL, newEmail)) {
-                System.out.println("Invalid email. Please try again.");
-            }
-        } while (!check.isValid(Checker.StringType.EMAIL, newEmail));
+        String newEmail = validateUniqueInput(sc, check, "Enter New Email : ", Checker.StringType.EMAIL, "Invalid Email , please try again", User::isEmailTaken);
         //updating the object
         this.setEmail(newEmail);
         //updating the equivalent JSON
@@ -674,7 +660,7 @@ public abstract class User {
             SDB.updateStudent(student);
         }
         updateEquivalentCategoryAndQuestionBank();
-        System.out.println("Email updated successfully!");
+        ifColorfullPrintln("Email updated successfully!",TerminalColors.BOLD_GREEN);
     }
 
     protected void updateName(Checker check, Scanner sc) throws IOException {

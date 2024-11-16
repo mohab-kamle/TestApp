@@ -6,6 +6,7 @@ import DataBaseManagment.QuestionBankDAO;
 import TestSystem.Category;
 import TestSystem.Question;
 import TestSystem.QuestionBank;
+import static TestSystem.TestGeneratorApp.ifColorfullPrint;
 import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
 import UserDefinedFunctionalities.Checker;
 import UserDefinedFunctionalities.TerminalColors;
@@ -142,8 +143,8 @@ public class Admin extends User {
         Checker check = new Checker();
         int choice;
         do {
-            System.out.println("|--->    Update Profile Page     <---|");
-            System.out.println("|---Select what you want to update---|");
+            ifColorfullPrintln("|---> Update Profile Page",TerminalColors.BOLD_BLUE);
+            ifColorfullPrintln("|---Select what you want to update",TerminalColors.YELLOW);
             printUpdateMenu();
 
             try {
@@ -256,9 +257,9 @@ public class Admin extends User {
         }
 
         // Display categories
-        System.out.println("All Categories:");
+        ifColorfullPrintln("All Categories:",TerminalColors.YELLOW);
         for (int i = 0; i < categories.size(); i++) {
-            System.out.println((i + 1) + "- " + categories.get(i).getName());
+            ifColorfullPrintln((i + 1) + "- " + categories.get(i).getName(),TerminalColors.YELLOW);
             System.out.println("Description : " + categories.get(i).getDescription());
         }
 
@@ -493,9 +494,9 @@ public class Admin extends User {
             boolean updated = QBDB.addQuestionToBank(questionBank.getBankID(), newQuestion);
 
             if (updated) {
-                System.out.println("Question successfully added to the question bank!");
+                ifColorfullPrintln("Question successfully added to the question bank!",TerminalColors.BOLD_GREEN);
             } else {
-                System.out.println("Failed to update question bank in database.");
+                ifColorfullPrintln("Failed to update question bank in database.",TerminalColors.BOLD_RED);
                 return false;
             }
 
@@ -539,7 +540,7 @@ public class Admin extends User {
             }
             System.out.println("\n0 - Cancel operation");
 
-            System.out.print("\nSelect category number: ");
+            ifColorfullPrint("\nSelect category number: ",TerminalColors.CYAN);
             String input = scanner.nextLine().trim();
 
             try {
@@ -676,7 +677,7 @@ public class Admin extends User {
                 boolean isDuplicate = false;
                 for (int j = 0; j < i; j++) {
                     if (choice.equalsIgnoreCase(choices[j])) {
-                        System.out.println("This choice already exists. Please enter a unique choice.");
+                        ifColorfullPrintln("This choice already exists. Please enter a unique choice.",TerminalColors.BOLD_RED);
                         isDuplicate = true;
                         break;
                     }
@@ -728,7 +729,7 @@ public class Admin extends User {
                     case 3:
                         return Question.dlevel.HARD;
                     default:
-                        System.out.println("Invalid choice. Please try again.");
+                        ifColorfullPrintln("Invalid choice. Please try again.",TerminalColors.BOLD_RED);
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid number.");
