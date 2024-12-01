@@ -191,6 +191,19 @@ public class Student extends User {
         passwordInput = new String(passwordArray);
         return SDB.searchStudent(userNameInput, passwordInput);
     }
+/**
+     * GUI VERSION Handles the login process for a student by collecting their username and password.
+     *
+     * This method prompts the user to enter their username and password. It uses the `Console` class to securely read the password input. If the console is not available, it notifies the user. After gathering the credentials, it calls the `searchStudent` method of the `StudentDAO` class to authenticate the student and retrieve their information. The method returns a `Student` object if the login is successful, or null if authentication fails.
+     *
+     * @param username
+     * @param password
+     * @return a Student object representing the authenticated student, or null if login fails.
+     */
+    public Student login(String username,String password) {  
+        StudentDAO SDB = new StudentDAO();
+        return SDB.searchStudent(username, password);
+    }
 
     /**
      * Removes the student's account from the system.
