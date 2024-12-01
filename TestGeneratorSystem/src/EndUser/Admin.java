@@ -102,7 +102,17 @@ public class Admin extends User {
         passwordInput = new String(passwordArray);
         return ADB.searchAdmin(userNameInput, passwordInput);
     }
-
+    /**
+     * GUI VERSION login method for admin as it uses its specialized DAO
+     *
+     * @param username
+     * @param passsword
+     * @return the logged in Admin object
+     */
+    public Admin login(String username , String passsword) {
+        AdminDAO ADB = new AdminDAO();
+        return ADB.searchAdmin(username, passsword);
+    }
     /**
      * Retrieves and optionally displays the admin's extended profile information.
      *

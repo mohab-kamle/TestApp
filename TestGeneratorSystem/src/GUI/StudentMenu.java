@@ -42,7 +42,7 @@ public class StudentMenu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Login clicked");
-                cardLayout.show(container, "LoginPanel");
+                cardLayout.show(container, "Login");
             }
 
         });
