@@ -58,7 +58,7 @@ public class StudentMenu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Back to Main Menu clicked");
-                cardLayout.show(container, "WelcomePage");
+                cardLayout.show(container, "Welcome");
             }
 
         });

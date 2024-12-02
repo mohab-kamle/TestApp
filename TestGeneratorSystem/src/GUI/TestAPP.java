@@ -3,6 +3,7 @@ package GUI;
 import java.awt.*;
 import javax.swing.*;
 
+
 public class TestAPP extends javax.swing.JFrame {
     private static final Color BACKGROUND_COLOR = new Color(244, 242, 226);
     private CardLayout cardLayout;
@@ -44,7 +45,7 @@ public class TestAPP extends javax.swing.JFrame {
 
     private void setupPanels() {
         StudentMenu studentMenu = new StudentMenu(cardLayout, container);
-        WelcomePage welcomePage = new WelcomePage(cardLayout, container);
+        WelcomePanel welcomePanel = new WelcomePanel(cardLayout, container);
         SignUpPanel signUpPanel = new SignUpPanel(cardLayout, container);
         LoginPanel LoginPanel = new LoginPanel(cardLayout, container);
         // Create and set up Sign Up Panel
@@ -81,7 +82,7 @@ public class TestAPP extends javax.swing.JFrame {
 //        profilePanel.add(goToSignUpButton, gbc);
 
         // Add panels to the container
-        container.add(welcomePage, "WelcomePage");
+        container.add(welcomePanel, "Welcome");
         container.add(studentMenu, "StudentMenu");
         container.add(signUpPanel, "SignUp");
         container.add(LoginPanel, "Login");
