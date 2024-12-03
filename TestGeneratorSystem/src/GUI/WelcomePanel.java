@@ -48,6 +48,7 @@ public class WelcomePanel extends javax.swing.JPanel {
         jButton1.setForeground(new java.awt.Color(244, 242, 226));
         jButton1.setText("Student ");
         jButton1.setBorderPainted(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -59,6 +60,7 @@ public class WelcomePanel extends javax.swing.JPanel {
         jButton2.setForeground(new java.awt.Color(244, 242, 226));
         jButton2.setText("Admin");
         jButton2.setBorderPainted(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -116,12 +118,12 @@ public class WelcomePanel extends javax.swing.JPanel {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         System.out.println("Student Portal clicked");
-        cardLayout.show(container, "StudentMenu");
+        cardLayout.show(container, "MenuPanel");
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        cardLayout.show(container, "StudentMenu");
+        cardLayout.show(container, "MenuPanel");
         System.out.println("Admin Portal clicked");
     }//GEN-LAST:event_jButton2MouseClicked
 

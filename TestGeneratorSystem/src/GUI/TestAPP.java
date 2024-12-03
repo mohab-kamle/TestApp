@@ -44,9 +44,9 @@ public class TestAPP extends javax.swing.JFrame {
     }
 
     private void setupPanels() {
-        StudentMenu studentMenu = new StudentMenu(cardLayout, container);
+        MenuPanel MenuPanel = new MenuPanel(cardLayout, container);
         WelcomePanel welcomePanel = new WelcomePanel(cardLayout, container);
-        SignUpPanel signUpPanel = new SignUpPanel(cardLayout, container);
+        SignUpPanell signUpPanel = new SignUpPanell(cardLayout, container);
         LoginPanel LoginPanel = new LoginPanel(cardLayout, container);
         // Create and set up Sign Up Panel
 //        //JPanel signUpPanel = new JPanel(new GridBagLayout()); // Use GridBagLayout for better component arrangement
@@ -83,7 +83,7 @@ public class TestAPP extends javax.swing.JFrame {
 
         // Add panels to the container
         container.add(welcomePanel, "Welcome");
-        container.add(studentMenu, "StudentMenu");
+        container.add(MenuPanel, "MenuPanel");
         container.add(signUpPanel, "SignUp");
         container.add(LoginPanel, "Login");
 //        container.add(profilePanel, "Profile");
