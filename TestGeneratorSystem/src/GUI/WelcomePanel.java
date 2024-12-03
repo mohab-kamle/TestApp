@@ -116,12 +116,12 @@ public class WelcomePanel extends javax.swing.JPanel {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         System.out.println("Student Portal clicked");
-        cardLayout.show(container, "StudentMenu");
+        cardLayout.show(container, "MenuPanel");
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        cardLayout.show(container, "StudentMenu");
+        cardLayout.show(container, "MenuPanel");
         System.out.println("Admin Portal clicked");
     }//GEN-LAST:event_jButton2MouseClicked
 

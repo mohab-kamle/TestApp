@@ -24,7 +24,7 @@ public class StudentMenu extends JPanel {
         setLayout(new GridBagLayout());
         setBackground(new Color(245, 245, 247)); // Background color
 
-        JButton SignUpButton = new JButton("Sign Up");
+        JButton SignUpButton = new JButton("SignUp");
         JButton LoginButton = new JButton("Login");
 
         JButton resetButton = new JButton("Reset Password");
@@ -34,7 +34,7 @@ public class StudentMenu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Sign Up clicked");
-                cardLayout.show(container, "SignUpPanel");
+                cardLayout.show(container, "SignUp");
             }
 
         });
