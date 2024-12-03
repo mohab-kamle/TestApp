@@ -590,5 +590,4 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
     public void setConfirmNewPass(String confirmNewPass) {
         this.confirmNewPass = confirmNewPass;
     }
-
 }
