@@ -19,16 +19,14 @@ public class TestAPP extends javax.swing.JFrame {
         // Set the layout to BorderLayout for proper component arrangement
         setLayout(new BorderLayout());
         
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
             // Customize global component properties
-            UIManager.put("TextField.background", Color.WHITE);
+            UIManager.put("TextField.background", Color.decode("#F4F2E2"));
             UIManager.put("TextField.font", new Font("Consolas", Font.PLAIN, 18));
             UIManager.put("Label.font", new Font("Consolas", Font.PLAIN, 18));
             UIManager.put("Button.font", new Font("Consolas", Font.BOLD, 18));
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-        }
+
 
         // Initialize CardLayout and container
         cardLayout = new CardLayout();
@@ -47,52 +45,19 @@ public class TestAPP extends javax.swing.JFrame {
         WelcomePage welcomePage = new WelcomePage(cardLayout, container);
         SignUpPanel signUpPanel = new SignUpPanel(cardLayout, container);
         LoginPanel LoginPanel = new LoginPanel(cardLayout, container);
+        ResetPasswordPanel resetPasswordPanel = new ResetPasswordPanel(cardLayout,container);
         // Create and set up Sign Up Panel
-//        //JPanel signUpPanel = new JPanel(new GridBagLayout()); // Use GridBagLayout for better component arrangement
-//        signUpPanel.setBackground(BACKGROUND_COLOR);
-//        
-//        JLabel signUpLabel = new JLabel("Sign Up Page");
-//        signUpLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
-//        JButton goToProfileButton = new JButton("Go to Profile");
-//        
-//        // Add components with some vertical spacing
-//        GridBagConstraints gbc = new GridBagConstraints();
-//        gbc.gridx = 0;
-//        gbc.gridy = 0;
-//        gbc.insets = new Insets(10, 0, 20, 0); // Add some padding
-//        signUpPanel.add(signUpLabel, gbc);
-//        
-//        gbc.gridy = 1;
-//        signUpPanel.add(goToProfileButton, gbc);
-//
-//        // Create and set up Profile Panel
-//        JPanel profilePanel = new JPanel(new GridBagLayout());
-//        profilePanel.setBackground(BACKGROUND_COLOR);
-//        
-//        JLabel profileLabel = new JLabel("Profile Page");
-//        profileLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
-//        JButton goToSignUpButton = new JButton("Go to Sign Up");
-//        
-//        // Add components with same layout constraints
-//        gbc.gridy = 0;
-//        profilePanel.add(profileLabel, gbc);
-//        
-//        gbc.gridy = 1;
-//        profilePanel.add(goToSignUpButton, gbc);
 
         // Add panels to the container
         container.add(welcomePage, "WelcomePage");
         container.add(studentMenu, "StudentMenu");
         container.add(signUpPanel, "SignUp");
         container.add(LoginPanel, "Login");
+        container.add(resetPasswordPanel, "ResetPass");
 //        container.add(profilePanel, "Profile");
         
 
         // Add action listeners
-        
-//        goToProfileButton.addActionListener(e -> cardLayout.show(container, "Profile"));
-//        goToSignUpButton.addActionListener(e -> cardLayout.show(container, "SignUp"));
-
 
         // Show initial panel
         cardLayout.show(container, "Welcome");    

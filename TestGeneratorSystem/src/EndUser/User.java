@@ -32,6 +32,11 @@ import javax.mail.MessagingException;
 })
 public abstract class User {
 
+    public static final int EMAIL_ERROR = 11;
+    public static final int CODE_ERROR = 10;
+    public static final int NewPass_ERROR = 13;
+    public static final int dontMatchPass_ERROR = 19;
+    public static final int RESETPASS_SUCCESS = 17;
     protected UUID userId;
     protected String email;
     protected String userName;
@@ -195,7 +200,7 @@ public abstract class User {
         commonList.remove(commonList.size() - 1); // remove City
         commonList.remove(commonList.size() - 1); // remove Country
         commonList.add(fullAddress);
-        
+
         return commonList;
     }
 
@@ -224,7 +229,7 @@ public abstract class User {
 
             // Validate input format
             if (!check.isValid(validationType, input)) {
-                ifColorfullPrintln(errorMessage,TerminalColors.BOLD_RED);
+                ifColorfullPrintln(errorMessage, TerminalColors.BOLD_RED);
                 continue;
             }
 
@@ -446,7 +451,7 @@ public abstract class User {
                             char[] passwordArray = console.readPassword("Enter the new Password: ");
                             newPass = new String(passwordArray);
                             if (!check.isValid(Checker.StringType.PASSWORD, newPass)) {
-                                ifColorfullPrintln("Invalid password , please try again.",TerminalColors.BOLD_RED);
+                                ifColorfullPrintln("Invalid password , please try again.", TerminalColors.BOLD_RED);
                             }
                         } while (!check.isValid(Checker.StringType.PASSWORD, newPass));
                         System.out.println("Confirm the new password : ");
@@ -454,7 +459,7 @@ public abstract class User {
                         if (newPass.equals(confirmNewPass)) {
                             break;
                         } else {
-                            ifColorfullPrintln("Please Try Again , the passwords don't match",TerminalColors.BOLD_RED);
+                            ifColorfullPrintln("Please Try Again , the passwords don't match", TerminalColors.BOLD_RED);
                         }
                     } while (!newPass.equals(confirmNewPass));
                     User userToBeUpdated = User.findEmail(EmailInput);
@@ -469,17 +474,60 @@ public abstract class User {
                         SDB.updateStudent((Student) userToBeUpdated);
                     }
                     updateEquivalentCategoryAndQuestionBank(userToBeUpdated);
-                    ifColorfullPrintln("The password has been changed successfully !",TerminalColors.BOLD_GREEN);
+                    ifColorfullPrintln("The password has been changed successfully !", TerminalColors.BOLD_GREEN);
                     return true;
                 }
                 case "n" -> {
                     return false;
                 }
                 default ->
-                    ifColorfullPrintln("Wrong input , please try again",TerminalColors.BOLD_RED);
+                    ifColorfullPrintln("Wrong input , please try again", TerminalColors.BOLD_RED);
             }
         } while (!key.equals("y") && !key.equals("n"));
         return false;
+    }
+
+    /**
+     * GUI VERSION OVERLOADED RESETPASSWORD It adds the ability for user to reset his password if it is forgotten through a code sent for his email to authenticate
+     *
+     * @param EmailInput
+     * @param codeCheck
+     * @param newPass
+     * @param confirmNewPass
+     * @return True if the reseting of the password done successfully
+     * @throws MessagingException
+     */
+    public int resetPassword(String EmailInput, String codeCheck, String newPass, String confirmNewPass) throws MessagingException {
+        Scanner sc = new Scanner(System.in);
+        Checker check = new Checker();
+        if (User.findEmail(EmailInput) == null) {
+            return EMAIL_ERROR;
+        }
+        if (codeCheck.equals("")){
+            return CODE_ERROR;
+        }
+        if (newPass.equals("")){
+            return NewPass_ERROR;
+        }
+        if (!check.isValid(Checker.StringType.PASSWORD, newPass)) {
+            return NewPass_ERROR;
+        }
+        if (!newPass.equals(confirmNewPass)) {
+            return dontMatchPass_ERROR;
+        }
+        User userToBeUpdated = User.findEmail(EmailInput);
+        userToBeUpdated.setPassword(newPass);
+        //updating the equivalent JSON
+        if (userToBeUpdated instanceof Admin) {
+            AdminDAO ADB = new AdminDAO();
+            ADB.updateAdmin((Admin) userToBeUpdated);
+        }
+        if (userToBeUpdated instanceof Student) {
+            StudentDAO SDB = new StudentDAO();
+            SDB.updateStudent((Student) userToBeUpdated);
+        }
+        updateEquivalentCategoryAndQuestionBank(userToBeUpdated);
+        return RESETPASS_SUCCESS;
     }
 
     /**
@@ -643,7 +691,7 @@ public abstract class User {
             SDB.updateStudent(student);
         }
         updateEquivalentCategoryAndQuestionBank();
-        ifColorfullPrintln("Username updated successfully!",TerminalColors.BOLD_GREEN);
+        ifColorfullPrintln("Username updated successfully!", TerminalColors.BOLD_GREEN);
     }
 
     protected void updateEmail(Checker check, Scanner sc) {
@@ -660,7 +708,7 @@ public abstract class User {
             SDB.updateStudent(student);
         }
         updateEquivalentCategoryAndQuestionBank();
-        ifColorfullPrintln("Email updated successfully!",TerminalColors.BOLD_GREEN);
+        ifColorfullPrintln("Email updated successfully!", TerminalColors.BOLD_GREEN);
     }
 
     protected void updateName(Checker check, Scanner sc) throws IOException {
