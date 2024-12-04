@@ -5,7 +5,10 @@
 package GUI;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.GridBagLayout;
+import java.net.URL;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 /**
@@ -13,8 +16,11 @@ import javax.swing.JPanel;
  * @author Dell
  */
 public class MenuPanel extends javax.swing.JPanel {
-private CardLayout cardLayout;
-private JPanel container;
+
+    private CardLayout cardLayout;
+    private JPanel container;
+    public static String Usertype;
+
     /**
      * Creates new form MenuPanel
      */
@@ -31,20 +37,25 @@ private JPanel container;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(550, 0), new java.awt.Dimension(550, 0), new java.awt.Dimension(550, 32767));
 
         setBackground(new java.awt.Color(255, 250, 206));
+        setLayout(new java.awt.GridBagLayout());
 
         jButton1.setBackground(new java.awt.Color(74, 25, 72));
         jButton1.setForeground(new java.awt.Color(244, 242, 226));
         jButton1.setText("SignUp");
-        jButton1.setActionCommand("SignUp");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMaximumSize(new java.awt.Dimension(150, 100));
+        jButton1.setMinimumSize(new java.awt.Dimension(100, 50));
+        jButton1.setPreferredSize(new java.awt.Dimension(100, 50));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -55,12 +66,21 @@ private JPanel container;
                 jButton1ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 85;
+        gridBagConstraints.insets = new java.awt.Insets(193, 0, 150, 100);
+        add(jButton1, gridBagConstraints);
 
         jButton2.setBackground(new java.awt.Color(74, 25, 72));
         jButton2.setForeground(new java.awt.Color(244, 242, 226));
         jButton2.setText("Login");
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setMaximumSize(new java.awt.Dimension(150, 100));
+        jButton2.setMinimumSize(new java.awt.Dimension(100, 50));
+        jButton2.setPreferredSize(new java.awt.Dimension(100, 50));
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -71,26 +91,31 @@ private JPanel container;
                 jButton2ActionPerformed(evt);
             }
         });
-
-        jButton3.setBackground(new java.awt.Color(74, 25, 72));
-        jButton3.setForeground(new java.awt.Color(244, 242, 226));
-        jButton3.setText("Reset Password");
-        jButton3.setBorderPainted(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 86;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(140, 0, 100, 100);
+        add(jButton2, gridBagConstraints);
 
         jButton4.setBackground(new java.awt.Color(74, 25, 72));
         jButton4.setForeground(new java.awt.Color(244, 242, 226));
-        jButton4.setText("Back To Main Menu");
         jButton4.setBorderPainted(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setLabel("");
+        jButton4.setMaximumSize(new java.awt.Dimension(145, 100));
+        jButton4.setMinimumSize(new java.awt.Dimension(145, 100));
+        jButton4.setPreferredSize(new java.awt.Dimension(145, 100));
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton4MouseExited(evt);
             }
         });
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -98,42 +123,27 @@ private JPanel container;
                 jButton4ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(146, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        add(jButton4, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        add(filler2, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        add(filler3, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -142,32 +152,68 @@ private JPanel container;
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         System.out.println("Sign Up clicked");
-                cardLayout.show(container, "SignUp");
+        cardLayout.show(container, "SignUp");
+        if (Usertype.equalsIgnoreCase("Student")) {
+            SignUpPanel.Usertype = "Student";
+
+        } else if (Usertype.equalsIgnoreCase("Admin")) {
+            SignUpPanel.Usertype = "Admin";
+
+        }
+        SignUpPanel signUpPanel = new SignUpPanel(cardLayout, container);
+        container.add(signUpPanel, "SignUp");
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         System.out.println("Login clicked");
-                cardLayout.show(container, "Login");
+        cardLayout.show(container, "Login");
     }//GEN-LAST:event_jButton2MouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        System.out.println("Reset Password clicked");
-                cardLayout.show(container, "ResetPanel");
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
         System.out.println("Back to Main Menu clicked");
-                cardLayout.show(container, "Welcome");
+        cardLayout.show(container, "Welcome");
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
+        // TODO add your handling code here:
+        URL iconURL = getClass().getResource("/lib/turn-back.png");
+        if (iconURL != null) {
+            jButton4.setIcon(new javax.swing.ImageIcon(iconURL));
+        } else {
+// Handle the error, e.g., log it or show a default icon 
+            System.err.println("Resource not found: /lib/turn-back.png");
+        }
+        jButton4.setBackground(Color.decode("#F4F2E2"));
+        jButton4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        jButton4.setBorderPainted(true);
+    }//GEN-LAST:event_jButton4MouseEntered
+
+    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
+        // TODO add your handling code here:
+        URL iconURL = getClass().getResource("/lib/turnback-40.png");
+        if (iconURL != null) {
+            jButton4.setIcon(new javax.swing.ImageIcon(iconURL));
+        } else {
+            // Handle the error, e.g., log it or show a default icon
+            System.err.println("Resource not found: /lib/turnback-40.png");
+        }
+        jButton4.setBackground(Color.decode("#4A1948"));
+        jButton4.setBorderPainted(false);
+        jButton4.setForeground(Color.decode("#F4F2E2"));
+    }//GEN-LAST:event_jButton4MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     // End of variables declaration//GEN-END:variables
 }

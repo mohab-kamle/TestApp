@@ -53,7 +53,6 @@ public class LoginPanel extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(74, 25, 72));
         jButton1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("M:\\mohab\\Documents\\college\\studyL3,P1\\Comp301_JAVA\\Project_Java\\TestGeneratorSystem\\lib\\turnback-40.png")); // NOI18N
         jButton1.setToolTipText("Click to go back");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -160,6 +159,11 @@ public class LoginPanel extends javax.swing.JPanel {
         jTextField1.setCaretColor(new java.awt.Color(0, 0, 0));
         jTextField1.setMaximumSize(new java.awt.Dimension(2147483647, 50));
         jTextField1.setSelectionColor(new java.awt.Color(51, 0, 51));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -371,6 +375,10 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel4.setVisible(false);
         cardLayout.show(container, "ResetPass");
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
