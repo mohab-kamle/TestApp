@@ -4,17 +4,40 @@
  */
 package GUI;
 
+import EndUser.Admin;
+import EndUser.Student;
+import EndUser.User;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.net.URL;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Zeyad
  */
 public class ChangePasswordPanel_P extends javax.swing.JPanel {
-
+    protected User user ;
+    private CardLayout cardLayout;
+    private JPanel container;
     /**
      * Creates new form ChangeAdminPasswordp
      */
-    public ChangePasswordPanel_P() {
+    public ChangePasswordPanel_P(User user, CardLayout cardLayout, JPanel container) {
         initComponents();
+        WrongOldPassword.setVisible(false);
+        WrongMatching.setVisible(false);
+        WrongNewPassword.setVisible(false);
+        Comfirmed.setVisible(false);
+        if (user instanceof Admin) {
+            this.user = (Admin) user ;
+        }
+        else if (user instanceof Student) {
+            this.user = (Student) user ;
+        }
+        this.cardLayout = cardLayout;
+        this.container = container;
     }
 
     /**
@@ -23,15 +46,14 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel3 = new javax.swing.JLabel();
         ChangePagetitle = new javax.swing.JLabel();
-        BackButton = new javax.swing.JButton();
         ComfirmButton = new javax.swing.JButton();
         OldPasswordField = new javax.swing.JTextField();
         WrongOldPassword = new javax.swing.JLabel();
         OldPassword = new javax.swing.JLabel();
-        PasswordReq = new javax.swing.JLabel();
         MatchingNewPasswordField = new javax.swing.JTextField();
         NewPasswordField = new javax.swing.JTextField();
         NewPassword = new javax.swing.JLabel();
@@ -39,29 +61,41 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         WrongNewPassword = new javax.swing.JLabel();
         WrongMatching = new javax.swing.JLabel();
         Comfirmed = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
+        lengthLabel = new javax.swing.JLabel();
+        uppercaseLabel = new javax.swing.JLabel();
+        lowercaseLabel = new javax.swing.JLabel();
+        specialCharLabel = new javax.swing.JLabel();
+        digitLabel = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel2");
 
         setBackground(new java.awt.Color(244, 242, 226));
         setForeground(new java.awt.Color(244, 242, 226));
+        setLayout(new java.awt.GridBagLayout());
 
         ChangePagetitle.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         ChangePagetitle.setForeground(new java.awt.Color(0, 0, 0));
         ChangePagetitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChangePagetitle.setText("Change Password Page");
-
-        BackButton.setBackground(new java.awt.Color(0, 0, 0));
-        BackButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeyad\\myproject\\TestApp\\TestGeneratorSystem\\lib\\turnback-40.png")); // NOI18N
-        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BackButtonMouseClicked(evt);
-            }
-        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 142;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(ChangePagetitle, gridBagConstraints);
 
         ComfirmButton.setBackground(new java.awt.Color(74, 25, 72));
         ComfirmButton.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         ComfirmButton.setText("Comfirm");
         ComfirmButton.setEnabled(false);
+        ComfirmButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ComfirmButtonStateChanged(evt);
+            }
+        });
         ComfirmButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ComfirmButtonMouseClicked(evt);
@@ -78,149 +112,252 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
                 ComfirmButtonActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.ipadx = 8;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(ComfirmButton, gridBagConstraints);
 
         OldPasswordField.setBackground(new java.awt.Color(255, 255, 255));
         OldPasswordField.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
         OldPasswordField.setForeground(new java.awt.Color(0, 0, 0));
         OldPasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 3, true));
+        OldPasswordField.setPreferredSize(new java.awt.Dimension(200, 35));
         OldPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                OldPasswordFieldKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 OldPasswordFieldKeyTyped(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 328;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(OldPasswordField, gridBagConstraints);
 
-        WrongOldPassword.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
-        WrongOldPassword.setForeground(new java.awt.Color(255, 0, 0));
+        WrongOldPassword.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
+        WrongOldPassword.setForeground(new java.awt.Color(220, 0, 0));
         WrongOldPassword.setText("Wrong Password. Please, try again");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(WrongOldPassword, gridBagConstraints);
 
         OldPassword.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         OldPassword.setForeground(new java.awt.Color(0, 0, 0));
         OldPassword.setText("Old Password");
-
-        PasswordReq.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
-        PasswordReq.setForeground(new java.awt.Color(255, 153, 0));
-        PasswordReq.setText("<html>\n<h3 style=\"color:Black;\">Password Requirements:</h3>\n      &nbsp; &nbsp;   - 12-20 characters long<br>\n       &nbsp; &nbsp;  - At least one uppercase letter<br>\n       &nbsp;  &nbsp; - At least one lowercase letter<br>\n        &nbsp; &nbsp; - At least one special character<br>\n        &nbsp; &nbsp; - At least one digit\n</html>");
-        PasswordReq.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 13;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(OldPassword, gridBagConstraints);
 
         MatchingNewPasswordField.setBackground(new java.awt.Color(255, 255, 255));
         MatchingNewPasswordField.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
         MatchingNewPasswordField.setForeground(new java.awt.Color(0, 0, 0));
         MatchingNewPasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 3, true));
+        MatchingNewPasswordField.setPreferredSize(new java.awt.Dimension(200, 35));
         MatchingNewPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 MatchingNewPasswordFieldKeyTyped(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.ipadx = 328;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(MatchingNewPasswordField, gridBagConstraints);
 
         NewPasswordField.setBackground(new java.awt.Color(255, 255, 255));
         NewPasswordField.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
         NewPasswordField.setForeground(new java.awt.Color(0, 0, 0));
         NewPasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 3, true));
+        NewPasswordField.setPreferredSize(new java.awt.Dimension(200, 35));
         NewPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                NewPasswordFieldKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 NewPasswordFieldKeyTyped(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.ipadx = 328;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(NewPasswordField, gridBagConstraints);
 
         NewPassword.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         NewPassword.setForeground(new java.awt.Color(0, 0, 0));
         NewPassword.setText("New Password");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(NewPassword, gridBagConstraints);
 
         ReNewPassword.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         ReNewPassword.setForeground(new java.awt.Color(0, 0, 0));
         ReNewPassword.setText("Rewrite New Password");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(ReNewPassword, gridBagConstraints);
 
-        WrongNewPassword.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
-        WrongNewPassword.setForeground(new java.awt.Color(255, 0, 0));
+        WrongNewPassword.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
+        WrongNewPassword.setForeground(new java.awt.Color(220, 0, 0));
         WrongNewPassword.setText("Wrong Password. Please follow the Required");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(WrongNewPassword, gridBagConstraints);
 
-        WrongMatching.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
-        WrongMatching.setForeground(new java.awt.Color(255, 0, 0));
+        WrongMatching.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
+        WrongMatching.setForeground(new java.awt.Color(220, 0, 0));
         WrongMatching.setText("The passwords do not match. Please check.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(WrongMatching, gridBagConstraints);
 
         Comfirmed.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         Comfirmed.setForeground(new java.awt.Color(0, 170, 0));
         Comfirmed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Comfirmed.setText("Password Changed Successfully ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 108;
+        gridBagConstraints.ipady = 14;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(Comfirmed, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(MatchingNewPasswordField)
-                            .addComponent(NewPasswordField)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(ComfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(OldPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(WrongMatching))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(OldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(89, 89, 89))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(WrongOldPassword)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(ChangePagetitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(NewPassword))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(WrongNewPassword))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(ReNewPassword))
-                            .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PasswordReq, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 29, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addComponent(Comfirmed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(ChangePagetitle, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Comfirmed, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(OldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(OldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(WrongOldPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PasswordReq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(NewPassword)
-                .addGap(5, 5, 5)
-                .addComponent(NewPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(WrongNewPassword)
-                .addGap(18, 18, 18)
-                .addComponent(ReNewPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(MatchingNewPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(WrongMatching)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ComfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        BackButton.setBackground(new java.awt.Color(74, 25, 72));
+        BackButton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        BackButton.setToolTipText("Click to go back");
+        BackButton.setBorderPainted(false);
+        BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackButton.setFocusPainted(false);
+        BackButton.setFocusable(false);
+        BackButton.setMaximumSize(new java.awt.Dimension(145, 60));
+        BackButton.setMinimumSize(new java.awt.Dimension(145, 60));
+        BackButton.setPreferredSize(new java.awt.Dimension(145, 60));
+        BackButton.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BackButtonFocusGained(evt);
+            }
+        });
+        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BackButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BackButtonMouseExited(evt);
+            }
+        });
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(BackButton, gridBagConstraints);
+
+        lengthLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
+        lengthLabel.setForeground(new java.awt.Color(0, 0, 0));
+        lengthLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lengthLabel.setText("- 12-20 characters long");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 100);
+        add(lengthLabel, gridBagConstraints);
+
+        uppercaseLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
+        uppercaseLabel.setForeground(new java.awt.Color(0, 0, 0));
+        uppercaseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        uppercaseLabel.setText("- At least one uppercase letter ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(uppercaseLabel, gridBagConstraints);
+
+        lowercaseLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
+        lowercaseLabel.setForeground(new java.awt.Color(0, 0, 0));
+        lowercaseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lowercaseLabel.setText("- At least one lowercase letter");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 12);
+        add(lowercaseLabel, gridBagConstraints);
+
+        specialCharLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
+        specialCharLabel.setForeground(new java.awt.Color(0, 0, 0));
+        specialCharLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        specialCharLabel.setText("- At least one special character");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(specialCharLabel, gridBagConstraints);
+
+        digitLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
+        digitLabel.setForeground(new java.awt.Color(0, 0, 0));
+        digitLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        digitLabel.setText("- At least one digit");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 135);
+        add(digitLabel, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComfirmButtonActionPerformed
@@ -239,23 +376,135 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_MatchingNewPasswordFieldKeyTyped
 
-    private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BackButtonMouseClicked
-
     private void ComfirmButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComfirmButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_ComfirmButtonMouseClicked
 
     private void ComfirmButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComfirmButtonMouseEntered
         // TODO add your handling code here:
+        ComfirmButton.setBackground(Color.decode("#F4F2E2"));
+        ComfirmButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        ComfirmButton.setBorderPainted(true);
+        ComfirmButton.setForeground(Color.BLACK);
     }//GEN-LAST:event_ComfirmButtonMouseEntered
 
     private void ComfirmButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComfirmButtonMouseExited
         // TODO add your handling code here:
+        ComfirmButton.setBackground(Color.decode("#4A1948"));
+        ComfirmButton.setBorderPainted(false);
+        ComfirmButton.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_ComfirmButtonMouseExited
 
+    private void BackButtonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackButtonFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BackButtonFocusGained
 
+    private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
+        // TODO add your handling code here:
+        
+        /*cardLayout.show(container, "StudentMenu");*/
+    }//GEN-LAST:event_BackButtonMouseClicked
+
+    private void BackButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseEntered
+        // TODO add your handling code here:
+        URL iconURL = getClass().getResource("/lib/turn-back.png");
+        if (iconURL != null) {
+            BackButton.setIcon(new javax.swing.ImageIcon(iconURL));
+        } else {
+            // Handle the error, e.g., log it or show a default icon
+            System.err.println("Resource not found: /lib/turn-back.png");
+        }
+        BackButton.setBackground(Color.decode("#F4F2E2"));
+        BackButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        BackButton.setBorderPainted(true);
+    }//GEN-LAST:event_BackButtonMouseEntered
+
+    private void BackButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseExited
+        // TODO add your handling code here:
+        URL iconURL = getClass().getResource("/lib/turnback-40.png");
+        if (iconURL != null) {
+            BackButton.setIcon(new javax.swing.ImageIcon(iconURL));
+        } else {
+            // Handle the error, e.g., log it or show a default icon
+            System.err.println("Resource not found: /lib/turnback-40.png");
+        }
+        BackButton.setBackground(Color.decode("#4A1948"));
+        BackButton.setBorderPainted(false);
+        BackButton.setForeground(Color.decode("#F4F2E2"));
+    }//GEN-LAST:event_BackButtonMouseExited
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        Comfirmed.setVisible(false);
+        WrongMatching.setVisible(false);
+        WrongNewPassword.setVisible(false);
+        WrongOldPassword.setVisible(false);
+        cardLayout.show(container, "StudentMenu");
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void NewPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NewPasswordFieldKeyReleased
+        // TODO add your handling code here:
+        checkPasswordRequirements(new String(NewPasswordField.getText()));
+    }//GEN-LAST:event_NewPasswordFieldKeyReleased
+
+    private void OldPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OldPasswordFieldKeyReleased
+        // TODO add your handling code here:
+        if (!user.verifyPassword(OldPasswordField.getText())){
+            WrongOldPassword.setVisible(true);
+        } else {
+            WrongOldPassword.setVisible(false);
+        }
+    }//GEN-LAST:event_OldPasswordFieldKeyReleased
+
+    private void ComfirmButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ComfirmButtonStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComfirmButtonStateChanged
+public void checkPasswordRequirements(String password) {
+        // Length check
+        if (password.length() >= 12 && password.length() <= 20) {
+            lengthLabel.setText("[√] Length is good");
+            lengthLabel.setForeground(new Color(0, 150, 0));
+        } else {
+            lengthLabel.setText("[X] Must be 12-20 characters");
+            lengthLabel.setForeground(Color.RED);
+        }
+
+        // Uppercase check
+        if (password.matches(".*[A-Z].*")) {
+            uppercaseLabel.setText("[√] Has uppercase");
+            uppercaseLabel.setForeground(new Color(0, 150, 0));
+        } else {
+            uppercaseLabel.setText("[X] Need uppercase letter");
+            uppercaseLabel.setForeground(Color.RED);
+        }
+
+        // Lowercase check
+        if (password.matches(".*[a-z].*")) {
+            lowercaseLabel.setText("[√] Has lowercase");
+            lowercaseLabel.setForeground(new Color(0, 150, 0));
+        } else {
+            lowercaseLabel.setText("[X] Need lowercase letter");
+            lowercaseLabel.setForeground(Color.RED);
+        }
+
+        // Special character check
+        if (password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?].*")) {
+            specialCharLabel.setText("[√] Has special character");
+            specialCharLabel.setForeground(new Color(0, 150, 0));
+        } else {
+            specialCharLabel.setText("[X] Need special character");
+            specialCharLabel.setForeground(Color.RED);
+        }
+
+        // Digit check
+        if (password.matches(".*\\d.*")) {
+            digitLabel.setText("[√] Has number");
+            digitLabel.setForeground(new Color(0, 150, 0));
+        } else {
+            digitLabel.setText("[X] Need a number");
+            digitLabel.setForeground(Color.RED);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JLabel ChangePagetitle;
@@ -266,11 +515,16 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
     private javax.swing.JTextField NewPasswordField;
     private javax.swing.JLabel OldPassword;
     private javax.swing.JTextField OldPasswordField;
-    private javax.swing.JLabel PasswordReq;
     private javax.swing.JLabel ReNewPassword;
     private javax.swing.JLabel WrongMatching;
     private javax.swing.JLabel WrongNewPassword;
     private javax.swing.JLabel WrongOldPassword;
+    private javax.swing.JLabel digitLabel;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lengthLabel;
+    private javax.swing.JLabel lowercaseLabel;
+    private javax.swing.JLabel specialCharLabel;
+    private javax.swing.JLabel uppercaseLabel;
     // End of variables declaration//GEN-END:variables
 }
+
