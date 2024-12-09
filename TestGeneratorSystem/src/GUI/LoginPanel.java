@@ -158,6 +158,11 @@ public class LoginPanel extends javax.swing.JPanel {
         jTextField1.setCaretColor(new java.awt.Color(0, 0, 0));
         jTextField1.setMaximumSize(new java.awt.Dimension(2147483647, 50));
         jTextField1.setSelectionColor(new java.awt.Color(51, 0, 51));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -311,7 +316,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         jLabel4.setVisible(false);
-        cardLayout.show(container, "StudentMenu");
+        cardLayout.show(container, "MenuPanel");
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
@@ -372,6 +377,10 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel4.setVisible(false);
         cardLayout.show(container, "ResetPass");
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
