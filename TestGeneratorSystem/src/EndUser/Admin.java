@@ -102,6 +102,7 @@ public class Admin extends User {
         passwordInput = new String(passwordArray);
         return ADB.searchAdmin(userNameInput, passwordInput);
     }
+
     /**
      * GUI VERSION login method for admin as it uses its specialized DAO
      *
@@ -109,10 +110,11 @@ public class Admin extends User {
      * @param passsword
      * @return the logged in Admin object
      */
-    public Admin login(String username , String passsword) {
+    public Admin login(String username, String passsword) {
         AdminDAO ADB = new AdminDAO();
         return ADB.searchAdmin(username, passsword);
     }
+
     /**
      * Retrieves and optionally displays the admin's extended profile information.
      *
@@ -153,8 +155,8 @@ public class Admin extends User {
         Checker check = new Checker();
         int choice;
         do {
-            ifColorfullPrintln("|---> Update Profile Page",TerminalColors.BOLD_BLUE);
-            ifColorfullPrintln("|---Select what you want to update",TerminalColors.YELLOW);
+            ifColorfullPrintln("|---> Update Profile Page", TerminalColors.BOLD_BLUE);
+            ifColorfullPrintln("|---Select what you want to update", TerminalColors.YELLOW);
             printUpdateMenu();
 
             try {
@@ -222,6 +224,27 @@ public class Admin extends User {
     }
 
     /**
+     * sign up method for the admin to add the specific fields
+     *
+     * @return ArrayList for all the data stored during the signup process
+     */
+    public static ArrayList signUp(String username, String email, String password, String fname, String lname,
+            String country, String city, String streetname, String contactnumber,
+            String department) {
+
+        ArrayList commonList = User.signUp(username, email, password, fname, lname, country, city, streetname);
+        AdminDAO AdminDB = new AdminDAO();//database accessor object
+        LocalDate accountCreationDate = LocalDate.now();
+        Admin CreatedAdmin = new Admin(
+                accountCreationDate,
+                contactnumber,
+                department,
+                commonList);
+        AdminDB.saveAdmin(CreatedAdmin);
+        return commonList;
+    }
+
+    /**
      * Creates a new category in the system.
      *
      * This method prompts the admin to enter a category name and description. It validates the input to ensure the category name is unique and follows the specified format. If the category name already exists, it informs the user and prompts for a new name. Once a valid category name and description are provided, the method creates a new Category object and saves it to the database.
@@ -267,9 +290,9 @@ public class Admin extends User {
         }
 
         // Display categories
-        ifColorfullPrintln("All Categories:",TerminalColors.YELLOW);
+        ifColorfullPrintln("All Categories:", TerminalColors.YELLOW);
         for (int i = 0; i < categories.size(); i++) {
-            ifColorfullPrintln((i + 1) + "- " + categories.get(i).getName(),TerminalColors.YELLOW);
+            ifColorfullPrintln((i + 1) + "- " + categories.get(i).getName(), TerminalColors.YELLOW);
             System.out.println("Description : " + categories.get(i).getDescription());
         }
 
@@ -465,65 +488,64 @@ public class Admin extends User {
      * @return true if the question was successfully added to the question bank; false otherwise.
      */
     public boolean addQuestionToQuestionBank() {
-    Scanner scanner = new Scanner(System.in); // Assuming Scanner is used for user input
+        Scanner scanner = new Scanner(System.in); // Assuming Scanner is used for user input
 
-    try {
-        while (true) {
-            // 1. Select Category
-            Category selectedCategory = selectCategory();
-            if (selectedCategory == null) {
-                System.out.println("Operation cancelled.");
-                return false;
+        try {
+            while (true) {
+                // 1. Select Category
+                Category selectedCategory = selectCategory();
+                if (selectedCategory == null) {
+                    System.out.println("Operation cancelled.");
+                    return false;
+                }
+
+                // 2. Get or Create QuestionBank
+                QuestionBank questionBank = getOrCreateQuestionBank(selectedCategory, getUserId());
+                if (questionBank == null) {
+                    System.out.println("Failed to get or create question bank.");
+                    return false;
+                }
+
+                // 3. Create Question
+                Question newQuestion = createQuestion(selectedCategory);
+                if (newQuestion == null) {
+                    System.out.println("Question creation cancelled.");
+                    return false;
+                }
+
+                // 4. Add question to bank and update
+                ArrayList<Question> currQuestions = questionBank.getQuestions();
+                currQuestions.add(newQuestion);
+                questionBank.setQuestions(currQuestions);
+                QuestionBankDAO QBDB = new QuestionBankDAO();
+                AdminDAO ADB = new AdminDAO();
+                ArrayList<QuestionBank> currentQBs = getOwnedBanks();
+                currentQBs.removeIf(qb -> qb.getBankID().equals(questionBank.getBankID()));
+                currentQBs.add(questionBank);
+                this.setOwnedBanks(currentQBs);
+                ADB.updateAdmin(this);
+                boolean updated = QBDB.addQuestionToBank(questionBank.getBankID(), newQuestion);
+
+                if (updated) {
+                    ifColorfullPrintln("Question successfully added to the question bank!", TerminalColors.BOLD_GREEN);
+                } else {
+                    ifColorfullPrintln("Failed to update question bank in database.", TerminalColors.BOLD_RED);
+                    return false;
+                }
+
+                // Ask user if they want to add another question or exit
+                System.out.print("Do you want to add another question? (yes/no): ");
+                String response = scanner.next().toLowerCase();
+                if (!response.equals("yes")) {
+                    break;
+                }
             }
-
-            // 2. Get or Create QuestionBank
-            QuestionBank questionBank = getOrCreateQuestionBank(selectedCategory, getUserId());
-            if (questionBank == null) {
-                System.out.println("Failed to get or create question bank.");
-                return false;
-            }
-
-            // 3. Create Question
-            Question newQuestion = createQuestion(selectedCategory);
-            if (newQuestion == null) {
-                System.out.println("Question creation cancelled.");
-                return false;
-            }
-
-            // 4. Add question to bank and update
-            ArrayList<Question> currQuestions = questionBank.getQuestions();
-            currQuestions.add(newQuestion);
-            questionBank.setQuestions(currQuestions);
-            QuestionBankDAO QBDB = new QuestionBankDAO();
-            AdminDAO ADB = new AdminDAO();
-            ArrayList<QuestionBank> currentQBs = getOwnedBanks();
-            currentQBs.removeIf(qb -> qb.getBankID().equals(questionBank.getBankID()));
-            currentQBs.add(questionBank);
-            this.setOwnedBanks(currentQBs);
-            ADB.updateAdmin(this);
-            boolean updated = QBDB.addQuestionToBank(questionBank.getBankID(), newQuestion);
-
-            if (updated) {
-                ifColorfullPrintln("Question successfully added to the question bank!",TerminalColors.BOLD_GREEN);
-            } else {
-                ifColorfullPrintln("Failed to update question bank in database.",TerminalColors.BOLD_RED);
-                return false;
-            }
-
-            // Ask user if they want to add another question or exit
-            System.out.print("Do you want to add another question? (yes/no): ");
-            String response = scanner.next().toLowerCase();
-            if (!response.equals("yes")) {
-                break;
-            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+            return false;
         }
-        return true;
-    } catch (Exception e) {
-        System.out.println("An error occurred: " + e.getMessage());
-        return false;
     }
-}
-
 
     /**
      * Prompts the user to select a category from a list of available categories.
@@ -542,15 +564,15 @@ public class Admin extends User {
         }
 
         while (true) {
-            ifColorfullPrintln("\nAvailable Categories:",TerminalColors.YELLOW);
+            ifColorfullPrintln("\nAvailable Categories:", TerminalColors.YELLOW);
             for (int i = 0; i < categories.size(); i++) {
                 Category category = categories.get(i);
-                ifColorfullPrintln((i + 1) + " _ name : " + category.getName(),TerminalColors.YELLOW);
+                ifColorfullPrintln((i + 1) + " _ name : " + category.getName(), TerminalColors.YELLOW);
                 System.out.println("Descrtiption : " + category.getDescription());
             }
             System.out.println("\n0 - Cancel operation");
 
-            ifColorfullPrint("\nSelect category number: ",TerminalColors.CYAN);
+            ifColorfullPrint("\nSelect category number: ", TerminalColors.CYAN);
             String input = scanner.nextLine().trim();
 
             try {
@@ -687,7 +709,7 @@ public class Admin extends User {
                 boolean isDuplicate = false;
                 for (int j = 0; j < i; j++) {
                     if (choice.equalsIgnoreCase(choices[j])) {
-                        ifColorfullPrintln("This choice already exists. Please enter a unique choice.",TerminalColors.BOLD_RED);
+                        ifColorfullPrintln("This choice already exists. Please enter a unique choice.", TerminalColors.BOLD_RED);
                         isDuplicate = true;
                         break;
                     }
@@ -739,7 +761,7 @@ public class Admin extends User {
                     case 3:
                         return Question.dlevel.HARD;
                     default:
-                        ifColorfullPrintln("Invalid choice. Please try again.",TerminalColors.BOLD_RED);
+                        ifColorfullPrintln("Invalid choice. Please try again.", TerminalColors.BOLD_RED);
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid number.");
