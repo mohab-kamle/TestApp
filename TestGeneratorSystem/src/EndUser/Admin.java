@@ -228,20 +228,19 @@ public class Admin extends User {
      *
      * @return ArrayList for all the data stored during the signup process
      */
-    public static ArrayList<String> signUp(String contactNumber, String department) {
-        // Call the parent class's signUp method to gather common user details
-        ArrayList<String> commonList = User.signUp();
+    public static ArrayList signUp(String username, String email, String password, String fname, String lname,
+            String country, String city, String streetname, String contactnumber,
+            String department) {
 
-        // Get the current date for account creation
+        ArrayList commonList = User.signUp(username, email, password, fname, lname, country, city, streetname);
+        AdminDAO AdminDB = new AdminDAO();//database accessor object
         LocalDate accountCreationDate = LocalDate.now();
-
-        // Create the new Admin instance
-        Admin createdAdmin = new Admin(accountCreationDate, contactNumber, department, commonList);
-
-        // Persist the admin data (assuming you have an AdminDAO class)
-        AdminDAO adminDB = new AdminDAO();
-        adminDB.saveAdmin(createdAdmin);
-
+        Admin CreatedAdmin = new Admin(
+                accountCreationDate,
+                contactnumber,
+                department,
+                commonList);
+        AdminDB.saveAdmin(CreatedAdmin);
         return commonList;
     }
 

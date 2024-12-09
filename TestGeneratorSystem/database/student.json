@@ -3867,36 +3867,4 @@
   "favoriteQuestions" : [ ],
   "takenTests" : [ ],
   "password" : "123456789@ZZz"
-}, {
-  "type" : "student",
-  "userId" : "1404c883-e8ac-44f6-971a-d94ed9c98a85",
-  "email" : "wael",
-  "userName" : "youssef",
-  "address" : "cc",
-  "firstName" : "123456789",
-  "lastName" : "cc",
-  "lastLoginDate" : "2024-12-04T13:41:57.7535769",
-  "grade" : null,
-  "passedTestsCount" : 0,
-  "totalTimeOfAllTests" : 0.0,
-  "institute" : "wael",
-  "favoriteQuestions" : [ ],
-  "takenTests" : [ ],
-  "password" : "youssef@.com"
-}, {
-  "type" : "student",
-  "userId" : "89929264-56c6-47ea-a195-7d3088a15068",
-  "email" : "",
-  "userName" : "1234",
-  "address" : "",
-  "firstName" : "",
-  "lastName" : "",
-  "lastLoginDate" : "2024-12-04T14:17:30.4267276",
-  "grade" : null,
-  "passedTestsCount" : 0,
-  "totalTimeOfAllTests" : 0.0,
-  "institute" : "",
-  "favoriteQuestions" : [ ],
-  "takenTests" : [ ],
-  "password" : ""
-} ]
+}]

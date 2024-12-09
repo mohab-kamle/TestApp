@@ -53,9 +53,9 @@ public class MenuPanel extends javax.swing.JPanel {
         jButton1.setText("SignUp");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setMaximumSize(new java.awt.Dimension(150, 100));
-        jButton1.setMinimumSize(new java.awt.Dimension(100, 50));
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 50));
+        jButton1.setMaximumSize(new java.awt.Dimension(200, 60));
+        jButton1.setMinimumSize(new java.awt.Dimension(200, 60));
+        jButton1.setPreferredSize(new java.awt.Dimension(200, 60));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -78,9 +78,9 @@ public class MenuPanel extends javax.swing.JPanel {
         jButton2.setText("Login");
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setMaximumSize(new java.awt.Dimension(150, 100));
-        jButton2.setMinimumSize(new java.awt.Dimension(100, 50));
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 50));
+        jButton2.setMaximumSize(new java.awt.Dimension(200, 60));
+        jButton2.setMinimumSize(new java.awt.Dimension(200, 60));
+        jButton2.setPreferredSize(new java.awt.Dimension(200, 60));
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -101,12 +101,12 @@ public class MenuPanel extends javax.swing.JPanel {
 
         jButton4.setBackground(new java.awt.Color(74, 25, 72));
         jButton4.setForeground(new java.awt.Color(244, 242, 226));
+        jButton4.setText("Back");
         jButton4.setBorderPainted(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setLabel("");
-        jButton4.setMaximumSize(new java.awt.Dimension(145, 100));
-        jButton4.setMinimumSize(new java.awt.Dimension(145, 100));
-        jButton4.setPreferredSize(new java.awt.Dimension(145, 100));
+        jButton4.setMaximumSize(new java.awt.Dimension(145, 60));
+        jButton4.setMinimumSize(new java.awt.Dimension(145, 60));
+        jButton4.setPreferredSize(new java.awt.Dimension(145, 60));
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);

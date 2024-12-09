@@ -144,6 +144,24 @@ public class Student extends User {
      *
      * @return an ArrayList containing common user details collected during the sign-up process.
      */
+    public static ArrayList<String> signUp(String username, String email, String password, String fname, String lname,
+            String country, String city, String streetname, String institute) {
+        // Gather common user details
+        ArrayList<String> commonList = User.signUp(username, email, password, fname, lname, country, city, streetname);
+        Student newStudent = new Student(institute, commonList);
+        // Persist the student data
+        StudentDAO SDB = new StudentDAO();
+        SDB.saveStudent(newStudent);
+        return commonList;
+    }
+
+    /**
+     * Facilitates the sign-up process for a new student by gathering user details and validating the input.
+     *
+     * This method prompts the user to enter their institute name after collecting common user details through the User class's sign-up method. It validates the institute name to ensure it contains only letters. Upon successful validation, it creates a new Student instance with the provided details and saves the student data to the database using the StudentDAO. Finally, it returns a list of common user details.
+     *
+     * @return an ArrayList containing common user details collected during the sign-up process.
+     */
     public static ArrayList<String> signUp() {
         Scanner scanner = new Scanner(System.in);
         Checker check = new Checker(); // data validation object
@@ -168,43 +186,6 @@ public class Student extends User {
         SDB.saveStudent(newStudent);
         return commonList;
     }
-
-    /**
-     * Facilitates the sign-up process for a new student by gathering user details and validating the input.
-     *
-     * This method prompts the user to enter their institute name after collecting common user details through the User class's sign-up method. It validates the institute name to ensure it contains only letters. Upon successful validation, it creates a new Student instance with the provided details and saves the student data to the database using the StudentDAO. Finally, it returns a list of common user details.
-     *
-     * @return an ArrayList containing common user details collected during the sign-up process.
-     */
-    public static ArrayList<String> signUp(String username, String email, String password, 
-                                        String firstName, String lastName, 
-                                        String country, String city, String streetName, 
-                                        String institute) {
-    // Create a list to hold common user details
-    ArrayList<String> commonList = new ArrayList<>();
-
-    // Add common user details to the list
-    commonList.add(firstName);
-    commonList.add(lastName);
-    commonList.add(email);
-    commonList.add(password);
-    commonList.add(city);
-    commonList.add(streetName);
-    commonList.add(country);
-    commonList.add(username);
-
-    // Add the institute to the common list
-    commonList.add(institute);
-
-    // Create the new student instance
-    Student newStudent = new Student(institute, commonList);
-
-    // Persist the student data (assuming you have a StudentDAO class)
-    StudentDAO studentDAO = new StudentDAO();
-    studentDAO.saveStudent(newStudent);
-
-    return commonList;
-}
 
     /**
      * Handles the login process for a student by collecting their username and password.

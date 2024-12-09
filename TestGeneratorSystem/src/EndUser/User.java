@@ -211,39 +211,32 @@ public abstract class User {
      *
      * @return ArrayList containing validated user registration details in the following order: [username, email, password, firstName, lastName, country, city, fullAddress]
      */
-     public static void signUp(String username, String email, String password, 
-                               String firstName, String lastName, 
-                               String country, String city, String streetName, 
-                               ArrayList<String> commonList) {
-        // Directly add user details to the list without any validation
+    public static ArrayList<String> signUp(String username, String email, String password, String fname, String lname,
+            String country, String city, String streetname) {
+        ArrayList<String> commonList = new ArrayList<>();
+
         commonList.add(username);
         commonList.add(email);
         commonList.add(password);
-        commonList.add(firstName);
-        commonList.add(lastName);
+        commonList.add(fname);
+        commonList.add(lname);
         commonList.add(country);
         commonList.add(city);
-        commonList.add(streetName);
-
-        // Construct full address and add it to the list
-        String fullAddress = String.format("%s, %s, %s", streetName, city, country);
+        commonList.add(streetname);
+        // Construct full address
+        String fullAddress = String.format(
+                "%s, %s, %s",
+                commonList.get(commonList.size() - 1), // Street Name
+                commonList.get(commonList.size() - 2), // City
+                commonList.get(commonList.size() - 3) // Country
+        );
+        commonList.remove(commonList.size() - 1); // remove Street Name from common list
+        commonList.remove(commonList.size() - 1); // remove City
+        commonList.remove(commonList.size() - 1); // remove Country
         commonList.add(fullAddress);
+        return commonList;
     }
 
-    // Construct full address
-//        String fullAddress = String.format(
-//                "%s, %s, %s",
-//                commonList.get(commonList.size() - 1), // Street Name
-//                commonList.get(commonList.size() - 2), // City
-//                commonList.get(commonList.size() - 3) // Country
-//        );
-//        commonList.remove(commonList.size() - 1); // remove Street Name from common list
-//        commonList.remove(commonList.size() - 1); // remove City
-//        commonList.remove(commonList.size() - 1); // remove Country
-//        commonList.add(fullAddress);
-//
-//        return commonList;
-//    }
     /**
      * Validates input with an additional unique check.
      *
