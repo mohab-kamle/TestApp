@@ -6,7 +6,6 @@ package GUI;
 
 import EndUser.Admin;
 import EndUser.Student;
-import UserDefinedFunctionalities.Checker;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.net.URL;
@@ -532,25 +531,7 @@ public class SignUpPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-        String input = jTextField1.getText().trim();
-        Checker check = new Checker();
-
-        // Validate the input
-        if (check.isValid(Checker.StringType.LETTERS_ONLY, input)) {
-            // Input is valid, proceed with your logic
-            System.out.println("Valid first name: " + input);
-        } else {
-            // Input is invalid, show an error message
-            String errorMessage = "Invalid first name. Please enter a valid name (only letters).";
-            // You can use a dialog to show the error message
-            JOptionPane.showMessageDialog(this, errorMessage, "Input Error", JOptionPane.ERROR_MESSAGE);
-            // Optionally, clear the text field or set focus back to it
-            jTextField1.setText("");
-            jTextField1.requestFocus();
-        }
-
-
+        // TODO add your handling code here
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
