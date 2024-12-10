@@ -3867,4 +3867,20 @@
   "favoriteQuestions" : [ ],
   "takenTests" : [ ],
   "password" : "123456789@ZZz"
-}]
+}, {
+  "type" : "student",
+  "userId" : "546048b2-4e70-462f-9cc0-bb4b5b162c40",
+  "email" : "",
+  "userName" : "",
+  "address" : ", , ",
+  "firstName" : "",
+  "lastName" : "",
+  "lastLoginDate" : "2024-12-10T11:28:30.0851902",
+  "grade" : null,
+  "passedTestsCount" : 0,
+  "totalTimeOfAllTests" : 0.0,
+  "institute" : "",
+  "favoriteQuestions" : [ ],
+  "takenTests" : [ ],
+  "password" : ""
+} ]

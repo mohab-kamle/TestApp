@@ -98,12 +98,19 @@ public class SignUpPanel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         jButton1.setForeground(new java.awt.Color(244, 242, 226));
         jButton1.setText("Submit");
+        jButton1.setFocusPainted(false);
         jButton1.setMaximumSize(new java.awt.Dimension(300, 70));
         jButton1.setMinimumSize(new java.awt.Dimension(300, 70));
         jButton1.setPreferredSize(new java.awt.Dimension(300, 70));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
             }
         });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -359,8 +366,8 @@ public class SignUpPanel extends javax.swing.JPanel {
         jButton2.setBackground(new java.awt.Color(74, 25, 72));
         jButton2.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(244, 242, 226));
-        jButton2.setText("Back");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setFocusPainted(false);
         jButton2.setMaximumSize(new java.awt.Dimension(145, 60));
         jButton2.setMinimumSize(new java.awt.Dimension(145, 60));
         jButton2.setPreferredSize(new java.awt.Dimension(145, 60));
@@ -567,11 +574,13 @@ public class SignUpPanel extends javax.swing.JPanel {
 
         // Check user type and call the appropriate signUp method
         if (this.Usertype.equals("Student")) {
+            
             String institute = jTextField3.getText();
             Student.signUp(username, email, password, fname, lname, country, city, streetname, institute);
             // Optionally, show a success message
             JOptionPane.showMessageDialog(this, "Student signed up successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else if (this.Usertype.equals("Admin")) {
+            
             String contactnumber = jTextField12.getText();
             String department = jTextField11.getText();
             // Call the signUp method from the Admin class
@@ -660,6 +669,21 @@ public class SignUpPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        // TODO add your handling code here:
+        jButton1.setBackground(Color.decode("#F4F2E2"));
+        jButton1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        jButton1.setBorderPainted(true);
+        jButton1.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jButton1.setBackground(Color.decode("#4A1948"));
+        jButton1.setBorderPainted(false);
+        jButton1.setForeground(Color.decode("#F4F2E2"));
+    }//GEN-LAST:event_jButton1MouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
@@ -693,4 +717,25 @@ public class SignUpPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
+public  void visabiltystudent(){
+//visabilty
+            jTextField3.setVisible(true);
+            jLabel9.setVisible(true);
+            jLabel10.setVisible(false);
+            jLabel11.setVisible(false);
+            jTextField11.setVisible(false);
+            jTextField12.setVisible(false);          
+
 }
+public void visabiltyadmin(){
+// visabilty
+            jLabel10.setVisible(true);
+            jLabel11.setVisible(true);
+            jTextField11.setVisible(true);
+            jTextField12.setVisible(true);
+            jTextField3.setVisible(false);
+            jLabel9.setVisible(false);
+}
+}
+
+

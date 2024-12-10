@@ -4,6 +4,8 @@
  */
 package GUI;
 import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 /**
@@ -95,6 +97,7 @@ public class WelcomePanel extends javax.swing.JPanel {
         jButton2.setText("Admin");
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setFocusPainted(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setMaximumSize(new java.awt.Dimension(200, 60));
         jButton2.setMinimumSize(new java.awt.Dimension(200, 60));
@@ -102,6 +105,12 @@ public class WelcomePanel extends javax.swing.JPanel {
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
             }
         });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +129,7 @@ public class WelcomePanel extends javax.swing.JPanel {
         jButton1.setText("Student");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFocusPainted(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setMaximumSize(new java.awt.Dimension(200, 60));
         jButton1.setMinimumSize(new java.awt.Dimension(200, 60));
@@ -127,6 +137,12 @@ public class WelcomePanel extends javax.swing.JPanel {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
             }
         });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +187,36 @@ public class WelcomePanel extends javax.swing.JPanel {
         MenuPanel.Usertype = "Admin" ;
 
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        // TODO add your handling code here:
+        jButton2.setBackground(Color.decode("#F4F2E2"));
+        jButton2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        jButton2.setBorderPainted(true);
+        jButton2.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        // TODO add your handling code here:
+        jButton1.setBackground(Color.decode("#F4F2E2"));
+        jButton1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        jButton1.setBorderPainted(true);
+        jButton1.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        // TODO add your handling code here:
+        jButton2.setBackground(Color.decode("#4A1948"));
+        jButton2.setBorderPainted(false);
+        jButton2.setForeground(Color.decode("#F4F2E2"));
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jButton1.setBackground(Color.decode("#4A1948"));
+        jButton1.setBorderPainted(false);
+        jButton1.setForeground(Color.decode("#F4F2E2"));
+    }//GEN-LAST:event_jButton1MouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;

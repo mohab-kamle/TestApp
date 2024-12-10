@@ -20,6 +20,7 @@ public class MenuPanel extends javax.swing.JPanel {
     private CardLayout cardLayout;
     private JPanel container;
     public static String Usertype;
+    public SignUpPanel sg;
 
     /**
      * Creates new form MenuPanel
@@ -53,12 +54,19 @@ public class MenuPanel extends javax.swing.JPanel {
         jButton1.setText("SignUp");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFocusPainted(false);
         jButton1.setMaximumSize(new java.awt.Dimension(200, 60));
         jButton1.setMinimumSize(new java.awt.Dimension(200, 60));
         jButton1.setPreferredSize(new java.awt.Dimension(200, 60));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
             }
         });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -78,12 +86,19 @@ public class MenuPanel extends javax.swing.JPanel {
         jButton2.setText("Login");
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setFocusPainted(false);
         jButton2.setMaximumSize(new java.awt.Dimension(200, 60));
         jButton2.setMinimumSize(new java.awt.Dimension(200, 60));
         jButton2.setPreferredSize(new java.awt.Dimension(200, 60));
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
             }
         });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -101,9 +116,9 @@ public class MenuPanel extends javax.swing.JPanel {
 
         jButton4.setBackground(new java.awt.Color(74, 25, 72));
         jButton4.setForeground(new java.awt.Color(244, 242, 226));
-        jButton4.setText("Back");
         jButton4.setBorderPainted(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setFocusPainted(false);
         jButton4.setMaximumSize(new java.awt.Dimension(145, 60));
         jButton4.setMinimumSize(new java.awt.Dimension(145, 60));
         jButton4.setPreferredSize(new java.awt.Dimension(145, 60));
@@ -151,22 +166,30 @@ public class MenuPanel extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+
         System.out.println("Sign Up clicked");
         cardLayout.show(container, "SignUp");
         if (Usertype.equalsIgnoreCase("Student")) {
             SignUpPanel.Usertype = "Student";
+            if (sg != null) {
+                sg.visabiltystudent();
+            }
 
         } else if (Usertype.equalsIgnoreCase("Admin")) {
             SignUpPanel.Usertype = "Admin";
-
+            if (sg != null) {
+                sg.visabiltyadmin();
+            }
         }
         SignUpPanel signUpPanel = new SignUpPanel(cardLayout, container);
+        sg = signUpPanel;
         container.add(signUpPanel, "SignUp");
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         System.out.println("Login clicked");
+
         cardLayout.show(container, "Login");
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -207,6 +230,36 @@ public class MenuPanel extends javax.swing.JPanel {
         jButton4.setBorderPainted(false);
         jButton4.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_jButton4MouseExited
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jButton1.setBackground(Color.decode("#4A1948"));
+        jButton1.setBorderPainted(false);
+        jButton1.setForeground(Color.decode("#F4F2E2"));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        // TODO add your handling code here:
+        jButton1.setBackground(Color.decode("#F4F2E2"));
+        jButton1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        jButton1.setBorderPainted(true);
+        jButton1.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        // TODO add your handling code here:
+        jButton2.setBackground(Color.decode("#F4F2E2"));
+        jButton2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        jButton2.setBorderPainted(true);
+        jButton2.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        // TODO add your handling code here:
+        jButton2.setBackground(Color.decode("#4A1948"));
+        jButton2.setBorderPainted(false);
+        jButton2.setForeground(Color.decode("#F4F2E2"));
+    }//GEN-LAST:event_jButton2MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
