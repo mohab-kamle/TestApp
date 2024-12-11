@@ -131,7 +131,7 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(74, 25, 72));
         jButton1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("M:\\mohab\\Documents\\college\\studyL3,P1\\Comp301_JAVA\\Project_Java\\TestGeneratorSystem\\lib\\turnback-40.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         jButton1.setToolTipText("Click to go back");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -174,7 +174,7 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(87, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(60, 0, 0, 0);
         add(jLabel2, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -188,7 +188,7 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(45, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(lengthLabel, gridBagConstraints);
 
         PassChangeDontMatchLabel.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
@@ -590,5 +590,4 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
     public void setConfirmNewPass(String confirmNewPass) {
         this.confirmNewPass = confirmNewPass;
     }
-
 }

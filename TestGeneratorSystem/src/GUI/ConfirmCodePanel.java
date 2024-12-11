@@ -127,7 +127,7 @@ public class ConfirmCodePanel extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(74, 25, 72));
         jButton1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("M:\\mohab\\Documents\\college\\studyL3,P1\\Comp301_JAVA\\Project_Java\\TestGeneratorSystem\\lib\\turnback-40.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         jButton1.setToolTipText("Click to go back");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
