@@ -205,6 +205,39 @@ public abstract class User {
     }
 
     /**
+     * Facilitates user registration by collecting and validating user information.
+     *
+     * This method guides users through a comprehensive sign-up process, validating each input against specific criteria to ensure data integrity.
+     *
+     * @return ArrayList containing validated user registration details in the following order: [username, email, password, firstName, lastName, country, city, fullAddress]
+     */
+    public static ArrayList<String> signUp(String username, String email, String password, String fname, String lname,
+            String country, String city, String streetname) {
+        ArrayList<String> commonList = new ArrayList<>();
+
+        commonList.add(username);
+        commonList.add(email);
+        commonList.add(password);
+        commonList.add(fname);
+        commonList.add(lname);
+        commonList.add(country);
+        commonList.add(city);
+        commonList.add(streetname);
+        // Construct full address
+        String fullAddress = String.format(
+                "%s, %s, %s",
+                commonList.get(commonList.size() - 1), // Street Name
+                commonList.get(commonList.size() - 2), // City
+                commonList.get(commonList.size() - 3) // Country
+        );
+        commonList.remove(commonList.size() - 1); // remove Street Name from common list
+        commonList.remove(commonList.size() - 1); // remove City
+        commonList.remove(commonList.size() - 1); // remove Country
+        commonList.add(fullAddress);
+        return commonList;
+    }
+
+    /**
      * Validates input with an additional unique check.
      *
      * @param scanner Input scanner
@@ -245,6 +278,25 @@ public abstract class User {
         }
     }
 
+    private static boolean validateUniqueInput(
+            Checker check,
+            Checker.StringType validationType,
+            Predicate<String> uniquenessCheck,
+            String input
+    ) {
+
+        // Validate input format
+        if (!check.isValid(validationType, input)) {
+            return false;
+        }
+        // Check uniqueness
+        if (!uniquenessCheck.test(input)) {
+            return false;
+        }
+        return true;
+
+    }
+
     /**
      * Validates password input with comprehensive security checks.
      *
@@ -275,6 +327,14 @@ public abstract class User {
             ifColorfullPrintln("Password does not meet requirements. Please try again.", TerminalColors.BOLD_RED);
 
         }
+    }
+
+    private static boolean validatePasswordInput(String password) {
+        Checker check = new Checker();
+        if (check.isValid(Checker.StringType.PASSWORD, password)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -316,6 +376,14 @@ public abstract class User {
             ifColorfullPrintln(errorMessage, TerminalColors.BOLD_RED);
         }
     }
+//    protected static String validateInput(
+//            Checker check,
+//            Checker.StringType validationType,
+//            String errorMessage
+//    ){
+//    
+//    }
+    
 
     public abstract User login();
 
@@ -503,10 +571,10 @@ public abstract class User {
         if (User.findEmail(EmailInput) == null) {
             return EMAIL_ERROR;
         }
-        if (codeCheck.equals("")){
+        if (codeCheck.equals("")) {
             return CODE_ERROR;
         }
-        if (newPass.equals("")){
+        if (newPass.equals("")) {
             return NewPass_ERROR;
         }
         if (!check.isValid(Checker.StringType.PASSWORD, newPass)) {

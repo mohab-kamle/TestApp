@@ -60,5 +60,6 @@ public class Checker {
                 throw new IllegalArgumentException("Unknown type: " + type);
         }
     }
+    
 
 }
