@@ -4,9 +4,12 @@
  */
 package GUI;
 
+import DataBaseManagment.AdminDAO;
+import DataBaseManagment.StudentDAO;
 import EndUser.Admin;
 import EndUser.Student;
 import EndUser.User;
+import UserDefinedFunctionalities.Checker;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.net.URL;
@@ -18,9 +21,10 @@ import javax.swing.JPanel;
  * @author Zeyad
  */
 public class ChangePasswordPanel_P extends javax.swing.JPanel {
-    protected User user ;
+    protected User user;
     private CardLayout cardLayout;
     private JPanel container;
+    Checker check; 
     /**
      * Creates new form ChangeAdminPasswordp
      */
@@ -30,6 +34,7 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         WrongMatching.setVisible(false);
         WrongNewPassword.setVisible(false);
         Comfirmed.setVisible(false);
+        check = new Checker() ;
         if (user instanceof Admin) {
             this.user = (Admin) user ;
         }
@@ -62,11 +67,13 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         WrongMatching = new javax.swing.JLabel();
         Comfirmed = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
-        lengthLabel = new javax.swing.JLabel();
-        uppercaseLabel = new javax.swing.JLabel();
-        lowercaseLabel = new javax.swing.JLabel();
-        specialCharLabel = new javax.swing.JLabel();
-        digitLabel = new javax.swing.JLabel();
+        reqPanel = new javax.swing.JPanel();
+        lengthLabel1 = new javax.swing.JLabel();
+        uppercaseLabel1 = new javax.swing.JLabel();
+        lowercaseLabel1 = new javax.swing.JLabel();
+        specialCharLabel1 = new javax.swing.JLabel();
+        digitLabel1 = new javax.swing.JLabel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 40), new java.awt.Dimension(32767, 40));
 
         jLabel3.setText("jLabel2");
 
@@ -74,13 +81,14 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         setForeground(new java.awt.Color(244, 242, 226));
         setLayout(new java.awt.GridBagLayout());
 
-        ChangePagetitle.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        ChangePagetitle.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         ChangePagetitle.setForeground(new java.awt.Color(0, 0, 0));
         ChangePagetitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChangePagetitle.setText("Change Password Page");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 142;
         gridBagConstraints.ipady = 7;
         gridBagConstraints.weightx = 1.0;
@@ -90,7 +98,9 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         ComfirmButton.setBackground(new java.awt.Color(74, 25, 72));
         ComfirmButton.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         ComfirmButton.setText("Comfirm");
+        ComfirmButton.setBorderPainted(false);
         ComfirmButton.setEnabled(false);
+        ComfirmButton.setFocusPainted(false);
         ComfirmButton.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 ComfirmButtonStateChanged(evt);
@@ -114,7 +124,7 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridy = 17;
         gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.weightx = 1.0;
@@ -142,18 +152,17 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(OldPasswordField, gridBagConstraints);
 
-        WrongOldPassword.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
+        WrongOldPassword.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         WrongOldPassword.setForeground(new java.awt.Color(220, 0, 0));
         WrongOldPassword.setText("Wrong Password. Please, try again");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipady = 7;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(WrongOldPassword, gridBagConstraints);
 
-        OldPassword.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        OldPassword.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
         OldPassword.setForeground(new java.awt.Color(0, 0, 0));
         OldPassword.setText("Old Password");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -171,13 +180,16 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         MatchingNewPasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 3, true));
         MatchingNewPasswordField.setPreferredSize(new java.awt.Dimension(200, 35));
         MatchingNewPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                MatchingNewPasswordFieldKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 MatchingNewPasswordFieldKeyTyped(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.ipadx = 328;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -198,49 +210,49 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.ipadx = 328;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(NewPasswordField, gridBagConstraints);
 
-        NewPassword.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        NewPassword.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
         NewPassword.setForeground(new java.awt.Color(0, 0, 0));
         NewPassword.setText("New Password");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(NewPassword, gridBagConstraints);
 
-        ReNewPassword.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        ReNewPassword.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
         ReNewPassword.setForeground(new java.awt.Color(0, 0, 0));
         ReNewPassword.setText("Rewrite New Password");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(ReNewPassword, gridBagConstraints);
+
+        WrongNewPassword.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        WrongNewPassword.setForeground(new java.awt.Color(220, 0, 0));
+        WrongNewPassword.setText("Wrong Password. Please follow the Required");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 13;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(ReNewPassword, gridBagConstraints);
-
-        WrongNewPassword.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
-        WrongNewPassword.setForeground(new java.awt.Color(220, 0, 0));
-        WrongNewPassword.setText("Wrong Password. Please follow the Required");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
         add(WrongNewPassword, gridBagConstraints);
 
-        WrongMatching.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
+        WrongMatching.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         WrongMatching.setForeground(new java.awt.Color(220, 0, 0));
         WrongMatching.setText("The passwords do not match. Please check.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(WrongMatching, gridBagConstraints);
@@ -252,6 +264,7 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 108;
         gridBagConstraints.ipady = 14;
         gridBagConstraints.weightx = 1.0;
@@ -291,77 +304,104 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(BackButton, gridBagConstraints);
 
-        lengthLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
-        lengthLabel.setForeground(new java.awt.Color(0, 0, 0));
-        lengthLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lengthLabel.setText("- 12-20 characters long");
+        reqPanel.setBackground(new java.awt.Color(244, 242, 226));
+        reqPanel.setLayout(new java.awt.GridBagLayout());
+
+        lengthLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
+        lengthLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        lengthLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lengthLabel1.setText("- 12-20 characters long");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 100);
-        add(lengthLabel, gridBagConstraints);
+        reqPanel.add(lengthLabel1, gridBagConstraints);
 
-        uppercaseLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
-        uppercaseLabel.setForeground(new java.awt.Color(0, 0, 0));
-        uppercaseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        uppercaseLabel.setText("- At least one uppercase letter ");
+        uppercaseLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
+        uppercaseLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        uppercaseLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        uppercaseLabel1.setText("- At least one uppercase letter ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        reqPanel.add(uppercaseLabel1, gridBagConstraints);
+
+        lowercaseLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
+        lowercaseLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        lowercaseLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lowercaseLabel1.setText("- At least one lowercase letter");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        reqPanel.add(lowercaseLabel1, gridBagConstraints);
+
+        specialCharLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
+        specialCharLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        specialCharLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        specialCharLabel1.setText("- At least one special character");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        reqPanel.add(specialCharLabel1, gridBagConstraints);
+
+        digitLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
+        digitLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        digitLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        digitLabel1.setText("- At least one digit");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        reqPanel.add(digitLabel1, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridheight = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        add(uppercaseLabel, gridBagConstraints);
-
-        lowercaseLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
-        lowercaseLabel.setForeground(new java.awt.Color(0, 0, 0));
-        lowercaseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lowercaseLabel.setText("- At least one lowercase letter");
+        gridBagConstraints.weighty = 3.0;
+        add(reqPanel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 12);
-        add(lowercaseLabel, gridBagConstraints);
-
-        specialCharLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
-        specialCharLabel.setForeground(new java.awt.Color(0, 0, 0));
-        specialCharLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        specialCharLabel.setText("- At least one special character");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        add(specialCharLabel, gridBagConstraints);
-
-        digitLabel.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
-        digitLabel.setForeground(new java.awt.Color(0, 0, 0));
-        digitLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        digitLabel.setText("- At least one digit");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 135);
-        add(digitLabel, gridBagConstraints);
+        gridBagConstraints.gridy = 5;
+        add(filler1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComfirmButtonActionPerformed
         // TODO add your handling code here:
+        user.setPassword(NewPasswordField.getText());
+        //updating the equivalent JSON
+        if (user instanceof Admin admin) {
+            AdminDAO ADB = new AdminDAO();
+            ADB.updateAdmin(admin);
+        }
+        if (user instanceof Student student) {
+            StudentDAO SDB = new StudentDAO();
+            SDB.updateStudent(student);
+        }
+        user.updateEquivalentCategoryAndQuestionBank();
+        Comfirmed.setVisible(true);
     }//GEN-LAST:event_ComfirmButtonActionPerformed
 
     private void OldPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OldPasswordFieldKeyTyped
@@ -401,8 +441,16 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
 
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
         // TODO add your handling code here:
-        
-        /*cardLayout.show(container, "StudentMenu");*/
+        WrongOldPassword.setVisible(false);
+        WrongMatching.setVisible(false);
+        WrongNewPassword.setVisible(false);
+        Comfirmed.setVisible(false);
+        if (user instanceof Admin) {
+            cardLayout.show(container, "AdminMenu");
+        }
+        else if (user instanceof Student) {
+            cardLayout.show(container, "StudentMenu");
+        }
     }//GEN-LAST:event_BackButtonMouseClicked
 
     private void BackButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseEntered
@@ -444,7 +492,14 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
 
     private void NewPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NewPasswordFieldKeyReleased
         // TODO add your handling code here:
-        checkPasswordRequirements(new String(NewPasswordField.getText()));
+        checkPasswordRequirements(NewPasswordField.getText());
+        if (!check.isValid(Checker.StringType.PASSWORD, NewPasswordField.getText())) {
+                    WrongNewPassword.setVisible(true);
+                }
+        else {
+            WrongNewPassword.setVisible(false);
+        }
+        stateChanged();
     }//GEN-LAST:event_NewPasswordFieldKeyReleased
 
     private void OldPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OldPasswordFieldKeyReleased
@@ -454,56 +509,73 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         } else {
             WrongOldPassword.setVisible(false);
         }
+        stateChanged();
     }//GEN-LAST:event_OldPasswordFieldKeyReleased
 
     private void ComfirmButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ComfirmButtonStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_ComfirmButtonStateChanged
+
+    private void MatchingNewPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MatchingNewPasswordFieldKeyReleased
+        // TODO add your handling code here:
+        if (!MatchingNewPasswordField.getText().equals(NewPasswordField.getText())) {
+                WrongMatching.setVisible(true);
+            } else {
+                WrongMatching.setVisible(false);
+            }
+        stateChanged();
+    }//GEN-LAST:event_MatchingNewPasswordFieldKeyReleased
 public void checkPasswordRequirements(String password) {
         // Length check
         if (password.length() >= 12 && password.length() <= 20) {
-            lengthLabel.setText("[√] Length is good");
-            lengthLabel.setForeground(new Color(0, 150, 0));
+            lengthLabel1.setText("[√] Length is good");
+            lengthLabel1.setForeground(new Color(0, 150, 0));
         } else {
-            lengthLabel.setText("[X] Must be 12-20 characters");
-            lengthLabel.setForeground(Color.RED);
+            lengthLabel1.setText("[X] Must be 12-20 characters");
+            lengthLabel1.setForeground(Color.RED);
         }
 
         // Uppercase check
         if (password.matches(".*[A-Z].*")) {
-            uppercaseLabel.setText("[√] Has uppercase");
-            uppercaseLabel.setForeground(new Color(0, 150, 0));
+            uppercaseLabel1.setText("[√] Has uppercase");
+            uppercaseLabel1.setForeground(new Color(0, 150, 0));
         } else {
-            uppercaseLabel.setText("[X] Need uppercase letter");
-            uppercaseLabel.setForeground(Color.RED);
+            uppercaseLabel1.setText("[X] Need uppercase letter");
+            uppercaseLabel1.setForeground(Color.RED);
         }
 
         // Lowercase check
         if (password.matches(".*[a-z].*")) {
-            lowercaseLabel.setText("[√] Has lowercase");
-            lowercaseLabel.setForeground(new Color(0, 150, 0));
+            lowercaseLabel1.setText("[√] Has lowercase");
+            lowercaseLabel1.setForeground(new Color(0, 150, 0));
         } else {
-            lowercaseLabel.setText("[X] Need lowercase letter");
-            lowercaseLabel.setForeground(Color.RED);
+            lowercaseLabel1.setText("[X] Need lowercase letter");
+            lowercaseLabel1.setForeground(Color.RED);
         }
 
         // Special character check
         if (password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?].*")) {
-            specialCharLabel.setText("[√] Has special character");
-            specialCharLabel.setForeground(new Color(0, 150, 0));
+            specialCharLabel1.setText("[√] Has special character");
+            specialCharLabel1.setForeground(new Color(0, 150, 0));
         } else {
-            specialCharLabel.setText("[X] Need special character");
-            specialCharLabel.setForeground(Color.RED);
+            specialCharLabel1.setText("[X] Need special character");
+            specialCharLabel1.setForeground(Color.RED);
         }
 
         // Digit check
         if (password.matches(".*\\d.*")) {
-            digitLabel.setText("[√] Has number");
-            digitLabel.setForeground(new Color(0, 150, 0));
+            digitLabel1.setText("[√] Has number");
+            digitLabel1.setForeground(new Color(0, 150, 0));
         } else {
-            digitLabel.setText("[X] Need a number");
-            digitLabel.setForeground(Color.RED);
+            digitLabel1.setText("[X] Need a number");
+            digitLabel1.setForeground(Color.RED);
         }
+    }
+    private void stateChanged() {
+        if (WrongOldPassword.isVisible() || WrongNewPassword.isVisible() || WrongMatching.isVisible()){
+            ComfirmButton.setEnabled(false);
+        }
+        else ComfirmButton.setEnabled(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
@@ -519,12 +591,14 @@ public void checkPasswordRequirements(String password) {
     private javax.swing.JLabel WrongMatching;
     private javax.swing.JLabel WrongNewPassword;
     private javax.swing.JLabel WrongOldPassword;
-    private javax.swing.JLabel digitLabel;
+    private javax.swing.JLabel digitLabel1;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel lengthLabel;
-    private javax.swing.JLabel lowercaseLabel;
-    private javax.swing.JLabel specialCharLabel;
-    private javax.swing.JLabel uppercaseLabel;
+    private javax.swing.JLabel lengthLabel1;
+    private javax.swing.JLabel lowercaseLabel1;
+    private javax.swing.JPanel reqPanel;
+    private javax.swing.JLabel specialCharLabel1;
+    private javax.swing.JLabel uppercaseLabel1;
     // End of variables declaration//GEN-END:variables
 }
 

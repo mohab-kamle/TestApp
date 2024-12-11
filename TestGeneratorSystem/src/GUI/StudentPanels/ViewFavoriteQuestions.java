@@ -4,9 +4,24 @@
  */
 package GUI.StudentPanels;
 
+import DataBaseManagment.CategoryDAO;
+import DataBaseManagment.QuestionBankDAO;
+import DataBaseManagment.StudentDAO;
+import EndUser.Student;
+import TestSystem.Category;
+import TestSystem.Question;
+import TestSystem.QuestionBank;
+import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -14,11 +29,45 @@ import javax.swing.BorderFactory;
  */
 public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
+    Student student;
+    private CardLayout cardLayout;
+    private Container container;
+    String selected;
+    int Index = 0;
+    List<Question> allFavorites;
+    List<Question> categoryFavorites = null;
+    Question currentQuestion ;
+
     /**
      * Creates new form ViewFavoriteQuestions
      */
-    public ViewFavoriteQuestions() {
+    public ViewFavoriteQuestions(Student student, CardLayout cardLayout, Container container) {
         initComponents();
+        this.student = student;
+        this.cardLayout = cardLayout;
+        this.container = container;
+        imageHolder.setVisible(false);
+        CatogoryDropList.removeAllItems();
+        if (student.getFavoriteQuestions() == null || student.getFavoriteQuestions().isEmpty()) {
+            QuesitionHolder.setVisible(false);
+            QuesitionID.setVisible(false);
+            AHOLDER.setVisible(false);
+            BHOLDER.setVisible(false);
+            CHOLDER.setVisible(false);
+            DHOLDER.setVisible(false);
+            FAVButton.setVisible(false);
+            FAVNUMHOLDER.setVisible(false);
+            NextButton.setVisible(false);
+            PrevButton.setVisible(false);
+            Tnum.setVisible(false);
+            CatogoryDropList.setVisible(false);
+            ImageIcon icon = new ImageIcon("/lib/refav.png");
+            imageHolder.setText("");
+            imageHolder.setIcon(icon);
+            imageHolder.setVisible(true);
+        }
+        else setup() ;
+        
     }
 
     /**
@@ -43,11 +92,17 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         NextButton = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
         Tnum = new javax.swing.JLabel();
+        imageHolder = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(244, 242, 226));
         setLayout(new java.awt.GridBagLayout());
 
+        CatogoryDropList.setBackground(new java.awt.Color(244, 242, 226));
+        CatogoryDropList.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        CatogoryDropList.setForeground(new java.awt.Color(0, 0, 0));
         CatogoryDropList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CatogoryDropList.setBorder(new javax.swing.border.MatteBorder(null));
+        CatogoryDropList.setPreferredSize(new java.awt.Dimension(350, 36));
         CatogoryDropList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CatogoryDropListActionPerformed(evt);
@@ -322,10 +377,20 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(Tnum, gridBagConstraints);
+
+        imageHolder.setForeground(new java.awt.Color(0, 0, 0));
+        imageHolder.setText("\"emptyImageHolder\"");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        add(imageHolder, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void CatogoryDropListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CatogoryDropListActionPerformed
         // TODO add your handling code here:
+        selected = (String) CatogoryDropList.getSelectedItem();
+        DisplayFav() ;
     }//GEN-LAST:event_CatogoryDropListActionPerformed
 
     private void PrevButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrevButtonMouseMoved
@@ -352,7 +417,9 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
     }//GEN-LAST:event_PrevButtonMousePressed
 
     private void PrevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevButtonActionPerformed
-
+        // TODO add your handling code here:
+        Index = (Index - 1 + allFavorites.size()) % allFavorites.size();
+        DisplayFav();
     }//GEN-LAST:event_PrevButtonActionPerformed
 
     private void NextButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMouseMoved
@@ -361,10 +428,17 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
     private void NextButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMouseEntered
         // TODO add your handling code here:
+        PrevButton.setBackground(Color.decode("#F4F2E2"));
+        PrevButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        PrevButton.setBorderPainted(true);
+        PrevButton.setForeground(Color.BLACK);
     }//GEN-LAST:event_NextButtonMouseEntered
 
     private void NextButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMouseExited
         // TODO add your handling code here:
+        PrevButton.setBackground(Color.decode("#4A1948"));
+        PrevButton.setBorderPainted(false);
+        PrevButton.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_NextButtonMouseExited
 
     private void NextButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMousePressed
@@ -373,6 +447,8 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
     private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
         // TODO add your handling code here:
+        Index = ( Index + 1 ) % allFavorites.size();
+        DisplayFav() ;
     }//GEN-LAST:event_NextButtonActionPerformed
 
     private void BackButtonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackButtonFocusGained
@@ -381,8 +457,6 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
         // TODO add your handling code here:
-        /*DateHolder.setVisible(false);
-        cardLayout.show(container, "StudentMenu");*/
     }//GEN-LAST:event_BackButtonMouseClicked
 
     private void BackButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseEntered
@@ -415,13 +489,221 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
+        QuesitionHolder.setVisible(true);
+            QuesitionID.setVisible(true);
+            AHOLDER.setVisible(true);
+            BHOLDER.setVisible(true);
+            CHOLDER.setVisible(true);
+            DHOLDER.setVisible(true);
+            FAVButton.setVisible(true);
+            FAVNUMHOLDER.setVisible(true);
+            NextButton.setVisible(true);
+            PrevButton.setVisible(true);
+            Tnum.setVisible(true);
+            CatogoryDropList.setVisible(true);
+            imageHolder.setVisible(false);
+            cardLayout.show(container, "StudentMenu");
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void FAVButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FAVButtonActionPerformed
         // TODO add your handling code here:
+    // Check if the question is already a favorite
+    boolean isItFavorite = false;
+    QuestionBank targetBank = null;
+
+    for (QuestionBank favQuestionBank : student.getFavoriteQuestions()) {
+        if (favQuestionBank.getQuestions().contains(currentQuestion)) {
+            isItFavorite = true;
+            targetBank = favQuestionBank;
+            break;
+        }
+    }
+
+    QuestionBankDAO questionBankDAO = new QuestionBankDAO();
+    CategoryDAO categoryDAO = new CategoryDAO();
+
+    if (isItFavorite && targetBank != null) {
+        // Unmark as favorite
+        //System.out.println("Question removed from favorites: " + question);
+
+        // Update the question's favorite count
+        currentQuestion.setNumberOfFavorites(currentQuestion.getNumberOfFavorites() - 1);
+
+        // Update the database
+        List<QuestionBank> qb = questionBankDAO.searchByCreator(student.getUserId());
+
+        if (!qb.isEmpty()) {
+            ArrayList<Question> currentQs = qb.get(0).getQuestions();
+            currentQs.removeIf(q -> q.getQuestionID().equals(currentQuestion.getQuestionID()));
+            qb.get(0).setQuestions(currentQs);
+            questionBankDAO.updateQuestionBank(qb.get(0));
+        }
+
+        // Update the local favoriteQuestions list
+        ArrayList<Question> targetQuestions = targetBank.getQuestions();
+        targetQuestions.removeIf(q -> q.getQuestionID().equals(currentQuestion.getQuestionID()));
+        targetBank.setQuestions(targetQuestions);
+
+        // Update student in database
+        StudentDAO studentDAO = new StudentDAO();
+        studentDAO.updateStudent(student);
+
+        URL iconURL = getClass().getResource("/lib/DisFAVButtonWINDOS10EDITION.png");
+        if (iconURL != null) {
+            BackButton.setIcon(new javax.swing.ImageIcon(iconURL));
+        } else {
+            // Handle the error, e.g., log it or show a default icon
+            System.err.println("Resource not found: /lib/DisFAVButtonWINDOS10EDITION.png");
+        }
+
+    } else {
+        // Mark as favorite
+        Category category = categoryDAO.loadCategory(currentQuestion.getTopic());
+
+        // Try to find matching bank in favoriteQuestions list
+        QuestionBank favoriteBank = null;
+        for (QuestionBank bank : student.getFavoriteQuestions()) {
+            if (bank.getCategoryID().equals(category.getCategoryId()) &&
+                bank.getCreatorID().equals(student.getUserId())) {
+                favoriteBank = bank;
+                break;
+            }
+        }
+
+        // If not found in memory, check database
+        if (favoriteBank == null) {
+            List<QuestionBank> existingBanks = questionBankDAO.searchByCategoryAndCreator(category, student.getUserId());
+            for (QuestionBank bank : existingBanks) {
+                if (bank.getCreatorID().equals(student.getUserId())) {
+                    favoriteBank = bank;
+                    // Add to favoriteQuestions if found in database but not in memory
+                    if (!student.getFavoriteQuestions().contains(favoriteBank)) {
+                        student.getFavoriteQuestions().add(favoriteBank);
+                    }
+                    break;
+                }
+            }
+        }
+
+        // If still null, create new bank
+        if (favoriteBank == null) {
+            favoriteBank = new QuestionBank(
+                    student.getUserId(),
+                    category.getCategoryId(),
+                    LocalDate.now()
+            );
+            favoriteBank.setQuestions(new ArrayList<>());
+            student.getFavoriteQuestions().add(favoriteBank);
+        }
+
+        // Add the question to the favorite bank if it's not already there
+        ArrayList<Question> questions = favoriteBank.getQuestions();
+        if (!questions.contains(currentQuestion)) {
+            questions.add(currentQuestion);
+            favoriteBank.setQuestions(questions);
+
+            // Update the question's favorite count
+            currentQuestion.setNumberOfFavorites(currentQuestion.getNumberOfFavorites() + 1);
+
+            // Update the database
+            //student.updateQuestionInDatabase(currentQuestion, questionBankDAO, categoryDAO);
+            questionBankDAO.saveQuestionBank(favoriteBank);
+
+            // Update student in database
+            StudentDAO studentDAO = new StudentDAO();
+            studentDAO.updateStudent(student);
+
+            URL iconURL = getClass().getResource("/lib/FAVButtonWINDOS10EDITION.png");
+        if (iconURL != null) {
+            FAVButton.setIcon(new javax.swing.ImageIcon(iconURL));
+        } else {
+            // Handle the error, e.g., log it or show a default icon
+            System.err.println("Resource not found: /lib/FAVButtonWINDOS10EDITION.png");
+        }
+        }
+    }
+
+
     }//GEN-LAST:event_FAVButtonActionPerformed
-
-
+    private void DisplayFav() {
+        if (selected == "Select Category" || selected == "All Category"){
+            currentQuestion = allFavorites.get(Index);
+            String[] choices = currentQuestion.getChoices();
+            QuesitionID.setText("QuestionID: " + currentQuestion.getQuestionID());
+            QuesitionHolder.setText(currentQuestion.getStatement());
+            AHOLDER.setText("A- " + choices[0]);
+            BHOLDER.setText("B- " + choices[1]);
+            CHOLDER.setText("C- " + choices[2]);
+            DHOLDER.setText("D- " + choices[3]);
+            Tnum.setText((Index + 1) + "OF" + allFavorites.size());
+        }else {
+            currentQuestion = categoryFavorites.get(Index);
+            String[] choices = currentQuestion.getChoices();
+            QuesitionID.setText("QuestionID: " + currentQuestion.getQuestionID());
+            QuesitionHolder.setText(currentQuestion.getStatement());
+            AHOLDER.setText("A- " + choices[0]);
+            BHOLDER.setText("B- " + choices[1]);
+            CHOLDER.setText("C- " + choices[2]);
+            DHOLDER.setText("D- " + choices[3]);
+            Tnum.setText((Index + 1) + "OF" + allFavorites.size());
+        }
+    }
+    private void setup(){
+        allFavorites = new ArrayList<>();
+        for (QuestionBank favoriteBank : student.getFavoriteQuestions()) {
+            allFavorites.addAll(favoriteBank.getQuestions());
+        }
+        Set<Category> favoriteCategories = student.getFavoriteQuestions().stream()
+                .map(q -> {
+                    CategoryDAO categoryDAO = new CategoryDAO();
+                    return categoryDAO.loadCategory(q.getCategoryID());
+                })
+                .collect(Collectors.toSet());
+        List<Category> categoriesList = new ArrayList<>(favoriteCategories);
+        CatogoryDropList.addItem("Select Category" );
+        CatogoryDropList.addItem("All Category" );
+        for (int i = 0; i < categoriesList.size(); i++) {
+            CatogoryDropList.addItem(categoriesList.get(i).getName());
+        }
+        CatogoryDropList.setSelectedItem("Select Category");
+        Category selectedCategory = null ;
+        for (Category category : categoriesList) {
+            if (category.getName().equalsIgnoreCase(selected)) { // Compare names (case-insensitive)
+                selectedCategory = category;
+                break;
+            }
+        }
+        Category selectederror = selectedCategory;
+        // Filter questions by selected category            
+        
+        for (QuestionBank favoriteQuestionBank : student.getFavoriteQuestions()) {
+            categoryFavorites = favoriteQuestionBank.getQuestions().stream()
+                    .filter(q -> {
+                        CategoryDAO categoryDAO = new CategoryDAO();
+                        Category qCategory = categoryDAO.loadCategory(q.getTopic());
+                        return qCategory.equals(selectederror);
+                    })
+                    .collect(Collectors.toList());
+        }
+        if (allFavorites.isEmpty() || allFavorites == null || categoryFavorites.isEmpty() || categoryFavorites == null) {
+            QuesitionHolder.setVisible(false);
+            QuesitionID.setVisible(false);
+            AHOLDER.setVisible(false);
+            BHOLDER.setVisible(false);
+            CHOLDER.setVisible(false);
+            DHOLDER.setVisible(false);
+            FAVButton.setVisible(false);
+            FAVNUMHOLDER.setVisible(false);
+            NextButton.setVisible(false);
+            PrevButton.setVisible(false);
+            Tnum.setVisible(false);
+            CatogoryDropList.setVisible(false);
+            ImageIcon icon = new ImageIcon("/lib/refav.png");
+            imageHolder.setVisible(true);
+        }
+        else DisplayFav() ;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AHOLDER;
     private javax.swing.JLabel BHOLDER;
@@ -437,5 +719,6 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
     private javax.swing.JLabel QuesitionHolder;
     private javax.swing.JLabel QuesitionID;
     private javax.swing.JLabel Tnum;
+    private javax.swing.JLabel imageHolder;
     // End of variables declaration//GEN-END:variables
 }

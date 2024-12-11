@@ -22,7 +22,7 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
     private Container container;
     protected Test test; 
     protected int takerAnswer ; 
-    protected static int Index ;
+    protected int Index = 0;
     List<Question> questions;
     List<Integer> takerAnswers;
     /**
@@ -33,22 +33,7 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
         this.test = test ; 
         this.cardLayout = cardLayout;
         this.container = container;
-        Index = 0;
-        questions = test.getQuestions();
-        takerAnswers = test.getTakerAnswers();
-        Question question = questions.get(Index);
-        int studentAnswer = takerAnswers.get(Index);
-        int correctAnswer = question.getRightAnswer();
-        String Result = studentAnswer == correctAnswer ? "CORRECT" : "INCORRECT" ;
-        QuesitionHolder.setText(question.getStatement());
-        CorrectA.setText("Correct Answer: "+ String.valueOf('A' + correctAnswer));
-        UserA.setText("YourAnswer: " + String.valueOf(('A' + studentAnswer)));
-        QuesitionHolder.setText("Result: " + Result);
-        String[] choices = question.getChoices();
-        AHOLDER.setText("A" + choices[1]);
-        BHOLDER.setText("B" + choices[2]);
-        CHOLDER.setText("C" + choices[3]);
-        DHOLDER.setText("D" + choices[4]); 
+        updateIndex() ;
     }
 
     /**
@@ -59,7 +44,7 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jButton1 = new javax.swing.JButton();
+        Backbutton = new javax.swing.JButton();
         UserA = new javax.swing.JLabel();
         Choices = new javax.swing.JLabel();
         Result = new javax.swing.JLabel();
@@ -73,40 +58,41 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
         PrevButton = new javax.swing.JButton();
         NextButton = new javax.swing.JButton();
+        PanelIndex = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(244, 242, 226));
         setForeground(new java.awt.Color(244, 242, 226));
         setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setBackground(new java.awt.Color(74, 25, 72));
-        jButton1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
-        jButton1.setToolTipText("Click to go back");
-        jButton1.setBorderPainted(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.setFocusable(false);
-        jButton1.setMaximumSize(new java.awt.Dimension(145, 60));
-        jButton1.setMinimumSize(new java.awt.Dimension(145, 60));
-        jButton1.setPreferredSize(new java.awt.Dimension(145, 60));
-        jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
+        Backbutton.setBackground(new java.awt.Color(74, 25, 72));
+        Backbutton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        Backbutton.setToolTipText("Click to go back");
+        Backbutton.setBorderPainted(false);
+        Backbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Backbutton.setFocusPainted(false);
+        Backbutton.setFocusable(false);
+        Backbutton.setMaximumSize(new java.awt.Dimension(145, 60));
+        Backbutton.setMinimumSize(new java.awt.Dimension(145, 60));
+        Backbutton.setPreferredSize(new java.awt.Dimension(145, 60));
+        Backbutton.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jButton1FocusGained(evt);
+                BackbuttonFocusGained(evt);
             }
         });
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Backbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                BackbuttonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
+                BackbuttonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton1MouseExited(evt);
+                BackbuttonMouseExited(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Backbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackbuttonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -116,7 +102,7 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(jButton1, gridBagConstraints);
+        add(Backbutton, gridBagConstraints);
 
         UserA.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         UserA.setForeground(new java.awt.Color(0, 0, 0));
@@ -333,49 +319,58 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(NextButton, gridBagConstraints);
+
+        PanelIndex.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        PanelIndex.setForeground(new java.awt.Color(0, 0, 0));
+        PanelIndex.setText("IndexHolder");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        add(PanelIndex, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
+    private void BackbuttonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackbuttonFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1FocusGained
+    }//GEN-LAST:event_BackbuttonFocusGained
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void BackbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackbuttonMouseClicked
         // TODO add your handling code here:
-        cardLayout.show(container, "TestHView");
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_BackbuttonMouseClicked
 
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+    private void BackbuttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackbuttonMouseEntered
         // TODO add your handling code here:
         URL iconURL = getClass().getResource("/lib/turn-back.png");
         if (iconURL != null) {
-            jButton1.setIcon(new javax.swing.ImageIcon(iconURL));
+            Backbutton.setIcon(new javax.swing.ImageIcon(iconURL));
         } else {
             // Handle the error, e.g., log it or show a default icon
             System.err.println("Resource not found: /lib/turn-back.png");
         }
-        jButton1.setBackground(Color.decode("#F4F2E2"));
-        jButton1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-        jButton1.setBorderPainted(true);
-    }//GEN-LAST:event_jButton1MouseEntered
+        Backbutton.setBackground(Color.decode("#F4F2E2"));
+        Backbutton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        Backbutton.setBorderPainted(true);
+    }//GEN-LAST:event_BackbuttonMouseEntered
 
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+    private void BackbuttonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackbuttonMouseExited
         // TODO add your handling code here:
         URL iconURL = getClass().getResource("/lib/turnback-40.png");
         if (iconURL != null) {
-            jButton1.setIcon(new javax.swing.ImageIcon(iconURL));
+            Backbutton.setIcon(new javax.swing.ImageIcon(iconURL));
         } else {
             // Handle the error, e.g., log it or show a default icon
             System.err.println("Resource not found: /lib/turnback-40.png");
         }
-        jButton1.setBackground(Color.decode("#4A1948"));
-        jButton1.setBorderPainted(false);
-        jButton1.setForeground(Color.decode("#F4F2E2"));
+        Backbutton.setBackground(Color.decode("#4A1948"));
+        Backbutton.setBorderPainted(false);
+        Backbutton.setForeground(Color.decode("#F4F2E2"));
 
-    }//GEN-LAST:event_jButton1MouseExited
+    }//GEN-LAST:event_BackbuttonMouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbuttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        cardLayout.show(container, "TestHView");
+    }//GEN-LAST:event_BackbuttonActionPerformed
 
     private void PrevButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrevButtonMouseMoved
         // TODO add your handling code here:
@@ -403,6 +398,7 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
     private void PrevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevButtonActionPerformed
         // TODO add your handling code here:
         Index = (Index - 1 + questions.size()) % questions.size();
+        updateIndex() ;
     }//GEN-LAST:event_PrevButtonActionPerformed
 
     private void NextButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMouseMoved
@@ -431,23 +427,42 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
     private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
         // TODO add your handling code here:
         Index = ( Index + 1 ) % questions.size();
+        updateIndex() ;
     }//GEN-LAST:event_NextButtonActionPerformed
-
+    private void updateIndex(){
+        questions = test.getQuestions();
+        takerAnswers = test.getTakerAnswers();
+        Question question = questions.get(Index);
+        int studentAnswer = takerAnswers.get(Index);
+        int correctAnswer = question.getRightAnswer();
+        String Result = studentAnswer == correctAnswer ? "CORRECT" : "INCORRECT" ;
+        QuesitionHolder.setText(question.getStatement());
+        CorrectA.setText("Correct Answer: "+ String.valueOf('A' + correctAnswer));
+        UserA.setText("YourAnswer: " + String.valueOf(('A' + studentAnswer)));
+        QuesitionHolder.setText("Result: " + Result);
+        String[] choices = question.getChoices();
+        AHOLDER.setText("A" + choices[1]);
+        BHOLDER.setText("B" + choices[2]);
+        CHOLDER.setText("C" + choices[3]);
+        DHOLDER.setText("D" + choices[4]); 
+        PanelIndex.setText(Index + 1 + " of " + questions.size());
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AHOLDER;
     private javax.swing.JLabel BHOLDER;
+    private javax.swing.JButton Backbutton;
     private javax.swing.JLabel CHOLDER;
     private javax.swing.JLabel Choices;
     private javax.swing.JLabel CorrectA;
     private javax.swing.JLabel DHOLDER;
     private javax.swing.JButton NextButton;
+    private javax.swing.JLabel PanelIndex;
     private javax.swing.JButton PrevButton;
     private javax.swing.JLabel QuesitionDetailsTitle;
     private javax.swing.JLabel QuesitionHolder;
     private javax.swing.JLabel Result;
     private javax.swing.JLabel UserA;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

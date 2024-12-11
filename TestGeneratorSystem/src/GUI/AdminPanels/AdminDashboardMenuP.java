@@ -43,7 +43,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         this.container = container;
         VAdmin = new ViewProfilePanelAdminP(admin, cardLayout, container );
         ChangePass = new ChangePasswordPanel_P(admin, cardLayout, container);
-        UpdateAdminProf = new UpdateAdminprofileP();
+        UpdateAdminProf = new UpdateAdminprofileP(admin, cardLayout, container);
         // waiting kareem create Panels 
        /* ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
         ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
@@ -641,6 +641,11 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         VAdmin = null ;
         ChangePass = null ;
         UpdateAdminProf = null ;
+        /*UpdateAdminProf = null ;
+        UpdateAdminProf = null ;
+        UpdateAdminProf = null ;
+        UpdateAdminProf = null ;
+        UpdateAdminProf = null ;*/
         admin = new Admin() ;
         System.gc();
         cardLayout.show(container, "Welcome");

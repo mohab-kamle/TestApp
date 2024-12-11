@@ -4,9 +4,13 @@
  */
 package GUI.AdminPanels;
 
+import EndUser.Admin;
+import GUI.UpdatePanelP;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.net.URL;
 import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,8 +21,19 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
     /**
      * Creates new form UpdateAdminprofileP
      */
-    public UpdateAdminprofileP() {
+    UpdatePanelP updatePanelP ;
+    private CardLayout cardLayout;
+    private JPanel container;
+    protected Admin admin ; 
+    
+    public UpdateAdminprofileP(Admin admin, CardLayout cardLayout, JPanel container) {
         initComponents();
+        this.admin = admin ;
+        this.cardLayout = cardLayout;
+        this.container = container;
+        container.add(updatePanelP, "updatepanel"); 
+        
+        
     }
 
     /**
@@ -32,7 +47,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
         UpdateAdminProfile = new javax.swing.JLabel();
         UpdateUsername = new javax.swing.JButton();
         UpdateEmail = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        UpdateName = new javax.swing.JButton();
         UpdateAddress = new javax.swing.JButton();
         UpdateContactNumber = new javax.swing.JButton();
         UpdateDepartment = new javax.swing.JButton();
@@ -129,32 +144,32 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(UpdateEmail, gridBagConstraints);
 
-        jButton5.setBackground(new java.awt.Color(74, 25, 72));
-        jButton5.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(244, 242, 226));
-        jButton5.setText("Update Name");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.setFocusPainted(false);
-        jButton5.setPreferredSize(new java.awt.Dimension(145, 60));
-        jButton5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        UpdateName.setBackground(new java.awt.Color(74, 25, 72));
+        UpdateName.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
+        UpdateName.setForeground(new java.awt.Color(244, 242, 226));
+        UpdateName.setText("Update Name");
+        UpdateName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        UpdateName.setFocusPainted(false);
+        UpdateName.setPreferredSize(new java.awt.Dimension(145, 60));
+        UpdateName.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jButton5MouseMoved(evt);
+                UpdateNameMouseMoved(evt);
             }
         });
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        UpdateName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton5MouseEntered(evt);
+                UpdateNameMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton5MouseExited(evt);
+                UpdateNameMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton5MousePressed(evt);
+                UpdateNameMousePressed(evt);
             }
         });
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        UpdateName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                UpdateNameActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -164,7 +179,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
         gridBagConstraints.ipady = -25;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(jButton5, gridBagConstraints);
+        add(UpdateName, gridBagConstraints);
 
         UpdateAddress.setBackground(new java.awt.Color(74, 25, 72));
         UpdateAddress.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
@@ -341,7 +356,9 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
     }//GEN-LAST:event_UpdateUsernameMousePressed
 
     private void UpdateUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateUsernameActionPerformed
-        
+        // TODO add your handling code here:
+        updatePanelP = new UpdatePanelP("username", admin, cardLayout, container);
+        cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateUsernameActionPerformed
 
     private void UpdateEmailMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateEmailMouseMoved
@@ -350,10 +367,17 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void UpdateEmailMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateEmailMouseEntered
         // TODO add your handling code here:
+        UpdateEmail.setBackground(Color.decode("#F4F2E2"));
+        UpdateEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        UpdateEmail.setBorderPainted(true);
+        UpdateEmail.setForeground(Color.BLACK);
     }//GEN-LAST:event_UpdateEmailMouseEntered
 
     private void UpdateEmailMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateEmailMouseExited
         // TODO add your handling code here:
+        UpdateEmail.setBackground(Color.decode("#4A1948"));
+        UpdateEmail.setBorderPainted(false);
+        UpdateEmail.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_UpdateEmailMouseExited
 
     private void UpdateEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateEmailMousePressed
@@ -362,27 +386,38 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void UpdateEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateEmailActionPerformed
         // TODO add your handling code here:
+        updatePanelP = new UpdatePanelP("email", admin, cardLayout, container);
+        cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateEmailActionPerformed
 
-    private void jButton5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseMoved
+    private void UpdateNameMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateNameMouseMoved
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5MouseMoved
+    }//GEN-LAST:event_UpdateNameMouseMoved
 
-    private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
+    private void UpdateNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateNameMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5MouseEntered
+        UpdateName.setBackground(Color.decode("#F4F2E2"));
+        UpdateName.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        UpdateName.setBorderPainted(true);
+        UpdateName.setForeground(Color.BLACK);
+    }//GEN-LAST:event_UpdateNameMouseEntered
 
-    private void jButton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseExited
+    private void UpdateNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateNameMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5MouseExited
+        UpdateName.setBackground(Color.decode("#4A1948"));
+        UpdateName.setBorderPainted(false);
+        UpdateName.setForeground(Color.decode("#F4F2E2"));
+    }//GEN-LAST:event_UpdateNameMouseExited
 
-    private void jButton5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MousePressed
+    private void UpdateNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateNameMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5MousePressed
+    }//GEN-LAST:event_UpdateNameMousePressed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void UpdateNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        updatePanelP = new UpdatePanelP("name", admin, cardLayout, container);
+        cardLayout.show(container, "updatepanel");
+    }//GEN-LAST:event_UpdateNameActionPerformed
 
     private void UpdateAddressMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAddressMouseMoved
         // TODO add your handling code here:
@@ -390,10 +425,17 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void UpdateAddressMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAddressMouseEntered
         // TODO add your handling code here:
+        UpdateAddress.setBackground(Color.decode("#F4F2E2"));
+        UpdateAddress.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        UpdateAddress.setBorderPainted(true);
+        UpdateAddress.setForeground(Color.BLACK);
     }//GEN-LAST:event_UpdateAddressMouseEntered
 
     private void UpdateAddressMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAddressMouseExited
         // TODO add your handling code here:
+        UpdateAddress.setBackground(Color.decode("#4A1948"));
+        UpdateAddress.setBorderPainted(false);
+        UpdateAddress.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_UpdateAddressMouseExited
 
     private void UpdateAddressMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAddressMousePressed
@@ -402,6 +444,8 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void UpdateAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAddressActionPerformed
         // TODO add your handling code here:
+        updatePanelP = new UpdatePanelP("address", admin, cardLayout, container);
+        cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateAddressActionPerformed
 
     private void UpdateContactNumberMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateContactNumberMouseMoved
@@ -410,10 +454,17 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void UpdateContactNumberMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateContactNumberMouseEntered
         // TODO add your handling code here:
+        UpdateContactNumber.setBackground(Color.decode("#F4F2E2"));
+        UpdateContactNumber.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        UpdateContactNumber.setBorderPainted(true);
+        UpdateContactNumber.setForeground(Color.BLACK);
     }//GEN-LAST:event_UpdateContactNumberMouseEntered
 
     private void UpdateContactNumberMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateContactNumberMouseExited
         // TODO add your handling code here:
+        UpdateContactNumber.setBackground(Color.decode("#4A1948"));
+        UpdateContactNumber.setBorderPainted(false);
+        UpdateContactNumber.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_UpdateContactNumberMouseExited
 
     private void UpdateContactNumberMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateContactNumberMousePressed
@@ -422,6 +473,8 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void UpdateContactNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateContactNumberActionPerformed
         // TODO add your handling code here:
+        updatePanelP = new UpdatePanelP("contactnumber", admin, cardLayout, container);
+        cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateContactNumberActionPerformed
 
     private void UpdateDepartmentMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateDepartmentMouseMoved
@@ -430,10 +483,17 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void UpdateDepartmentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateDepartmentMouseEntered
         // TODO add your handling code here:
+        UpdateDepartment.setBackground(Color.decode("#F4F2E2"));
+        UpdateDepartment.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        UpdateDepartment.setBorderPainted(true);
+        UpdateDepartment.setForeground(Color.BLACK);
     }//GEN-LAST:event_UpdateDepartmentMouseEntered
 
     private void UpdateDepartmentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateDepartmentMouseExited
         // TODO add your handling code here:
+        UpdateDepartment.setBackground(Color.decode("#4A1948"));
+        UpdateDepartment.setBorderPainted(false);
+        UpdateDepartment.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_UpdateDepartmentMouseExited
 
     private void UpdateDepartmentMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateDepartmentMousePressed
@@ -442,6 +502,8 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void UpdateDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateDepartmentActionPerformed
         // TODO add your handling code here:
+        updatePanelP = new UpdatePanelP("department", admin, cardLayout, container);
+        cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateDepartmentActionPerformed
 
     private void BackButtonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackButtonFocusGained
@@ -485,8 +547,13 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
+        container.remove(updatePanelP);
+        container.revalidate();
+        container.repaint();
+        updatePanelP = null ;
+        System.gc();
+        cardLayout.show(container, "Adminmenu");
     }//GEN-LAST:event_BackButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
@@ -495,7 +562,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
     private javax.swing.JButton UpdateContactNumber;
     private javax.swing.JButton UpdateDepartment;
     private javax.swing.JButton UpdateEmail;
+    private javax.swing.JButton UpdateName;
     private javax.swing.JButton UpdateUsername;
-    private javax.swing.JButton jButton5;
     // End of variables declaration//GEN-END:variables
 }
