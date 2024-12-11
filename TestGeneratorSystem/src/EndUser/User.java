@@ -376,6 +376,14 @@ public abstract class User {
             ifColorfullPrintln(errorMessage, TerminalColors.BOLD_RED);
         }
     }
+//    protected static String validateInput(
+//            Checker check,
+//            Checker.StringType validationType,
+//            String errorMessage
+//    ){
+//    
+//    }
+    
 
     public abstract User login();
 
