@@ -60,9 +60,6 @@ public class Checker {
                 throw new IllegalArgumentException("Unknown type: " + type);
         }
     }
-    private boolean isValidFirstName(String input) {
-        // Example validation: first name must be alphabetic and not empty
-        return input.matches("[A-Za-z]+") && !input.isEmpty();
-    }
+    
 
 }

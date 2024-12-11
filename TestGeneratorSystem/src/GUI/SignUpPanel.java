@@ -6,12 +6,11 @@ package GUI;
 
 import EndUser.Admin;
 import EndUser.Student;
+import UserDefinedFunctionalities.Checker;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.net.URL;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -50,6 +49,18 @@ public class SignUpPanel extends javax.swing.JPanel {
             jLabel9.setVisible(true);
 
         }
+        jLabel13.setVisible(false);
+        jLabel14.setVisible(false);
+        jLabel15.setVisible(false);
+        jLabel16.setVisible(false);
+        jLabel17.setVisible(false);
+        jLabel18.setVisible(false);
+        jLabel19.setVisible(false);
+        jLabel20.setVisible(false);
+        jLabel21.setVisible(false);
+        jLabel22.setVisible(false);
+        jLabel23.setVisible(false);
+        jLabel24.setVisible(false);
 
     }
 
@@ -73,7 +84,6 @@ public class SignUpPanel extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
@@ -86,10 +96,22 @@ public class SignUpPanel extends javax.swing.JPanel {
         jTextField12 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 32767));
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 40), new java.awt.Dimension(32767, 40));
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 250, 206));
         setLayout(new java.awt.GridBagLayout());
@@ -120,7 +142,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridy = 18;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -136,9 +158,14 @@ public class SignUpPanel extends javax.swing.JPanel {
                 jTextField3ActionPerformed(evt);
             }
         });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField3KeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -176,7 +203,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel3.setText("Country");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -188,7 +215,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel4.setText("City");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -200,7 +227,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel5.setText("Street Name");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -212,7 +239,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel6.setText("Username");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -224,7 +251,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel7.setText("Email");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -235,9 +262,22 @@ public class SignUpPanel extends javax.swing.JPanel {
         jTextField1.setMaximumSize(new java.awt.Dimension(400, 40));
         jTextField1.setMinimumSize(new java.awt.Dimension(400, 40));
         jTextField1.setPreferredSize(new java.awt.Dimension(400, 40));
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextField1MousePressed(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -259,6 +299,11 @@ public class SignUpPanel extends javax.swing.JPanel {
                 jTextField4ActionPerformed(evt);
             }
         });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField4KeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
@@ -276,35 +321,20 @@ public class SignUpPanel extends javax.swing.JPanel {
                 jTextField5ActionPerformed(evt);
             }
         });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         add(jTextField5, gridBagConstraints);
-
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setMaximumSize(new java.awt.Dimension(400, 40));
-        jTextField6.setMinimumSize(new java.awt.Dimension(400, 40));
-        jTextField6.setName(""); // NOI18N
-        jTextField6.setPreferredSize(new java.awt.Dimension(400, 40));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        add(jTextField6, gridBagConstraints);
 
         jTextField7.setBackground(new java.awt.Color(255, 255, 255));
         jTextField7.setMaximumSize(new java.awt.Dimension(200, 40));
@@ -315,9 +345,14 @@ public class SignUpPanel extends javax.swing.JPanel {
                 jTextField7ActionPerformed(evt);
             }
         });
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField7KeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -334,9 +369,14 @@ public class SignUpPanel extends javax.swing.JPanel {
                 jTextField8ActionPerformed(evt);
             }
         });
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField8KeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -353,9 +393,14 @@ public class SignUpPanel extends javax.swing.JPanel {
                 jTextField9ActionPerformed(evt);
             }
         });
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField9KeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -389,7 +434,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 21;
+        gridBagConstraints.gridy = 20;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 1.0;
@@ -406,9 +451,14 @@ public class SignUpPanel extends javax.swing.JPanel {
                 jTextField10ActionPerformed(evt);
             }
         });
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField10KeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -421,7 +471,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel9.setText("Institute");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -433,7 +483,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel10.setText("Department");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -449,9 +499,14 @@ public class SignUpPanel extends javax.swing.JPanel {
                 jTextField11ActionPerformed(evt);
             }
         });
+        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField11KeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -464,7 +519,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel11.setText("Contact Number");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -480,9 +535,14 @@ public class SignUpPanel extends javax.swing.JPanel {
                 jTextField12ActionPerformed(evt);
             }
         });
+        jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField12KeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -495,7 +555,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel12.setText("Password");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -514,16 +574,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         add(jLabel8, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 19;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        add(filler2, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 22;
+        gridBagConstraints.gridheight = 21;
         add(filler3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -533,74 +586,183 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 22;
+        gridBagConstraints.gridheight = 21;
         add(filler1, gridBagConstraints);
+
+        jLabel13.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel13.setText("jLabel13");
+        jLabel13.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        add(jLabel13, gridBagConstraints);
+
+        jLabel14.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel14.setText("jLabel14");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        add(jLabel14, gridBagConstraints);
+
+        jLabel15.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel15.setText("jLabel15");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        add(jLabel15, gridBagConstraints);
+
+        jLabel16.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel16.setText("jLabel16");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        add(jLabel16, gridBagConstraints);
+
+        jLabel17.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel17.setText("jLabel17");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 10;
+        add(jLabel17, gridBagConstraints);
+
+        jLabel18.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel18.setText("jLabel18");
+        jLabel18.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jLabel18KeyReleased(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 10;
+        add(jLabel18, gridBagConstraints);
+
+        jLabel19.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel19.setText("jLabel19");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 10;
+        add(jLabel19, gridBagConstraints);
+
+        jLabel20.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel20.setText("jLabel20");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 14;
+        add(jLabel20, gridBagConstraints);
+
+        jLabel21.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel21.setText("jLabel21");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 2;
+        add(jLabel21, gridBagConstraints);
+
+        jLabel22.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel22.setText("jLabel22");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridwidth = 2;
+        add(jLabel22, gridBagConstraints);
+
+        jLabel23.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel23.setText("jLabel23");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
+        add(jLabel23, gridBagConstraints);
+
+        jLabel24.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel24.setText("Check The Errors First");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 19;
+        add(jLabel24, gridBagConstraints);
+
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setMaximumSize(new java.awt.Dimension(400, 40));
+        jPasswordField1.setMinimumSize(new java.awt.Dimension(400, 40));
+        jPasswordField1.setPreferredSize(new java.awt.Dimension(400, 40));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyReleased(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        add(jPasswordField1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here
+
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
 
+        // Gather input from the form fields
+        String fname = jTextField1.getText().trim();
+        String lname = jTextField4.getText().trim();
+        String username = jTextField8.getText().trim();
+        String email = jTextField9.getText().trim();
+        char[] passwordArray = jPasswordField1.getPassword(); // Get password as a char array
+        String password = new String(passwordArray); // Convert to a string
+        String country = jTextField5.getText().trim();
+        String city = jTextField7.getText().trim();
+        String streetname = jTextField10.getText().trim();
+
+        Checker check = new Checker();
+        if (isvalid()) {  // Validation successful
+            jLabel24.setVisible(false); // Hide error message
+
+            if (this.Usertype.equals("Student")) {
+                String institute = jTextField3.getText().trim();
+                Student.signUp(username, email, password, fname, lname, country, city, streetname, institute);
+            } else if (this.Usertype.equals("Admin")) {
+                String contactnumber = jTextField12.getText().trim();
+                String department = jTextField11.getText().trim();
+                Admin.signUp(username, email, password, fname, lname, country, city, streetname, contactnumber, department);
+            }
+
+            // Submission successful
+            javax.swing.JOptionPane.showMessageDialog(this, "Signup successful!");
+        } else {  // Validation failed
+            jLabel24.setVisible(true); // Show error message
+        }
+
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Gather input from the form fields
-        String fname = jTextField1.getText();
-        String lname = jTextField4.getText(); // Assuming you have a last name field
-        String username = jTextField8.getText();
-        String email = jTextField9.getText(); // Assuming you have an email field
-        String password = jTextField6.getText(); // Assuming you have a password field
-        String country = jTextField5.getText();
-        String city = jTextField7.getText();
-        String streetname = jTextField10.getText();
-
-        // Create a common list of user details
-        ArrayList<String> commonList = new ArrayList<>();
-        commonList.add(username);
-        commonList.add(email);
-        commonList.add(password);
-        commonList.add(fname);
-        commonList.add(lname);
-        commonList.add(country);
-        commonList.add(city);
-        commonList.add(streetname);
-
-        // Check user type and call the appropriate signUp method
-        if (this.Usertype.equals("Student")) {
-            
-            String institute = jTextField3.getText();
-            Student.signUp(username, email, password, fname, lname, country, city, streetname, institute);
-            // Optionally, show a success message
-            JOptionPane.showMessageDialog(this, "Student signed up successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } else if (this.Usertype.equals("Admin")) {
-            
-            String contactnumber = jTextField12.getText();
-            String department = jTextField11.getText();
-            // Call the signUp method from the Admin class
-            Admin.signUp(username, email, password, fname, lname,
-                    country, city, streetname, contactnumber,
-                    department);
-            // Optionally, show a success message
-            JOptionPane.showMessageDialog(this, "Admin signed up successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        }
-
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
         // TODO add your handling code here:
@@ -655,6 +817,7 @@ public class SignUpPanel extends javax.swing.JPanel {
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
@@ -663,6 +826,7 @@ public class SignUpPanel extends javax.swing.JPanel {
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -684,10 +848,200 @@ public class SignUpPanel extends javax.swing.JPanel {
         jButton1.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_jButton1MouseExited
 
+    private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jTextField1MousePressed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+        isvalid();
+        Checker check = new Checker();
+        String fname = jTextField1.getText();
+
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, fname)) {
+            jLabel13.setText("Must contain letters only");
+            jLabel13.setVisible(true);
+        } else {
+            jLabel13.setVisible(false);
+        }
+
+
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        String lname = jTextField4.getText();
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, lname)) {
+            jLabel14.setVisible(true);
+            jLabel14.setText("Must Contain Letters only");
+            jLabel14.setVisible(true);
+        } else {
+            jLabel14.setVisible(false);
+        }
+
+
+    }//GEN-LAST:event_jTextField4KeyReleased
+
+    private void jTextField8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        String username = jTextField8.getText();
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.USERNAME, username)) {
+            jLabel15.setText("Username must be 3-20 characters(letters, numbers, dots, underscores)");
+            jLabel15.setVisible(true);
+        } else {
+            jLabel15.setVisible(false);
+        }
+
+
+    }//GEN-LAST:event_jTextField8KeyReleased
+
+    private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        String email = jTextField9.getText();
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.EMAIL, email)) {
+            jLabel16.setText(" Invalid email format");
+            jLabel16.setVisible(true);
+        } else {
+            jLabel16.setVisible(false);
+        }
+
+    }//GEN-LAST:event_jTextField9KeyReleased
+
+    private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        String city = jTextField7.getText();
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, city)) {
+            jLabel17.setText("Must contain letters only");
+            jLabel17.setVisible(true);
+        } else {
+            jLabel17.setVisible(false);
+        }
+
+
+    }//GEN-LAST:event_jTextField7KeyReleased
+
+    private void jLabel18KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel18KeyReleased
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jLabel18KeyReleased
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        String country = jTextField5.getText();
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, country)) {
+            jLabel18.setText("Must contain letters only");
+            jLabel18.setVisible(true);
+        } else {
+            jLabel18.setVisible(false);
+        }
+
+    }//GEN-LAST:event_jTextField5KeyReleased
+
+    private void jTextField10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        String street = jTextField10.getText();
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, street)) {
+            jLabel19.setText("Must contain letters only");
+            jLabel19.setVisible(true);
+        } else {
+            jLabel19.setVisible(false);
+        }
+
+    }//GEN-LAST:event_jTextField10KeyReleased
+
+    private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        String institute = jTextField3.getText();
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, institute)) {
+            jLabel20.setText("Invalid Institute name. It should contain letters only.");
+            jLabel20.setVisible(true);
+        } else {
+            jLabel20.setVisible(false);
+        }
+
+
+    }//GEN-LAST:event_jTextField3KeyReleased
+
+    private void jTextField11KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        String department = jTextField11.getText();
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, department)) {
+            jLabel21.setText("Invalid Department name.Should contain letters only");
+            jLabel21.setVisible(true);
+        } else {
+            jLabel21.setVisible(false);
+        }
+
+    }//GEN-LAST:event_jTextField11KeyReleased
+
+    private void jTextField12KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        String contactnumber = jTextField12.getText();
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.LETTERS_ONLY, contactnumber)) {
+            jLabel22.setText("Invalid Phone Number\ntry again with this format +Countrycode 123456789");
+            jLabel22.setVisible(true);
+        } else {
+            jLabel22.setVisible(false);
+        }
+
+    }//GEN-LAST:event_jTextField12KeyReleased
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jPasswordField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyReleased
+        // TODO add your handling code here:
+        Checker check = new Checker();
+        char[] passwordArray = jPasswordField1.getPassword(); // Get password as a char array
+        String password = new String(passwordArray); // Convert to a string
+        isvalid();
+
+        if (!check.isValid(Checker.StringType.PASSWORD, password)) {
+            jLabel23.setText("Password does not meet requirements. Please try again.");
+            jLabel23.setVisible(true);
+        } else {
+            jLabel23.setVisible(false);
+        }
+    }//GEN-LAST:event_jPasswordField1KeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler5;
     private javax.swing.JButton jButton1;
@@ -696,7 +1050,19 @@ public class SignUpPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -704,6 +1070,7 @@ public class SignUpPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -711,31 +1078,66 @@ public class SignUpPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
-public  void visabiltystudent(){
+    public void visabiltystudent() {
 //visabilty
-            jTextField3.setVisible(true);
-            jLabel9.setVisible(true);
-            jLabel10.setVisible(false);
-            jLabel11.setVisible(false);
-            jTextField11.setVisible(false);
-            jTextField12.setVisible(false);          
+        jTextField3.setVisible(true);
+        jLabel9.setVisible(true);
+        jLabel10.setVisible(false);
+        jLabel11.setVisible(false);
+        jTextField11.setVisible(false);
+        jTextField12.setVisible(false);
 
-}
-public void visabiltyadmin(){
+    }
+
+    public void visabiltyadmin() {
 // visabilty
-            jLabel10.setVisible(true);
-            jLabel11.setVisible(true);
-            jTextField11.setVisible(true);
-            jTextField12.setVisible(true);
-            jTextField3.setVisible(false);
-            jLabel9.setVisible(false);
-}
-}
+        jLabel10.setVisible(true);
+        jLabel11.setVisible(true);
+        jTextField11.setVisible(true);
+        jTextField12.setVisible(true);
+        jTextField3.setVisible(false);
+        jLabel9.setVisible(false);
+    }
 
+    public boolean isvalid() {
+        Checker check = new Checker();
+        String fname = jTextField1.getText().trim();
+        String lname = jTextField4.getText().trim();
+        String username = jTextField8.getText().trim();
+        String email = jTextField9.getText().trim();
+        char[] passwordArray = jPasswordField1.getPassword(); // Get password as a char array
+        String password = new String(passwordArray); // Convert to a string        
+        String country = jTextField5.getText().trim();
+        String city = jTextField7.getText().trim();
+        String streetname = jTextField10.getText().trim();
 
+        boolean isValid = check.isValid(Checker.StringType.LETTERS_ONLY, fname)
+                && check.isValid(Checker.StringType.LETTERS_ONLY, lname)
+                && check.isValid(Checker.StringType.USERNAME, username)
+                && check.isValid(Checker.StringType.EMAIL, email)
+                && check.isValid(Checker.StringType.PASSWORD, password)
+                && check.isValid(Checker.StringType.LETTERS_ONLY, country)
+                && check.isValid(Checker.StringType.LETTERS_ONLY, city)
+                && check.isValid(Checker.StringType.LETTERS_ONLY, streetname);
+
+        // Additional checks based on user type
+        if (Usertype.equalsIgnoreCase("Student")) {
+            String institute = jTextField3.getText().trim();
+            isValid = isValid && check.isValid(Checker.StringType.LETTERS_ONLY, institute);
+        } else if (Usertype.equalsIgnoreCase("Admin")) {
+            String contactnumber = jTextField12.getText().trim();
+            String department = jTextField11.getText().trim();
+            isValid = isValid
+                    && check.isValid(Checker.StringType.PHONE_NO, contactnumber)
+                    && check.isValid(Checker.StringType.LETTERS_ONLY, department);
+        }
+
+        return isValid; // Just return the validity without changing visibility
+    }
+
+}

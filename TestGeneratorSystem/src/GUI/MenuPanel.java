@@ -50,6 +50,7 @@ public class MenuPanel extends javax.swing.JPanel {
         setLayout(new java.awt.GridBagLayout());
 
         jButton1.setBackground(new java.awt.Color(74, 25, 72));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(244, 242, 226));
         jButton1.setText("SignUp");
         jButton1.setBorderPainted(false);
@@ -82,6 +83,7 @@ public class MenuPanel extends javax.swing.JPanel {
         add(jButton1, gridBagConstraints);
 
         jButton2.setBackground(new java.awt.Color(74, 25, 72));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(244, 242, 226));
         jButton2.setText("Login");
         jButton2.setBorderPainted(false);
