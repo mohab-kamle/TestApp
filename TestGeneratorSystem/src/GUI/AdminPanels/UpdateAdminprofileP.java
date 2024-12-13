@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package GUI.AdminPanels;
 
 import EndUser.Admin;
@@ -30,9 +26,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
         initComponents();
         this.admin = admin ;
         this.cardLayout = cardLayout;
-        this.container = container;
-        container.add(updatePanelP, "updatepanel"); 
-        
+        this.container = container;        
         
     }
 
@@ -294,6 +288,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
         BackButton.setBackground(new java.awt.Color(74, 25, 72));
         BackButton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         BackButton.setToolTipText("Click to go back");
         BackButton.setBorderPainted(false);
         BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -358,6 +353,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
     private void UpdateUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateUsernameActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("username", admin, cardLayout, container);
+        container.add(updatePanelP, "updatepanel"); 
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateUsernameActionPerformed
 
@@ -387,6 +383,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
     private void UpdateEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateEmailActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("email", admin, cardLayout, container);
+        container.add(updatePanelP, "updatepanel"); 
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateEmailActionPerformed
 
@@ -416,6 +413,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
     private void UpdateNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateNameActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("name", admin, cardLayout, container);
+        container.add(updatePanelP, "updatepanel"); 
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateNameActionPerformed
 
@@ -445,6 +443,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
     private void UpdateAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAddressActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("address", admin, cardLayout, container);
+        container.add(updatePanelP, "updatepanel"); 
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateAddressActionPerformed
 
@@ -474,6 +473,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
     private void UpdateContactNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateContactNumberActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("contactnumber", admin, cardLayout, container);
+        container.add(updatePanelP, "updatepanel"); 
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateContactNumberActionPerformed
 
@@ -503,6 +503,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
     private void UpdateDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateDepartmentActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("department", admin, cardLayout, container);
+        container.add(updatePanelP, "updatepanel"); 
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateDepartmentActionPerformed
 
@@ -547,12 +548,12 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        container.remove(updatePanelP);
+//        container.remove(updatePanelP);
         container.revalidate();
         container.repaint();
         updatePanelP = null ;
         System.gc();
-        cardLayout.show(container, "Adminmenu");
+        cardLayout.show(container, "adminDashboard");
     }//GEN-LAST:event_BackButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package GUI.AdminPanels;
 
 import EndUser.Admin;
@@ -37,11 +33,11 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
      * @param container
      */
     public AdminDashboardMenuP(Admin admin, CardLayout cardLayout, JPanel container) {
-        initComponents();
         this.admin = admin;
         this.cardLayout = cardLayout;
         this.container = container;
-        VAdmin = new ViewProfilePanelAdminP(admin, cardLayout, container );
+        initComponents();
+        VAdmin = new ViewProfilePanelAdminP(admin, cardLayout, container);
         ChangePass = new ChangePasswordPanel_P(admin, cardLayout, container);
         UpdateAdminProf = new UpdateAdminprofileP(admin, cardLayout, container);
         // waiting kareem create Panels 
@@ -196,11 +192,15 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         setLayout(new java.awt.GridBagLayout());
 
         Logout.setBackground(new java.awt.Color(0, 0, 0));
+        Logout.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
         Logout.setForeground(new java.awt.Color(255, 0, 0));
         Logout.setText("Logout");
         Logout.setBorderPainted(false);
         Logout.setFocusPainted(false);
         Logout.setFocusable(false);
+        Logout.setMaximumSize(new java.awt.Dimension(100, 100));
+        Logout.setMinimumSize(new java.awt.Dimension(50, 40));
+        Logout.setPreferredSize(new java.awt.Dimension(150, 40));
         Logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LogoutMouseClicked(evt);
@@ -218,9 +218,9 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.ipadx = 250;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         add(Logout, gridBagConstraints);
 
         AdminMenu.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
@@ -230,7 +230,6 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 343;
         gridBagConstraints.insets = new java.awt.Insets(19, 6, 0, 10);
         add(AdminMenu, gridBagConstraints);
@@ -243,7 +242,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         ViewProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ViewProfile.setFocusPainted(false);
         ViewProfile.setFocusable(false);
-        ViewProfile.setPreferredSize(new java.awt.Dimension(145, 60));
+        ViewProfile.setPreferredSize(new java.awt.Dimension(145, 80));
         ViewProfile.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 ViewProfileMouseMoved(evt);
@@ -266,7 +265,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 201;
         gridBagConstraints.ipady = -25;
@@ -282,7 +281,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         UpdateProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UpdateProfile.setFocusPainted(false);
         UpdateProfile.setFocusable(false);
-        UpdateProfile.setPreferredSize(new java.awt.Dimension(145, 60));
+        UpdateProfile.setPreferredSize(new java.awt.Dimension(145, 80));
         UpdateProfile.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 UpdateProfileMouseMoved(evt);
@@ -305,7 +304,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = -25;
@@ -321,7 +320,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         CreateCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CreateCategory.setFocusPainted(false);
         CreateCategory.setFocusable(false);
-        CreateCategory.setPreferredSize(new java.awt.Dimension(145, 60));
+        CreateCategory.setPreferredSize(new java.awt.Dimension(145, 80));
         CreateCategory.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 CreateCategoryMouseMoved(evt);
@@ -345,7 +344,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = -25;
         gridBagConstraints.weightx = 1.0;
@@ -360,7 +359,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         ChangePassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ChangePassword.setFocusPainted(false);
         ChangePassword.setFocusable(false);
-        ChangePassword.setPreferredSize(new java.awt.Dimension(145, 60));
+        ChangePassword.setPreferredSize(new java.awt.Dimension(145, 80));
         ChangePassword.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 ChangePasswordMouseMoved(evt);
@@ -383,7 +382,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = -25;
@@ -399,7 +398,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         DeleteAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         DeleteAccount.setFocusPainted(false);
         DeleteAccount.setFocusable(false);
-        DeleteAccount.setPreferredSize(new java.awt.Dimension(145, 60));
+        DeleteAccount.setPreferredSize(new java.awt.Dimension(145, 80));
         DeleteAccount.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 DeleteAccountMouseMoved(evt);
@@ -422,7 +421,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = -25;
@@ -438,7 +437,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         ModifyCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ModifyCategory.setFocusPainted(false);
         ModifyCategory.setFocusable(false);
-        ModifyCategory.setPreferredSize(new java.awt.Dimension(145, 60));
+        ModifyCategory.setPreferredSize(new java.awt.Dimension(145, 80));
         ModifyCategory.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 ModifyCategoryMouseMoved(evt);
@@ -462,7 +461,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = -25;
         gridBagConstraints.weightx = 1.0;
@@ -477,7 +476,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         DeleteCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         DeleteCategory.setFocusPainted(false);
         DeleteCategory.setFocusable(false);
-        DeleteCategory.setPreferredSize(new java.awt.Dimension(145, 60));
+        DeleteCategory.setPreferredSize(new java.awt.Dimension(145, 80));
         DeleteCategory.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 DeleteCategoryMouseMoved(evt);
@@ -501,7 +500,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = -25;
         gridBagConstraints.weightx = 1.0;
@@ -516,7 +515,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         AddQuestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AddQuestion.setFocusPainted(false);
         AddQuestion.setFocusable(false);
-        AddQuestion.setPreferredSize(new java.awt.Dimension(145, 60));
+        AddQuestion.setPreferredSize(new java.awt.Dimension(145, 80));
         AddQuestion.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 AddQuestionMouseMoved(evt);
@@ -539,8 +538,8 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = -25;
         gridBagConstraints.weightx = 1.0;
@@ -555,7 +554,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         UpdateQuestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UpdateQuestion.setFocusPainted(false);
         UpdateQuestion.setFocusable(false);
-        UpdateQuestion.setPreferredSize(new java.awt.Dimension(145, 60));
+        UpdateQuestion.setPreferredSize(new java.awt.Dimension(145, 80));
         UpdateQuestion.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 UpdateQuestionMouseMoved(evt);
@@ -578,8 +577,8 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = -25;
         gridBagConstraints.weightx = 1.0;
@@ -594,7 +593,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         DeleteQuestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         DeleteQuestion.setFocusPainted(false);
         DeleteQuestion.setFocusable(false);
-        DeleteQuestion.setPreferredSize(new java.awt.Dimension(145, 60));
+        DeleteQuestion.setPreferredSize(new java.awt.Dimension(145, 80));
         DeleteQuestion.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 DeleteQuestionMouseMoved(evt);
@@ -617,8 +616,8 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = -25;
         gridBagConstraints.weightx = 1.0;

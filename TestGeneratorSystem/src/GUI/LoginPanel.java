@@ -2,6 +2,8 @@ package GUI;
 
 import EndUser.Admin;
 import EndUser.Student;
+import GUI.AdminPanels.AdminDashboardMenuP;
+import GUI.StudentPanels.StudentDashboardMenuP;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.net.URL;
@@ -277,12 +279,15 @@ public class LoginPanel extends javax.swing.JPanel {
         String Pass = new String(jPasswordField1.getPassword());
         Admin loggedAdmin = new Admin().login(User, Pass);
         if (loggedAdmin != null) {
-            //goes to profile page of admin
+            AdminDashboardMenuP adminDashboard = new AdminDashboardMenuP(loggedAdmin, cardLayout, container);
+            container.add(adminDashboard,"adminDashboard");
+            cardLayout.show(container, "adminDashboard");
         } else {
             Student loggedStudent = new Student().login(User, Pass);
             if (loggedStudent != null) {
-                //goes to profile page of Student
-
+                StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(loggedStudent, cardLayout, container);
+            container.add(studentDashboard,"studentDashboard");
+            cardLayout.show(container, "studentDashboard");
             } else {
         jLabel4.setVisible(true);
             }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package GUI.AdminPanels;
 
 import EndUser.Admin;
@@ -346,6 +342,7 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
 
         BackButton.setBackground(new java.awt.Color(74, 25, 72));
         BackButton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         BackButton.setToolTipText("Click to go back");
         BackButton.setBorderPainted(false);
         BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -426,7 +423,7 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "Adminmenu");
+        cardLayout.show(container, "adminDashboard");
     }//GEN-LAST:event_BackButtonActionPerformed
 
 
