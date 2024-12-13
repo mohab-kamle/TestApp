@@ -144,6 +144,24 @@ public class Student extends User {
      *
      * @return an ArrayList containing common user details collected during the sign-up process.
      */
+    public static ArrayList<String> signUp(String username, String email, String password, String fname, String lname,
+            String country, String city, String streetname, String institute) {
+        // Gather common user details
+        ArrayList<String> commonList = User.signUp(username, email, password, fname, lname, country, city, streetname);
+        Student newStudent = new Student(institute, commonList);
+        // Persist the student data
+        StudentDAO SDB = new StudentDAO();
+        SDB.saveStudent(newStudent);
+        return commonList;
+    }
+
+    /**
+     * Facilitates the sign-up process for a new student by gathering user details and validating the input.
+     *
+     * This method prompts the user to enter their institute name after collecting common user details through the User class's sign-up method. It validates the institute name to ensure it contains only letters. Upon successful validation, it creates a new Student instance with the provided details and saves the student data to the database using the StudentDAO. Finally, it returns a list of common user details.
+     *
+     * @return an ArrayList containing common user details collected during the sign-up process.
+     */
     public static ArrayList<String> signUp() {
         Scanner scanner = new Scanner(System.in);
         Checker check = new Checker(); // data validation object
@@ -191,7 +209,8 @@ public class Student extends User {
         passwordInput = new String(passwordArray);
         return SDB.searchStudent(userNameInput, passwordInput);
     }
-/**
+
+    /**
      * GUI VERSION Handles the login process for a student by collecting their username and password.
      *
      * This method prompts the user to enter their username and password. It uses the `Console` class to securely read the password input. If the console is not available, it notifies the user. After gathering the credentials, it calls the `searchStudent` method of the `StudentDAO` class to authenticate the student and retrieve their information. The method returns a `Student` object if the login is successful, or null if authentication fails.
@@ -200,7 +219,7 @@ public class Student extends User {
      * @param password
      * @return a Student object representing the authenticated student, or null if login fails.
      */
-    public Student login(String username,String password) {  
+    public Student login(String username, String password) {
         StudentDAO SDB = new StudentDAO();
         return SDB.searchStudent(username, password);
     }
@@ -358,12 +377,12 @@ public class Student extends User {
         // Category Selection
         List<Category> categories = categoryDAO.getCategoriesList();
         if (categories.isEmpty()) {
-            ifColorfullPrintln("No categories available. Cannot create a test.",TerminalColors.BOLD_RED);
+            ifColorfullPrintln("No categories available. Cannot create a test.", TerminalColors.BOLD_RED);
             return;
         }
 
         // Display and Select Category
-        ifColorfullPrintln("Select a Category:",TerminalColors.YELLOW);
+        ifColorfullPrintln("Select a Category:", TerminalColors.YELLOW);
         for (int i = 0; i < categories.size(); i++) {
             System.out.println((i + 1) + ". " + categories.get(i).getName());
         }
@@ -404,7 +423,7 @@ public class Student extends User {
         test.reset();
 
         // Start Test
-        ifColorfullPrintln("<--- Test Started --->",TerminalColors.BOLD_YELLOW);
+        ifColorfullPrintln("<--- Test Started --->", TerminalColors.BOLD_YELLOW);
         System.out.println("Category: " + selectedCategory.getName());
         System.out.println("Difficulty: " + difficulty);
         System.out.println("Number of Questions: " + numQuestions);
@@ -416,7 +435,7 @@ public class Student extends User {
             Question currentQuestion = testQuestions.get(i);
 
             // Display question details
-            ifColorfullPrintln("\nQuestion " + (i + 1) + ":",TerminalColors.BOLD_YELLOW);
+            ifColorfullPrintln("\nQuestion " + (i + 1) + ":", TerminalColors.BOLD_YELLOW);
             System.out.println(currentQuestion.getStatement());
 
             // Display choices
@@ -452,7 +471,7 @@ public class Student extends User {
         // Calculate score
         int score = calculateScore(test.getTakerAnswers(), correctAnswers);
         double percentageScore = (double) score / numQuestions * 100;
-        
+
         // Set grade based on score
         TestDAO TDB = new TestDAO();
         // Update test and student statistics
@@ -460,9 +479,9 @@ public class Student extends User {
         TDB.saveTest(test);
         double AccumalativePercent = 0;
         for (Test t : TDB.searchTestsByStudent(this)) {
-            AccumalativePercent+=t.getTestResult();
+            AccumalativePercent += t.getTestResult();
         }
-        AccumalativePercent/=TDB.searchTestsByStudent(this).size();
+        AccumalativePercent /= TDB.searchTestsByStudent(this).size();
         calculateGrade(AccumalativePercent);
         StudentDAO SDB = new StudentDAO();
         SDB.updateStudent(this);
@@ -482,7 +501,7 @@ public class Student extends User {
     private Category selectCategory(Scanner scanner, List<Category> categories) {
         while (true) {
             try {
-                ifColorfullPrint("Enter category number: ",TerminalColors.CYAN);
+                ifColorfullPrint("Enter category number: ", TerminalColors.CYAN);
                 int categoryChoice = scanner.nextInt();
                 if (categoryChoice > 0 && categoryChoice <= categories.size()) {
                     return categories.get(categoryChoice - 1);
@@ -505,14 +524,14 @@ public class Student extends User {
      * @return the selected `Question.dlevel` enum value representing the chosen difficulty level.
      */
     private Question.dlevel selectDifficulty(Scanner scanner) {
-        ifColorfullPrintln("Select Difficulty:",TerminalColors.YELLOW);
+        ifColorfullPrintln("Select Difficulty:", TerminalColors.YELLOW);
         System.out.println("1. Easy");
         System.out.println("2. Medium");
         System.out.println("3. Hard");
 
         while (true) {
             try {
-                ifColorfullPrint("Enter difficulty number: ",TerminalColors.CYAN);
+                ifColorfullPrint("Enter difficulty number: ", TerminalColors.CYAN);
                 int difficultyChoice = scanner.nextInt();
                 if (difficultyChoice >= 1 && difficultyChoice <= 3) {
                     return Question.dlevel.values()[difficultyChoice - 1];
@@ -537,7 +556,7 @@ public class Student extends User {
     private int selectNumberOfQuestions(Scanner scanner) {
         while (true) {
             try {
-                ifColorfullPrint("Enter number of questions (5-40): ",TerminalColors.CYAN);
+                ifColorfullPrint("Enter number of questions (5-40): ", TerminalColors.CYAN);
                 int numQuestions = scanner.nextInt();
                 if (numQuestions >= 5 && numQuestions <= 40) {
                     return numQuestions;
@@ -602,7 +621,6 @@ public class Student extends User {
 
                 // Debug print
 //                System.out.println("Received input: '" + answerInput + "'");
-
                 // Check for 'love' input
                 if (answerInput.equals("LOVE")) {
                     markFavouriteQuestion(currentQuestion);
@@ -617,7 +635,7 @@ public class Student extends User {
                 }
 
                 // If we reach here, input is invalid
-                ifColorfullPrintln("Invalid input. Please enter A, B, C, or D.",TerminalColors.BOLD_RED);
+                ifColorfullPrintln("Invalid input. Please enter A, B, C, or D.", TerminalColors.BOLD_RED);
             } catch (Exception e) {
                 System.out.println("An unexpected error occurred: " + e.getMessage());
 
@@ -710,7 +728,7 @@ public class Student extends User {
         takenTests.add(test);
         totalTimeOfAllTests += totalTestTime;
 
-        if ( percentageScore >= Test.getPassingScore()) {
+        if (percentageScore >= Test.getPassingScore()) {
             passedTestsCount++;
         }
         //update in the database
@@ -946,78 +964,78 @@ public class Student extends User {
      * @param question the `Question` object to be marked as a favorite.
      */
     public void markFavouriteQuestion(Question question) {
-    // Check if the question is already a favorite
-    boolean isItFavorite = false;
-    for (QuestionBank favQuestionBank : favoriteQuestions) {
-        if (favQuestionBank.getQuestions().contains(question)) {
-            isItFavorite = true;
-            break;
-        }
-    }
-
-    if (!isItFavorite) {
-        CategoryDAO categoryDAO = new CategoryDAO();
-        QuestionBankDAO questionBankDAO = new QuestionBankDAO();
-        Category category = categoryDAO.loadCategory(question.getTopic());
-        
-        // First, try to find matching bank in favoriteQuestions list
-        QuestionBank favoriteBank = null;
-        for (QuestionBank bank : favoriteQuestions) {
-            if (bank.getCategoryID().equals(category.getCategoryId()) && 
-                bank.getCreatorID().equals(getUserId())) {
-                favoriteBank = bank;
+        // Check if the question is already a favorite
+        boolean isItFavorite = false;
+        for (QuestionBank favQuestionBank : favoriteQuestions) {
+            if (favQuestionBank.getQuestions().contains(question)) {
+                isItFavorite = true;
                 break;
             }
         }
 
-        // If not found in memory, check database
-        if (favoriteBank == null) {
-            List<QuestionBank> existingBanks = questionBankDAO.searchByCategoryAndCreator(category, getUserId());
-            for (QuestionBank bank : existingBanks) {
-                if (bank.getCreatorID().equals(getUserId())) {
+        if (!isItFavorite) {
+            CategoryDAO categoryDAO = new CategoryDAO();
+            QuestionBankDAO questionBankDAO = new QuestionBankDAO();
+            Category category = categoryDAO.loadCategory(question.getTopic());
+
+            // First, try to find matching bank in favoriteQuestions list
+            QuestionBank favoriteBank = null;
+            for (QuestionBank bank : favoriteQuestions) {
+                if (bank.getCategoryID().equals(category.getCategoryId())
+                        && bank.getCreatorID().equals(getUserId())) {
                     favoriteBank = bank;
-                    // Add to favoriteQuestions if found in database but not in memory
-                    if (!favoriteQuestions.contains(favoriteBank)) {
-                        favoriteQuestions.add(favoriteBank);
-                    }
                     break;
                 }
             }
-        }
 
-        // If still null, create new bank
-        if (favoriteBank == null) {
-            favoriteBank = new QuestionBank(
-                    getUserId(),
-                    category.getCategoryId(),
-                    LocalDate.now()
-            );
-            favoriteBank.setQuestions(new ArrayList<>());
-            favoriteQuestions.add(favoriteBank);
-        }
+            // If not found in memory, check database
+            if (favoriteBank == null) {
+                List<QuestionBank> existingBanks = questionBankDAO.searchByCategoryAndCreator(category, getUserId());
+                for (QuestionBank bank : existingBanks) {
+                    if (bank.getCreatorID().equals(getUserId())) {
+                        favoriteBank = bank;
+                        // Add to favoriteQuestions if found in database but not in memory
+                        if (!favoriteQuestions.contains(favoriteBank)) {
+                            favoriteQuestions.add(favoriteBank);
+                        }
+                        break;
+                    }
+                }
+            }
 
-        // Add the question to the favorite bank if it's not already there
-        ArrayList<Question> questions = favoriteBank.getQuestions();
-        if (!questions.contains(question)) {
-            questions.add(question);
-            favoriteBank.setQuestions(questions);
-            
-            // Update the question's favorite count
-            question.setNumberOfFavorites(question.getNumberOfFavorites() + 1);
-            
-            // Update the database
-            updateQuestionInDatabase(question, questionBankDAO, categoryDAO);
-            questionBankDAO.saveQuestionBank(favoriteBank);
-            
-            // Update student in database
-            StudentDAO studentDAO = new StudentDAO();
-            studentDAO.updateStudent(this);
-            ifColorfullPrintln("Question marked as favorite",TerminalColors.BOLD_PURPLE);
+            // If still null, create new bank
+            if (favoriteBank == null) {
+                favoriteBank = new QuestionBank(
+                        getUserId(),
+                        category.getCategoryId(),
+                        LocalDate.now()
+                );
+                favoriteBank.setQuestions(new ArrayList<>());
+                favoriteQuestions.add(favoriteBank);
+            }
+
+            // Add the question to the favorite bank if it's not already there
+            ArrayList<Question> questions = favoriteBank.getQuestions();
+            if (!questions.contains(question)) {
+                questions.add(question);
+                favoriteBank.setQuestions(questions);
+
+                // Update the question's favorite count
+                question.setNumberOfFavorites(question.getNumberOfFavorites() + 1);
+
+                // Update the database
+                updateQuestionInDatabase(question, questionBankDAO, categoryDAO);
+                questionBankDAO.saveQuestionBank(favoriteBank);
+
+                // Update student in database
+                StudentDAO studentDAO = new StudentDAO();
+                studentDAO.updateStudent(this);
+                ifColorfullPrintln("Question marked as favorite", TerminalColors.BOLD_PURPLE);
+            }
+        } else {
+            ifColorfullPrintln("Question is already marked as favorite.", TerminalColors.BOLD_PURPLE);
         }
-    } else {
-        ifColorfullPrintln("Question is already marked as favorite.",TerminalColors.BOLD_PURPLE);
     }
-}
 
 // Helper method to update the question in all relevant banks in the database
     private void updateQuestionInDatabase(Question question, QuestionBankDAO questionBankDAO, CategoryDAO categoryDAO) {
@@ -1052,17 +1070,17 @@ public class Student extends User {
         CategoryDAO categoryDAO = new CategoryDAO();
         while (true) {
             // Display filtering options
-            TestGeneratorApp.ifColorfullPrintln("\n== Favorite Questions Menu ==",TerminalColors.BOLD_BLUE);
+            TestGeneratorApp.ifColorfullPrintln("\n== Favorite Questions Menu ==", TerminalColors.BOLD_BLUE);
             System.out.println("1. View All Favorite Questions");
             System.out.println("2. Filter by Category");
-            System.out.println("3. Exit");                
+            System.out.println("3. Exit");
             String choice;
-            while (true) {                
+            while (true) {
                 System.out.print("Enter your choice: ");
                 choice = scanner.nextLine();
-                if(choice.length()!=1||Integer.parseInt(choice)<1||Integer.parseInt(choice)>3){
+                if (choice.length() != 1 || Integer.parseInt(choice) < 1 || Integer.parseInt(choice) > 3) {
                     ifColorfullPrintln("Invalid input , try again", TerminalColors.BOLD_RED);
-                }else{
+                } else {
                     break;
                 }
             }
