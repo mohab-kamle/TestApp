@@ -5,14 +5,12 @@
 package GUI.AdminPanels;
 
 import DataBaseManagment.CategoryDAO;
-import EndUser.Admin;
-import UserDefinedFunctionalities.Checker;
 import EndUser.User;
 import TestSystem.Category;
+import UserDefinedFunctionalities.Checker;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.net.URL;
-import java.time.LocalDate;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -206,7 +204,8 @@ public class ModifyCategoryPanel2 extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weighty = 1.0;
         add(backButton, gridBagConstraints);
 
         categoryNameError.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
