@@ -318,7 +318,7 @@ public class CreateCategoryPanel extends javax.swing.JPanel {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         
-        cardLayout.show(container, "selectCatModify");
+        cardLayout.show(container, "adminDashboard");
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void createCategoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCategoryButtonActionPerformed
