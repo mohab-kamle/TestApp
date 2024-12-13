@@ -9,6 +9,8 @@ import DataBaseManagment.StudentDAO;
 import EndUser.Admin;
 import EndUser.Student;
 import EndUser.User;
+import GUI.AdminPanels.UpdateAdminprofileP;
+import GUI.StudentPanels.UpdateStudentprofileP;
 import UserDefinedFunctionalities.Checker;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -100,20 +102,20 @@ public class UpdatePanelP extends javax.swing.JPanel {
             switch (type) {
                 case "username" -> {
                     TitleHolder.setText("Update Unameame");
-                    UpdateHolder.setText(admin.getUserName());
+                    UpdateHolder.setText(student.getUserName());
                 }
                 case "email" -> {
                     TitleHolder.setText("Update Email");
-                    UpdateHolder.setText(admin.getEmail());
+                    UpdateHolder.setText(student.getEmail());
                 }
                 case "name" -> {
                     TitleHolder.setText("Update Name");
-                    moreUpdateField.setText("First Name: " + admin.getFirstName());
+                    moreUpdateField.setText("First Name: " + student.getFirstName());
                     moreUpdateField.setVisible(true);
-                    UpdateHolder.setText("Last Name: " + admin.getLastName());
+                    UpdateHolder.setText("Last Name: " + student.getLastName());
                 }
                 case "address" -> {
-                    String address = admin.getAddress();
+                    String address = student.getAddress();
                     String[] parts = address.split(", ");
                     country = parts[0];
                     city = parts[1];
@@ -530,7 +532,7 @@ public class UpdatePanelP extends javax.swing.JPanel {
                         }
                     }
                     case "address" -> {
-                        if (admin == null || (check.isValid(Checker.StringType.LETTERS_ONLY, moreUpdateField.getText()) && check.isValid(Checker.StringType.LETTERS_ONLY, UpdateHolder.getText()) && check.isValid(Checker.StringType.LETTERS_ONLY, moreUpdateField2.getText()))) {
+                        if (student == null || (check.isValid(Checker.StringType.LETTERS_ONLY, moreUpdateField.getText()) && check.isValid(Checker.StringType.LETTERS_ONLY, UpdateHolder.getText()) && check.isValid(Checker.StringType.LETTERS_ONLY, moreUpdateField2.getText()))) {
                             student.setAddress(moreUpdateField.getText() + " , " + UpdateHolder.getText() + " , " + moreUpdateField2.getText());
                         }
                     }
@@ -598,9 +600,13 @@ public class UpdatePanelP extends javax.swing.JPanel {
         ErrorInput.setVisible(false);
         ErrorInput2.setVisible(false);
         if (user instanceof Admin) {
-            cardLayout.show(container, "AdminUpdateprof");
-        } else {
-            cardLayout.show(container, "StudentUpdateprof");
+            UpdateAdminprofileP UpdateAdminP = new UpdateAdminprofileP(admin, cardLayout, container);
+            container.add(UpdateAdminP,"UpdateAdminP");
+            cardLayout.show(container, "UpdateAdminP");
+        } else if(user instanceof Student) {
+            UpdateStudentprofileP UpdateStudentP = new UpdateStudentprofileP(student, cardLayout, container);
+            container.add(UpdateStudentP,"UpdateStudentP");
+            cardLayout.show(container, "UpdateStudentP");
         }
     }//GEN-LAST:event_BackButtonActionPerformed
 

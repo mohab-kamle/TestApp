@@ -9,6 +9,8 @@ import DataBaseManagment.StudentDAO;
 import EndUser.Admin;
 import EndUser.Student;
 import EndUser.User;
+import GUI.AdminPanels.AdminDashboardMenuP;
+import GUI.StudentPanels.StudentDashboardMenuP;
 import UserDefinedFunctionalities.Checker;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -488,7 +490,17 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         WrongMatching.setVisible(false);
         WrongNewPassword.setVisible(false);
         WrongOldPassword.setVisible(false);
-        cardLayout.show(container, "StudentMenu");
+        if (user instanceof Admin) {
+            AdminDashboardMenuP adminDashboard = new AdminDashboardMenuP((Admin) user, cardLayout, container);
+            container.add(adminDashboard,"adminDashboard");
+            cardLayout.show(container, "adminDashboard");
+        }
+        else if (user instanceof Student) {
+            StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP((Student) user, cardLayout, container);
+            container.add(studentDashboard,"studentDashboard");
+            cardLayout.show(container, "studentDashboard");
+        }
+        
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void NewPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NewPasswordFieldKeyReleased

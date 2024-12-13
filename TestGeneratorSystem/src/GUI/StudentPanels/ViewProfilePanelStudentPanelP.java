@@ -498,7 +498,9 @@ public class ViewProfilePanelStudentPanelP extends javax.swing.JPanel {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "StudentMenu");
+        StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(student, cardLayout, container);
+        container.add(studentDashboard,"studentDashboard");
+        cardLayout.show(container, "studentDashboard");
     }//GEN-LAST:event_BackButtonActionPerformed
 
 

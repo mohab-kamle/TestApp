@@ -8,10 +8,10 @@ import TestSystem.Question;
 import TestSystem.Test;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.net.URL;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,7 +19,7 @@ import javax.swing.BorderFactory;
  */
 public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
     private CardLayout cardLayout;
-    private Container container;
+    private JPanel container;
     protected Test test; 
     protected int takerAnswer ; 
     protected int Index = 0;
@@ -28,7 +28,7 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
     /**
      * Creates new form QuesitionsFullDetailsPanelP
      */
-    public QuesitionsFullDetailsPanelP(Test test, CardLayout cardLayout, Container container) {
+    public QuesitionsFullDetailsPanelP(Test test, CardLayout cardLayout, JPanel container) {
         initComponents();
         this.test = test ; 
         this.cardLayout = cardLayout;
@@ -172,7 +172,6 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
         AHOLDER.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
         AHOLDER.setForeground(new java.awt.Color(0, 0, 0));
         AHOLDER.setText("\"AHOLDER\"");
-        AHOLDER.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -187,7 +186,6 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
         BHOLDER.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
         BHOLDER.setForeground(new java.awt.Color(0, 0, 0));
         BHOLDER.setText("\"BHOLDER\"");
-        BHOLDER.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
@@ -202,7 +200,6 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
         CHOLDER.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
         CHOLDER.setForeground(new java.awt.Color(0, 0, 0));
         CHOLDER.setText("\"CHOLDER\"");
-        CHOLDER.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 10;
@@ -217,7 +214,6 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
         DHOLDER.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
         DHOLDER.setForeground(new java.awt.Color(0, 0, 0));
         DHOLDER.setText("\"DHOLDER\"");
-        DHOLDER.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 11;
@@ -322,11 +318,13 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
 
         PanelIndex.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         PanelIndex.setForeground(new java.awt.Color(0, 0, 0));
+        PanelIndex.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PanelIndex.setText("IndexHolder");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 400, 0, 0);
         add(PanelIndex, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -435,17 +433,17 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
         Question question = questions.get(Index);
         int studentAnswer = takerAnswers.get(Index);
         int correctAnswer = question.getRightAnswer();
-        String Result = studentAnswer == correctAnswer ? "CORRECT" : "INCORRECT" ;
+        String Res = studentAnswer == correctAnswer ? "CORRECT" : "INCORRECT" ;
         QuesitionHolder.setText(question.getStatement());
-        CorrectA.setText("Correct Answer: "+ String.valueOf('A' + correctAnswer));
-        UserA.setText("YourAnswer: " + String.valueOf(('A' + studentAnswer)));
-        QuesitionHolder.setText("Result: " + Result);
+        CorrectA.setText("Correct Answer: "+ String.valueOf((char)('A' + correctAnswer)));
+        UserA.setText("YourAnswer: " + String.valueOf((char)('A' + studentAnswer)));
+        Result.setText("Result: " + Res);
         String[] choices = question.getChoices();
-        AHOLDER.setText("A" + choices[1]);
-        BHOLDER.setText("B" + choices[2]);
-        CHOLDER.setText("C" + choices[3]);
-        DHOLDER.setText("D" + choices[4]); 
-        PanelIndex.setText(Index + 1 + " of " + questions.size());
+        AHOLDER.setText("A) " + choices[0]);
+        BHOLDER.setText("B) " + choices[1]);
+        CHOLDER.setText("C) " + choices[2]);
+        DHOLDER.setText("D) " + choices[3]); 
+        PanelIndex.setText((Index + 1) + " of " + questions.size());
     } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

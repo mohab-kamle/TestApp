@@ -27,6 +27,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
     ViewFavoriteQuestions FAVQuesView ;
     ViewTestHistoryPanelP TestHisView ;
     /*UpdateStudentprofileP UpdateStudentProf ; waiting Take Test*/
+    private setUpTest setTest;
 
     /**
      * Creates new form StudentDashboardMenuP
@@ -35,19 +36,13 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
         initComponents();
         this.student = student;
         this.cardLayout = cardLayout;
-        this.container = container;
-        VStudent = new ViewProfilePanelStudentPanelP(student, cardLayout, container);
+        this.container = container; 
         UpdateStudentProf = new UpdateStudentprofileP(student, cardLayout, container);
-        FAVQuesView = new ViewFavoriteQuestions(student, cardLayout, container);
-        TestHisView = new ViewTestHistoryPanelP(student, cardLayout, container);
+        VStudent = new ViewProfilePanelStudentPanelP(student, cardLayout, container);
         ChangePass = new ChangePasswordPanel_P(student, cardLayout, container);
-        /*UpdateStudentProf = new UpdateStudentprofileP(); waiting Take Test*/
-        container.add(VStudent, "StudentViewProf"); 
-        container.add(ChangePass, "StudentChangePass"); 
-        container.add(UpdateStudentProf, "StudentUpdateprof"); 
-        /*container.add(UpdateStudentProf, "StudentUpdateprof"); waitung Take Test*/
-        container.add(FAVQuesView, "FAVQView"); 
-        container.add(TestHisView, "TestHView"); 
+        setTest= new setUpTest(student, cardLayout, container);
+        TestHisView = new ViewTestHistoryPanelP(student, cardLayout, container);
+        //FAVQuesView = new ViewFavoriteQuestions(student, cardLayout, container);
     }
 
     /**
@@ -486,7 +481,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
         container.remove(VStudent);
         container.remove(ChangePass);
         container.remove(UpdateStudentProf);
-        /*container.remove(UpdateStudentProf); waitung Take Test*/
+        container.remove(setTest);
         container.remove(FAVQuesView); 
         container.remove(TestHisView);
         container.revalidate();
@@ -494,7 +489,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
         VStudent = null ;
         ChangePass = null ;
         UpdateStudentProf = null ;
-        // TakeTest = null ;
+        setTest = null ;
         FAVQuesView = null ;
         TestHisView = null ;
         student = new Student() ;
@@ -531,6 +526,8 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
 
     private void UpdateProflieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateProflieActionPerformed
         // TODO add your handling code here:
+        
+        container.add(UpdateStudentProf, "StudentUpdateprof");
         cardLayout.show(container, "StudentUpdateprof");
     }//GEN-LAST:event_UpdateProflieActionPerformed
 
@@ -559,6 +556,8 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
 
     private void ViewProflieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProflieActionPerformed
         // TODO add your handling code here:
+        
+        container.add(VStudent, "StudentViewProf"); 
         cardLayout.show(container, "StudentViewProf");
     }//GEN-LAST:event_ViewProflieActionPerformed
 
@@ -607,6 +606,8 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
 
     private void ChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordActionPerformed
         // TODO add your handling code here:
+        
+        container.add(ChangePass, "StudentChangePass"); 
         cardLayout.show(container, "StudentChangePass");
     }//GEN-LAST:event_ChangePasswordActionPerformed
 
@@ -666,16 +667,16 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(
                     null,
                     "The Account Deleted!",
-                    "The Account Deleted",
+                    "Delete The Account",
                     JOptionPane.INFORMATION_MESSAGE
             );
             student.removeAccount() ;
-            LogoutMouseClicked() ;
+            LogoutMouseClicked();
         } else {
             JOptionPane.showMessageDialog(
                     null,
                     "Delete is disabled",
-                    "Delete is disabled",
+                    "disable the Deletion",
                     JOptionPane.INFORMATION_MESSAGE
             );
         }
@@ -706,7 +707,9 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
 
     private void TakeTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TakeTestActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "Welcome");// waiting Take Test
+         
+        container.add(setTest, "setTest");
+        cardLayout.show(container, "setTest");// waiting Take Test
     }//GEN-LAST:event_TakeTestActionPerformed
 
     private void ViewTestHistoryMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewTestHistoryMouseMoved
@@ -734,6 +737,8 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
 
     private void ViewTestHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTestHistoryActionPerformed
         // TODO add your handling code here:
+        
+        container.add(TestHisView, "TestHView");
         cardLayout.show(container, "TestHView");
     }//GEN-LAST:event_ViewTestHistoryActionPerformed
 
@@ -782,9 +787,29 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
 
     private void ViewFavoriteQuestionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewFavoriteQuestionsActionPerformed
         // TODO add your handling code here:
+        
+        container.add(FAVQuesView, "FAVQView");
         cardLayout.show(container, "FAVQView");
     }//GEN-LAST:event_ViewFavoriteQuestionsActionPerformed
-
+    private void LogoutMouseClicked() {
+        container.remove(VStudent);
+        container.remove(ChangePass);
+        container.remove(UpdateStudentProf);
+        container.remove(UpdateStudentProf); 
+        //container.remove(FAVQuesView); 
+        container.remove(TestHisView);
+        container.revalidate();
+        container.repaint();
+        VStudent = null ;
+        ChangePass = null ;
+        UpdateStudentProf = null ;
+        TakeTest = null ;
+        //FAVQuesView = null ;
+        TestHisView = null ;
+        student = new Student() ;
+        System.gc();
+        cardLayout.show(container, "Welcome");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ChangePassword;
@@ -801,23 +826,5 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
     private javax.swing.JButton jButton16;
     // End of variables declaration//GEN-END:variables
 
-    private void LogoutMouseClicked() {
-        container.remove(VStudent);
-        container.remove(ChangePass);
-        container.remove(UpdateStudentProf);
-        /*container.remove(UpdateStudentProf); waitung Take Test*/
-        container.remove(FAVQuesView); 
-        container.remove(TestHisView);
-        container.revalidate();
-        container.repaint();
-        VStudent = null ;
-        ChangePass = null ;
-        UpdateStudentProf = null ;
-        // TakeTest = null ;
-        FAVQuesView = null ;
-        TestHisView = null ;
-        student = new Student() ;
-        System.gc();
-        cardLayout.show(container, "Welcome");
-    }
+    
 }

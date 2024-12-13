@@ -580,7 +580,7 @@ public class Student extends User {
      * @param difficulty the `Question.dlevel` enum value representing the desired difficulty level of the questions.
      * @return a list of `Question` objects that match the specified category and difficulty level. If no questions are found, an empty list is returned.
      */
-    private List<Question> findQuestionsForTest(QuestionBankDAO questionBankDAO,
+    public List<Question> findQuestionsForTest(QuestionBankDAO questionBankDAO,
             Category category,
             Question.dlevel difficulty) {
         // Collect questions from all question banks for the given category and difficulty
@@ -656,7 +656,7 @@ public class Student extends User {
      * @param endTime the `LocalDateTime` representing the time when the question was completed.
      * @return the time taken to answer the question in minutes, represented as a double.
      */
-    private double calculateQuestionTime(LocalDateTime startTime, LocalDateTime endTime) {
+    public double calculateQuestionTime(LocalDateTime startTime, LocalDateTime endTime) {
         Duration duration = Duration.between(startTime, endTime);
         return duration.toSeconds() / 60.0; // Convert to minutes
     }
@@ -669,7 +669,7 @@ public class Student extends User {
      * @param question the `Question` object representing the question whose metrics are to be updated.
      * @param timeTaken the time taken to answer the question, in minutes, which will be added to the question's total time.
      */
-    private void updateQuestionMetrics(Question question, double timeTaken) {
+    public void updateQuestionMetrics(Question question, double timeTaken) {
         // Increment number of attempts
         int currentAttempts = question.getNoOfAttemptsAtTests();
         question.setNoOfAttemptsAtTests(currentAttempts + 1);
@@ -722,7 +722,7 @@ public class Student extends User {
      * @param score the score achieved in the test, which will be recorded as the test result.
      * @param totalTestTime the total time taken to complete the test, which will be recorded as the duration of the test.
      */
-    private void updateTestStatistics(Test test, double percentageScore, double totalTestTime) {
+    public void updateTestStatistics(Test test, double percentageScore, double totalTestTime) {
         test.setTestResult(percentageScore);
         test.setDuration((int) totalTestTime);
         takenTests.add(test);
@@ -767,7 +767,7 @@ public class Student extends User {
      * @return the total score, which is the count of correct answers provided by the student.
      * @throws IndexOutOfBoundsException if the lists of student answers and correct answers have different sizes.
      */
-    private int calculateScore(List<Integer> studentAnswers, List<Integer> correctAnswers) {
+    public int calculateScore(List<Integer> studentAnswers, List<Integer> correctAnswers) {
         int score = 0;
         for (int i = 0; i < studentAnswers.size(); i++) {
             if (studentAnswers.get(i).equals(correctAnswers.get(i))) {

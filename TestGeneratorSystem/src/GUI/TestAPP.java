@@ -56,8 +56,8 @@ public class TestAPP extends javax.swing.JFrame {
         container.add(LoginPanel, "Login");
         container.add(resetPasswordPanel, "ResetPass");
 //        container.add(profilePanel, "Profile");
-        
-
+//        StudentDashboardMenuP sd = new StudentDashboardMenuP(new Student(), cardLayout, container);
+//        container.add(sd, "sd");
         // Add action listeners
 
         // Show initial panel
