@@ -1,6 +1,9 @@
 package GUI;
 
 import DataBaseManagment.AdminDAO;
+import GUI.AdminPanels.AdminDashboardMenuP;
+import GUI.AdminPanels.UpdateAdminprofileP;
+import GUI.AdminPanels.ViewProfilePanelAdminP;
 import java.awt.*;
 import javax.swing.*;
 
@@ -94,7 +97,13 @@ public class KarimTestAPP extends javax.swing.JFrame {
 
 //        UpdateQuestionPanel1 updateQuestionPanel1 = new UpdateQuestionPanel1(cardLayout,container,new AdminDAO().searchAdmin("SomeOne","123456789@MMm"));
 //        container.add(updateQuestionPanel1, "updateQuestion1");
-//        cardLayout.show(container, "updateQuestion1");  
+//        cardLayout.show(container, "updateQuestion1"); 
+
+//        container.add(new ViewProfilePanelAdminP( new AdminDAO().searchAdmin("SomeOne","123456789@MMm"), cardLayout, container), "AdminViewProf");
+//        cardLayout.show(container, "AdminViewProf");
+
+        container.add(new AdminDashboardMenuP( new AdminDAO().searchAdmin("SomeOne","123456789@MMm"), cardLayout, container), "adminDashboardMenu");
+        cardLayout.show(container, "AdminViewProf");
     }
 
     public static void main(String args[]) {
@@ -103,4 +112,5 @@ public class KarimTestAPP extends javax.swing.JFrame {
             app.setVisible(true);
         });
     }
+    
 }

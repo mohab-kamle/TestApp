@@ -24,9 +24,9 @@ public class TestGeneratorApp {
     private static final Scanner scanner = new Scanner(System.in);
     private static User currentUser = null;
 
-    public static void main(String[] args) throws IOException {
-        runMainApplication();
-   }
+//    public static void main(String[] args) throws IOException {
+//        runMainApplication();
+//   }
 
     /**
      * Main application entry point and control flow

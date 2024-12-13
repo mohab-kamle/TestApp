@@ -5,6 +5,7 @@
 package GUI.StudentPanels;
 
 import EndUser.Student;
+import GUI.AdminPanels.ViewProfilePanelAdminP;
 import GUI.ChangePasswordPanel_P;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -559,6 +560,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
 
     private void ViewProflieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProflieActionPerformed
         // TODO add your handling code here:
+        container.add(new ViewProfilePanelStudentPanelP(student, cardLayout, container), "AdminViewProf");
         cardLayout.show(container, "StudentViewProf");
     }//GEN-LAST:event_ViewProflieActionPerformed
 
@@ -734,6 +736,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
 
     private void ViewTestHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTestHistoryActionPerformed
         // TODO add your handling code here:
+        container.add( new ViewTestHistoryPanelP(student, cardLayout, container), "TestHView"); 
         cardLayout.show(container, "TestHView");
     }//GEN-LAST:event_ViewTestHistoryActionPerformed
 
@@ -782,6 +785,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
 
     private void ViewFavoriteQuestionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewFavoriteQuestionsActionPerformed
         // TODO add your handling code here:
+        container.add(new ViewFavoriteQuestions(student, cardLayout, container), "FAVQView"); 
         cardLayout.show(container, "FAVQView");
     }//GEN-LAST:event_ViewFavoriteQuestionsActionPerformed
 

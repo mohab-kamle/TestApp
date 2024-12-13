@@ -2,6 +2,7 @@ package GUI.AdminPanels;
 
 import EndUser.Admin;
 import GUI.ChangePasswordPanel_P;
+import GUI.UpdateQuestionPanel1;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
@@ -47,7 +48,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
         ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
         ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();*/
-        container.add(VAdmin, "AdminViewProf"); 
+        //container.add(VAdmin, "AdminViewProf"); 
         container.add(ChangePass, "AdminChangePass"); 
         container.add(UpdateAdminProf, "AdminUpdateprof"); 
         //waiting kareem
@@ -706,6 +707,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void ViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProfileActionPerformed
         // TODO add your handling code here:
+        container.add(new ViewProfilePanelAdminP( admin, cardLayout, container), "AdminViewProf");
         cardLayout.show(container, "AdminViewProf");
     }//GEN-LAST:event_ViewProfileActionPerformed
 
@@ -734,6 +736,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void UpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateProfileActionPerformed
         // TODO add your handling code here:
+        container.add(new UpdateQuestionPanel1(cardLayout, container, admin), "AdminUpdateprof");
         cardLayout.show(container, "AdminUpdateprof");
     }//GEN-LAST:event_UpdateProfileActionPerformed
 
@@ -790,6 +793,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void ChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordActionPerformed
         // TODO add your handling code here:
+        container.add(new ChangePasswordPanel_P(admin, cardLayout, container), "AdminChangePass");
         cardLayout.show(container, "AdminChangePass");
     }//GEN-LAST:event_ChangePasswordActionPerformed
 
