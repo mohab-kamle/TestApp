@@ -317,6 +317,14 @@ public abstract class User {
         }
     }
 
+        public static boolean validateInput(
+            Checker check,
+            String input,
+            Checker.StringType validationType
+    ) {
+            return check.isValid(validationType, input);
+    }
+
     public abstract User login();
 
     public abstract void removeAccount();

@@ -121,7 +121,6 @@ public class ResetPasswordPanel extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(74, 25, 72));
         jButton1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("M:\\mohab\\Documents\\college\\studyL3,P1\\Comp301_JAVA\\Project_Java\\TestGeneratorSystem\\lib\\turnback-40.png")); // NOI18N
         jButton1.setToolTipText("Click to go back");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -129,7 +128,9 @@ public class ResetPasswordPanel extends javax.swing.JPanel {
         jButton1.setFocusable(false);
         jButton1.setMaximumSize(new java.awt.Dimension(145, 60));
         jButton1.setMinimumSize(new java.awt.Dimension(145, 60));
+        jButton1.setOpaque(true);
         jButton1.setPreferredSize(new java.awt.Dimension(145, 60));
+        jButton1.setRolloverEnabled(false);
         jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jButton1FocusGained(evt);
@@ -168,7 +169,8 @@ public class ResetPasswordPanel extends javax.swing.JPanel {
         add(jLabel2, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
         add(filler7, gridBagConstraints);
 
         jLabel3.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N

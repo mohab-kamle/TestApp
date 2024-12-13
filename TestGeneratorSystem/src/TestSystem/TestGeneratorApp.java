@@ -24,9 +24,9 @@ public class TestGeneratorApp {
     private static final Scanner scanner = new Scanner(System.in);
     private static User currentUser = null;
 
-//    public static void main(String[] args) throws IOException {
-//        runMainApplication();
-//    }
+    public static void main(String[] args) throws IOException {
+        runMainApplication();
+   }
 
     /**
      * Main application entry point and control flow
@@ -190,27 +190,26 @@ public class TestGeneratorApp {
                         return;
                     }
                 }
-                case 5 -> {
-                    if (admin.createCategory()) {
-                        ifColorfullPrintln("Category Created succesfully !!", TerminalColors.BOLD_GREEN);
-                    } else {
-                        ifColorfullPrintln("Category couldn't be created", TerminalColors.BOLD_RED);
-                    }
-                }
-                case 6 -> {
-                    if (admin.modifyCategory()) {
-                        ifColorfullPrintln("Category has been updated succesfully !!", TerminalColors.BOLD_GREEN);
-                    } else {
-                        ifColorfullPrintln("Categories still the same..", TerminalColors.BOLD_RED);
-                    }
-                }
-                case 7 -> {
-                    if (admin.deleteCategory()) {
-                        ifColorfullPrintln("Category has been deleted !!", TerminalColors.BOLD_GREEN);
-                    } else {
-                        ifColorfullPrintln("NoThing is Deleted..", TerminalColors.BOLD_RED);
-                    }
-                }
+//                case 5 -> {
+//                    if (admin.createCategory()) {
+//                        ifColorfullPrintln("Category Created succesfully !!", TerminalColors.BOLD_GREEN);
+//                    } else {
+//                        ifColorfullPrintln("Category couldn't be created", TerminalColors.BOLD_RED);
+//                    }
+//                }
+//                case 6 -> {
+//                    if (admin.modifyCategory()) {
+//                        ifColorfullPrintln("Category has been updated succesfully !!", TerminalColors.BOLD_GREEN);
+//                    } else {
+//                        ifColorfullPrintln("Categories still the same..", TerminalColors.BOLD_RED);
+//                    }
+//                }
+//           case 7 -> {
+//                if (admin.deleteCategory()) {
+//                       ifColorfullPrintln("Category has been deleted !!", TerminalColors.BOLD_GREEN);
+//                  } else {
+//                      ifColorfullPrintln("NoThing is Deleted..", TerminalColors.BOLD_RED);               }
+//               }
 //                case 8 -> {
 //                    if(admin.createQuestionBank()!=null){
 //                        ifColorfullPrintln("Question Bank Created succesfully !!", TerminalColors.BOLD_GREEN);
@@ -218,27 +217,27 @@ public class TestGeneratorApp {
 //                        ifColorfullPrintln("Question Bank couldn't be created", TerminalColors.BOLD_RED);
 //                    }
 //                }
-                case 8 -> {
-                    if (admin.addQuestionToQuestionBank()) {
-                        ifColorfullPrintln("Question has been added", TerminalColors.BOLD_GREEN);
-                    } else {
-                        ifColorfullPrintln("No Question is added", TerminalColors.BOLD_RED);
-                    }
-                }
-                case 9 -> {
-                    if (admin.updateQuestionInQuestionBank()) {
-                        ifColorfullPrintln("Question has been updated succesfully !!", TerminalColors.BOLD_GREEN);
-                    } else {
-                        ifColorfullPrintln("No changes to Question happened", TerminalColors.BOLD_RED);
-                    }
-                }
-                case 10 -> {
-                    if (admin.deleteQuestionFromQuestionBank()) {
-                        ifColorfullPrintln("Question has been deleted !!!", TerminalColors.BOLD_GREEN);
-                    } else {
-                        ifColorfullPrintln("No Question is deleted...", TerminalColors.BOLD_RED);
-                    }
-                }
+//                case 8 -> {
+//                    if (admin.addQuestionToQuestionBank()) {
+//                        ifColorfullPrintln("Question has been added", TerminalColors.BOLD_GREEN);
+//                    } else {
+//                        ifColorfullPrintln("No Question is added", TerminalColors.BOLD_RED);
+//                    }
+//                }
+//                case 9 -> {
+//                    if (admin.updateQuestionInQuestionBank()) {
+//                        ifColorfullPrintln("Question has been updated succesfully !!", TerminalColors.BOLD_GREEN);
+//                    } else {
+//                        ifColorfullPrintln("No changes to Question happened", TerminalColors.BOLD_RED);
+//                    }
+//                }
+//                case 10 -> {
+//                    if (admin.deleteQuestionFromQuestionBank()) {
+//                        ifColorfullPrintln("Question has been deleted !!!", TerminalColors.BOLD_GREEN);
+//                    } else {
+//                        ifColorfullPrintln("No Question is deleted...", TerminalColors.BOLD_RED);
+//                    }
+//                }
                 case 0 -> {
                     AdminDAO ADB = new AdminDAO();
                     admin.setLastLoginDate(LocalDateTime.now());
