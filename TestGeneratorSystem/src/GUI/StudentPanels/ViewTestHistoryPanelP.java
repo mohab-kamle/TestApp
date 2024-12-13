@@ -5,6 +5,9 @@
 package GUI.StudentPanels;
 
 import EndUser.Student;
+import static TestSystem.Question.dlevel.EASY;
+import static TestSystem.Question.dlevel.HARD;
+import static TestSystem.Question.dlevel.MEDIUM;
 import TestSystem.Test;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -14,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,8 +29,9 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
     private CardLayout cardLayout;
     private Container container;
     QuesitionsFullDetailsPanelP QuesFDP ;
-    protected static int Index  ;
-    
+    protected int Index = 0 ;
+    List<Test> sortedTests ;
+    Test currentTest ;
     /**
      * Creates new form ViewTestHistoryPanelP
      */
@@ -36,27 +41,36 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         this.cardLayout = cardLayout;
         this.container = container;
         EmptyHistory.setVisible(false);
-        Index = 0 ;
-        List<Test> sortedTests = new ArrayList<>(student.getTakenTests());
+        sortedTests = new ArrayList<>(student.getTakenTests());
         sortedTests.sort((t1, t2) -> t2.getCreationDate().compareTo(t1.getCreationDate()));
-        Test currentTest = sortedTests.get(Index);
-        TestIDHolder.setText(String.valueOf(currentTest.getTestID()));
-        StartDHolder.setText(currentTest.getStartTime().format(DateTimeFormatter.ISO_TIME));
-        DateHolder.setText(String.valueOf(currentTest.getCreationDate()));
-        EndDHolder.setText(currentTest.getEndTime().format(DateTimeFormatter.ISO_TIME));
-        TimeTakenHolder.setText(String.format("%.2f", currentTest.timeTaken()) + " minutes");
-        CategoryHolder.setText(currentTest.getCategory().getName());
-        if (null != currentTest.getDifficulty())switch (currentTest.getDifficulty()) {
-            case EASY -> DifficultyHolder.setText("Easy");
-            case MEDIUM -> DifficultyHolder.setText("Medium");
-            case HARD -> DifficultyHolder.setText("Hard");
-            default -> { 
-            }
+        if (student.getTakenTests() == null || student.getTakenTests().isEmpty()){
+            Tnum.setVisible(false); 
+            TimeTaken.setVisible(false); 
+            TestId.setVisible(false); 
+            TestIDHolder.setVisible(false); 
+            Status.setVisible(false); 
+            StartTime.setVisible(false); 
+            StartDHolder.setVisible(false); 
+            ScoreHolder.setVisible(false); 
+            PercentageHolder.setVisible(false); 
+            Score.setVisible(false); 
+            PrevButton.setVisible(false); 
+            Percentage.setVisible(false); 
+            NextButton.setVisible(false); 
+            FullDetails.setVisible(false); 
+            EndTime.setVisible(false); 
+            EndDHolder.setVisible(false); 
+            Difficulty.setVisible(false); 
+            DifficultyHolder.setVisible(false); 
+            DateHolder.setVisible(false); 
+            CategoryHolder.setVisible(false); 
+            Category.setVisible(false); 
+            EmptyHistory.setText("");
+            ImageIcon icon = new ImageIcon("/lib/resizedtesthistoryempty.png");
+            EmptyHistory.setIcon(icon);
+            EmptyHistory.setVisible(true); 
         }
-        ScoreHolder.setText(((currentTest.getTestResult() / 100) * currentTest.getQuestions().size()) + "/" + currentTest.getQuestions().size());
-        PercentageHolder.setText(String.format("%.2f", currentTest.getTestResult()) + "%");
-        StatusHolder.setText((currentTest.getTestResult() >= Test.getPassingScore() ? "PASSED" : "FAILED"));
-        Tnum.setText(Index + " OF " + student.getTakenTests().size());
+        UpdateIndex();
         QuesFDP = new QuesitionsFullDetailsPanelP(currentTest, cardLayout, container);
         container.add(QuesFDP, "QuesFDP");
     }
@@ -122,7 +136,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         EmptyHistory.setText("No Tests available");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 388;
         gridBagConstraints.ipady = 5;
@@ -605,6 +619,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
     private void PrevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevButtonActionPerformed
         // TODO add your handling code here:
         Index = (Index - 1 + student.getTakenTests().size()) % student.getTakenTests().size();
+        UpdateIndex();
     }//GEN-LAST:event_PrevButtonActionPerformed
 
     private void BackButtonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackButtonFocusGained
@@ -613,8 +628,6 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
 
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
         // TODO add your handling code here:
-        /*DateHolder.setVisible(false);
-        cardLayout.show(container, "StudentMenu");*/
     }//GEN-LAST:event_BackButtonMouseClicked
 
     private void BackButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseEntered
@@ -648,11 +661,40 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
+        Tnum.setVisible(true); 
+        TimeTaken.setVisible(true); 
+        TestId.setVisible(true); 
+        TestIDHolder.setVisible(true); 
+        Status.setVisible(true); 
+        StartTime.setVisible(true); 
+        StartDHolder.setVisible(true); 
+        ScoreHolder.setVisible(true); 
+        PercentageHolder.setVisible(true); 
+        Score.setVisible(true); 
+        PrevButton.setVisible(true); 
+        Percentage.setVisible(true); 
+        NextButton.setVisible(true); 
+        FullDetails.setVisible(true); 
+        EndTime.setVisible(true); 
+        EndDHolder.setVisible(true); 
+        Difficulty.setVisible(true); 
+        DifficultyHolder.setVisible(true); 
+        DateHolder.setVisible(true); 
+        CategoryHolder.setVisible(true); 
+        Category.setVisible(true); 
+        EmptyHistory.setVisible(false);
+        container.remove(QuesFDP);
+        container.revalidate();
+        container.repaint();
+        QuesFDP = null ;
+        System.gc();
+        cardLayout.show(container, "StudentMenu");
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
         // TODO add your handling code here:
         Index = ( Index + 1 ) % student.getTakenTests().size();
+        UpdateIndex();
     }//GEN-LAST:event_NextButtonActionPerformed
 
     private void NextButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMousePressed
@@ -703,10 +745,30 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
 
     private void FullDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FullDetailsActionPerformed
         // TODO add your handling code here:
+        QuesFDP = new QuesitionsFullDetailsPanelP(currentTest, cardLayout, container);
+        container.add(QuesFDP, "QuesFDP");
         
     }//GEN-LAST:event_FullDetailsActionPerformed
-
-
+    private void UpdateIndex(){
+        currentTest = sortedTests.get(Index);
+        TestIDHolder.setText(String.valueOf(currentTest.getTestID()));
+        StartDHolder.setText(currentTest.getStartTime().format(DateTimeFormatter.ISO_TIME));
+        DateHolder.setText(String.valueOf(currentTest.getCreationDate()));
+        EndDHolder.setText(currentTest.getEndTime().format(DateTimeFormatter.ISO_TIME));
+        TimeTakenHolder.setText(String.format("%.2f", currentTest.timeTaken()) + " minutes");
+        CategoryHolder.setText(currentTest.getCategory().getName());
+        if (null != currentTest.getDifficulty())switch (currentTest.getDifficulty()) {
+            case EASY -> DifficultyHolder.setText("Easy");
+            case MEDIUM -> DifficultyHolder.setText("Medium");
+            case HARD -> DifficultyHolder.setText("Hard");
+            default -> { 
+            }
+        }
+        ScoreHolder.setText(((currentTest.getTestResult() / 100) * currentTest.getQuestions().size()) + "/" + currentTest.getQuestions().size());
+        PercentageHolder.setText(String.format("%.2f", currentTest.getTestResult()) + "%");
+        StatusHolder.setText((currentTest.getTestResult() >= Test.getPassingScore() ? "PASSED" : "FAILED"));
+        Tnum.setText(Index + " OF " + student.getTakenTests().size());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JLabel Category;

@@ -75,7 +75,7 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
         DepartHolder = new javax.swing.JLabel();
         ContNumHolder = new javax.swing.JLabel();
         JoinDHolder = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
@@ -344,35 +344,35 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(JoinDHolder, gridBagConstraints);
 
-        jButton1.setBackground(new java.awt.Color(74, 25, 72));
-        jButton1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
-        jButton1.setToolTipText("Click to go back");
-        jButton1.setBorderPainted(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.setFocusable(false);
-        jButton1.setMaximumSize(new java.awt.Dimension(145, 60));
-        jButton1.setMinimumSize(new java.awt.Dimension(145, 60));
-        jButton1.setPreferredSize(new java.awt.Dimension(145, 60));
-        jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
+        BackButton.setBackground(new java.awt.Color(74, 25, 72));
+        BackButton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        BackButton.setToolTipText("Click to go back");
+        BackButton.setBorderPainted(false);
+        BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackButton.setFocusPainted(false);
+        BackButton.setFocusable(false);
+        BackButton.setMaximumSize(new java.awt.Dimension(145, 60));
+        BackButton.setMinimumSize(new java.awt.Dimension(145, 60));
+        BackButton.setPreferredSize(new java.awt.Dimension(145, 60));
+        BackButton.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jButton1FocusGained(evt);
+                BackButtonFocusGained(evt);
             }
         });
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                BackButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
+                BackButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton1MouseExited(evt);
+                BackButtonMouseExited(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -384,56 +384,57 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(jButton1, gridBagConstraints);
+        add(BackButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
+    private void BackButtonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackButtonFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1FocusGained
+    }//GEN-LAST:event_BackButtonFocusGained
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_BackButtonMouseClicked
 
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+    private void BackButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseEntered
         // TODO add your handling code here:
         URL iconURL = getClass().getResource("/lib/turn-back.png");
         if (iconURL != null) {
-            jButton1.setIcon(new javax.swing.ImageIcon(iconURL));
+            BackButton.setIcon(new javax.swing.ImageIcon(iconURL));
         } else {
             // Handle the error, e.g., log it or show a default icon
             System.err.println("Resource not found: /lib/turn-back.png");
         }
-        jButton1.setBackground(Color.decode("#F4F2E2"));
-        jButton1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-        jButton1.setBorderPainted(true);
-    }//GEN-LAST:event_jButton1MouseEntered
+        BackButton.setBackground(Color.decode("#F4F2E2"));
+        BackButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        BackButton.setBorderPainted(true);
+    }//GEN-LAST:event_BackButtonMouseEntered
 
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+    private void BackButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseExited
         // TODO add your handling code here:
         URL iconURL = getClass().getResource("/lib/turnback-40.png");
         if (iconURL != null) {
-            jButton1.setIcon(new javax.swing.ImageIcon(iconURL));
+            BackButton.setIcon(new javax.swing.ImageIcon(iconURL));
         } else {
             // Handle the error, e.g., log it or show a default icon
             System.err.println("Resource not found: /lib/turnback-40.png");
         }
-        jButton1.setBackground(Color.decode("#4A1948"));
-        jButton1.setBorderPainted(false);
-        jButton1.setForeground(Color.decode("#F4F2E2"));
+        BackButton.setBackground(Color.decode("#4A1948"));
+        BackButton.setBorderPainted(false);
+        BackButton.setForeground(Color.decode("#F4F2E2"));
 
-    }//GEN-LAST:event_jButton1MouseExited
+    }//GEN-LAST:event_BackButtonMouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "Welcome");
-    }//GEN-LAST:event_jButton1ActionPerformed
+        cardLayout.show(container, "Adminmenu");
+    }//GEN-LAST:event_BackButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Address;
     private javax.swing.JLabel AddressHolder;
     private javax.swing.JLabel AdminProfLabel;
+    private javax.swing.JButton BackButton;
     private javax.swing.JLabel ContNumHolder;
     private javax.swing.JLabel ContactNumber;
     private javax.swing.JLabel DepartHolder;
@@ -448,7 +449,6 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
     private javax.swing.JLabel LnameHolder;
     private javax.swing.JLabel Username;
     private javax.swing.JLabel UsernameHolder;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

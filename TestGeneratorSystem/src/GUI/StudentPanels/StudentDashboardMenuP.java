@@ -37,8 +37,8 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
         this.cardLayout = cardLayout;
         this.container = container;
         VStudent = new ViewProfilePanelStudentPanelP(student, cardLayout, container);
-        UpdateStudentProf = new UpdateStudentprofileP();
-        FAVQuesView = new ViewFavoriteQuestions();
+        UpdateStudentProf = new UpdateStudentprofileP(student, cardLayout, container);
+        FAVQuesView = new ViewFavoriteQuestions(student, cardLayout, container);
         TestHisView = new ViewTestHistoryPanelP(student, cardLayout, container);
         ChangePass = new ChangePasswordPanel_P(student, cardLayout, container);
         /*UpdateStudentProf = new UpdateStudentprofileP(); waiting Take Test*/
