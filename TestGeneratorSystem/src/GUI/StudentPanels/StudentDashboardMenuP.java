@@ -5,6 +5,7 @@
 package GUI.StudentPanels;
 
 import EndUser.Student;
+import GUI.AdminPanels.ViewProfilePanelAdminP;
 import GUI.ChangePasswordPanel_P;
 import java.awt.CardLayout;
 import java.awt.Color;

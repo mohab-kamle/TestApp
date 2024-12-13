@@ -92,7 +92,7 @@ public class UpdatePanelP extends javax.swing.JPanel {
                     TitleHolder.setText("Update Contact Number");
                     UpdateHolder.setText(admin.getContactNumber());
                 }
-                case "contactnumber" -> {
+                case "depart" -> {
                     TitleHolder.setText("Update Department");
                     UpdateHolder.setText(admin.getDepartment());
                 }

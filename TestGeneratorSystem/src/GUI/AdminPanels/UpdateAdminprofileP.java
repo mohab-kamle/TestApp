@@ -27,7 +27,6 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
         this.admin = admin ;
         this.cardLayout = cardLayout;
         this.container = container;        
-        
     }
 
     /**
