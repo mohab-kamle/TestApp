@@ -1,13 +1,7 @@
 package GUI.AdminPanels;
 
 import EndUser.Admin;
-import GUI.AddQuestionPanel1;
 import GUI.ChangePasswordPanel_P;
-import GUI.CreateCategoryPanel;
-import GUI.DeleteCategoryPanel;
-import GUI.DeleteQuestionPanel1;
-import GUI.ModifyCategoryPanel1;
-import GUI.UpdateQuestionPanel1;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
