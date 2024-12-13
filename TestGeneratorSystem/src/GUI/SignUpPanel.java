@@ -138,14 +138,14 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridy = 17;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         add(jButton1, gridBagConstraints);
 
         jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jTextField3.setMaximumSize(new java.awt.Dimension(400, 40));
         jTextField3.setMinimumSize(new java.awt.Dimension(400, 40));
         jTextField3.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -161,7 +161,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -187,7 +187,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -215,7 +215,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         add(jLabel4, gridBagConstraints);
 
         jLabel5.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
@@ -255,6 +255,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         add(jLabel7, gridBagConstraints);
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jTextField1.setMaximumSize(new java.awt.Dimension(400, 40));
         jTextField1.setMinimumSize(new java.awt.Dimension(400, 40));
         jTextField1.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -287,6 +288,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         add(jTextField1, gridBagConstraints);
 
         jTextField4.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jTextField4.setMaximumSize(new java.awt.Dimension(400, 40));
         jTextField4.setMinimumSize(new java.awt.Dimension(400, 40));
         jTextField4.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -304,14 +306,16 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         add(jTextField4, gridBagConstraints);
 
         jTextField5.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jTextField5.setMaximumSize(new java.awt.Dimension(200, 40));
-        jTextField5.setMinimumSize(new java.awt.Dimension(200, 40));
-        jTextField5.setPreferredSize(new java.awt.Dimension(200, 40));
+        jTextField5.setMinimumSize(new java.awt.Dimension(133, 40));
+        jTextField5.setPreferredSize(new java.awt.Dimension(133, 40));
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -326,16 +330,16 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         add(jTextField5, gridBagConstraints);
 
         jTextField7.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jTextField7.setMaximumSize(new java.awt.Dimension(200, 40));
-        jTextField7.setMinimumSize(new java.awt.Dimension(200, 40));
-        jTextField7.setPreferredSize(new java.awt.Dimension(200, 40));
+        jTextField7.setMinimumSize(new java.awt.Dimension(133, 40));
+        jTextField7.setPreferredSize(new java.awt.Dimension(133, 40));
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
@@ -357,6 +361,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         add(jTextField7, gridBagConstraints);
 
         jTextField8.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jTextField8.setMaximumSize(new java.awt.Dimension(400, 40));
         jTextField8.setMinimumSize(new java.awt.Dimension(400, 40));
         jTextField8.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -381,6 +386,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         add(jTextField8, gridBagConstraints);
 
         jTextField9.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jTextField9.setMaximumSize(new java.awt.Dimension(400, 40));
         jTextField9.setMinimumSize(new java.awt.Dimension(400, 40));
         jTextField9.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -398,6 +404,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -407,6 +414,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jButton2.setBackground(new java.awt.Color(74, 25, 72));
         jButton2.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(244, 242, 226));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusPainted(false);
         jButton2.setMaximumSize(new java.awt.Dimension(145, 60));
@@ -430,7 +438,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridy = 19;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 1.0;
@@ -439,8 +447,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         add(jButton2, gridBagConstraints);
 
         jTextField10.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField10.setMaximumSize(new java.awt.Dimension(200, 40));
-        jTextField10.setMinimumSize(new java.awt.Dimension(200, 40));
+        jTextField10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
+        jTextField10.setMaximumSize(new java.awt.Dimension(133, 40));
+        jTextField10.setMinimumSize(new java.awt.Dimension(133, 40));
         jTextField10.setPreferredSize(new java.awt.Dimension(200, 40));
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -467,7 +476,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel9.setText("Institute");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -479,7 +488,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel10.setText("Department");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -487,6 +496,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         add(jLabel10, gridBagConstraints);
 
         jTextField11.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jTextField11.setMaximumSize(new java.awt.Dimension(400, 40));
         jTextField11.setMinimumSize(new java.awt.Dimension(400, 40));
         jTextField11.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -502,8 +512,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -515,7 +526,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel11.setText("Contact Number");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -523,6 +534,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         add(jLabel11, gridBagConstraints);
 
         jTextField12.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jTextField12.setMaximumSize(new java.awt.Dimension(400, 40));
         jTextField12.setMinimumSize(new java.awt.Dimension(400, 40));
         jTextField12.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -538,8 +550,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -561,6 +574,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Signup Page");
+        jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -572,17 +586,17 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 21;
+        gridBagConstraints.gridheight = 20;
         add(filler3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         add(filler5, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 21;
+        gridBagConstraints.gridheight = 20;
         add(filler1, gridBagConstraints);
 
         jLabel13.setForeground(new java.awt.Color(255, 51, 51));
@@ -598,7 +612,6 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
         add(jLabel14, gridBagConstraints);
 
         jLabel15.setForeground(new java.awt.Color(255, 0, 51));
@@ -613,7 +626,6 @@ public class SignUpPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 2;
         add(jLabel16, gridBagConstraints);
 
         jLabel17.setForeground(new java.awt.Color(255, 0, 51));
@@ -646,23 +658,21 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel20.setText("jLabel20");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 13;
         add(jLabel20, gridBagConstraints);
 
         jLabel21.setForeground(new java.awt.Color(255, 0, 51));
         jLabel21.setText("jLabel21");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridy = 13;
         add(jLabel21, gridBagConstraints);
 
         jLabel22.setForeground(new java.awt.Color(255, 0, 51));
         jLabel22.setText("jLabel22");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 17;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridy = 16;
         add(jLabel22, gridBagConstraints);
 
         jLabel23.setForeground(new java.awt.Color(255, 0, 51));
@@ -675,11 +685,13 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel24.setForeground(new java.awt.Color(255, 0, 51));
         jLabel24.setText("Check The Errors First");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 19;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridwidth = 5;
         add(jLabel24, gridBagConstraints);
 
         jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 2, true));
         jPasswordField1.setMaximumSize(new java.awt.Dimension(400, 40));
         jPasswordField1.setMinimumSize(new java.awt.Dimension(400, 40));
         jPasswordField1.setPreferredSize(new java.awt.Dimension(400, 40));

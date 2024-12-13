@@ -79,7 +79,7 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
 
         jLabel3.setText("jLabel2");
 
-        setBackground(new java.awt.Color(244, 242, 226));
+        setBackground(new java.awt.Color(255, 250, 206));
         setForeground(new java.awt.Color(244, 242, 226));
         setLayout(new java.awt.GridBagLayout());
 
@@ -275,6 +275,7 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
 
         BackButton.setBackground(new java.awt.Color(74, 25, 72));
         BackButton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         BackButton.setToolTipText("Click to go back");
         BackButton.setBorderPainted(false);
         BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
