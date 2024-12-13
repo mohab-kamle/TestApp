@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package GUI.StudentPanels;
 
 import DataBaseManagment.CategoryDAO;
@@ -35,13 +31,14 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
     StringBuilder selected;
     int Index = 0;
     List<Question> allFavorites;
-    List<Question> categoryFavorites = null;
+    List<Question> categoryFavorites;
     Question currentQuestion;
 
     /**
      * Creates new form ViewFavoriteQuestions
      */
     public ViewFavoriteQuestions(Student student, CardLayout cardLayout, JPanel container) {
+        this.categoryFavorites = new ArrayList<>();
         initComponents();
         this.student = student;
         this.cardLayout = cardLayout;
@@ -50,7 +47,7 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 //        CatogoryDropList.removeAllItems();
         selected = new StringBuilder("Select Category");
         selected.append("Select Category");
-        if (student.getFavoriteQuestions() == null || student.getFavoriteQuestions().isEmpty()) {
+        if (student.getFavoriteQuestions() == null || student.getFavoriteQuestions().isEmpty())         {
             QuesitionHolder.setVisible(false);
             QuesitionID.setVisible(false);
             AHOLDER.setVisible(false);
@@ -63,13 +60,17 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
             PrevButton.setVisible(false);
             Tnum.setVisible(false);
             CatogoryDropList.setVisible(false);
-            ImageIcon icon = new ImageIcon("/lib/refav.png");
+            URL iconURL = getClass().getResource("../lib/refav.png");
+            if (iconURL != null) {
+            imageHolder.setIcon(new javax.swing.ImageIcon(iconURL));
             imageHolder.setText("");
-            imageHolder.setIcon(icon);
             imageHolder.setVisible(true);
-        } else {
-            setup();
+            } else {
+            // Handle the error, e.g., log it or show a default icon 
+            System.err.println("Resource not found: /lib/turn-back.png");
+            }
         }
+            setup();
 
     }
 
@@ -385,6 +386,7 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
         imageHolder.setForeground(new java.awt.Color(0, 0, 0));
         imageHolder.setText("\"emptyImageHolder\"");
+        imageHolder.setFocusable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -636,7 +638,8 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
     }//GEN-LAST:event_FAVButtonActionPerformed
     private void DisplayFav() {
-        if (selected.toString().equals("Select Category") || selected.toString().equals("All Category")) {
+        if(!categoryFavorites.isEmpty()){
+            if (selected.toString().equals("Select Category") || selected.toString().equals("All Category")) {
             currentQuestion = allFavorites.get(Index);
             String[] choices = currentQuestion.getChoices();
             QuesitionID.setText("QuestionID: " + currentQuestion.getQuestionID());
@@ -657,6 +660,8 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
             DHOLDER.setText("D- " + choices[3]);
             Tnum.setText((Index + 1) + "OF" + allFavorites.size());
         }
+        }
+        
     }
 
     private void setup() {
@@ -686,8 +691,8 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         }
         Category selectederror = selectedCategory;
         // Filter questions by selected category            
-
-        for (QuestionBank favoriteQuestionBank : student.getFavoriteQuestions()) {
+        if(selectederror!=null){
+            for (QuestionBank favoriteQuestionBank : student.getFavoriteQuestions()) {
             categoryFavorites = favoriteQuestionBank.getQuestions().stream()
                     .filter(q -> {
                         CategoryDAO categoryDAO = new CategoryDAO();
@@ -696,6 +701,8 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
                     })
                     .collect(Collectors.toList());
         }
+        }
+        
         if (allFavorites.isEmpty() || allFavorites == null || categoryFavorites.isEmpty() || categoryFavorites == null) {
             QuesitionHolder.setVisible(false);
             QuesitionID.setVisible(false);
