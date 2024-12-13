@@ -666,7 +666,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(
                     null,
                     "The Account Deleted!",
-                    "The Account Deleted",
+                    "Delete The Account",
                     JOptionPane.INFORMATION_MESSAGE
             );
             student.removeAccount() ;
@@ -675,7 +675,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(
                     null,
                     "Delete is disabled",
-                    "Delete is disabled",
+                    "disable the Deletion",
                     JOptionPane.INFORMATION_MESSAGE
             );
         }

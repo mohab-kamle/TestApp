@@ -149,6 +149,8 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
         FAVButton.setBackground(new java.awt.Color(244, 242, 226));
         FAVButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/FAVButtonWINDOS10EDITION.png"))); // NOI18N
+        FAVButton.setBorderPainted(false);
+        FAVButton.setFocusPainted(false);
         FAVButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FAVButtonActionPerformed(evt);
@@ -550,7 +552,7 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
         URL iconURL = getClass().getResource("/lib/DisFAVButtonWINDOS10EDITION.png");
         if (iconURL != null) {
-            BackButton.setIcon(new javax.swing.ImageIcon(iconURL));
+            FAVButton.setIcon(new javax.swing.ImageIcon(iconURL));
         } else {
             // Handle the error, e.g., log it or show a default icon
             System.err.println("Resource not found: /lib/DisFAVButtonWINDOS10EDITION.png");
