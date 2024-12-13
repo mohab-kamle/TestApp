@@ -4,7 +4,6 @@
  */
 package GUI.AdminPanels;
 
-import DataBaseManagment.CategoryDAO;
 import EndUser.Admin;
 import TestSystem.Category;
 import TestSystem.Question;
@@ -16,7 +15,6 @@ import java.awt.event.ItemEvent;
 import java.net.URL;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -310,9 +308,11 @@ public class UpdateQuestionPanel2 extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         add(backButton, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -346,6 +346,7 @@ public class UpdateQuestionPanel2 extends javax.swing.JPanel {
         questionStatementTA.setBackground(new java.awt.Color(74, 25, 72));
         questionStatementTA.setColumns(20);
         questionStatementTA.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
+        questionStatementTA.setForeground(new java.awt.Color(244, 242, 226));
         questionStatementTA.setRows(5);
         questionStatementTA.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(74, 25, 72), 5, true));
         jScrollPane1.setViewportView(questionStatementTA);

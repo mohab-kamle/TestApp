@@ -5,7 +5,6 @@
 package GUI.AdminPanels;
 
 import DataBaseManagment.AdminDAO;
-import DataBaseManagment.CategoryDAO;
 import DataBaseManagment.QuestionBankDAO;
 import EndUser.Admin;
 import TestSystem.Category;
@@ -13,12 +12,8 @@ import TestSystem.Question;
 import TestSystem.QuestionBank;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.net.URL;
-import java.util.Scanner;
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 
 /**
@@ -69,6 +64,7 @@ public class UpdateQuestionPanel4 extends javax.swing.JPanel {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 40), new java.awt.Dimension(32767, 40));
         backButton = new javax.swing.JButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 100), new java.awt.Dimension(32767, 100));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
 
         setBackground(new java.awt.Color(255, 250, 206));
         setPreferredSize(new java.awt.Dimension(800, 700));
@@ -79,9 +75,12 @@ public class UpdateQuestionPanel4 extends javax.swing.JPanel {
         confirmMsg.setForeground(new java.awt.Color(0, 0, 0));
         confirmMsg.setText("Sure you want to update this question ?");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
         add(confirmMsg, gridBagConstraints);
 
@@ -162,7 +161,7 @@ public class UpdateQuestionPanel4 extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
         add(backButton, gridBagConstraints);
@@ -170,6 +169,10 @@ public class UpdateQuestionPanel4 extends javax.swing.JPanel {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         add(filler3, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        add(filler4, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -274,6 +277,7 @@ public class UpdateQuestionPanel4 extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel modifyCategoryMsg;
     // End of variables declaration//GEN-END:variables

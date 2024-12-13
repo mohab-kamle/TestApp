@@ -4,7 +4,6 @@
  */
 package GUI.AdminPanels;
 
-import DataBaseManagment.AdminDAO;
 import DataBaseManagment.CategoryDAO;
 import EndUser.Admin;
 import TestSystem.Category;
@@ -14,7 +13,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.net.URL;
 import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
