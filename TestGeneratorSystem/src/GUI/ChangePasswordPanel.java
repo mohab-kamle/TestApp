@@ -57,7 +57,7 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 32767));
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
-        backButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(150, 0), new java.awt.Dimension(150, 0), new java.awt.Dimension(150, 32767));
         lengthLabel = new javax.swing.JLabel();
@@ -142,23 +142,23 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
         jButton1.setPreferredSize(new java.awt.Dimension(145, 60));
         jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                backButtonFocusGained(evt);
+                jButton1FocusGained(evt);
             }
         });
-        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backButtonMouseClicked(evt);
+                jButton1MouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                backButtonMouseEntered(evt);
+                jButton1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                backButtonMouseExited(evt);
+                jButton1MouseExited(evt);
             }
         });
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -166,7 +166,7 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(25, 0, 0, 0);
-        add(backButton, gridBagConstraints);
+        add(jButton1, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -414,51 +414,51 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseMoved
 
-    private void backButtonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_backButtonFocusGained
+    private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_backButtonFocusGained
+    }//GEN-LAST:event_jButton1FocusGained
 
-    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         jLabel4.setVisible(false);
         cardLayout.show(container, "StudentMenu");
-    }//GEN-LAST:event_backButtonMouseClicked
+    }//GEN-LAST:event_jButton1MouseClicked
 
-    private void backButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseEntered
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
         URL iconURL = getClass().getResource("/lib/turn-back.png");
         if (iconURL != null) {
-            backButton.setIcon(new javax.swing.ImageIcon(iconURL));
+            jButton1.setIcon(new javax.swing.ImageIcon(iconURL));
         } else {
             // Handle the error, e.g., log it or show a default icon
             System.err.println("Resource not found: /lib/turn-back.png");
         }
-        backButton.setBackground(Color.decode("#F4F2E2"));
-        backButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-        backButton.setBorderPainted(true);
-    }//GEN-LAST:event_backButtonMouseEntered
+        jButton1.setBackground(Color.decode("#F4F2E2"));
+        jButton1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        jButton1.setBorderPainted(true);
+    }//GEN-LAST:event_jButton1MouseEntered
 
-    private void backButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseExited
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
         // TODO add your handling code here:
         URL iconURL = getClass().getResource("/lib/turnback-40.png");
         if (iconURL != null) {
-            backButton.setIcon(new javax.swing.ImageIcon(iconURL));
+            jButton1.setIcon(new javax.swing.ImageIcon(iconURL));
         } else {
             // Handle the error, e.g., log it or show a default icon
             System.err.println("Resource not found: /lib/turnback-40.png");
         }
-        backButton.setBackground(Color.decode("#4A1948"));
-        backButton.setBorderPainted(false);
-        backButton.setForeground(Color.decode("#F4F2E2"));
+        jButton1.setBackground(Color.decode("#4A1948"));
+        jButton1.setBorderPainted(false);
+        jButton1.setForeground(Color.decode("#F4F2E2"));
 
-    }//GEN-LAST:event_backButtonMouseExited
+    }//GEN-LAST:event_jButton1MouseExited
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         PassChangeDontMatchLabel.setVisible(false);
         PassChangeWrongLabel.setVisible(false);
         cardLayout.show(container, "ConfirmCode");
-    }//GEN-LAST:event_backButtonActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
@@ -510,7 +510,6 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
     private javax.swing.JLabel PassChangeDontMatchLabel;
     private javax.swing.JLabel PassChangeSuccessLabel;
     private javax.swing.JLabel PassChangeWrongLabel;
-    private javax.swing.JButton backButton;
     private javax.swing.JLabel digitLabel;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
@@ -518,6 +517,7 @@ public class ChangePasswordPanel extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
