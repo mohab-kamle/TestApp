@@ -72,6 +72,8 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
         ContNumHolder = new javax.swing.JLabel();
         JoinDHolder = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(150, 100), new java.awt.Dimension(150, 100), new java.awt.Dimension(150, 100));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(150, 100), new java.awt.Dimension(150, 100), new java.awt.Dimension(150, 100));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Consolas", 0, 20)); // NOI18N
@@ -373,15 +375,25 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 18;
         gridBagConstraints.ipady = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(BackButton, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 10;
+        add(filler1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 10;
+        add(filler2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackButtonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackButtonFocusGained
@@ -446,6 +458,8 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
     private javax.swing.JLabel LnameHolder;
     private javax.swing.JLabel Username;
     private javax.swing.JLabel UsernameHolder;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
