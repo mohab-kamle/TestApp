@@ -42,7 +42,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
         ChangePass = new ChangePasswordPanel_P(student, cardLayout, container);
         setTest= new setUpTest(student, cardLayout, container);
         TestHisView = new ViewTestHistoryPanelP(student, cardLayout, container);
-        //FAVQuesView = new ViewFavoriteQuestions(student, cardLayout, container);
+        FAVQuesView = new ViewFavoriteQuestions(student, cardLayout, container);
     }
 
     /**
