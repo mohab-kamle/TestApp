@@ -44,7 +44,7 @@ public class TestAPP extends javax.swing.JFrame {
         
         MenuPanel MenuPanel = new MenuPanel(cardLayout, container);
         WelcomePanel welcomePanel = new WelcomePanel(cardLayout, container);
-        SignUpPanell signUpPanel = new SignUpPanell(cardLayout, container);
+        
         LoginPanel LoginPanel = new LoginPanel(cardLayout, container);
         ResetPasswordPanel resetPasswordPanel = new ResetPasswordPanel(cardLayout,container);
         // Create and set up Sign Up Panel
@@ -52,7 +52,7 @@ public class TestAPP extends javax.swing.JFrame {
         // Add panels to the container
         container.add(welcomePanel, "Welcome");
         container.add(MenuPanel, "MenuPanel");
-        container.add(signUpPanel, "SignUp");
+        
         container.add(LoginPanel, "Login");
         container.add(resetPasswordPanel, "ResetPass");
 //        container.add(profilePanel, "Profile");
