@@ -2,7 +2,6 @@ package GUI.AdminPanels;
 
 import EndUser.Admin;
 import GUI.ChangePasswordPanel_P;
-import GUI.UpdateQuestionPanel1;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
