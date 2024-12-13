@@ -281,12 +281,16 @@ public class LoginPanel extends javax.swing.JPanel {
         if (loggedAdmin != null) {
             AdminDashboardMenuP adminDashboard = new AdminDashboardMenuP(loggedAdmin, cardLayout, container);
             container.add(adminDashboard,"adminDashboard");
+            jTextField1.setText("");
+            jPasswordField1.setText("");
             cardLayout.show(container, "adminDashboard");
         } else {
             Student loggedStudent = new Student().login(User, Pass);
             if (loggedStudent != null) {
                 StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(loggedStudent, cardLayout, container);
             container.add(studentDashboard,"studentDashboard");
+            jTextField1.setText("");
+            jPasswordField1.setText("");
             cardLayout.show(container, "studentDashboard");
             } else {
         jLabel4.setVisible(true);

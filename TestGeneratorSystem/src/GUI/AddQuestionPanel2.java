@@ -5,21 +5,17 @@
 package GUI;
 
 import DataBaseManagment.AdminDAO;
-import DataBaseManagment.CategoryDAO;
 import DataBaseManagment.QuestionBankDAO;
 import EndUser.Admin;
 import TestSystem.Category;
 import TestSystem.Question;
 import TestSystem.QuestionBank;
-import static TestSystem.TestGeneratorApp.ifColorfullPrintln;
-import UserDefinedFunctionalities.TerminalColors;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -193,6 +189,7 @@ public class AddQuestionPanel2 extends javax.swing.JPanel {
 
         backButton.setBackground(new java.awt.Color(74, 25, 72));
         backButton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         backButton.setToolTipText("Click to go back");
         backButton.setBorderPainted(false);
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

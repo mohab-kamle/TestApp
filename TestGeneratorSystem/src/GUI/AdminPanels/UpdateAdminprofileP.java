@@ -47,7 +47,7 @@ public class UpdateAdminprofileP extends javax.swing.JPanel {
         UpdateDepartment = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(244, 242, 226));
+        setBackground(new java.awt.Color(255, 250, 206));
         setPreferredSize(new java.awt.Dimension(552, 500));
         setLayout(new java.awt.GridBagLayout());
 
