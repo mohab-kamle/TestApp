@@ -3867,4 +3867,20 @@
   "favoriteQuestions" : [ ],
   "takenTests" : [ ],
   "password" : "123456789@ZZz"
-}]
+}, {
+  "type" : "student",
+  "userId" : "f51056c9-fae4-4a0f-88a9-db8bc0e70293",
+  "email" : "ziad1124204@gmail.com",
+  "userName" : "ziwinme",
+  "address" : "streetname, city, country",
+  "firstName" : "name",
+  "lastName" : "ziad",
+  "lastLoginDate" : "2024-12-13T15:59:28.4547993",
+  "grade" : null,
+  "passedTestsCount" : 0,
+  "totalTimeOfAllTests" : 0.0,
+  "institute" : "Institute",
+  "favoriteQuestions" : [ ],
+  "takenTests" : [ ],
+  "password" : "zipassWIN@123"
+} ]

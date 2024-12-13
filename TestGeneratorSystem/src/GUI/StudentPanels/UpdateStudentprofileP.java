@@ -29,7 +29,7 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
         this.student = student ;
         this.cardLayout = cardLayout;
         this.container = container;
-        container.add(updatePanelP, "updatepanel");
+//        container.add(updatePanelP, "updatepanel");
     }
 
     /**
@@ -316,6 +316,7 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
     private void UpdateUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateUsernameActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("username", student, cardLayout, container);
+        container.add(updatePanelP, "updatepanel") ;
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateUsernameActionPerformed
 
@@ -325,17 +326,17 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
 
     private void UpdateEmailMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateEmailMouseEntered
         // TODO add your handling code here:
-        UpdateUsername.setBackground(Color.decode("#F4F2E2"));
-        UpdateUsername.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-        UpdateUsername.setBorderPainted(true);
-        UpdateUsername.setForeground(Color.BLACK);
+        UpdateEmail.setBackground(Color.decode("#F4F2E2"));
+        UpdateEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        UpdateEmail.setBorderPainted(true);
+        UpdateEmail.setForeground(Color.BLACK);
     }//GEN-LAST:event_UpdateEmailMouseEntered
 
     private void UpdateEmailMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateEmailMouseExited
         // TODO add your handling code here:
-        UpdateUsername.setBackground(Color.decode("#4A1948"));
-        UpdateUsername.setBorderPainted(false);
-        UpdateUsername.setForeground(Color.decode("#F4F2E2"));
+        UpdateEmail.setBackground(Color.decode("#4A1948"));
+        UpdateEmail.setBorderPainted(false);
+        UpdateEmail.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_UpdateEmailMouseExited
 
     private void UpdateEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateEmailMousePressed
@@ -345,6 +346,7 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
     private void UpdateEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateEmailActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("email", student, cardLayout, container);
+        container.add(updatePanelP, "updatepanel");
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateEmailActionPerformed
 
@@ -354,17 +356,17 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
 
     private void UpdateNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateNameMouseEntered
         // TODO add your handling code here:
-        UpdateUsername.setBackground(Color.decode("#F4F2E2"));
-        UpdateUsername.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-        UpdateUsername.setBorderPainted(true);
-        UpdateUsername.setForeground(Color.BLACK);
+        UpdateName.setBackground(Color.decode("#F4F2E2"));
+        UpdateName.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        UpdateName.setBorderPainted(true);
+        UpdateName.setForeground(Color.BLACK);
     }//GEN-LAST:event_UpdateNameMouseEntered
 
     private void UpdateNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateNameMouseExited
         // TODO add your handling code here:
-        UpdateUsername.setBackground(Color.decode("#4A1948"));
-        UpdateUsername.setBorderPainted(false);
-        UpdateUsername.setForeground(Color.decode("#F4F2E2"));
+        UpdateName.setBackground(Color.decode("#4A1948"));
+        UpdateName.setBorderPainted(false);
+        UpdateName.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_UpdateNameMouseExited
 
     private void UpdateNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateNameMousePressed
@@ -374,6 +376,7 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
     private void UpdateNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateNameActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("name", student, cardLayout, container);
+        container.add(updatePanelP, "updatepanel");
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateNameActionPerformed
 
@@ -383,17 +386,17 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
 
     private void UpdateAddressMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAddressMouseEntered
         // TODO add your handling code here:
-        UpdateUsername.setBackground(Color.decode("#F4F2E2"));
-        UpdateUsername.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-        UpdateUsername.setBorderPainted(true);
-        UpdateUsername.setForeground(Color.BLACK);
+        UpdateAddress.setBackground(Color.decode("#F4F2E2"));
+        UpdateAddress.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        UpdateAddress.setBorderPainted(true);
+        UpdateAddress.setForeground(Color.BLACK);
     }//GEN-LAST:event_UpdateAddressMouseEntered
 
     private void UpdateAddressMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAddressMouseExited
         // TODO add your handling code here:
-        UpdateUsername.setBackground(Color.decode("#4A1948"));
-        UpdateUsername.setBorderPainted(false);
-        UpdateUsername.setForeground(Color.decode("#F4F2E2"));
+        UpdateAddress.setBackground(Color.decode("#4A1948"));
+        UpdateAddress.setBorderPainted(false);
+        UpdateAddress.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_UpdateAddressMouseExited
 
     private void UpdateAddressMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAddressMousePressed
@@ -403,6 +406,7 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
     private void UpdateAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAddressActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("address", student, cardLayout, container);
+        container.add(updatePanelP, "updatepanel");
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateAddressActionPerformed
 
@@ -412,17 +416,17 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
 
     private void UpdateInstituteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateInstituteMouseEntered
         // TODO add your handling code here:
-        UpdateUsername.setBackground(Color.decode("#F4F2E2"));
-        UpdateUsername.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-        UpdateUsername.setBorderPainted(true);
-        UpdateUsername.setForeground(Color.BLACK);
+        UpdateInstitute.setBackground(Color.decode("#F4F2E2"));
+        UpdateInstitute.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        UpdateInstitute.setBorderPainted(true);
+        UpdateInstitute.setForeground(Color.BLACK);
     }//GEN-LAST:event_UpdateInstituteMouseEntered
 
     private void UpdateInstituteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateInstituteMouseExited
         // TODO add your handling code here:
-        UpdateUsername.setBackground(Color.decode("#4A1948"));
-        UpdateUsername.setBorderPainted(false);
-        UpdateUsername.setForeground(Color.decode("#F4F2E2"));
+        UpdateInstitute.setBackground(Color.decode("#4A1948"));
+        UpdateInstitute.setBorderPainted(false);
+        UpdateInstitute.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_UpdateInstituteMouseExited
 
     private void UpdateInstituteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateInstituteMousePressed
@@ -432,6 +436,7 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
     private void UpdateInstituteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateInstituteActionPerformed
         // TODO add your handling code here:
         updatePanelP = new UpdatePanelP("Institute", student, cardLayout, container);
+        container.add(updatePanelP, "updatepanel");
         cardLayout.show(container, "updatepanel");
     }//GEN-LAST:event_UpdateInstituteActionPerformed
 
@@ -474,12 +479,14 @@ public class UpdateStudentprofileP extends javax.swing.JPanel {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        container.remove(updatePanelP);
+        /*container.remove(updatePanelP);
         container.revalidate();
         container.repaint();
         updatePanelP = null ;
-        System.gc();
-        cardLayout.show(container, "Studentmenu");
+        System.gc();*/
+        StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(student, cardLayout, container);
+        container.add(studentDashboard,"studentDashboard");
+        cardLayout.show(container, "studentDashboard");
     }//GEN-LAST:event_BackButtonActionPerformed
 
 

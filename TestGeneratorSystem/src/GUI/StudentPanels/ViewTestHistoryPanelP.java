@@ -11,13 +11,13 @@ import static TestSystem.Question.dlevel.MEDIUM;
 import TestSystem.Test;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -27,7 +27,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
 
     private Student student;
     private CardLayout cardLayout;
-    private Container container;
+    private JPanel container;
     QuesitionsFullDetailsPanelP QuesFDP ;
     protected int Index = 0 ;
     List<Test> sortedTests ;
@@ -35,7 +35,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
     /**
      * Creates new form ViewTestHistoryPanelP
      */
-    public ViewTestHistoryPanelP(Student student, CardLayout cardLayout, Container container) {
+    public ViewTestHistoryPanelP(Student student, CardLayout cardLayout, JPanel container) {
         initComponents();
         this.student = student;
         this.cardLayout = cardLayout;
@@ -72,6 +72,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         }
         UpdateIndex();
         QuesFDP = new QuesitionsFullDetailsPanelP(currentTest, cardLayout, container);
+        container.add(QuesFDP, "QuesFDP");
         container.add(QuesFDP, "QuesFDP");
     }
 
@@ -688,7 +689,9 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         container.repaint();
         QuesFDP = null ;
         System.gc();
-        cardLayout.show(container, "StudentMenu");
+        StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(student, cardLayout, container);
+        container.add(studentDashboard,"studentDashboard");
+        cardLayout.show(container, "studentDashboard");
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
@@ -746,7 +749,8 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
     private void FullDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FullDetailsActionPerformed
         // TODO add your handling code here:
         QuesFDP = new QuesitionsFullDetailsPanelP(currentTest, cardLayout, container);
-        container.add(QuesFDP, "QuesFDP");
+        container.add(QuesFDP,"QuesFDP") ;
+        cardLayout.show(container, "QuesFDP");
         
     }//GEN-LAST:event_FullDetailsActionPerformed
     private void UpdateIndex(){
@@ -767,7 +771,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         ScoreHolder.setText(((currentTest.getTestResult() / 100) * currentTest.getQuestions().size()) + "/" + currentTest.getQuestions().size());
         PercentageHolder.setText(String.format("%.2f", currentTest.getTestResult()) + "%");
         StatusHolder.setText((currentTest.getTestResult() >= Test.getPassingScore() ? "PASSED" : "FAILED"));
-        Tnum.setText(Index + " OF " + student.getTakenTests().size());
+        Tnum.setText((Index + 1) + " OF " + student.getTakenTests().size());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;

@@ -4,21 +4,19 @@
  */
 package GUI.StudentPanels;
 
-import DataBaseManagment.AdminDAO;
 import DataBaseManagment.CategoryDAO;
 import DataBaseManagment.QuestionBankDAO;
 import EndUser.Student;
 import TestSystem.Category;
 import TestSystem.Question;
 import TestSystem.Question.dlevel;
-import TestSystem.QuestionBank;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.net.URL;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -28,7 +26,7 @@ public class setUpTest extends javax.swing.JPanel {
 
     private Student student;
     private CardLayout cardLayout;
-    private Container container;
+    private JPanel container;
     CategoryDAO categoryDAO;
     QuestionBankDAO questionBankDAO;
     List<Category> categories;
@@ -36,12 +34,12 @@ public class setUpTest extends javax.swing.JPanel {
     String choosen;
     String difficulty;
     List<Question> availableQuestions;
-    int num;
+    int num = 5;
     testPanel testP ;
     /**
      * Creates new form setUpTest
      */
-    public setUpTest(Student student, CardLayout cardLayout, Container container) {
+    public setUpTest(Student student, CardLayout cardLayout, JPanel container) {
         initComponents();
         errorHolder.setVisible(false);
         this.student = student;
@@ -379,7 +377,9 @@ public class setUpTest extends javax.swing.JPanel {
                 JOptionPane.QUESTION_MESSAGE      // Icon type
         );
         if (response == JOptionPane.YES_OPTION) {
-            cardLayout.show(container, "Studentmenu");
+            StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(student, cardLayout, container);
+            container.add(studentDashboard,"studentDashboard");
+            cardLayout.show(container, "studentDashboard");
         } 
     }//GEN-LAST:event_BackbuttonActionPerformed
 
@@ -408,7 +408,8 @@ public class setUpTest extends javax.swing.JPanel {
             );
             if (response == 0) {
                 testP = new testPanel(student, availableQuestions, choosencategory, dlevel.valueOf(difficulty), num, cardLayout, container);
-                cardLayout.show(container, "testPanel");
+                container.add(testP, "testP"); 
+                cardLayout.show(container, "testP");
             } 
         }
 
@@ -438,7 +439,7 @@ public class setUpTest extends javax.swing.JPanel {
                 choosencategory = categories.get(i);
             }
         }
-        QuestionsForTest();
+        availableQuestions = student.findQuestionsForTest(questionBankDAO, choosencategory, dlevel.valueOf(difficulty));
         if (availableQuestions.size() < 5) {
             errorHolder.setText("This category with this difficulty does not have enough questions");
             errorHolder.setVisible(true);
@@ -450,7 +451,7 @@ public class setUpTest extends javax.swing.JPanel {
         // TODO add your handling code here:
         errorHolder.setVisible(false);
         difficulty = (String) difficultyDropList.getSelectedItem();
-        QuestionsForTest();
+        availableQuestions = student.findQuestionsForTest(questionBankDAO, choosencategory, dlevel.valueOf(difficulty));
         if (availableQuestions.size() < 5) {
             errorHolder.setText("This category with this difficulty does not have enough questions");
             errorHolder.setVisible(true);
@@ -476,7 +477,7 @@ public class setUpTest extends javax.swing.JPanel {
             QuestionsNum.setText(Integer.toString(availableQuestions.size()));
         }
     }//GEN-LAST:event_QuestionsNumKeyReleased
-    private void QuestionsForTest() {
+    /*private void QuestionsForTest() {
         // Collect questions from all question banks for the given category and difficulty
         List<QuestionBank> categoryBanks = questionBankDAO.searchByCategory(choosencategory);
         AdminDAO ADB = new AdminDAO();
@@ -485,7 +486,7 @@ public class setUpTest extends javax.swing.JPanel {
                 availableQuestions.addAll(bank.getQuestionsByDifficulty(dlevel.valueOf(difficulty)));
             }
         }
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Backbutton;

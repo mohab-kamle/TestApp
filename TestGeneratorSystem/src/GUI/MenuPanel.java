@@ -118,6 +118,7 @@ public class MenuPanel extends javax.swing.JPanel {
 
         jButton4.setBackground(new java.awt.Color(74, 25, 72));
         jButton4.setForeground(new java.awt.Color(244, 242, 226));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         jButton4.setBorderPainted(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setFocusPainted(false);

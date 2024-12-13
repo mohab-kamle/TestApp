@@ -16,7 +16,6 @@ import TestSystem.QuestionBank;
 import TestSystem.Test;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.time.LocalDate;
@@ -27,6 +26,7 @@ import java.util.Collections;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
@@ -37,7 +37,7 @@ public class testPanel extends javax.swing.JPanel {
 
     private int numQuestions;
     private CardLayout cardLayout;
-    private Container container;
+    private JPanel container;
     private Category choosencategory;
     private dlevel difficulty;
     private Student student;
@@ -64,7 +64,7 @@ public class testPanel extends javax.swing.JPanel {
     /**
      * Creates new form testPanel
      */
-    public testPanel(Student student, List<Question> availableQuestions, Category choosencategory, dlevel difficulty, int numQuestions, CardLayout cardLayout, Container container) {
+    public testPanel(Student student, List<Question> availableQuestions, Category choosencategory, dlevel difficulty, int numQuestions, CardLayout cardLayout, JPanel container) {
         initComponents();
         this.numQuestions = numQuestions;
         this.cardLayout = cardLayout;
@@ -414,7 +414,7 @@ public class testPanel extends javax.swing.JPanel {
         student.calculateGrade(AccumalativePercent);
         StudentDAO SDB = new StudentDAO();
         SDB.updateStudent(student);
-            String[] options = {"Ok"};
+            String[] options = {"Ok", "Take Another test"};
             int response = JOptionPane.showOptionDialog(
                     null, // Parent component (null for center of screen)
                     "Score: " + score + ", Number of questions: " + numQuestions + ", Percentage: " + percentageScore + ", Total time taken: " + totalTestTime + ", Average Time Per Question: " + averageTimePerQuestion + ", Grade: " + student.getGrade() + ", Status: " + (percentageScore >= Test.getPassingScore() ? "PASSED" : "FAILED"),
@@ -425,7 +425,16 @@ public class testPanel extends javax.swing.JPanel {
                     options,
                     options[0]
             );
-            if (response == 0){}
+            if (response == 0){
+                StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(student, cardLayout, container);
+                container.add(studentDashboard,"studentDashboard");
+                cardLayout.show(container, "studentDashboard");
+            }
+            else {
+                setUpTest setTest = new setUpTest(student, cardLayout, container);
+                container.add(setTest,"setTest");
+                cardLayout.show(container, "setTest");
+            }
         }else {
         Index = ( Index + 1 ) % testQuestions.size();
         endQ = LocalDateTime.now() ;
@@ -453,6 +462,18 @@ public class testPanel extends javax.swing.JPanel {
 
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
         // TODO add your handling code here:
+        int response = JOptionPane.showConfirmDialog(
+                null,                             // Parent component (null for center of screen)
+                "Are you sure you want to withdraw from the test?",        // Message
+                "Backtomenu",                   // Title
+                JOptionPane.YES_NO_OPTION,        // Options
+                JOptionPane.QUESTION_MESSAGE      // Icon type
+        );
+        if (response == JOptionPane.YES_OPTION) {
+            StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(student, cardLayout, container);
+            container.add(studentDashboard,"studentDashboard");
+            cardLayout.show(container, "studentDashboard");
+        } 
     }//GEN-LAST:event_endButtonActionPerformed
 
     private void AchoosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AchoosenActionPerformed

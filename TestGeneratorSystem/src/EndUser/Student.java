@@ -580,7 +580,7 @@ public class Student extends User {
      * @param difficulty the `Question.dlevel` enum value representing the desired difficulty level of the questions.
      * @return a list of `Question` objects that match the specified category and difficulty level. If no questions are found, an empty list is returned.
      */
-    private List<Question> findQuestionsForTest(QuestionBankDAO questionBankDAO,
+    public List<Question> findQuestionsForTest(QuestionBankDAO questionBankDAO,
             Category category,
             Question.dlevel difficulty) {
         // Collect questions from all question banks for the given category and difficulty
