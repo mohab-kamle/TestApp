@@ -1,6 +1,5 @@
 package GUI;
 
-import DataBaseManagment.AdminDAO;
 import java.awt.*;
 import javax.swing.*;
 
@@ -46,7 +45,7 @@ public class KarimTestAPP extends javax.swing.JFrame {
         
         MenuPanel MenuPanel = new MenuPanel(cardLayout, container);
         WelcomePanel welcomePanel = new WelcomePanel(cardLayout, container);
-        SignUpPanell signUpPanel = new SignUpPanell(cardLayout, container);
+        SignUpPanel signUpPanel = new SignUpPanel(cardLayout, container);
         LoginPanel LoginPanel = new LoginPanel(cardLayout, container);
         ResetPasswordPanel resetPasswordPanel = new ResetPasswordPanel(cardLayout,container);
         // Create and set up Sign Up Panel
@@ -97,10 +96,10 @@ public class KarimTestAPP extends javax.swing.JFrame {
 //        cardLayout.show(container, "updateQuestion1");  
     }
 
-    public static void main(String args[]) {
-        SwingUtilities.invokeLater(() -> {
-            KarimTestAPP app = new KarimTestAPP();
-            app.setVisible(true);
-        });
-    }
+//    public static void main(String args[]) {
+//        SwingUtilities.invokeLater(() -> {
+//            KarimTestAPP app = new KarimTestAPP();
+//            app.setVisible(true);
+//        });
+//    }
 }

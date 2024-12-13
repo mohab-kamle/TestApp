@@ -91,7 +91,7 @@ public class ViewProfilePanelAdminP extends javax.swing.JPanel {
         jLabel5.setText("jLabel1");
         jLabel5.setOpaque(true);
 
-        setBackground(new java.awt.Color(244, 242, 226));
+        setBackground(new java.awt.Color(255, 250, 206));
         setForeground(new java.awt.Color(74, 25, 72));
         setAutoscrolls(true);
         setLayout(new java.awt.GridBagLayout());

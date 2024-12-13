@@ -6,13 +6,11 @@ package GUI;
 
 import DataBaseManagment.CategoryDAO;
 import EndUser.Admin;
-import UserDefinedFunctionalities.Checker;
 import EndUser.User;
-import TestSystem.Category;
+import UserDefinedFunctionalities.Checker;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.net.URL;
-import java.time.LocalDate;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -172,6 +170,7 @@ public class CreateCategoryPanel extends javax.swing.JPanel {
 
         backButton.setBackground(new java.awt.Color(74, 25, 72));
         backButton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         backButton.setToolTipText("Click to go back");
         backButton.setBorderPainted(false);
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

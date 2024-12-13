@@ -1,7 +1,13 @@
 package GUI.AdminPanels;
 
 import EndUser.Admin;
+import GUI.AddQuestionPanel1;
 import GUI.ChangePasswordPanel_P;
+import GUI.CreateCategoryPanel;
+import GUI.DeleteCategoryPanel;
+import GUI.DeleteQuestionPanel1;
+import GUI.ModifyCategoryPanel1;
+import GUI.UpdateQuestionPanel1;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
@@ -16,18 +22,20 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private CardLayout cardLayout;
     private JPanel container;
-    protected Admin admin ;
-    ViewProfilePanelAdminP VAdmin ;
-    ChangePasswordPanel_P ChangePass ;
-    UpdateAdminprofileP UpdateAdminProf ;
-    /* ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();*/
+    protected Admin admin;
+    ViewProfilePanelAdminP VAdmin;
+    ChangePasswordPanel_P ChangePass;
+    UpdateAdminprofileP UpdateAdminProf;
+    ModifyCategoryPanel1 modifyCategoryPanel1;
+    CreateCategoryPanel createCategoryPanel;
+    DeleteCategoryPanel deleteCategoryPanel;
+    DeleteQuestionPanel1 deleteQuestionPanel1;
+    AddQuestionPanel1 addQuestionPanel1;
+    UpdateQuestionPanel1 updateQuestionPanel1;
+
     /**
      * Creates new form AdminDashboardMenuP
+     *
      * @param admin
      * @param cardLayout
      * @param container
@@ -40,23 +48,22 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         VAdmin = new ViewProfilePanelAdminP(admin, cardLayout, container);
         ChangePass = new ChangePasswordPanel_P(admin, cardLayout, container);
         UpdateAdminProf = new UpdateAdminprofileP(admin, cardLayout, container);
-        // waiting kareem create Panels 
-       /* ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();
-        ViewProfilePanelAdminP VAdmin = new ViewProfilePanelAdminP();*/
-        container.add(VAdmin, "AdminViewProf"); 
-        container.add(ChangePass, "AdminChangePass"); 
-        container.add(UpdateAdminProf, "AdminUpdateprof"); 
-        //waiting kareem
-        /*container.add(UpdateAdminProf, "AdminUpdateprof"); 
-        container.add(UpdateAdminProf, "AdminUpdateprof"); 
-        container.add(UpdateAdminProf, "AdminUpdateprof"); 
-        container.add(UpdateAdminProf, "AdminUpdateprof"); 
-        container.add(UpdateAdminProf, "AdminUpdateprof");*/
-       
+        // waiting kareem create Panels
+        modifyCategoryPanel1 = new ModifyCategoryPanel1(cardLayout, container, admin);
+        createCategoryPanel = new CreateCategoryPanel(cardLayout, container, admin);
+        deleteCategoryPanel = new DeleteCategoryPanel(cardLayout, container, admin);
+        deleteQuestionPanel1 = new DeleteQuestionPanel1(cardLayout, container, admin);
+        addQuestionPanel1 = new AddQuestionPanel1(cardLayout, container, admin);
+        updateQuestionPanel1 = new UpdateQuestionPanel1(cardLayout, container, admin);
+        container.add(updateQuestionPanel1, "updateQuestion1");
+        container.add(addQuestionPanel1, "addQuestion1");
+        container.add(deleteQuestionPanel1, "deleteQuestion1");
+        container.add(deleteCategoryPanel, "deleteCategory");
+        container.add(createCategoryPanel, "createCategory");
+        container.add(modifyCategoryPanel1, "modifyCategory1");
+        container.add(VAdmin, "AdminViewProf");
+        container.add(ChangePass, "AdminChangePass");
+        container.add(UpdateAdminProf, "AdminUpdateprof");
     }
 
     /**
@@ -186,7 +193,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
 
-        setBackground(new java.awt.Color(244, 242, 226));
+        setBackground(new java.awt.Color(255, 250, 206));
         setToolTipText("");
         setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         setLayout(new java.awt.GridBagLayout());
@@ -327,6 +334,9 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         CreateCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CreateCategoryMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 CreateCategoryMouseEntered(evt);
             }
@@ -483,6 +493,9 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         DeleteCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DeleteCategoryMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 DeleteCategoryMouseEntered(evt);
             }
@@ -522,6 +535,9 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         AddQuestion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddQuestionMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 AddQuestionMouseEntered(evt);
             }
@@ -561,6 +577,9 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         UpdateQuestion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UpdateQuestionMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 UpdateQuestionMouseEntered(evt);
             }
@@ -600,6 +619,9 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
             }
         });
         DeleteQuestion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DeleteQuestionMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 DeleteQuestionMouseEntered(evt);
             }
@@ -630,22 +652,24 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         container.remove(VAdmin);
         container.remove(ChangePass);
         container.remove(UpdateAdminProf);
-        /*container.remove(UpdateAdminProf); 
-        container.remove(UpdateAdminProf); 
-        container.remove(UpdateAdminProf); 
-        container.remove(UpdateAdminProf); 
-        container.remove(UpdateAdminProf);*/
+        container.remove(updateQuestionPanel1);
+        container.remove(addQuestionPanel1);
+        container.remove(deleteQuestionPanel1);
+        container.remove(deleteCategoryPanel);
+        container.remove(createCategoryPanel);
+        container.remove(modifyCategoryPanel1);
         container.revalidate();
         container.repaint();
-        VAdmin = null ;
-        ChangePass = null ;
-        UpdateAdminProf = null ;
-        /*UpdateAdminProf = null ;
-        UpdateAdminProf = null ;
-        UpdateAdminProf = null ;
-        UpdateAdminProf = null ;
-        UpdateAdminProf = null ;*/
-        admin = new Admin() ;
+        VAdmin = null;
+        ChangePass = null;
+        UpdateAdminProf = null;
+        modifyCategoryPanel1 = null;
+        createCategoryPanel = null;
+        deleteCategoryPanel = null;
+        deleteQuestionPanel1 = null;
+        addQuestionPanel1 = null;
+        updateQuestionPanel1 = null;
+        admin = new Admin();
         System.gc();
         cardLayout.show(container, "Welcome");
     }//GEN-LAST:event_LogoutActionPerformed
@@ -762,7 +786,6 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void CreateCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateCategoryActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "Welcome");//waiting kareem
     }//GEN-LAST:event_CreateCategoryActionPerformed
 
     private void ChangePasswordMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChangePasswordMouseMoved
@@ -819,11 +842,11 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
     private void DeleteAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAccountActionPerformed
         // TODO add your handling code here:
         int response = JOptionPane.showConfirmDialog(
-                null,                             // Parent component (null for center of screen)
-                "Are you sure to delete the the account?",        // Message
-                "Delete Account alert",                   // Title
-                JOptionPane.YES_NO_OPTION,        // Options
-                JOptionPane.QUESTION_MESSAGE      // Icon type
+                null, // Parent component (null for center of screen)
+                "Are you sure to delete the the account?", // Message
+                "Delete Account alert", // Title
+                JOptionPane.YES_NO_OPTION, // Options
+                JOptionPane.QUESTION_MESSAGE // Icon type
         );
         if (response == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(
@@ -832,8 +855,8 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
                     "The Account Deleted",
                     JOptionPane.INFORMATION_MESSAGE
             );
-            admin.removeAccount() ;
-            LogoutMouseClicked() ;
+            admin.removeAccount();
+            LogoutMouseClicked();
         } else {
             JOptionPane.showMessageDialog(
                     null,
@@ -854,7 +877,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void jButton23MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton23MouseExited
 
     private void jButton23MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MousePressed
@@ -890,7 +913,7 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void ModifyCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyCategoryActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "Welcome");//waiting kareem
+        cardLayout.show(container, "modifyCategory1");
     }//GEN-LAST:event_ModifyCategoryActionPerformed
 
     private void DeleteCategoryMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteCategoryMouseMoved
@@ -918,7 +941,6 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void DeleteCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCategoryActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "Welcome");//waiting kareem
     }//GEN-LAST:event_DeleteCategoryActionPerformed
 
     private void jButton26MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseMoved
@@ -966,7 +988,6 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void AddQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddQuestionActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "Welcome");//waiting kareem
     }//GEN-LAST:event_AddQuestionActionPerformed
 
     private void UpdateQuestionMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateQuestionMouseMoved
@@ -994,7 +1015,6 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void UpdateQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateQuestionActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "Welcome");//waiting kareem
     }//GEN-LAST:event_UpdateQuestionActionPerformed
 
     private void DeleteQuestionMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteQuestionMouseMoved
@@ -1022,7 +1042,6 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
 
     private void DeleteQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteQuestionActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(container, "Welcome");//waiting kareem
     }//GEN-LAST:event_DeleteQuestionActionPerformed
 
     private void LogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseEntered
@@ -1039,6 +1058,32 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         Logout.setBorderPainted(false);
         Logout.setForeground(Color.decode("#FF0000"));
     }//GEN-LAST:event_LogoutMouseExited
+
+    private void CreateCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateCategoryMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(container, "createCategory");
+    }//GEN-LAST:event_CreateCategoryMouseClicked
+
+    private void DeleteCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteCategoryMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(container, "deleteCategory");
+    }//GEN-LAST:event_DeleteCategoryMouseClicked
+
+    private void DeleteQuestionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteQuestionMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(container, "deleteQuestion1");
+
+    }//GEN-LAST:event_DeleteQuestionMouseClicked
+
+    private void AddQuestionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddQuestionMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(container, "addQuestion1");
+    }//GEN-LAST:event_AddQuestionMouseClicked
+
+    private void UpdateQuestionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateQuestionMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(container, "updateQuestion1");
+    }//GEN-LAST:event_UpdateQuestionMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1073,10 +1118,10 @@ public class AdminDashboardMenuP extends javax.swing.JPanel {
         container.remove(UpdateAdminProf);*/
         container.revalidate();
         container.repaint();
-        VAdmin = null ;
-        ChangePass = null ;
-        UpdateAdminProf = null ;
-        admin = new Admin() ;
+        VAdmin = null;
+        ChangePass = null;
+        UpdateAdminProf = null;
+        admin = new Admin();
         System.gc();
         cardLayout.show(container, "Welcome");
     }
