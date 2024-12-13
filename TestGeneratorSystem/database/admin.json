@@ -250,6 +250,48 @@
   "dateAppointed" : "2024-11-16",
   "contactNumber" : "+20123456789",
   "department" : "Biology",
-  "ownedBanks" : [ ],
+  "ownedBanks" : [ {
+    "bankID" : "5a7cb271-ca8a-4d32-95a8-00d028879da7",
+    "questions" : [ ],
+    "creatorID" : "06481dd7-60a6-48c0-b657-2a48b6560acd",
+    "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+    "creationDate" : "2024-12-13"
+  }, {
+    "bankID" : "9656fbc6-4cd9-454d-9f1a-c2f8b6bb1e85",
+    "questions" : [ {
+      "questionID" : "4e508587-5064-429c-a164-80cb040109ab",
+      "topic" : "fcf142e0-3685-4fb3-b2de-7070f2e8315b",
+      "statement" : "At which continent is Burj Khalifa located?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.0,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 2,
+      "choices" : [ "Europe", "Africa", "Asia", "Australia" ],
+      "noOfAttemptsAtTests" : 0
+    }, {
+      "questionID" : "ba7e47dc-e8ac-472c-ab56-33371ffd4ae3",
+      "topic" : "fcf142e0-3685-4fb3-b2de-7070f2e8315b",
+      "statement" : "Which country is Rome capital of?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.0,
+      "difficulty" : "EASY",
+      "rightAnswer" : 2,
+      "choices" : [ "Syria", "Romania", "Italy", "Brazil" ],
+      "noOfAttemptsAtTests" : 0
+    }, {
+      "questionID" : "f367b9ff-cd16-4f17-89a7-e12b8f0e7771",
+      "topic" : "fcf142e0-3685-4fb3-b2de-7070f2e8315b",
+      "statement" : "Where is the Nile river located?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.0,
+      "difficulty" : "EASY",
+      "rightAnswer" : 0,
+      "choices" : [ "Egypt", "Lebanon", "Iran", "The Netherlands" ],
+      "noOfAttemptsAtTests" : 0
+    } ],
+    "creatorID" : "06481dd7-60a6-48c0-b657-2a48b6560acd",
+    "categoryID" : "fcf142e0-3685-4fb3-b2de-7070f2e8315b",
+    "creationDate" : "2024-12-13"
+  } ],
   "password" : "123456789@MMm"
 } ]

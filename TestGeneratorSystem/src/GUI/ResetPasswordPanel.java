@@ -127,7 +127,7 @@ public class ResetPasswordPanel extends javax.swing.JPanel {
         add(filler6, gridBagConstraints);
 
         jButton1.setBackground(new java.awt.Color(74, 25, 72));
-        jButton1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         jButton1.setToolTipText("Click to go back");
         jButton1.setBorderPainted(false);
@@ -136,7 +136,9 @@ public class ResetPasswordPanel extends javax.swing.JPanel {
         jButton1.setFocusable(false);
         jButton1.setMaximumSize(new java.awt.Dimension(145, 60));
         jButton1.setMinimumSize(new java.awt.Dimension(145, 60));
+        jButton1.setOpaque(true);
         jButton1.setPreferredSize(new java.awt.Dimension(145, 60));
+        jButton1.setRolloverEnabled(false);
         jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jButton1FocusGained(evt);

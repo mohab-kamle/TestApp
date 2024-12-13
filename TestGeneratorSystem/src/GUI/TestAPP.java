@@ -1,5 +1,4 @@
-package GUI;
-
+package GUI;import DataBaseManagment.AdminDAO;
 import java.awt.*;
 import javax.swing.*;
 
@@ -42,6 +41,7 @@ public class TestAPP extends javax.swing.JFrame {
     }
 
     private void setupPanels() {
+        
         MenuPanel MenuPanel = new MenuPanel(cardLayout, container);
         WelcomePanel welcomePanel = new WelcomePanel(cardLayout, container);
         
@@ -62,6 +62,8 @@ public class TestAPP extends javax.swing.JFrame {
 
         // Show initial panel
         cardLayout.show(container, "Welcome");    
+        
+        
     }
 
     public static void main(String args[]) {

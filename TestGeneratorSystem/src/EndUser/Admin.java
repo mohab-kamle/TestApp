@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -251,6 +255,8 @@ public class Admin extends User {
      *
      * @return true if the category was successfully created and saved; false otherwise.
      */
+    
+    
     public boolean createCategory() {
         Scanner scanner = new Scanner(System.in);
         Checker check = new Checker();
@@ -269,7 +275,15 @@ public class Admin extends User {
         CDB.saveCategory(newCategory);
         return CDB.loadCategory(newCategory.getCategoryId()).equals(newCategory);
     }
-
+    
+    //A GUI-compatible version of createCategory
+    public boolean createCategory(CategoryDAO CDB, String categoryName, String categoryDesc) {
+            LocalDate creationDate = LocalDate.now();
+            Category newCategory = new Category(categoryName, categoryDesc, creationDate, this);
+            CDB.saveCategory(newCategory);
+            return CDB.loadCategory(newCategory.getCategoryId()).equals(newCategory);
+    }
+    
     /**
      * Modifies an existing category in the system.
      *
@@ -420,11 +434,13 @@ public class Admin extends User {
      * This method allows the admin to delete a category from the list of categories. It first checks if there are any categories available for deletion. If categories exist, it displays the list and prompts the admin to select one to delete. After deletion, the method asks if the admin wants to delete another category. The process continues until the admin chooses to stop or there are no more categories left.
      *
      * @return true if at least one category was deleted; false if there were no categories to delete.
-     */
-    public boolean deleteCategory() {
-        CategoryDAO CDB = new CategoryDAO();
+ 
+ */
+ 
+  public boolean deleteCategory() {
+        CategoryDAO CDB = new CategoryDAO(); // ************************************************
         Scanner scanner = new Scanner(System.in);
-        int oldSize = CDB.getCategoriesList().size();
+        int oldSize = CDB.getCategoriesList().size(); // ********************************************
         while (true) {
             int i = 1;
             if (!CDB.getCategoriesList().isEmpty()) {
@@ -438,7 +454,7 @@ public class Admin extends User {
                 OUTER:
                 while (true) {
                     if (key >= 1 && key <= CDB.getCategoriesList().size()) {
-                        CDB.deleteCategory(CDB.getCategoriesList().get(key - 1).getCategoryId());
+                        CDB.deleteCategory(CDB.getCategoriesList().get(key - 1).getCategoryId());   // ************************************
                         if (!CDB.getCategoriesList().isEmpty()) {
                             while (true) {
                                 System.out.println("Do you want to delete another one ? y/n");
@@ -477,7 +493,7 @@ public class Admin extends User {
         }
         return false;
     }
-
+    
     /**
      * Adds a new question to a specified question bank.
      *
@@ -487,65 +503,67 @@ public class Admin extends User {
      *
      * @return true if the question was successfully added to the question bank; false otherwise.
      */
-    public boolean addQuestionToQuestionBank() {
-        Scanner scanner = new Scanner(System.in); // Assuming Scanner is used for user input
+//    public boolean addQuestionToQuestionBank() {
+//    Scanner scanner = new Scanner(System.in); // Assuming Scanner is used for user input
+//
+//    try {
+//        while (true) {
+//            // 1. Select Category
+//            Category selectedCategory = selectCategory();
+//            if (selectedCategory == null) {
+//                System.out.println("Operation cancelled.");
+//                return false;
+//            }
+//
+//            // 2. Get or Create QuestionBank
+//            QuestionBank questionBank = getOrCreateQuestionBank(selectedCategory, getUserId());
+//            if (questionBank == null) {
+//                System.out.println("Failed to get or create question bank.");
+//                return false;
+//            }
+//
+//            // 3. Create Question
+//            Question newQuestion = createQuestion(selectedCategory);
+//            if (newQuestion == null) {
+//                System.out.println("Question creation cancelled.");
+//                return false;
+//            }
+//
+//            // 4. Add question to bank and update
+//            ArrayList<Question> currQuestions = questionBank.getQuestions();
+//            currQuestions.add(newQuestion);
+//            questionBank.setQuestions(currQuestions);
+//            QuestionBankDAO QBDB = new QuestionBankDAO();
+//            AdminDAO ADB = new AdminDAO();
+//            ArrayList<QuestionBank> currentQBs = getOwnedBanks();
+//            currentQBs.removeIf(qb -> qb.getBankID().equals(questionBank.getBankID()));
+//            currentQBs.add(questionBank);
+//            this.setOwnedBanks(currentQBs);
+//            ADB.updateAdmin(this);
+//            boolean updated = QBDB.addQuestionToBank(questionBank.getBankID(), newQuestion);
+//
+//            if (updated) {
+//                ifColorfullPrintln("Question successfully added to the question bank!",TerminalColors.BOLD_GREEN);
+//            } else {
+//                ifColorfullPrintln("Failed to update question bank in database.",TerminalColors.BOLD_RED);
+//                return false;
+//            }
+//
+//            // Ask user if they want to add another question or exit
+//            System.out.print("Do you want to add another question? (yes/no): ");
+//            String response = scanner.next().toLowerCase();
+//            if (!response.equals("yes")) {
+//                break;
+//            }
+//        }
+//        return true;
+//    } catch (Exception e) {
+//        System.out.println("An error occurred: " + e.getMessage());
+//        return false;
+//    }
+//}
 
-        try {
-            while (true) {
-                // 1. Select Category
-                Category selectedCategory = selectCategory();
-                if (selectedCategory == null) {
-                    System.out.println("Operation cancelled.");
-                    return false;
-                }
 
-                // 2. Get or Create QuestionBank
-                QuestionBank questionBank = getOrCreateQuestionBank(selectedCategory, getUserId());
-                if (questionBank == null) {
-                    System.out.println("Failed to get or create question bank.");
-                    return false;
-                }
-
-                // 3. Create Question
-                Question newQuestion = createQuestion(selectedCategory);
-                if (newQuestion == null) {
-                    System.out.println("Question creation cancelled.");
-                    return false;
-                }
-
-                // 4. Add question to bank and update
-                ArrayList<Question> currQuestions = questionBank.getQuestions();
-                currQuestions.add(newQuestion);
-                questionBank.setQuestions(currQuestions);
-                QuestionBankDAO QBDB = new QuestionBankDAO();
-                AdminDAO ADB = new AdminDAO();
-                ArrayList<QuestionBank> currentQBs = getOwnedBanks();
-                currentQBs.removeIf(qb -> qb.getBankID().equals(questionBank.getBankID()));
-                currentQBs.add(questionBank);
-                this.setOwnedBanks(currentQBs);
-                ADB.updateAdmin(this);
-                boolean updated = QBDB.addQuestionToBank(questionBank.getBankID(), newQuestion);
-
-                if (updated) {
-                    ifColorfullPrintln("Question successfully added to the question bank!", TerminalColors.BOLD_GREEN);
-                } else {
-                    ifColorfullPrintln("Failed to update question bank in database.", TerminalColors.BOLD_RED);
-                    return false;
-                }
-
-                // Ask user if they want to add another question or exit
-                System.out.print("Do you want to add another question? (yes/no): ");
-                String response = scanner.next().toLowerCase();
-                if (!response.equals("yes")) {
-                    break;
-                }
-            }
-            return true;
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-            return false;
-        }
-    }
 
     /**
      * Prompts the user to select a category from a list of available categories.
@@ -589,6 +607,22 @@ public class Admin extends User {
             }
         }
     }
+    
+    
+    
+    
+    
+        public Category selectCategory(JComboBox<String> categoryList, CategoryDAO CDB, JLabel errorMsg) {
+        int choice = categoryList.getSelectedIndex();
+        if (choice == 0) {
+            errorMsg.setText("No category was selected.");
+            errorMsg.setVisible(true);
+            return null;
+        } else {
+            return CDB.getCategoriesList().get(choice - 1);
+        }
+    }
+
 
     /**
      * Retrieves an existing question bank for a specified category and user, or creates a new one if none exists.
@@ -599,13 +633,27 @@ public class Admin extends User {
      * @param userId the UUID of the user (creator) associated with the question bank.
      * @return the existing QuestionBank if found; otherwise, a new QuestionBank created by the `createQuestionBank` method.
      */
-    private QuestionBank getOrCreateQuestionBank(Category category, UUID userId) {
+//    private QuestionBank getOrCreateQuestionBank(Category category, UUID userId) {
+//        QuestionBankDAO QDBD = new QuestionBankDAO();
+//        List<QuestionBank> questionBanks = QDBD.searchByCategoryAndCreator(category, userId);
+//        if (!questionBanks.isEmpty()) {
+//            System.out.println("Exists Question Bank for " + category.getName() + ":");
+//            System.out.println("Date Created : " + questionBanks.get(0).getCreationDate());
+//            System.out.println("Number of Questions : " + questionBanks.get(0).getQuestionCount() + "\n");
+//            return questionBanks.get(0);
+//        }
+//        return createQuestionBank(this, category, LocalDate.now());
+//    }
+//    
+    
+    
+    
+    
+    
+    public QuestionBank getOrCreateQuestionBank(Category category, UUID userId) {
         QuestionBankDAO QDBD = new QuestionBankDAO();
         List<QuestionBank> questionBanks = QDBD.searchByCategoryAndCreator(category, userId);
-        if (!questionBanks.isEmpty()) {
-            System.out.println("Exists Question Bank for " + category.getName() + ":");
-            System.out.println("Date Created : " + questionBanks.get(0).getCreationDate());
-            System.out.println("Number of Questions : " + questionBanks.get(0).getQuestionCount() + "\n");
+        if (!questionBanks.isEmpty()) { 
             return questionBanks.get(0);
         }
         return createQuestionBank(this, category, LocalDate.now());
@@ -674,6 +722,20 @@ public class Admin extends User {
             return statement;
         }
     }
+    
+    
+    
+    
+    
+     public String getValidStatement(JTextArea statementTA, JLabel errorMsg) {
+            String statement = statementTA.getText().trim();
+            if (statement.length() < 10) {
+                errorMsg.setText(("Statement must be at least 10 characters long."));
+                errorMsg.setVisible(true);
+                return null;
+            }
+            return statement;
+    }
 
     /**
      * Prompts the user to enter valid choices for a multiple-choice question.
@@ -730,6 +792,37 @@ public class Admin extends User {
 
         return choices;
     }
+    
+    
+    
+    
+    
+    public String[] getValidChoices(JTextField[] choicesList, JLabel[] choiceError) {
+            String[] choices = new String[4];
+            for(int i=0 ; i<4 ; ++i){
+                choices[i] = choicesList[i].getText();
+            }
+            boolean foundError = false;
+            for(int i=0 ; i<choices.length ; ++i){
+                choices[i] = choices[i].trim();
+                if (choices[i].isEmpty()) {
+                   choiceError[i].setText("A choice can't be empty!");
+                   choiceError[i].setVisible(true);
+                   foundError = true;
+                   continue;
+                }   
+
+                // Check for duplicate choices
+                for(int j = 0; j < i; j++) {
+                        if (choices[i].equalsIgnoreCase(choices[j])) {
+                            choiceError[i].setText("This choice already exists. Please enter a unique choice.");
+                            choiceError[i].setVisible(true);
+                            foundError = true;
+                        }
+                }
+            }
+            return  (foundError ? null : choices);
+    }
 
     /**
      * Prompts the user to select a difficulty level for a question.
@@ -768,6 +861,30 @@ public class Admin extends User {
             }
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    public Question.dlevel selectDifficultyLevel(JComboBox<String> difficultyList, JLabel errorMsg) {
+                int choice = difficultyList.getSelectedIndex();
+                switch (choice) {
+                    case 1:
+                        return Question.dlevel.EASY;
+                    case 2:
+                        return Question.dlevel.MEDIUM;
+                    case 3:
+                        return Question.dlevel.HARD;
+                    default:
+                        errorMsg.setText(("Must select a Diffculty level."));
+                        errorMsg.setVisible(true);
+                        return null;
+                }
+    }
+
 
     /**
      * Prompts the user to enter the correct answer for a multiple-choice question.
@@ -801,6 +918,29 @@ public class Admin extends User {
             System.out.println("Please enter a valid choice (A, B, C, or D)");
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        public Integer getValidRightAnswer(JComboBox<String> choicesList, JLabel errorMsg, String[] input) {
+                int choice = choicesList.getSelectedIndex();
+                if(choice == 0){
+                    errorMsg.setText("Enter the correct Answer");
+                    errorMsg.setVisible(true);
+                    return null;
+                }
+                if(input == null){
+                    errorMsg.setText("Must enter 4 proper choices first");
+                    errorMsg.setVisible(true);
+                    return null;
+                }
+                return choice-1;
+        }
 
     /**
      * Updates a question in the question bank based on user input.
@@ -862,6 +1002,10 @@ public class Admin extends User {
             return false;
         }
     }
+        
+        
+
+
 
     /**
      * Prompts the user to select a question to update from the provided question bank.
@@ -1020,13 +1164,25 @@ public class Admin extends User {
      * @param userId the UUID of the user who created the QuestionBank.
      * @return the first QuestionBank found that matches the criteria, or null if no matching QuestionBank exists.
      */
-    private QuestionBank getQuestionBank(Category category, UUID userId) {
+    public QuestionBank getQuestionBank(Category category, UUID userId) {
         QuestionBankDAO QDBD = new QuestionBankDAO();
         List<QuestionBank> questionBanks = QDBD.searchByCategoryAndCreator(category, userId);
         if (!questionBanks.isEmpty()) {
             return questionBanks.get(0);
         }
         System.out.println("No existing question bank found for this category.");
+        return null;
+    }
+    
+    
+        public QuestionBank getQuestionBank(Category category, UUID userId, JLabel errorMsg) {
+        QuestionBankDAO QDBD = new QuestionBankDAO();
+        List<QuestionBank> questionBanks = QDBD.searchByCategoryAndCreator(category, userId);
+        if (!questionBanks.isEmpty() && !questionBanks.get(0).getQuestions().isEmpty()) {
+            return questionBanks.get(0);
+        }
+        errorMsg.setText("No existing question bank found for this category.");
+        errorMsg.setVisible(true);
         return null;
     }
 
