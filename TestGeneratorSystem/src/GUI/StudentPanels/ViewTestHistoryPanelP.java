@@ -89,7 +89,6 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         TestId = new javax.swing.JLabel();
         Date = new javax.swing.JLabel();
         TimeTaken = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         StartTime = new javax.swing.JLabel();
         Percentage = new javax.swing.JLabel();
         EndTime = new javax.swing.JLabel();
@@ -113,6 +112,9 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         Tnum = new javax.swing.JLabel();
         FullDetails = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 35), new java.awt.Dimension(0, 35), new java.awt.Dimension(32767, 35));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(150, 100), new java.awt.Dimension(150, 100), new java.awt.Dimension(150, 100));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(150, 100), new java.awt.Dimension(150, 100), new java.awt.Dimension(150, 100));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
 
         setBackground(new java.awt.Color(244, 242, 226));
         setLayout(new java.awt.GridBagLayout());
@@ -122,9 +124,9 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         TestDetailsTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TestDetailsTitle.setText("Test Details");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 335;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.weightx = 1.0;
@@ -136,9 +138,9 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         EmptyHistory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         EmptyHistory.setText("No Tests available");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 388;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.weightx = 1.0;
@@ -149,7 +151,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         TestId.setForeground(new java.awt.Color(0, 0, 0));
         TestId.setText("Test ID");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 56;
         gridBagConstraints.ipady = 5;
@@ -162,7 +164,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         Date.setForeground(new java.awt.Color(0, 0, 0));
         Date.setText("Date");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 97;
         gridBagConstraints.ipady = 5;
@@ -175,7 +177,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         TimeTaken.setForeground(new java.awt.Color(0, 0, 0));
         TimeTaken.setText("Time Taken");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 5;
@@ -183,17 +185,12 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(TimeTaken, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 21;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        add(jLabel14, gridBagConstraints);
 
         StartTime.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         StartTime.setForeground(new java.awt.Color(0, 0, 0));
         StartTime.setText("Start Time");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 5;
@@ -206,7 +203,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         Percentage.setForeground(new java.awt.Color(0, 0, 0));
         Percentage.setText("Percentage");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 5;
@@ -219,7 +216,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         EndTime.setForeground(new java.awt.Color(0, 0, 0));
         EndTime.setText("End Time");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.ipadx = 42;
         gridBagConstraints.ipady = 5;
@@ -232,7 +229,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         Difficulty.setForeground(new java.awt.Color(0, 0, 0));
         Difficulty.setText("Difficulty");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 5;
@@ -245,7 +242,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         Status.setForeground(new java.awt.Color(0, 0, 0));
         Status.setText("Status");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.ipadx = 69;
         gridBagConstraints.ipady = 5;
@@ -258,7 +255,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         Score.setForeground(new java.awt.Color(0, 0, 0));
         Score.setText("Score");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.ipadx = 83;
         gridBagConstraints.ipady = 5;
@@ -271,7 +268,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         Category.setForeground(new java.awt.Color(0, 0, 0));
         Category.setText("Category");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.ipadx = 42;
         gridBagConstraints.ipady = 5;
@@ -436,7 +433,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         PrevButton.setText("Previus");
         PrevButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PrevButton.setFocusPainted(false);
-        PrevButton.setPreferredSize(new java.awt.Dimension(105, 35));
+        PrevButton.setPreferredSize(new java.awt.Dimension(105, 40));
         PrevButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 PrevButtonMouseMoved(evt);
@@ -459,10 +456,9 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.ipadx = 47;
-        gridBagConstraints.ipady = 5;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(PrevButton, gridBagConstraints);
@@ -473,7 +469,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         NextButton.setText("Next");
         NextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         NextButton.setFocusPainted(false);
-        NextButton.setPreferredSize(new java.awt.Dimension(145, 35));
+        NextButton.setPreferredSize(new java.awt.Dimension(105, 40));
         NextButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 NextButtonMouseMoved(evt);
@@ -496,16 +492,16 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 15;
-        gridBagConstraints.ipadx = 4;
-        gridBagConstraints.ipady = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(NextButton, gridBagConstraints);
 
         BackButton.setBackground(new java.awt.Color(74, 25, 72));
         BackButton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         BackButton.setToolTipText("Click to go back");
         BackButton.setBorderPainted(false);
         BackButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -538,17 +534,18 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 16;
-        gridBagConstraints.ipady = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         add(BackButton, gridBagConstraints);
 
         Tnum.setForeground(new java.awt.Color(0, 0, 0));
         Tnum.setText("\"1\"");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         add(Tnum, gridBagConstraints);
 
@@ -558,7 +555,7 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
         FullDetails.setText("Full Details");
         FullDetails.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         FullDetails.setFocusPainted(false);
-        FullDetails.setPreferredSize(new java.awt.Dimension(145, 30));
+        FullDetails.setPreferredSize(new java.awt.Dimension(145, 50));
         FullDetails.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 FullDetailsMouseMoved(evt);
@@ -581,17 +578,30 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.ipady = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         add(FullDetails, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 14;
         add(filler1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 17;
+        add(filler2, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 17;
+        add(filler3, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 13;
+        add(filler4, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void PrevButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrevButtonMouseMoved
@@ -802,6 +812,8 @@ public class ViewTestHistoryPanelP extends javax.swing.JPanel {
     private javax.swing.JLabel TimeTakenHolder;
     private javax.swing.JLabel Tnum;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,6 +13,7 @@ import TestSystem.Question.dlevel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -33,7 +34,7 @@ public class setUpTest extends javax.swing.JPanel {
     Category choosencategory;
     String choosen;
     String difficulty;
-    List<Question> availableQuestions;
+    List<Question> availableQuestions = new ArrayList<>();
     int num = 5;
     testPanel testP;
 
@@ -94,7 +95,7 @@ public class setUpTest extends javax.swing.JPanel {
         setUpTitle.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         setUpTitle.setForeground(new java.awt.Color(0, 0, 0));
         setUpTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        setUpTitle.setText("TilteHolder");
+        setUpTitle.setText("Setup Test Page");
         setUpTitle.setPreferredSize(new java.awt.Dimension(270, 45));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -181,6 +182,7 @@ public class setUpTest extends javax.swing.JPanel {
         Minus.setBackground(new java.awt.Color(255, 250, 206));
         Minus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/resizedMinus.png"))); // NOI18N
         Minus.setBorderPainted(false);
+        Minus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Minus.setFocusPainted(false);
         Minus.setPreferredSize(new java.awt.Dimension(36, 36));
         Minus.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +194,7 @@ public class setUpTest extends javax.swing.JPanel {
         Plus.setBackground(new java.awt.Color(255, 250, 206));
         Plus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/resizedPlus.png"))); // NOI18N
         Plus.setBorderPainted(false);
+        Plus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Plus.setFocusPainted(false);
         Plus.setPreferredSize(new java.awt.Dimension(36, 36));
         Plus.addActionListener(new java.awt.event.ActionListener() {
@@ -263,6 +266,7 @@ public class setUpTest extends javax.swing.JPanel {
 
         Backbutton.setBackground(new java.awt.Color(74, 25, 72));
         Backbutton.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        Backbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/turnback-40.png"))); // NOI18N
         Backbutton.setToolTipText("Click to go back");
         Backbutton.setBorderPainted(false);
         Backbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
