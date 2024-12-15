@@ -166,8 +166,6 @@ public class Test {
     public void reset() {
         this.testResult = 0;
         this.takerAnswers.clear();
-        this.startTime = null;
-        this.endTime = null;
     }
 
     /**

@@ -23,23 +23,13 @@
   "firstName" : "mohab",
   "lastName" : "mosa",
   "lastLoginDate" : "2024-11-18T09:44:27.6030922",
-  "grade" : "C",
+  "grade" : "F",
   "passedTestsCount" : 7,
-  "totalTimeOfAllTests" : 5.566666666666666,
+  "totalTimeOfAllTests" : 7.55,
   "institute" : "AinShams",
   "favoriteQuestions" : [ {
     "bankID" : "4041a273-758e-4ece-a552-590f741dc16c",
     "questions" : [ {
-      "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
-      "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
-      "statement" : "What is the formula for calculating work?",
-      "numberOfFavorites" : 3,
-      "totalTime" : 1.4833333333333334,
-      "difficulty" : "HARD",
-      "rightAnswer" : 1,
-      "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
-      "noOfAttemptsAtTests" : 6
-    }, {
       "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
       "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
       "statement" : "Which of these is NOT a type of heat transfer?",
@@ -59,10 +49,46 @@
       "rightAnswer" : 1,
       "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
       "noOfAttemptsAtTests" : 9
+    }, {
+      "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+      "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "statement" : "What is the formula for calculating work?",
+      "numberOfFavorites" : 3,
+      "totalTime" : 1.4833333333333334,
+      "difficulty" : "HARD",
+      "rightAnswer" : 1,
+      "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+      "noOfAttemptsAtTests" : 6
+    }, {
+      "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+      "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "statement" : "Which type of energy does a moving car possess?",
+      "numberOfFavorites" : 1,
+      "totalTime" : 0.43333333333333335,
+      "difficulty" : "EASY",
+      "rightAnswer" : 1,
+      "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+      "noOfAttemptsAtTests" : 5
     } ],
     "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
     "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
     "creationDate" : "2024-11-16"
+  }, {
+    "bankID" : "ce85a4d7-fc5b-456c-8c8d-4eebc306da66",
+    "questions" : [ {
+      "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "If 3x + 7 = 22, then x equals:",
+      "numberOfFavorites" : 1,
+      "totalTime" : 0.13333333333333333,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 0,
+      "choices" : [ "5", "6", "4", "3" ],
+      "noOfAttemptsAtTests" : 2
+    } ],
+    "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+    "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+    "creationDate" : "2024-12-15"
   } ],
   "takenTests" : [ {
     "testID" : "5827dbc4-c8c0-4513-8b9a-4ba515fd3902",
@@ -3849,6 +3875,1666 @@
     "startTime" : "2024-11-18T09:43:11.4291705",
     "endTime" : "2024-11-18T09:43:44.259569",
     "takerAnswers" : [ 1, 3, 1, 3, 2 ]
+  }, {
+    "testID" : "3261ccfc-3beb-4303-bc57-31f9f7a0991a",
+    "category" : {
+      "name" : "Science",
+      "description" : "A group of general scientific topics as natural physics and thermodynamics",
+      "creationDate" : "2024-11-16",
+      "creator" : {
+        "type" : "admin",
+        "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "email" : "mohabkamle3@gmail.com",
+        "userName" : "Mohab",
+        "address" : "London , grandmasion , Boston",
+        "firstName" : "Ahmed",
+        "lastName" : "Mosa",
+        "lastLoginDate" : "2024-11-16T03:41:58.3523757",
+        "dateAppointed" : "2024-11-16",
+        "contactNumber" : "+201005619333",
+        "department" : "Science",
+        "ownedBanks" : [ {
+          "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+          "questions" : [ {
+            "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the slope of a line parallel to the x-axis?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "1", "0", "undefined", "Infinity" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the area of a circle with radius 5 units?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "25π", "10π", "5π", "15π" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "30°", "45°", "60°", "90°" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "9", "4", "3", "6" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "The expression (x + 2)(x - 3) equals:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 0,
+            "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 1,
+            "choices" : [ "13", "26", "40", "20" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "If 3x + 7 = 22, then x equals:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 0,
+            "choices" : [ "5", "6", "4", "3" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "The sum of interior angles of a pentagon is:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 1,
+            "choices" : [ "360°", "540°", "720°", "450°" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the volume of a cube with side length 3?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 2,
+            "choices" : [ "9", "18", "27", "36" ],
+            "noOfAttemptsAtTests" : 0
+          } ],
+          "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+          "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "creationDate" : "2024-11-16"
+        }, {
+          "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+          "questions" : [ {
+            "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the SI unit of force?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which law states that energy cannot be created or destroyed?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which type of energy does a moving car possess?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the process of changing from liquid to gas called?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the unit of electrical resistance ?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 2,
+            "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "In which direction does heat naturally flow?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the formula for calculating work?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which of these is NOT a type of heat transfer?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 3,
+            "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+            "noOfAttemptsAtTests" : 0
+          } ],
+          "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+          "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "creationDate" : "2024-11-16"
+        } ],
+        "password" : "987654321@MMm"
+      },
+      "questionBanks" : [ {
+        "bankID" : "d4dc675d-dc36-492c-bd4d-fbbc7a5b03f4",
+        "questions" : [ {
+          "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the formula for calculating work?",
+          "numberOfFavorites" : 2,
+          "totalTime" : 0.38333333333333336,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+          "noOfAttemptsAtTests" : 1
+        } ],
+        "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : "2024-11-16"
+      }, {
+        "bankID" : "61e7fc39-a9ea-48df-a039-9e032baaa11b",
+        "questions" : [ {
+          "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the process of changing from liquid to gas called?",
+          "numberOfFavorites" : 3,
+          "totalTime" : 1.5833333333333335,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+          "noOfAttemptsAtTests" : 4
+        } ],
+        "creatorID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : "2024-11-16"
+      }, {
+        "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+        "questions" : [ {
+          "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "In which direction does heat naturally flow?",
+          "numberOfFavorites" : 1,
+          "totalTime" : 0.5833333333333334,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which of these is NOT a type of heat transfer?",
+          "numberOfFavorites" : 1,
+          "totalTime" : 0.38333333333333336,
+          "difficulty" : "HARD",
+          "rightAnswer" : 3,
+          "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the formula for calculating work?",
+          "numberOfFavorites" : 3,
+          "totalTime" : 2.033333333333333,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the process of changing from liquid to gas called?",
+          "numberOfFavorites" : 3,
+          "totalTime" : 2.3000000000000007,
+          "difficulty" : "HARD",
+          "rightAnswer" : 1,
+          "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the unit of electrical resistance ?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.26666666666666666,
+          "difficulty" : "HARD",
+          "rightAnswer" : 2,
+          "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.18333333333333332,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+          "noOfAttemptsAtTests" : 2
+        }, {
+          "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the SI unit of force?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.26666666666666666,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+          "noOfAttemptsAtTests" : 3
+        }, {
+          "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which type of energy does a moving car possess?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.15,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+          "noOfAttemptsAtTests" : 4
+        }, {
+          "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.09999999999999999,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+          "noOfAttemptsAtTests" : 4
+        }, {
+          "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+          "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "statement" : "Which law states that energy cannot be created or destroyed?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 1.1666666666666667,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+          "noOfAttemptsAtTests" : 3
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : "2024-11-16"
+      }, {
+        "bankID" : "5a7cb271-ca8a-4d32-95a8-00d028879da7",
+        "questions" : [ ],
+        "creatorID" : "06481dd7-60a6-48c0-b657-2a48b6560acd",
+        "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+        "creationDate" : "2024-12-13"
+      } ],
+      "categoryId" : "fe8add61-e778-4c48-b2b2-484dde82c01f"
+    },
+    "creationDate" : "2024-12-15",
+    "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+    "duration" : 0,
+    "testResult" : 20.0,
+    "difficulty" : "EASY",
+    "questions" : [ {
+      "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+      "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "statement" : "Which type of energy does a moving car possess?",
+      "numberOfFavorites" : 1,
+      "totalTime" : 0.43333333333333335,
+      "difficulty" : "EASY",
+      "rightAnswer" : 1,
+      "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+      "noOfAttemptsAtTests" : 5
+    }, {
+      "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+      "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "statement" : "Which law states that energy cannot be created or destroyed?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 1.4166666666666667,
+      "difficulty" : "EASY",
+      "rightAnswer" : 2,
+      "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+      "noOfAttemptsAtTests" : 4
+    }, {
+      "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+      "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.5,
+      "difficulty" : "EASY",
+      "rightAnswer" : 0,
+      "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+      "noOfAttemptsAtTests" : 3
+    }, {
+      "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+      "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.15,
+      "difficulty" : "EASY",
+      "rightAnswer" : 2,
+      "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+      "noOfAttemptsAtTests" : 5
+    }, {
+      "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+      "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+      "statement" : "What is the SI unit of force?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.21666666666666667,
+      "difficulty" : "EASY",
+      "rightAnswer" : 1,
+      "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+      "noOfAttemptsAtTests" : 4
+    } ],
+    "startTime" : "2024-12-15T18:35:29.8029885",
+    "endTime" : "2024-12-15T18:48:29.8029885",
+    "takerAnswers" : [ 1, 2, 0, 2, 2 ]
+  }, {
+    "testID" : "27aa00c8-e2b6-4834-a99f-0b3a654062cb",
+    "category" : {
+      "name" : "Mathematics",
+      "description" : "Extinsive Course of Algebra and Geometry",
+      "creationDate" : "2024-11-16",
+      "creator" : {
+        "type" : "admin",
+        "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "email" : "mohabkamle3@gmail.com",
+        "userName" : "Mohab",
+        "address" : "London , grandmasion , Boston",
+        "firstName" : "Ahmed",
+        "lastName" : "Mosa",
+        "lastLoginDate" : "2024-11-16T03:41:58.3523757",
+        "dateAppointed" : "2024-11-16",
+        "contactNumber" : "+201005619333",
+        "department" : "Science",
+        "ownedBanks" : [ {
+          "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+          "questions" : [ {
+            "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the slope of a line parallel to the x-axis?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "1", "0", "undefined", "Infinity" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the area of a circle with radius 5 units?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "25π", "10π", "5π", "15π" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "30°", "45°", "60°", "90°" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "9", "4", "3", "6" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "The expression (x + 2)(x - 3) equals:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 0,
+            "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 1,
+            "choices" : [ "13", "26", "40", "20" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "If 3x + 7 = 22, then x equals:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 0,
+            "choices" : [ "5", "6", "4", "3" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "The sum of interior angles of a pentagon is:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 1,
+            "choices" : [ "360°", "540°", "720°", "450°" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the volume of a cube with side length 3?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 2,
+            "choices" : [ "9", "18", "27", "36" ],
+            "noOfAttemptsAtTests" : 0
+          } ],
+          "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+          "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "creationDate" : "2024-11-16"
+        }, {
+          "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+          "questions" : [ {
+            "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the SI unit of force?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which law states that energy cannot be created or destroyed?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which type of energy does a moving car possess?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the process of changing from liquid to gas called?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the unit of electrical resistance ?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 2,
+            "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "In which direction does heat naturally flow?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the formula for calculating work?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which of these is NOT a type of heat transfer?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 3,
+            "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+            "noOfAttemptsAtTests" : 0
+          } ],
+          "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+          "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "creationDate" : "2024-11-16"
+        } ],
+        "password" : "987654321@MMm"
+      },
+      "questionBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 0
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 1
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 1
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 1
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.0,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 1
+        }, {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 1.4000000000000001,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 8
+        }, {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.8166666666666668,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 8
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.6166666666666666,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 1.9666666666666668,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 8
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 1,
+          "totalTime" : 0.9166666666666666,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 9
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : "2024-11-16"
+      }, {
+        "bankID" : "cf6b9120-56f0-4c2a-ba76-d9c7faa70c49",
+        "questions" : [ ],
+        "creatorID" : "06481dd7-60a6-48c0-b657-2a48b6560acd",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : "2024-12-13"
+      } ],
+      "categoryId" : "b426bdc6-132c-4737-a47f-260479fcfe9f"
+    },
+    "creationDate" : "2024-12-15",
+    "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+    "duration" : 0,
+    "testResult" : 20.0,
+    "difficulty" : "MEDIUM",
+    "questions" : [ {
+      "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+      "numberOfFavorites" : 1,
+      "totalTime" : 0.3333333333333333,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 1,
+      "choices" : [ "13", "26", "40", "20" ],
+      "noOfAttemptsAtTests" : 2
+    }, {
+      "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "The sum of interior angles of a pentagon is:",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.16666666666666666,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 1,
+      "choices" : [ "360°", "540°", "720°", "450°" ],
+      "noOfAttemptsAtTests" : 2
+    }, {
+      "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "If 3x + 7 = 22, then x equals:",
+      "numberOfFavorites" : 1,
+      "totalTime" : 0.13333333333333333,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 0,
+      "choices" : [ "5", "6", "4", "3" ],
+      "noOfAttemptsAtTests" : 2
+    }, {
+      "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "What is the volume of a cube with side length 3?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.05,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 2,
+      "choices" : [ "9", "18", "27", "36" ],
+      "noOfAttemptsAtTests" : 1
+    }, {
+      "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "The expression (x + 2)(x - 3) equals:",
+      "numberOfFavorites" : 0,
+      "totalTime" : -0.06666666666666667,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 0,
+      "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+      "noOfAttemptsAtTests" : 2
+    } ],
+    "startTime" : "2024-12-15T19:06:39.5657463",
+    "endTime" : "2024-12-15T19:07:39.5657463",
+    "takerAnswers" : [ 2, 1, 0, -65, -65 ]
+  }, {
+    "testID" : "ab17cc4c-2345-45d0-96d5-04abdc3d90e1",
+    "category" : {
+      "name" : "Mathematics",
+      "description" : "Extinsive Course of Algebra and Geometry",
+      "creationDate" : "2024-11-16",
+      "creator" : {
+        "type" : "admin",
+        "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "email" : "mohabkamle3@gmail.com",
+        "userName" : "Mohab",
+        "address" : "London , grandmasion , Boston",
+        "firstName" : "Ahmed",
+        "lastName" : "Mosa",
+        "lastLoginDate" : "2024-11-16T03:41:58.3523757",
+        "dateAppointed" : "2024-11-16",
+        "contactNumber" : "+201005619333",
+        "department" : "Science",
+        "ownedBanks" : [ {
+          "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+          "questions" : [ {
+            "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the slope of a line parallel to the x-axis?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "1", "0", "undefined", "Infinity" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the area of a circle with radius 5 units?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "25π", "10π", "5π", "15π" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "30°", "45°", "60°", "90°" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "9", "4", "3", "6" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "The expression (x + 2)(x - 3) equals:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 0,
+            "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 1,
+            "choices" : [ "13", "26", "40", "20" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "If 3x + 7 = 22, then x equals:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 0,
+            "choices" : [ "5", "6", "4", "3" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "The sum of interior angles of a pentagon is:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 1,
+            "choices" : [ "360°", "540°", "720°", "450°" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the volume of a cube with side length 3?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 2,
+            "choices" : [ "9", "18", "27", "36" ],
+            "noOfAttemptsAtTests" : 0
+          } ],
+          "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+          "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "creationDate" : "2024-11-16"
+        }, {
+          "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+          "questions" : [ {
+            "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the SI unit of force?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which law states that energy cannot be created or destroyed?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which type of energy does a moving car possess?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the process of changing from liquid to gas called?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the unit of electrical resistance ?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 2,
+            "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "In which direction does heat naturally flow?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the formula for calculating work?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which of these is NOT a type of heat transfer?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 3,
+            "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+            "noOfAttemptsAtTests" : 0
+          } ],
+          "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+          "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "creationDate" : "2024-11-16"
+        } ],
+        "password" : "987654321@MMm"
+      },
+      "questionBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 1.4000000000000001,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 8
+        }, {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.8166666666666668,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 8
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.6166666666666666,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 1.9666666666666668,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 8
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 1,
+          "totalTime" : 0.9166666666666666,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 1,
+          "totalTime" : 0.3333333333333333,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 2
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.16666666666666666,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 2
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 1,
+          "totalTime" : 0.13333333333333333,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 2
+        }, {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.05,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 1
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : -0.06666666666666667,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 2
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : "2024-11-16"
+      }, {
+        "bankID" : "cf6b9120-56f0-4c2a-ba76-d9c7faa70c49",
+        "questions" : [ ],
+        "creatorID" : "06481dd7-60a6-48c0-b657-2a48b6560acd",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : "2024-12-13"
+      } ],
+      "categoryId" : "b426bdc6-132c-4737-a47f-260479fcfe9f"
+    },
+    "creationDate" : "2024-12-15",
+    "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+    "duration" : 0,
+    "testResult" : 20.0,
+    "difficulty" : "MEDIUM",
+    "questions" : [ {
+      "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "If 3x + 7 = 22, then x equals:",
+      "numberOfFavorites" : 1,
+      "totalTime" : 0.3,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 0,
+      "choices" : [ "5", "6", "4", "3" ],
+      "noOfAttemptsAtTests" : 3
+    }, {
+      "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.44999999999999996,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 1,
+      "choices" : [ "13", "26", "40", "20" ],
+      "noOfAttemptsAtTests" : 3
+    }, {
+      "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "The sum of interior angles of a pentagon is:",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.26666666666666666,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 1,
+      "choices" : [ "360°", "540°", "720°", "450°" ],
+      "noOfAttemptsAtTests" : 3
+    }, {
+      "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "What is the volume of a cube with side length 3?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.13333333333333333,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 2,
+      "choices" : [ "9", "18", "27", "36" ],
+      "noOfAttemptsAtTests" : 2
+    }, {
+      "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "The expression (x + 2)(x - 3) equals:",
+      "numberOfFavorites" : 0,
+      "totalTime" : -0.11666666666666667,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 0,
+      "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+      "noOfAttemptsAtTests" : 3
+    } ],
+    "startTime" : "2024-12-15T19:12:03.9282596",
+    "endTime" : "2024-12-15T19:12:52.5585097",
+    "takerAnswers" : [ 0, 2, -65, 2, -65 ]
+  }, {
+    "testID" : "2325c0e6-48ee-4432-bed1-764d1c8cc429",
+    "category" : {
+      "name" : "Mathematics",
+      "description" : "Extinsive Course of Algebra and Geometry",
+      "creationDate" : "2024-11-16",
+      "creator" : {
+        "type" : "admin",
+        "userId" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "email" : "mohabkamle3@gmail.com",
+        "userName" : "Mohab",
+        "address" : "London , grandmasion , Boston",
+        "firstName" : "Ahmed",
+        "lastName" : "Mosa",
+        "lastLoginDate" : "2024-11-16T03:41:58.3523757",
+        "dateAppointed" : "2024-11-16",
+        "contactNumber" : "+201005619333",
+        "department" : "Science",
+        "ownedBanks" : [ {
+          "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+          "questions" : [ {
+            "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the slope of a line parallel to the x-axis?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "1", "0", "undefined", "Infinity" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the area of a circle with radius 5 units?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "25π", "10π", "5π", "15π" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "30°", "45°", "60°", "90°" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "9", "4", "3", "6" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "The expression (x + 2)(x - 3) equals:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 0,
+            "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 1,
+            "choices" : [ "13", "26", "40", "20" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "If 3x + 7 = 22, then x equals:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 0,
+            "choices" : [ "5", "6", "4", "3" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "The sum of interior angles of a pentagon is:",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 1,
+            "choices" : [ "360°", "540°", "720°", "450°" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+            "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+            "statement" : "What is the volume of a cube with side length 3?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "MEDIUM",
+            "rightAnswer" : 2,
+            "choices" : [ "9", "18", "27", "36" ],
+            "noOfAttemptsAtTests" : 0
+          } ],
+          "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+          "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "creationDate" : "2024-11-16"
+        }, {
+          "bankID" : "4ab67cd8-a860-411c-8f21-d5038abd2b1d",
+          "questions" : [ {
+            "questionID" : "6a75bf06-ae24-4a69-861f-80c7fa6740b2",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the SI unit of force?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "Watt", "Newton", "Joule", "Pascal" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "c61cc8d0-6644-41f0-abfb-2a474b638d3b",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which law states that energy cannot be created or destroyed?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "Newton's First Law", "Law of Conservation of Mass", "Law of Conservation of Energy", "Boyle's Law" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "2a86f795-4203-4807-a3e5-d720af492598",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What happens to the pressure of a gas if its volume decreases at constant temperature?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 0,
+            "choices" : [ "Increases", "Decreases", "Remains the same", "Becomes zero" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "9b410d25-ba82-4d35-817d-7c7bd9f8bda3",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the acceleration due to gravity on Earth (approximately)?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 2,
+            "choices" : [ "5.8 m/s^2", "7.8 m/s^2", "9.8 m/s^2", "11.8 m/s^2" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "287894f4-66af-41d6-a819-0e2e6c35ba9b",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which type of energy does a moving car possess?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "EASY",
+            "rightAnswer" : 1,
+            "choices" : [ "Potential energy", "Kinetic energy", "Chemical energy", "Nuclear energy" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "0148aa65-66b5-4300-a046-f4a51a4cb3de",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the process of changing from liquid to gas called?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "Condensation", "Evaporation", "Sublimation", "Freezing" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "4269792c-2088-4cd7-a27d-6b22192ef84d",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the unit of electrical resistance ?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 2,
+            "choices" : [ "Volt", "Ampere", "Ohm", "Watt" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "00273a46-faa0-40cf-ae6f-d38e6398c5bd",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "In which direction does heat naturally flow?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "From cold to hot", "From hot to cold", "In both directions equally", "It doesn't flow" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "e4b1b228-b8d3-44b8-b33f-83ba4af43544",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "What is the formula for calculating work?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 1,
+            "choices" : [ "Force x Time", "Force x Distance", "Mass x Acceleration", "Mass x Velocity" ],
+            "noOfAttemptsAtTests" : 0
+          }, {
+            "questionID" : "9d236ad1-8f2d-4827-8ff2-019cc1c90890",
+            "topic" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+            "statement" : "Which of these is NOT a type of heat transfer?",
+            "numberOfFavorites" : 0,
+            "totalTime" : 0.0,
+            "difficulty" : "HARD",
+            "rightAnswer" : 3,
+            "choices" : [ "Conduction", "Convection", "Radiation", "Precipitation" ],
+            "noOfAttemptsAtTests" : 0
+          } ],
+          "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+          "categoryID" : "fe8add61-e778-4c48-b2b2-484dde82c01f",
+          "creationDate" : "2024-11-16"
+        } ],
+        "password" : "987654321@MMm"
+      },
+      "questionBanks" : [ {
+        "bankID" : "b4999bad-bdf4-4335-b92a-56080fbbad33",
+        "questions" : [ {
+          "questionID" : "3cd97798-8b07-411f-9984-be1c73df65f0",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "In a right triangle, if one angle is 30°, what is another angle?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 1.4000000000000001,
+          "difficulty" : "EASY",
+          "rightAnswer" : 2,
+          "choices" : [ "30°", "45°", "60°", "90°" ],
+          "noOfAttemptsAtTests" : 8
+        }, {
+          "questionID" : "f3bfb3e7-b8d9-4b41-97c5-18f6b6b02028",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the slope of a line parallel to the x-axis?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.8166666666666668,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "1", "0", "undefined", "Infinity" ],
+          "noOfAttemptsAtTests" : 8
+        }, {
+          "questionID" : "59c2845a-5242-4cf7-91bc-da9868e65e47",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the area of a circle with radius 5 units?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.6166666666666666,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "25π", "10π", "5π", "15π" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "ca1c7098-1b1f-4f9e-b0e3-457d2fdb2ae2",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If x² + 3x + 2 = 0, what are the values of x?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 1.9666666666666668,
+          "difficulty" : "EASY",
+          "rightAnswer" : 0,
+          "choices" : [ "-2 and -1", "2 and 1", "-2 and 1", "2 and -1" ],
+          "noOfAttemptsAtTests" : 8
+        }, {
+          "questionID" : "f24e2a2e-2d0d-40c1-9526-1b7773cb51e6",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the value of y in the equation 2y + 5 = 13?",
+          "numberOfFavorites" : 1,
+          "totalTime" : 0.9166666666666666,
+          "difficulty" : "EASY",
+          "rightAnswer" : 1,
+          "choices" : [ "9", "4", "3", "6" ],
+          "noOfAttemptsAtTests" : 9
+        }, {
+          "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "If 3x + 7 = 22, then x equals:",
+          "numberOfFavorites" : 1,
+          "totalTime" : 0.3,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "5", "6", "4", "3" ],
+          "noOfAttemptsAtTests" : 3
+        }, {
+          "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.44999999999999996,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "13", "26", "40", "20" ],
+          "noOfAttemptsAtTests" : 3
+        }, {
+          "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The sum of interior angles of a pentagon is:",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.26666666666666666,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 1,
+          "choices" : [ "360°", "540°", "720°", "450°" ],
+          "noOfAttemptsAtTests" : 3
+        }, {
+          "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "What is the volume of a cube with side length 3?",
+          "numberOfFavorites" : 0,
+          "totalTime" : 0.13333333333333333,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 2,
+          "choices" : [ "9", "18", "27", "36" ],
+          "noOfAttemptsAtTests" : 2
+        }, {
+          "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+          "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+          "statement" : "The expression (x + 2)(x - 3) equals:",
+          "numberOfFavorites" : 0,
+          "totalTime" : -0.11666666666666667,
+          "difficulty" : "MEDIUM",
+          "rightAnswer" : 0,
+          "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+          "noOfAttemptsAtTests" : 3
+        } ],
+        "creatorID" : "021fc248-cb13-4180-b8e9-4b89f1c88cf7",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : "2024-11-16"
+      }, {
+        "bankID" : "cf6b9120-56f0-4c2a-ba76-d9c7faa70c49",
+        "questions" : [ ],
+        "creatorID" : "06481dd7-60a6-48c0-b657-2a48b6560acd",
+        "categoryID" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+        "creationDate" : "2024-12-13"
+      } ],
+      "categoryId" : "b426bdc6-132c-4737-a47f-260479fcfe9f"
+    },
+    "creationDate" : "2024-12-15",
+    "takerID" : "0790453e-8c10-4e79-984c-927cddaafdc0",
+    "duration" : 0,
+    "testResult" : 20.0,
+    "difficulty" : "MEDIUM",
+    "questions" : [ {
+      "questionID" : "fd7531c2-b4c3-4a7e-95f9-87b95890d695",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "If 3x + 7 = 22, then x equals:",
+      "numberOfFavorites" : 1,
+      "totalTime" : 0.35,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 0,
+      "choices" : [ "5", "6", "4", "3" ],
+      "noOfAttemptsAtTests" : 4
+    }, {
+      "questionID" : "f747b7ba-bb76-40ae-ba2c-3252cc1ee3e4",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "The sum of interior angles of a pentagon is:",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.3,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 1,
+      "choices" : [ "360°", "540°", "720°", "450°" ],
+      "noOfAttemptsAtTests" : 4
+    }, {
+      "questionID" : "f2cb7090-8e23-4b52-9909-1737db2b8fb5",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "The expression (x + 2)(x - 3) equals:",
+      "numberOfFavorites" : 0,
+      "totalTime" : -0.08333333333333334,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 0,
+      "choices" : [ "x² - x - 6", "x² + x - 6", "x² - x + 6", "x² + x +6" ],
+      "noOfAttemptsAtTests" : 4
+    }, {
+      "questionID" : "53113a68-8283-4656-a943-536ed3f78f2d",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "What is the perimeter of a rectangle with length 8 and width 5?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.4833333333333333,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 1,
+      "choices" : [ "13", "26", "40", "20" ],
+      "noOfAttemptsAtTests" : 4
+    }, {
+      "questionID" : "54b8e075-b21e-4c7e-ad68-7cc34a4ae1c1",
+      "topic" : "b426bdc6-132c-4737-a47f-260479fcfe9f",
+      "statement" : "What is the volume of a cube with side length 3?",
+      "numberOfFavorites" : 0,
+      "totalTime" : 0.08333333333333333,
+      "difficulty" : "MEDIUM",
+      "rightAnswer" : 2,
+      "choices" : [ "9", "18", "27", "36" ],
+      "noOfAttemptsAtTests" : 3
+    } ],
+    "startTime" : "2024-12-15T19:18:01.9205014",
+    "endTime" : "2024-12-15T19:18:29.7925635",
+    "takerAnswers" : [ 0, 2, -65, -65, -65 ]
   } ],
   "password" : "123456789@MMm"
 }, {

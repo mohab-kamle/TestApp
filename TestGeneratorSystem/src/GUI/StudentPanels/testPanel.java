@@ -432,7 +432,7 @@ public class testPanel extends javax.swing.JPanel {
             String[] options = {"Ok", "Take Another test"};
             int response = JOptionPane.showOptionDialog(
                     null, // Parent component (null for center of screen)
-                    "Score: " + score + ", Number of questions: " + numQuestions + ", Percentage: " + percentageScore + ", Total time taken: " + totalTestTime + ", Average Time Per Question: " + averageTimePerQuestion + ", Grade: " + student.getGrade() + ", Status: " + (percentageScore >= Test.getPassingScore() ? "PASSED" : "FAILED"),
+                    "Score: " + score + "\nNumber of questions: " + numQuestions + "\nPercentage: " + percentageScore + "\nTotal time taken: " + totalTestTime + "\nAverage Time Per Question: " + averageTimePerQuestion + "\nGrade: " + student.getGrade() + "\nStatus: " + (percentageScore >= Test.getPassingScore() ? "PASSED" : "FAILED"),
                     "Test Report", // Title
                     JOptionPane.YES_NO_OPTION, // Options
                     JOptionPane.QUESTION_MESSAGE, // Icon type

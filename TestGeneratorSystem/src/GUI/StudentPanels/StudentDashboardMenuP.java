@@ -5,7 +5,6 @@
 package GUI.StudentPanels;
 
 import EndUser.Student;
-import GUI.AdminPanels.ViewProfilePanelAdminP;
 import GUI.ChangePasswordPanel_P;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -154,7 +153,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
             }
         });
 
-        setBackground(new java.awt.Color(244, 242, 226));
+        setBackground(new java.awt.Color(255, 250, 206));
         setPreferredSize(new java.awt.Dimension(555, 474));
         setLayout(new java.awt.GridBagLayout());
 
@@ -199,7 +198,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
         UpdateProflie.setBackground(new java.awt.Color(74, 25, 72));
         UpdateProflie.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         UpdateProflie.setForeground(new java.awt.Color(244, 242, 226));
-        UpdateProflie.setText("Update Proflie");
+        UpdateProflie.setText("Update Profile");
         UpdateProflie.setBorderPainted(false);
         UpdateProflie.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UpdateProflie.setFocusPainted(false);
@@ -239,7 +238,7 @@ public class StudentDashboardMenuP extends javax.swing.JPanel {
         ViewProflie.setBackground(new java.awt.Color(74, 25, 72));
         ViewProflie.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         ViewProflie.setForeground(new java.awt.Color(244, 242, 226));
-        ViewProflie.setText("View Proflie");
+        ViewProflie.setText("View Profile");
         ViewProflie.setBorderPainted(false);
         ViewProflie.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ViewProflie.setFocusPainted(false);
