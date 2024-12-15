@@ -313,7 +313,7 @@ public class ChangePasswordPanel_P extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(BackButton, gridBagConstraints);
 
-        reqPanel.setBackground(new java.awt.Color(244, 242, 226));
+        reqPanel.setBackground(new java.awt.Color(255, 250, 206));
         reqPanel.setLayout(new java.awt.GridBagLayout());
 
         lengthLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
