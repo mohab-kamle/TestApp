@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -33,6 +32,7 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
     List<Question> allFavorites;
     List<Question> categoryFavorites;
     Question currentQuestion;
+    List<Category> categoriesList;
 
     /**
      * Creates new form ViewFavoriteQuestions
@@ -46,8 +46,7 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         imageHolder.setVisible(false);
 //        CatogoryDropList.removeAllItems();
         selected = new StringBuilder("Select Category");
-        selected.append("Select Category");
-        if (student.getFavoriteQuestions() == null || student.getFavoriteQuestions().isEmpty())         {
+        if (student.getFavoriteQuestions() == null || student.getFavoriteQuestions().isEmpty()) {
             QuesitionHolder.setVisible(false);
             QuesitionID.setVisible(false);
             AHOLDER.setVisible(false);
@@ -60,17 +59,17 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
             PrevButton.setVisible(false);
             Tnum.setVisible(false);
             CatogoryDropList.setVisible(false);
-            URL iconURL = getClass().getResource("../lib/refav.png");
+            URL iconURL = getClass().getResource("/lib/refav.png");
             if (iconURL != null) {
-            imageHolder.setIcon(new javax.swing.ImageIcon(iconURL));
-            imageHolder.setText("");
-            imageHolder.setVisible(true);
+                imageHolder.setIcon(new javax.swing.ImageIcon(iconURL));
+                imageHolder.setText("");
+                imageHolder.setVisible(true);
             } else {
-            // Handle the error, e.g., log it or show a default icon 
-            System.err.println("Resource not found: /lib/turn-back.png");
+                // Handle the error, e.g., log it or show a default icon 
+                System.err.println("Resource not found: /lib/emptyfav.png");
             }
         }
-            setup();
+        setupallfavQ();
 
     }
 
@@ -104,7 +103,6 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         CatogoryDropList.setBackground(new java.awt.Color(244, 242, 226));
         CatogoryDropList.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         CatogoryDropList.setForeground(new java.awt.Color(0, 0, 0));
-        CatogoryDropList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category" }));
         CatogoryDropList.setBorder(new javax.swing.border.MatteBorder(null));
         CatogoryDropList.setPreferredSize(new java.awt.Dimension(350, 36));
         CatogoryDropList.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +185,6 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         AHOLDER.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         AHOLDER.setForeground(new java.awt.Color(0, 0, 0));
         AHOLDER.setText("\"AHOLDER\"");
-        AHOLDER.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -202,7 +199,6 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         BHOLDER.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         BHOLDER.setForeground(new java.awt.Color(0, 0, 0));
         BHOLDER.setText("\"BHOLDER\"");
-        BHOLDER.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -217,7 +213,6 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         CHOLDER.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         CHOLDER.setForeground(new java.awt.Color(0, 0, 0));
         CHOLDER.setText("\"CHOLDER\"");
-        CHOLDER.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
@@ -232,7 +227,6 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         DHOLDER.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         DHOLDER.setForeground(new java.awt.Color(0, 0, 0));
         DHOLDER.setText("\"DHOLDER\"");
-        DHOLDER.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -385,22 +379,32 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         add(Tnum, gridBagConstraints);
 
         imageHolder.setForeground(new java.awt.Color(0, 0, 0));
+        imageHolder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imageHolder.setText("\"emptyImageHolder\"");
         imageHolder.setFocusable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(imageHolder, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void CatogoryDropListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CatogoryDropListActionPerformed
         // TODO add your handling code here:
+        Index = 0;
         if (selected == null) {
             selected = new StringBuilder();
+        } else {
+
         }
+        selected.setLength(0);
         selected.append((String) CatogoryDropList.getSelectedItem());
-        DisplayFav();
+        if (!(selected.toString().equals("Select Category") || selected.toString().equals("All Category"))) {
+            setupcategoryfavq();
+            FAVNUMHOLDER.setText("Number of Favorites: " + categoryFavorites.size());
+        } else
+            DisplayFav();
     }//GEN-LAST:event_CatogoryDropListActionPerformed
 
     private void PrevButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrevButtonMouseMoved
@@ -638,8 +642,7 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
     }//GEN-LAST:event_FAVButtonActionPerformed
     private void DisplayFav() {
-        if(!categoryFavorites.isEmpty()){
-            if (selected.toString().equals("Select Category") || selected.toString().equals("All Category")) {
+        if (selected.toString().equals("Select Category") || selected.toString().equals("All Category")) {
             currentQuestion = allFavorites.get(Index);
             String[] choices = currentQuestion.getChoices();
             QuesitionID.setText("QuestionID: " + currentQuestion.getQuestionID());
@@ -649,7 +652,8 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
             CHOLDER.setText("C- " + choices[2]);
             DHOLDER.setText("D- " + choices[3]);
             Tnum.setText((Index + 1) + "OF" + allFavorites.size());
-        } else {
+            //FAVNUMHOLDER.setText("Number of Favorites: " + currentQuestion.getNumberOfFavorites());
+        } else if (!(categoryFavorites.isEmpty() || categoryFavorites == null)) {
             currentQuestion = categoryFavorites.get(Index);
             String[] choices = currentQuestion.getChoices();
             QuesitionID.setText("QuestionID: " + currentQuestion.getQuestionID());
@@ -658,13 +662,12 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
             BHOLDER.setText("B- " + choices[1]);
             CHOLDER.setText("C- " + choices[2]);
             DHOLDER.setText("D- " + choices[3]);
-            Tnum.setText((Index + 1) + "OF" + allFavorites.size());
+            Tnum.setText((Index + 1) + "OF" + categoryFavorites.size());
+            //FAVNUMHOLDER.setText("Number of Favorites: " + currentQuestion.getNumberOfFavorites());
         }
-        }
-        
     }
 
-    private void setup() {
+    private void setupallfavQ() {
         allFavorites = new ArrayList<>();
         for (QuestionBank favoriteBank : student.getFavoriteQuestions()) {
             allFavorites.addAll(favoriteBank.getQuestions());
@@ -675,13 +678,40 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
                     return categoryDAO.loadCategory(q.getCategoryID());
                 })
                 .collect(Collectors.toSet());
-        List<Category> categoriesList = new ArrayList<>(favoriteCategories);
+        categoriesList = new ArrayList<>(favoriteCategories);
         CatogoryDropList.addItem("Select Category");
         CatogoryDropList.addItem("All Category");
         for (int i = 0; i < categoriesList.size(); i++) {
             CatogoryDropList.addItem(categoriesList.get(i).getName());
         }
-        CatogoryDropList.setSelectedItem("Select Category");
+        //CatogoryDropList.setSelectedItem("Select Category");
+        if (allFavorites.isEmpty() || allFavorites == null) {
+            QuesitionHolder.setVisible(false);
+            QuesitionID.setVisible(false);
+            AHOLDER.setVisible(false);
+            BHOLDER.setVisible(false);
+            CHOLDER.setVisible(false);
+            DHOLDER.setVisible(false);
+            FAVButton.setVisible(false);
+            FAVNUMHOLDER.setVisible(false);
+            NextButton.setVisible(false);
+            PrevButton.setVisible(false);
+            Tnum.setVisible(false);
+            CatogoryDropList.setVisible(false);
+            URL iconURL = getClass().getResource("/lib/refav.png");
+            if (iconURL != null) {
+                imageHolder.setIcon(new javax.swing.ImageIcon(iconURL));
+                imageHolder.setText("");
+                imageHolder.setVisible(true);
+            }
+        }
+        FAVNUMHOLDER.setText("Number of Favorites: " + allFavorites.size());
+        DisplayFav();
+
+    }
+
+    private void setupcategoryfavq() {
+
         Category selectedCategory = null;
         for (Category category : categoriesList) {
             if (category.getName().equalsIgnoreCase(selected.toString())) { // Compare names (case-insensitive)
@@ -691,18 +721,18 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         }
         Category selectederror = selectedCategory;
         // Filter questions by selected category            
-        if(selectederror!=null){
+        if (selectederror != null) {
             for (QuestionBank favoriteQuestionBank : student.getFavoriteQuestions()) {
-            categoryFavorites = favoriteQuestionBank.getQuestions().stream()
-                    .filter(q -> {
-                        CategoryDAO categoryDAO = new CategoryDAO();
-                        Category qCategory = categoryDAO.loadCategory(q.getTopic());
-                        return qCategory.equals(selectederror);
-                    })
-                    .collect(Collectors.toList());
+                categoryFavorites = favoriteQuestionBank.getQuestions().stream()
+                        .filter(q -> {
+                            CategoryDAO categoryDAO = new CategoryDAO();
+                            Category qCategory = categoryDAO.loadCategory(q.getTopic());
+                            return qCategory.equals(selectederror);
+                        })
+                        .collect(Collectors.toList());
+            }
         }
-        }
-        
+
         if (allFavorites.isEmpty() || allFavorites == null || categoryFavorites.isEmpty() || categoryFavorites == null) {
             QuesitionHolder.setVisible(false);
             QuesitionID.setVisible(false);
@@ -716,13 +746,16 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
             PrevButton.setVisible(false);
             Tnum.setVisible(false);
             CatogoryDropList.setVisible(false);
-            ImageIcon icon = new ImageIcon("/lib/refav.png");
-            imageHolder.setVisible(true);
-        } else {
-            DisplayFav();
+            URL iconURL = getClass().getResource("/lib/refav.png");
+            if (iconURL != null) {
+                imageHolder.setIcon(new javax.swing.ImageIcon(iconURL));
+                imageHolder.setText("");
+                imageHolder.setVisible(true);
+            }
         }
-    }
+        DisplayFav();
 
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AHOLDER;
     private javax.swing.JLabel BHOLDER;
