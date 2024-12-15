@@ -44,28 +44,29 @@ public class testPanel extends javax.swing.JPanel {
     private List<Question> availableQuestions;
     private int elapsedSeconds;
     private List<Question> testQuestions;
-    private Test test; 
+    private Test test;
     private List<Integer> correctAnswers;
     private List<Double> questionTimes;
-    private int Index = 0; 
-    private LocalDateTime questionStartTime;
+    private int Index = 0;
     private double totalTestTime;
     private double averageTimePerQuestion;
     private double percentageScore;
-    private int score; 
-    private TestDAO TDB; 
+    private int score;
+    private TestDAO TDB;
     private double AccumalativePercent = 0;
     private StudentDAO SDB;
     private double[] Time;
     private LocalDateTime startQ;
     private LocalDateTime endQ;
-    private Question currentQuestion; 
-    
+    private Question currentQuestion;
+    private char[] answer;
+
     /**
      * Creates new form testPanel
      */
     public testPanel(Student student, List<Question> availableQuestions, Category choosencategory, dlevel difficulty, int numQuestions, CardLayout cardLayout, JPanel container) {
         initComponents();
+        emptyQ.setVisible(false);
         this.numQuestions = numQuestions;
         this.cardLayout = cardLayout;
         this.container = container;
@@ -73,7 +74,7 @@ public class testPanel extends javax.swing.JPanel {
         this.difficulty = difficulty;
         this.student = student;
         this.availableQuestions = availableQuestions;
-        Time = new double[numQuestions] ;
+        Time = new double[numQuestions];
         Arrays.fill(Time, 0);
         buttonGroup1.add(Achoosen);
         buttonGroup1.add(Bchoosen);
@@ -92,6 +93,7 @@ public class testPanel extends javax.swing.JPanel {
         });
         timer.start();
         buildtest();
+        answer = new char[testQuestions.size()];
     }
 
     /**
@@ -117,7 +119,7 @@ public class testPanel extends javax.swing.JPanel {
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(70, 0), new java.awt.Dimension(70, 0), new java.awt.Dimension(70, 32767));
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
-        jLabel2 = new javax.swing.JLabel();
+        emptyQ = new javax.swing.JLabel();
         FAVButton = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
@@ -125,6 +127,7 @@ public class testPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 250, 206));
         setLayout(new java.awt.GridBagLayout());
 
+        Achoosen.setBackground(new java.awt.Color(255, 250, 206));
         Achoosen.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         Achoosen.setForeground(new java.awt.Color(0, 0, 0));
         Achoosen.setText("jRadioButton1");
@@ -142,6 +145,7 @@ public class testPanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(Achoosen, gridBagConstraints);
 
+        Bchoosen.setBackground(new java.awt.Color(255, 250, 206));
         Bchoosen.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         Bchoosen.setForeground(new java.awt.Color(0, 0, 0));
         Bchoosen.setText("jRadioButton2");
@@ -158,6 +162,7 @@ public class testPanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(Bchoosen, gridBagConstraints);
 
+        Dchoosen.setBackground(new java.awt.Color(255, 250, 206));
         Dchoosen.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         Dchoosen.setForeground(new java.awt.Color(0, 0, 0));
         Dchoosen.setText("jRadioButton3");
@@ -174,6 +179,7 @@ public class testPanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(Dchoosen, gridBagConstraints);
 
+        Cchoosen.setBackground(new java.awt.Color(255, 250, 206));
         Cchoosen.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         Cchoosen.setForeground(new java.awt.Color(0, 0, 0));
         Cchoosen.setText("jRadioButton4");
@@ -191,15 +197,15 @@ public class testPanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(Cchoosen, gridBagConstraints);
 
-        questionHolder.setFont(new java.awt.Font("Consolas", 0, 30)); // NOI18N
+        questionHolder.setFont(new java.awt.Font("Consolas", 0, 28)); // NOI18N
         questionHolder.setForeground(new java.awt.Color(0, 0, 0));
+        questionHolder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         questionHolder.setText("QuesHolderaaaaaaaaaaaaaa");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 40;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -317,10 +323,10 @@ public class testPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 8;
         add(filler1, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(220, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Make sure you have put a answer to all questions");
+        emptyQ.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        emptyQ.setForeground(new java.awt.Color(220, 0, 0));
+        emptyQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        emptyQ.setText("Make sure you have put a answer to all questions");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -328,7 +334,7 @@ public class testPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(jLabel2, gridBagConstraints);
+        add(emptyQ, gridBagConstraints);
 
         FAVButton.setBackground(new java.awt.Color(244, 242, 226));
         FAVButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/DisFAVButtonWINDOS10EDITION.png"))); // NOI18N
@@ -366,11 +372,13 @@ public class testPanel extends javax.swing.JPanel {
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
         // TODO add your handling code here:
+        endButton.setVisible(true);
+        nextButton.setText("Next");
         Index = (Index - 1 + testQuestions.size()) % testQuestions.size();
-        endQ = LocalDateTime.now() ; 
-        Time[Index] += student.calculateQuestionTime(startQ, endQ);
-        questionTimes.add(Time[Index]);
-        student.updateQuestionMetrics(currentQuestion, Time[Index]);
+        endQ = LocalDateTime.now();
+        Time[Index + 1] += student.calculateQuestionTime(startQ, endQ);
+        questionTimes.add(Time[Index + 1]);
+        student.updateQuestionMetrics(currentQuestion, Time[Index + 1]);
         displayTest();
     }//GEN-LAST:event_prevButtonActionPerformed
 
@@ -391,29 +399,36 @@ public class testPanel extends javax.swing.JPanel {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
-        if (nextButton.getText().equals("Finish Test")){
-        test.setEndTime(LocalDateTime.now());
-        totalTestTime = questionTimes.stream().mapToDouble(Double::doubleValue).sum();
-        test.setDuration((int) totalTestTime);
-        averageTimePerQuestion = totalTestTime / numQuestions;
+        if (nextButton.getText().equals("Finish Test")) {
+            Time[Index] += student.calculateQuestionTime(startQ, endQ);
+            questionTimes.add(Time[Index]);
+            student.updateQuestionMetrics(currentQuestion, Time[Index]);
+            test.setEndTime(LocalDateTime.now());
+            totalTestTime = questionTimes.stream().mapToDouble(Double::doubleValue).sum();
+            test.setDuration((int) totalTestTime);
+            averageTimePerQuestion = totalTestTime / numQuestions;
+            for (int i = 0; i < testQuestions.size(); i++) {
+                test.addAnswer(answer[i] - 'A');
+                correctAnswers.add(currentQuestion.getRightAnswer());
+            }
 
-        // Calculate score
-        score = student.calculateScore(test.getTakerAnswers(), correctAnswers);
-        percentageScore = (double) score / numQuestions * 100;
+            // Calculate score
+            score = student.calculateScore(test.getTakerAnswers(), correctAnswers);
+            percentageScore = (double) score / numQuestions * 100;
 
-        // Set grade based on score
-        TDB = new TestDAO();
-        // Update test and student statistics
-        student.updateTestStatistics(test, percentageScore, totalTestTime);
-        TDB.saveTest(test);
-        AccumalativePercent = 0;
-        for (Test t : TDB.searchTestsByStudent(student)) {
-            AccumalativePercent += t.getTestResult();
-        }
-        AccumalativePercent /= TDB.searchTestsByStudent(student).size();
-        student.calculateGrade(AccumalativePercent);
-        StudentDAO SDB = new StudentDAO();
-        SDB.updateStudent(student);
+            // Set grade based on score
+            TDB = new TestDAO();
+            // Update test and student statistics
+            student.updateTestStatistics(test, percentageScore, totalTestTime);
+            TDB.saveTest(test);
+            AccumalativePercent = 0;
+            for (Test t : TDB.searchTestsByStudent(student)) {
+                AccumalativePercent += t.getTestResult();
+            }
+            AccumalativePercent /= TDB.searchTestsByStudent(student).size();
+            student.calculateGrade(AccumalativePercent);
+            SDB = new StudentDAO();
+            SDB.updateStudent(student);
             String[] options = {"Ok", "Take Another test"};
             int response = JOptionPane.showOptionDialog(
                     null, // Parent component (null for center of screen)
@@ -425,72 +440,80 @@ public class testPanel extends javax.swing.JPanel {
                     options,
                     options[0]
             );
-            if (response == 0){
+            if (response == 0) {
                 StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(student, cardLayout, container);
-                container.add(studentDashboard,"studentDashboard");
+                container.add(studentDashboard, "studentDashboard");
                 cardLayout.show(container, "studentDashboard");
-            }
-            else {
+            } else {
                 setUpTest setTest = new setUpTest(student, cardLayout, container);
-                container.add(setTest,"setTest");
+                container.add(setTest, "setTest");
                 cardLayout.show(container, "setTest");
             }
-        }else {
-        Index = ( Index + 1 ) % testQuestions.size();
-        endQ = LocalDateTime.now() ;
-        Time[Index] += student.calculateQuestionTime(startQ, endQ); 
-        questionTimes.add(Time[Index]);
-        student.updateQuestionMetrics(currentQuestion, Time[Index]);
-        displayTest();
+        } else {
+            Index = (Index + 1) % testQuestions.size();
+            endQ = LocalDateTime.now();
+            Time[Index - 1] += student.calculateQuestionTime(startQ, endQ);
+            questionTimes.add(Time[Index - 1]);
+            student.updateQuestionMetrics(currentQuestion, Time[Index - 1]);
+            displayTest();
         }
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void endButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_endButtonMouseEntered
         // TODO add your handling code here:
-        nextButton.setBackground(Color.decode("#F4F2E2"));
-        nextButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-        nextButton.setBorderPainted(true);
-        nextButton.setForeground(Color.BLACK);
+        endButton.setBackground(Color.decode("#F4F2E2"));
+        endButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        endButton.setBorderPainted(true);
+        endButton.setForeground(Color.BLACK);
     }//GEN-LAST:event_endButtonMouseEntered
 
     private void endButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_endButtonMouseExited
         // TODO add your handling code here:
-        nextButton.setBackground(Color.decode("#4A1948"));
-        nextButton.setBorderPainted(false);
-        nextButton.setForeground(Color.decode("#F4F2E2"));
+        endButton.setBackground(Color.decode("#4A1948"));
+        endButton.setBorderPainted(false);
+        endButton.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_endButtonMouseExited
 
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
         // TODO add your handling code here:
         int response = JOptionPane.showConfirmDialog(
-                null,                             // Parent component (null for center of screen)
-                "Are you sure you want to withdraw from the test?",        // Message
-                "Backtomenu",                   // Title
-                JOptionPane.YES_NO_OPTION,        // Options
-                JOptionPane.QUESTION_MESSAGE      // Icon type
+                null, // Parent component (null for center of screen)
+                "Are you sure you want to withdraw from the test?", // Message
+                "Backtomenu", // Title
+                JOptionPane.YES_NO_OPTION, // Options
+                JOptionPane.QUESTION_MESSAGE // Icon type
         );
         if (response == JOptionPane.YES_OPTION) {
+            availableQuestions = null;
+            testQuestions = null;
+            test = null;
+            correctAnswers = null;
+            questionTimes = null;
+            currentQuestion = null;
             StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(student, cardLayout, container);
-            container.add(studentDashboard,"studentDashboard");
+            container.add(studentDashboard, "studentDashboard");
             cardLayout.show(container, "studentDashboard");
-        } 
+        }
     }//GEN-LAST:event_endButtonActionPerformed
 
     private void AchoosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AchoosenActionPerformed
         // TODO add your handling code here:
-        
+        answer[Index] = 'A';
     }//GEN-LAST:event_AchoosenActionPerformed
 
     private void BchoosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BchoosenActionPerformed
         // TODO add your handling code here:
+        answer[Index] = 'B';
     }//GEN-LAST:event_BchoosenActionPerformed
 
     private void CchoosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CchoosenActionPerformed
         // TODO add your handling code here:
+        answer[Index] = 'C';
     }//GEN-LAST:event_CchoosenActionPerformed
 
     private void DchoosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DchoosenActionPerformed
         // TODO add your handling code here:
+        answer[Index] = 'D';
     }//GEN-LAST:event_DchoosenActionPerformed
 
     private void FAVButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FAVButtonActionPerformed
@@ -551,8 +574,8 @@ public class testPanel extends javax.swing.JPanel {
             // Try to find matching bank in favoriteQuestions list
             QuestionBank favoriteBank = null;
             for (QuestionBank bank : student.getFavoriteQuestions()) {
-                if (bank.getCategoryID().equals(category.getCategoryId()) &&
-                    bank.getCreatorID().equals(student.getUserId())) {
+                if (bank.getCategoryID().equals(category.getCategoryId())
+                        && bank.getCreatorID().equals(student.getUserId())) {
                     favoriteBank = bank;
                     break;
                 }
@@ -576,9 +599,9 @@ public class testPanel extends javax.swing.JPanel {
             // If still null, create new bank
             if (favoriteBank == null) {
                 favoriteBank = new QuestionBank(
-                    student.getUserId(),
-                    category.getCategoryId(),
-                    LocalDate.now()
+                        student.getUserId(),
+                        category.getCategoryId(),
+                        LocalDate.now()
                 );
                 favoriteBank.setQuestions(new ArrayList<>());
                 student.getFavoriteQuestions().add(favoriteBank);
@@ -612,11 +635,9 @@ public class testPanel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_FAVButtonActionPerformed
-    private void buildtest(){
-        test.setStartTime(LocalDateTime.now());
+    private void buildtest() {
         Collections.shuffle(availableQuestions);
         testQuestions = availableQuestions.subList(0, numQuestions);
-
         // Create Test
         test = new Test(
                 choosencategory,
@@ -624,24 +645,30 @@ public class testPanel extends javax.swing.JPanel {
                 student.getUserId(),
                 difficulty,
                 new ArrayList<>(testQuestions)
-        ); 
+        );
+        test.setStartTime(LocalDateTime.now());
         // Take the test with time tracking
         test.reset();
         correctAnswers = new ArrayList<>();
         questionTimes = new ArrayList<>();
+        displayTest();
     }
+
     private void displayTest() {
-        startQ = LocalDateTime.now() ;
+        startQ = LocalDateTime.now();
         currentQuestion = testQuestions.get(Index);
         questionHolder.setText(currentQuestion.getStatement());
         String[] choices = currentQuestion.getChoices();
         Achoosen.setText(choices[0]);
-        Achoosen.setText(choices[1]);
-        Achoosen.setText(choices[2]);
-        Achoosen.setText(choices[3]);
-        if (Index == (numQuestions - 1) ){
+        Bchoosen.setText(choices[1]);
+        Cchoosen.setText(choices[2]);
+        Dchoosen.setText(choices[3]);
+        if (Index == (numQuestions - 1)) {
             nextButton.setText("Finish Test");
             endButton.setVisible(false);
+        } else {
+            nextButton.setText("Next");
+            endButton.setVisible(true);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -652,19 +679,19 @@ public class testPanel extends javax.swing.JPanel {
     private javax.swing.JButton FAVButton;
     private javax.swing.JLabel Timer;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel emptyQ;
     private javax.swing.JButton endButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton prevButton;
     private javax.swing.JLabel questionHolder;
     // End of variables declaration//GEN-END:variables
 
-        public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+}

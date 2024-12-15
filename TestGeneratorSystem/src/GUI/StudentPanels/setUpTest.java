@@ -35,7 +35,8 @@ public class setUpTest extends javax.swing.JPanel {
     String difficulty;
     List<Question> availableQuestions;
     int num = 5;
-    testPanel testP ;
+    testPanel testP;
+
     /**
      * Creates new form setUpTest
      */
@@ -314,21 +315,37 @@ public class setUpTest extends javax.swing.JPanel {
 
     private void QuestionsNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuestionsNumActionPerformed
         // TODO add your handling code here:
+        if (Integer.parseInt(QuestionsNum.getText().trim()) <= 5) {
+            QuestionsNum.setText("5");
+        } else if (Integer.parseInt(QuestionsNum.getText().trim()) > availableQuestions.size()) {
+            QuestionsNum.setText(Integer.toString(availableQuestions.size()));
+        }
     }//GEN-LAST:event_QuestionsNumActionPerformed
 
     private void PlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlusActionPerformed
         // TODO add your handling code here:
-        if (availableQuestions.size() < Integer.parseInt(QuestionsNum.getText().trim())) {
-            num = availableQuestions.size();
-        } else if (num > 40) {
-            num = 40 ;
-        } else num++ ;
-        if (availableQuestions.size() < 5 || availableQuestions.size() < num) {
-            errorHolder.setText("This category with this difficulty does not have enough questions");
-            errorHolder.setVisible(true);
-        } else
-            errorHolder.setVisible(false);
-        QuestionsNum.setText(Integer.toString(num));
+        if (!((choosen.isEmpty() || choosen.equals("Select category")) || (difficulty.isEmpty() || difficulty.equals("Set Difficulty")))) {
+            if (availableQuestions.size() < Integer.parseInt(QuestionsNum.getText().trim()) && availableQuestions.size() > 5) {
+                num = availableQuestions.size();
+                errorHolder.setVisible(false);
+            } else if (availableQuestions.size() < 5) {
+                errorHolder.setText("This category with this difficulty does not have enough questions");
+                errorHolder.setVisible(true);
+            } else if (num > 40) {
+                num = 40;
+                errorHolder.setVisible(false);
+            } else {
+                num++;
+                errorHolder.setVisible(false);
+            }
+//        if (availableQuestions.size() < 5 || availableQuestions.size() < num) {
+//            errorHolder.setText("This category with this difficulty does not have enough questions");
+//            errorHolder.setVisible(true);
+//        } else {
+//            errorHolder.setVisible(false);
+//        }
+            QuestionsNum.setText(Integer.toString(num));
+        }
     }//GEN-LAST:event_PlusActionPerformed
 
     private void BackbuttonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackbuttonFocusGained
@@ -370,36 +387,38 @@ public class setUpTest extends javax.swing.JPanel {
     private void BackbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbuttonActionPerformed
         // TODO add your handling code here:
         int response = JOptionPane.showConfirmDialog(
-                null,                             // Parent component (null for center of screen)
-                "Are you sure you want to withdraw from the test?",        // Message
-                "Backtomenu",                   // Title
-                JOptionPane.YES_NO_OPTION,        // Options
-                JOptionPane.QUESTION_MESSAGE      // Icon type
+                null, // Parent component (null for center of screen)
+                "Are you sure you want to withdraw from the test?", // Message
+                "Backtomenu", // Title
+                JOptionPane.YES_NO_OPTION, // Options
+                JOptionPane.QUESTION_MESSAGE // Icon type
         );
         if (response == JOptionPane.YES_OPTION) {
             StudentDashboardMenuP studentDashboard = new StudentDashboardMenuP(student, cardLayout, container);
-            container.add(studentDashboard,"studentDashboard");
+            container.add(studentDashboard, "studentDashboard");
             cardLayout.show(container, "studentDashboard");
-        } 
+        }
     }//GEN-LAST:event_BackbuttonActionPerformed
 
     private void ComfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComfirmButtonActionPerformed
         // TODO add your handling code here:
         if ((choosen.isEmpty() || choosen.equals("Select category")) && (difficulty.isEmpty() || difficulty.equals("Set Difficulty"))) {
             errorHolder.setText("Please revise all the inputs");
+            errorHolder.setVisible(true);
         } else if (choosen.isEmpty() || choosen.equals("Select category")) {
             errorHolder.setText("Please choose a catagory");
             errorHolder.setVisible(true);
         } else if (difficulty.isEmpty() || difficulty.equals("Set Difficulty")) {
             errorHolder.setText("Please set a difficulty");
             errorHolder.setVisible(true);
-        } else if (!errorHolder.isVisible()) {
+        } else if (errorHolder.isVisible()) {
+        } else {
             errorHolder.setVisible(false);
             String[] options = {"Start", "No"};
             int response = JOptionPane.showOptionDialog(
                     null, // Parent component (null for center of screen)
                     "Category: " + choosen + ", Difficulty: " + difficulty + ", Number of Questions: " + num, // Message
-                    "Delete Account alert", // Title
+                    "Enter Test", // Title
                     JOptionPane.YES_NO_OPTION, // Options
                     JOptionPane.QUESTION_MESSAGE, // Icon type
                     null,
@@ -408,9 +427,9 @@ public class setUpTest extends javax.swing.JPanel {
             );
             if (response == 0) {
                 testP = new testPanel(student, availableQuestions, choosencategory, dlevel.valueOf(difficulty), num, cardLayout, container);
-                container.add(testP, "testP"); 
+                container.add(testP, "testP");
                 cardLayout.show(container, "testP");
-            } 
+            }
         }
 
     }//GEN-LAST:event_ComfirmButtonActionPerformed
@@ -433,49 +452,63 @@ public class setUpTest extends javax.swing.JPanel {
     private void catagoryDropListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catagoryDropListActionPerformed
         // TODO add your handling code here:
         errorHolder.setVisible(false);
+
+        errorHolder.setVisible(false);
         choosen = (String) catagoryDropList.getSelectedItem();
-        for (int i = 0; i < categories.size(); i++) {
-            if (categories.get(i).getName().equals(choosen)) {
-                choosencategory = categories.get(i);
+        if (!(difficulty.isEmpty() || difficulty.equals("Set Difficulty"))) {
+            for (int i = 0; i < categories.size(); i++) {
+                if (categories.get(i).getName().equalsIgnoreCase((String) catagoryDropList.getSelectedItem())) {
+                    choosencategory = categories.get(i);
+                }
+            }
+            if (choosencategory != null )
+                availableQuestions = student.findQuestionsForTest(questionBankDAO, choosencategory, dlevel.valueOf(difficulty));
+            if (availableQuestions.size() < 5) {
+                errorHolder.setText("This category with this difficulty does not have enough questions");
+                errorHolder.setVisible(true);
+            } else {
+                errorHolder.setVisible(false);
             }
         }
-        availableQuestions = student.findQuestionsForTest(questionBankDAO, choosencategory, dlevel.valueOf(difficulty));
-        if (availableQuestions.size() < 5) {
-            errorHolder.setText("This category with this difficulty does not have enough questions");
-            errorHolder.setVisible(true);
-        } else
-            errorHolder.setVisible(false);
     }//GEN-LAST:event_catagoryDropListActionPerformed
 
     private void difficultyDropListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficultyDropListActionPerformed
         // TODO add your handling code here:
         errorHolder.setVisible(false);
+
+        errorHolder.setVisible(false);
         difficulty = (String) difficultyDropList.getSelectedItem();
-        availableQuestions = student.findQuestionsForTest(questionBankDAO, choosencategory, dlevel.valueOf(difficulty));
-        if (availableQuestions.size() < 5) {
-            errorHolder.setText("This category with this difficulty does not have enough questions");
-            errorHolder.setVisible(true);
-        } else
-            errorHolder.setVisible(false);
+        if (!((choosen.isEmpty() || choosen.equalsIgnoreCase("Select category")) || (difficulty.isEmpty() || difficulty.equals("Set Difficulty")))) {
+            if (choosencategory != null )
+                availableQuestions = student.findQuestionsForTest(questionBankDAO, choosencategory, dlevel.valueOf(difficulty));
+            if (availableQuestions.size() < 5) {
+                errorHolder.setText("This category with this difficulty does not have enough questions");
+                errorHolder.setVisible(true);
+            } else {
+                errorHolder.setVisible(false);
+            }
+        }
     }//GEN-LAST:event_difficultyDropListActionPerformed
 
     private void MinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinusActionPerformed
         // TODO add your handling code here:
-        if (num <= 5) {
-            num = 5;
-        } else {
-            num--;
+        if (!((choosen.isEmpty() || choosen.equals("Select category")) || (difficulty.isEmpty() || difficulty.equals("Set Difficulty")))) {
+            if (num <= 5) {
+                num = 5;
+            } else {
+                num--;
+            }
+            QuestionsNum.setText(Integer.toString(num));
         }
-        QuestionsNum.setText(Integer.toString(num));
     }//GEN-LAST:event_MinusActionPerformed
 
     private void QuestionsNumKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_QuestionsNumKeyReleased
         // TODO add your handling code here:
-        if (Integer.parseInt(QuestionsNum.getText().trim()) <= 5) {
+        /*if (Integer.parseInt(QuestionsNum.getText().trim()) <= 5) {
             QuestionsNum.setText("5");
         } else if (Integer.parseInt(QuestionsNum.getText().trim()) > availableQuestions.size()) {
             QuestionsNum.setText(Integer.toString(availableQuestions.size()));
-        }
+        }*/
     }//GEN-LAST:event_QuestionsNumKeyReleased
     /*private void QuestionsForTest() {
         // Collect questions from all question banks for the given category and difficulty
