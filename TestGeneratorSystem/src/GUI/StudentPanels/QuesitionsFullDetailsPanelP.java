@@ -18,22 +18,24 @@ import javax.swing.JPanel;
  * @author Zeyad
  */
 public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
+
     private CardLayout cardLayout;
     private JPanel container;
-    protected Test test; 
-    protected int takerAnswer ; 
+    protected Test test;
+    protected int takerAnswer;
     protected int Index = 0;
     List<Question> questions;
     List<Integer> takerAnswers;
+
     /**
      * Creates new form QuesitionsFullDetailsPanelP
      */
     public QuesitionsFullDetailsPanelP(Test test, CardLayout cardLayout, JPanel container) {
         initComponents();
-        this.test = test ; 
+        this.test = test;
         this.cardLayout = cardLayout;
         this.container = container;
-        updateIndex() ;
+        updateIndex();
     }
 
     /**
@@ -396,7 +398,7 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
     private void PrevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevButtonActionPerformed
         // TODO add your handling code here:
         Index = (Index - 1 + questions.size()) % questions.size();
-        updateIndex() ;
+        updateIndex();
     }//GEN-LAST:event_PrevButtonActionPerformed
 
     private void NextButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMouseMoved
@@ -424,28 +426,29 @@ public class QuesitionsFullDetailsPanelP extends javax.swing.JPanel {
 
     private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
         // TODO add your handling code here:
-        Index = ( Index + 1 ) % questions.size();
-        updateIndex() ;
+        Index = (Index + 1) % questions.size();
+        updateIndex();
     }//GEN-LAST:event_NextButtonActionPerformed
-    private void updateIndex(){
-        questions = test.getQuestions();
-        takerAnswers = test.getTakerAnswers();
-        Question question = questions.get(Index);
-        int studentAnswer = takerAnswers.get(Index);
-        int correctAnswer = question.getRightAnswer();
-        String Res = studentAnswer == correctAnswer ? "CORRECT" : "INCORRECT" ;
-        QuesitionHolder.setText(question.getStatement());
-        CorrectA.setText("Correct Answer: "+ String.valueOf((char)('A' + correctAnswer)));
-        UserA.setText("YourAnswer: " + String.valueOf((char)('A' + studentAnswer)));
-        Result.setText("Result: " + Res);
-        String[] choices = question.getChoices();
-        AHOLDER.setText("A) " + choices[0]);
-        BHOLDER.setText("B) " + choices[1]);
-        CHOLDER.setText("C) " + choices[2]);
-        DHOLDER.setText("D) " + choices[3]); 
-        PanelIndex.setText((Index + 1) + " of " + questions.size());
-    } 
-
+    private void updateIndex() {
+        if (test != null) {
+            questions = test.getQuestions();
+            takerAnswers = test.getTakerAnswers();
+            Question question = questions.get(Index);
+            int studentAnswer = takerAnswers.get(Index);
+            int correctAnswer = question.getRightAnswer();
+            String Res = studentAnswer == correctAnswer ? "CORRECT" : "INCORRECT";
+            QuesitionHolder.setText(question.getStatement());
+            CorrectA.setText("Correct Answer: " + String.valueOf((char) ('A' + correctAnswer)));
+            UserA.setText("YourAnswer: " + String.valueOf((char) ('A' + studentAnswer)));
+            Result.setText("Result: " + Res);
+            String[] choices = question.getChoices();
+            AHOLDER.setText("A) " + choices[0]);
+            BHOLDER.setText("B) " + choices[1]);
+            CHOLDER.setText("C) " + choices[2]);
+            DHOLDER.setText("D) " + choices[3]);
+            PanelIndex.setText((Index + 1) + " of " + questions.size());
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AHOLDER;
     private javax.swing.JLabel BHOLDER;

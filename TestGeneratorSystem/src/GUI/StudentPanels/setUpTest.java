@@ -335,12 +335,14 @@ public class setUpTest extends javax.swing.JPanel {
             } else if (availableQuestions.size() < 5) {
                 errorHolder.setText("This category with this difficulty does not have enough questions");
                 errorHolder.setVisible(true);
+                num = availableQuestions.size();
             } else if (num > 40) {
                 num = 40;
                 errorHolder.setVisible(false);
             } else {
                 num++;
                 errorHolder.setVisible(false);
+                QuestionsNum.setText(Integer.toString(num));
             }
 //        if (availableQuestions.size() < 5 || availableQuestions.size() < num) {
 //            errorHolder.setText("This category with this difficulty does not have enough questions");
@@ -348,7 +350,7 @@ public class setUpTest extends javax.swing.JPanel {
 //        } else {
 //            errorHolder.setVisible(false);
 //        }
-            QuestionsNum.setText(Integer.toString(num));
+            //QuestionsNum.setText(Integer.toString(num));
         }
     }//GEN-LAST:event_PlusActionPerformed
 

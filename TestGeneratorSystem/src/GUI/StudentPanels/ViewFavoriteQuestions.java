@@ -402,9 +402,12 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
         selected.append((String) CatogoryDropList.getSelectedItem());
         if (!(selected.toString().equals("Select Category") || selected.toString().equals("All Category"))) {
             setupcategoryfavq();
-            FAVNUMHOLDER.setText("Number of Favorites: " + categoryFavorites.size());
-        } else
+            //FAVNUMHOLDER.setText("Number of Favorites: " + categoryFavorites.size());
+        } else {
+            setupallfavQ();
             DisplayFav();
+        }
+
     }//GEN-LAST:event_CatogoryDropListActionPerformed
 
     private void PrevButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrevButtonMouseMoved
@@ -442,17 +445,17 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
     private void NextButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMouseEntered
         // TODO add your handling code here:
-        PrevButton.setBackground(Color.decode("#F4F2E2"));
-        PrevButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-        PrevButton.setBorderPainted(true);
-        PrevButton.setForeground(Color.BLACK);
+        NextButton.setBackground(Color.decode("#F4F2E2"));
+        NextButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+        NextButton.setBorderPainted(true);
+        NextButton.setForeground(Color.BLACK);
     }//GEN-LAST:event_NextButtonMouseEntered
 
     private void NextButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMouseExited
         // TODO add your handling code here:
-        PrevButton.setBackground(Color.decode("#4A1948"));
-        PrevButton.setBorderPainted(false);
-        PrevButton.setForeground(Color.decode("#F4F2E2"));
+        NextButton.setBackground(Color.decode("#4A1948"));
+        NextButton.setBorderPainted(false);
+        NextButton.setForeground(Color.decode("#F4F2E2"));
     }//GEN-LAST:event_NextButtonMouseExited
 
     private void NextButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextButtonMousePressed
@@ -642,7 +645,7 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
 
     }//GEN-LAST:event_FAVButtonActionPerformed
     private void DisplayFav() {
-        if (selected.toString().equals("Select Category") || selected.toString().equals("All Category")) {
+        if ((selected.toString().equals("Select Category") || selected.toString().equals("All Category")) && allFavorites != null && Index > 0) {
             currentQuestion = allFavorites.get(Index);
             String[] choices = currentQuestion.getChoices();
             QuesitionID.setText("QuestionID: " + currentQuestion.getQuestionID());
@@ -731,6 +734,7 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
                         })
                         .collect(Collectors.toList());
             }
+
         }
 
         if (allFavorites.isEmpty() || allFavorites == null || categoryFavorites.isEmpty() || categoryFavorites == null) {
@@ -753,6 +757,7 @@ public class ViewFavoriteQuestions extends javax.swing.JPanel {
                 imageHolder.setVisible(true);
             }
         }
+        FAVNUMHOLDER.setText("Number of Favorites: " + categoryFavorites.size());
         DisplayFav();
 
     }
